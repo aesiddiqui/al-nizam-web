@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const articles = [
+  {
+    title: 'AI forgets everything the moment I close the tab',
+    subtitle: 'How al-Nizam keeps continuity that doesn\'t depend on the AI tool remembering',
+    date: '2026-06-10',
+    href: '/leadership/memory-and-pipeline-in-practice/',
+    series: 'Introducing al-Nizam — Piece 1 (Amnesia)',
+  },
+];
+---
+
+<Layout
+  title="Leadership — al-Nizam"
+  description="Long-form pieces examining the disciplines al-Nizam has evolved. Memory, governance, continuity, trust, and the operating layer between operator and AI."
+>
+  <article>
+    <h1>Leadership</h1>
+
+    <p class="lead">
+      Long-form pieces examining the disciplines al-Nizam has evolved. Each piece
+      takes a problem the world is already struggling with, shows how most people
+      cope, then shows the structural answer al-Nizam evolved.
+    </p>
+
+    <p>
+      The series accrues into a worldview rather than a feature tour. Pieces can
+      be read in any order. Sequencing recommendation lives in each piece's
+      header.
+    </p>
+
+    <hr />
+
+    <h2>Articles</h2>
+
+    <ul class="article-list">
+      {articles.map((article) => (
+        <li>
+          <h3><a href={article.href}>{article.title}</a></h3>
+          <p class="meta">{article.series} · {article.date}</p>
+          <p>{article.subtitle}</p>
+        </li>
+      ))}
+    </ul>
+
+    <hr />
+
+    <p class="lead">
+      <em>More pieces in this series ship as the framework's discipline evolves.
+      Each piece is built to be read alone or as part of the accumulating
+      worldview. Subscribe via <a href="/leadership/rss.xml">RSS</a> to follow
+      the cadence.</em>
+    </p>
+  </article>
+</Layout>
