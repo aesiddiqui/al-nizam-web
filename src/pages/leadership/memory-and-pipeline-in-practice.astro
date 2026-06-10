@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { substrates } from '../../data/substrates';
+import { durationSince, formatDate } from '../../lib/duration';
 ---
 
 <Layout
@@ -8,7 +10,7 @@ import Layout from '../../layouts/Layout.astro';
 >
   <article>
     <p class="meta" style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">
-      Introducing al-Nizam · Piece 1 (Amnesia) · 2026-06-10
+      Introducing al-Nizam · Piece 1 (Amnesia) · Published 2026-06-10 · Substrate operating {durationSince(substrates.memorySystem.since)} · <a href="#lineage">Details ↓</a>
     </p>
 
     <h1>AI forgets everything the moment I close the tab</h1>
@@ -281,20 +283,20 @@ import Layout from '../../layouts/Layout.astro';
       knowledge-work-without-stakes.
     </p>
 
-    <div class="article-lineage">
+    <div id="lineage" class="article-lineage">
       <h3>Lineage</h3>
       <ul>
         <li><strong>Article published:</strong> 2026-06-10</li>
         <li>
           <strong>Substrates covered:</strong>
           <ul style="list-style: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
-            <li>Memory system + PROJECT_STATE + HANDOFF protocol — substantive active use since April 26, 2026 (~7 weeks of continuous operation)</li>
-            <li>The Continuum cross-strand convention — substantive active use across multiple machines</li>
-            <li>/resume + /close session-bridge protocols — substantive active use since April 2026</li>
+            <li>{substrates.memorySystem.name} — substantive active use since {formatDate(substrates.memorySystem.since)} ({durationSince(substrates.memorySystem.since)} of continuous operation)</li>
+            <li>{substrates.continuum.name} — substantive active use across multiple machines since {formatDate(substrates.continuum.since)} ({durationSince(substrates.continuum.since)})</li>
+            <li>{substrates.resumeClose.name} — substantive active use since {formatDate(substrates.resumeClose.since)} ({durationSince(substrates.resumeClose.since)})</li>
           </ul>
         </li>
-        <li><strong>Framework:</strong> al-Nizam initial inception April 1, 2026 (~10 weeks ago); substantial platform upgrade April 26, 2026</li>
-        <li><strong>Verification:</strong> framework codification dates verifiable via al-Sijill (the Register) lineage records + memory entry frontmatter</li>
+        <li><strong>Framework:</strong> al-Nizam initial inception {formatDate(substrates.framework.since)} ({durationSince(substrates.framework.since)} ago); substantial platform upgrade {formatDate(substrates.frameworkPlatformUpgrade.since)}</li>
+        <li><strong>Verification:</strong> framework codification dates verifiable via al-Sijill (the Register) lineage records + memory entry frontmatter. Durations computed at site build time.</li>
       </ul>
     </div>
 

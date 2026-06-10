@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { substrates } from '../../data/substrates';
+import { durationSince, formatDate } from '../../lib/duration';
 ---
 
 <Layout
@@ -8,7 +10,7 @@ import Layout from '../../layouts/Layout.astro';
 >
   <article>
     <p class="meta" style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">
-      Introducing al-Nizam · Piece 2 (Boundaries) · 2026-06-10
+      Introducing al-Nizam · Piece 2 (Boundaries) · Published 2026-06-10 · Substrate operating {durationSince(substrates.visibilityTiered.since)} · <a href="#lineage">Details ↓</a>
     </p>
 
     <h1>I can't let AI near my real, sensitive work</h1>
@@ -378,22 +380,22 @@ import Layout from '../../layouts/Layout.astro';
       role requires.
     </p>
 
-    <div class="article-lineage">
+    <div id="lineage" class="article-lineage">
       <h3>Lineage</h3>
       <ul>
         <li><strong>Article published:</strong> 2026-06-10</li>
         <li>
           <strong>Substrates covered:</strong>
           <ul style="list-style: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
-            <li>Data classification + visibility-tiered exposure + Sanctum disciplines — substantive active use since April 26, 2026 (~7 weeks of continuous operation)</li>
-            <li>al-Wilaya (the Tenancy) + ip_separation_guard — substantive active use across multiple tenants in current Sitting</li>
-            <li>/pre-publish gate skill — explicitly codified June 4, 2026 (~6 days); the underlying sanitization discipline operating in practice longer than the skill that names it</li>
-            <li>Ibn Khaldun (the Quaestor) audit + INCEPTION.md decision record + compliance-framework checks — operational across the Sitting</li>
-            <li>al-'Alim (the Scholar) consult discipline for civilizational lineage — active use across all theologically-loaded naming decisions in current Sitting</li>
+            <li>{substrates.visibilityTiered.name} — substantive active use since {formatDate(substrates.visibilityTiered.since)} ({durationSince(substrates.visibilityTiered.since)} of continuous operation)</li>
+            <li>{substrates.alWilaya.name} — substantive active use across multiple tenants since {formatDate(substrates.alWilaya.since)} ({durationSince(substrates.alWilaya.since)})</li>
+            <li>{substrates.prePublishGate.name} — explicitly codified {formatDate(substrates.prePublishGate.since)} ({durationSince(substrates.prePublishGate.since)}); {substrates.prePublishGate.caveat}</li>
+            <li>{substrates.quaestor.name} — operational since {formatDate(substrates.quaestor.since)} ({durationSince(substrates.quaestor.since)})</li>
+            <li>{substrates.alAlim.name} — active use since {formatDate(substrates.alAlim.since)} ({durationSince(substrates.alAlim.since)})</li>
           </ul>
         </li>
-        <li><strong>Framework:</strong> al-Nizam initial inception April 1, 2026 (~10 weeks ago); substantial platform upgrade April 26, 2026</li>
-        <li><strong>Verification:</strong> framework codification dates verifiable via al-Sijill (the Register) lineage records + DECISIONS log + memory entry frontmatter</li>
+        <li><strong>Framework:</strong> al-Nizam initial inception {formatDate(substrates.framework.since)} ({durationSince(substrates.framework.since)} ago); substantial platform upgrade {formatDate(substrates.frameworkPlatformUpgrade.since)}</li>
+        <li><strong>Verification:</strong> framework codification dates verifiable via al-Sijill (the Register) lineage records + DECISIONS log + memory entry frontmatter. Durations computed at site build time.</li>
       </ul>
     </div>
 
