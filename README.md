@@ -1,42 +1,42 @@
 # al-nizam-web
 
-Public-facing al-Nizam framework website at **al-nizam.ai**.
+Source repository for the al-Nizam framework website at **al-nizam.ai**.
 
-## Status
+## What this is
 
-Phase 0 launch package — minimum-viable landing + Leadership Channel section. INCEPTED 2026-06-10.
+The public-facing al-Nizam framework website. Hosts:
 
-## Architecture relationships
+- **Landing page** — al-Nizam positioning + ahead-of-curve framings
+- **Leadership section** (`/leadership/`) — long-form articles examining the disciplines al-Nizam has evolved
+- **RSS feed** for syndication
 
-- **Framework canon:** `~/.claude/` (al-Nizam framework)
-- **Framework state (Role 1):** `~/.claude/projects/al-nizam-web/.claude/`
-- **Primary work surface (Role 2):** THIS DIRECTORY
-- **Deliverable destination (Role 3):** https://al-nizam.ai/
-- **Git remote (Role 4):** `aesiddiqui/al-nizam-web` (TO BE CREATED at hosting Sitting)
-- **Article source:** `~/projects/leadership-channel/content/published/`
+## Stack
 
-## Phase 0 scope
+Built with [Astro](https://astro.build/). Deployed to Cloudflare Pages. Source markdown + static HTML/CSS/JS output.
 
-Per `~/.claude/projects/al-nizam-web/.claude/INCEPTION.md`:
+## Local development
 
-1. Landing page at al-nizam.ai with positioning statement + ahead-of-curve framings
-2. `/leadership/` (or `/blog/`) section with permanent canonical article URLs
-3. First canonical Piece 1 (Memory + Pipeline in Practice) published there
-4. Landing page links to Piece 1 canonical URL
+```bash
+npm install
+npm run dev      # local dev server
+npm run build    # production build to dist/
+npm run preview  # preview production build
+```
 
-Phase 0 EXCLUDES brand-identity ratification + commercial integration + multi-section composition beyond landing + leadership.
+## Articles
 
-## Pre-public discipline (MANDATORY before any content goes live)
+The Leadership section publishes pieces from the introducing-al-nizam series. Each piece takes a problem the world is already struggling with — AI amnesia, governance, cost, trust — and shows the structural answer al-Nizam evolved.
 
-1. `/pre-publish` skill MUST run
-2. al-'Alim (the Scholar) consult for civilizational + theologically-loaded terms
-3. Brand-identity Phase 0 minimum alignment
-4. Lineage-preservation discipline
+Current articles:
 
-## Stack + hosting
+- **Piece 1 — Amnesia.** "AI forgets everything the moment I close the tab." → `/leadership/memory-and-pipeline-in-practice/`
 
-TBD per Phase 0 Sitting. al-Wasatiyya bounded — simplest viable static-site-generator + git-deployable hosting.
+## What al-Nizam is
 
-Candidates:
-- Static-site generator: Hugo / Astro / 11ty / hand-coded HTML+CSS
-- Hosting: GitHub Pages / Cloudflare Pages / Netlify / Vercel
+al-Nizam — Arabic for *the order, the system, the discipline* — is a personal operating framework. It runs in the layer between an operator and the AI tools they use. It enforces continuity, governance, and accountability structurally.
+
+See the landing page at [al-nizam.ai](https://al-nizam.ai) for full positioning.
+
+## License
+
+Articles and content: copyright reserved. Code (Astro templates / config): MIT-style permissive for reuse where applicable.
