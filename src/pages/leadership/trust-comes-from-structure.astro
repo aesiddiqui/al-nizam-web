@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
 import { substrates } from '../../data/substrates';
 import { durationSince, formatDate } from '../../lib/duration';
 ---
@@ -399,10 +400,6 @@ import { durationSince, formatDate } from '../../lib/duration';
       </ul>
     </div>
 
-    <div class="author-bio">
-      <p>
-        <strong>Ebadullah Siddiqui</strong> is the architect behind al-Nizam. Three decades in IT spanning virtualization, cloud, governance, cybersecurity, and enterprise infrastructure across government, healthcare, financial services, and commercial sectors. Founder and CEO of ERSA Technologies. al-Nizam is the operating framework he had to build when he kept losing continuity the industry had no excuse to keep dropping.
-      </p>
-    </div>
+    <AuthorBio />
   </article>
 </Layout>

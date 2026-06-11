@@ -1,0 +1,13 @@
+---
+// AuthorBio — single-source-of-truth author bio block.
+// Composes from src/data/author.ts (future canonical: al-Izhar substrate OR
+// al-Ifada/leadership-channel author canonical when those activate).
+// Per project CLAUDE.md "COMPOSES (not duplicates) content from other modules".
+import { founder } from '../data/author';
+---
+
+<div class="author-bio">
+  <p>
+    <strong>{founder.name}</strong> {founder.bio}
+  </p>
+</div>
