@@ -86,7 +86,8 @@ export const about = {
     {
       heading: 'Civilizational lineage',
       body: [
-        "al-Nizam is the current canonical name. The work iterated through prior names — streams becoming rivers becoming ocean — drawing on three decades of operator experience and on a deeper civilizational tradition of structured discipline, accountability, and reckoning.",
+        "al-Nizam is the arrived canonical name — chosen deliberately after deep introspection into the naming convention itself. The work iterated through prior names — streams becoming rivers becoming ocean — and arrived here, drawing on three decades of operator experience and on a deeper civilizational tradition of structured discipline, accountability, and reckoning.",
+        "The same deliberation extends to the visual identity. The logo and the broader brand presentation are arrived choices, not provisional ones — each shaped through the same care given to the naming.",
         "Substrate names within the framework honor that lineage where they fit: al-Sijill (the Register), al-Wilaya (the Tenancy), Ibn Khaldun (the Quaestor), al-Muhasaba (the Reckoning), among others. Each name carries weight; each is chosen for distinctive-contribution match, not for marketing.",
       ],
     },

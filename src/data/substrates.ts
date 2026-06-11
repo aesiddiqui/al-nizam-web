@@ -27,7 +27,7 @@ export const frameworkLineage: FrameworkLineageEntry[] = [
   {
     name: 'al-Nizam',
     era: 'June 2026 — present',
-    note: 'current canonical name; ratified Islamic Theme Migration Sitting A',
+    note: 'the arrived canonical name; chosen deliberately after deep introspection into the naming convention; ratified Islamic Theme Migration Sitting A',
   },
   {
     name: 'Loci',
