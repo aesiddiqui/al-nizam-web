@@ -11,10 +11,41 @@ export type Substrate = {
   caveat?: string;    // optional appended honest-framing phrase
 };
 
+// Framework lineage — streams → rivers → ocean.
+// al-Nizam is the current name (ratified Islamic Theme Migration Sitting A, June 1, 2026).
+// Loci was the immediate predecessor framework name (early April → early June 2026).
+// Pre-Loci: piecemeal development through multiple smaller threads that gradually coalesced.
+// The conceptual + operational discipline draws on three decades of operator IT experience.
+// AVOID specific April 1 framing in user-facing surfaces (April Fools' Day credibility-trap).
+export type FrameworkLineageEntry = {
+  name: string;
+  era: string;
+  note?: string;
+};
+
+export const frameworkLineage: FrameworkLineageEntry[] = [
+  {
+    name: 'al-Nizam',
+    era: 'June 2026 — present',
+    note: 'current canonical name; ratified Islamic Theme Migration Sitting A',
+  },
+  {
+    name: 'Loci',
+    era: 'April 2026 — June 2026',
+    note: 'immediate predecessor framework name',
+  },
+  {
+    name: 'Pre-Loci piecemeal threads',
+    era: 'preceding years — early 2026',
+    note: 'multiple smaller concepts and threads that gradually coalesced into Loci',
+  },
+];
+
 export const substrates: Record<string, Substrate> = {
   framework: {
-    name: 'al-Nizam framework foundational',
-    since: '2026-04-01',
+    name: 'al-Nizam framework operational',
+    since: '2026-04-15',  // approximate early-April coalescence — AVOID April 1 specifically
+    caveat: 'al-Nizam is the current name; the framework operated as Loci from early April through May 2026; pre-Loci work developed piecemeal — streams becoming rivers becoming ocean — over preceding years drawing on three decades of operator IT experience',
   },
   frameworkPlatformUpgrade: {
     name: 'Substantial platform upgrade (memory system + Continuum foundations)',
