@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { about } from '../data/about';
+---
+
+<Layout
+  title='About al-Nizam'
+  description={about.description}
+>
+  <article>
+    <h1>{about.pageTitle}</h1>
+
+    <p class="lead">
+      {about.leadParagraph}
+    </p>
+
+    <hr />
+
+    {about.sections.map((section) => (
+      <section>
+        <h2>{section.heading}</h2>
+        {section.body.map((para) => (
+          <p>{para}</p>
+        ))}
+        {section.bullets && (
+          <ul>
+            {section.bullets.map((b) => (
+              <li>
+                <strong>{b.strong}</strong> {b.rest}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    ))}
+  </article>
+</Layout>
