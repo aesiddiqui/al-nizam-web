@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { founder } from '../data/founder';
+---
+
+<Layout
+  title='Ebadullah Siddiqui — Founder of al-Nizam'
+  description={founder.description}
+>
+  <article>
+    <h1>{founder.pageTitle}</h1>
+
+    <p class="lead">
+      {founder.subtitle}
+    </p>
+
+    <hr />
+
+    {founder.sections.map((section) => (
+      <section>
+        <h2>{section.heading}</h2>
+        {section.body.map((para) => (
+          <p>{para}</p>
+        ))}
+      </section>
+    ))}
+  </article>
+</Layout>
