@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { confidant } from '../data/confidant';
+---
+
+<Layout
+  title='The Confidant — al-Nizam'
+  description={confidant.description}
+>
+  <article>
+    <h1>{confidant.pageTitle}</h1>
+
+    <p class="lead">
+      {confidant.leadParagraph}
+    </p>
+
+    <hr />
+
+    {confidant.sections.map((section) => (
+      <section>
+        <h2>{section.heading}</h2>
+        {section.body.map((para) => (
+          <p>{para}</p>
+        ))}
+        {section.bullets && (
+          <ul>
+            {section.bullets.map((b) => (
+              <li>
+                <strong>{b.strong}</strong> {b.rest}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    ))}
+
+    <hr />
+
+    <p style="font-style: italic; color: var(--color-text-muted); font-size: 0.9rem;">
+      <strong>Future-extension note:</strong> {confidant.futureExtensionNote}
+    </p>
+  </article>
+</Layout>
