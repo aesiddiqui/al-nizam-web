@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 132" role="img" aria-label="al-Nizam">
+  <title>al-Nizam</title>
+  <g transform="translate(-1.4 -25.5) scale(0.9)">
+    <path fill="currentColor" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+    <ellipse fill="currentColor" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+  </g>
+  <!-- Wordmark: placeholder serif (Georgia). Replace font-family / convert to outlines once the final display serif is selected. -->
+  <text x="150" y="86" font-family="Georgia,'Times New Roman',serif" font-size="46" font-weight="600" letter-spacing=".5" fill="currentColor">al-Nizam</text>
+  <text x="151" y="112" font-family="ui-sans-serif,system-ui,sans-serif" font-size="15" letter-spacing=".3" fill="currentColor" fill-opacity=".6">Built so you can think.</text>
+</svg>
