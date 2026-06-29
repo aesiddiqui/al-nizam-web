@@ -75,18 +75,26 @@ const htmlClass = theme === 'light' ? 'theme-light' : '';
         margin: 0 auto;
       }
 
+      /* Header is a fixed dark brand band on EVERY page (theme-independent),
+         full-width, wrapping a centered inner container. */
       header.site-header {
+        background: #0E1220;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+      }
+
+      header.site-header .header-inner {
         max-width: var(--max-width-page);
         margin: 0 auto;
-        padding: 1.5rem 1.5rem 0.5rem;
-        border-bottom: 1px solid var(--color-border);
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        align-items: center;
       }
 
       header.site-header a.logo {
         font-size: 1.25rem;
         font-weight: bold;
         text-decoration: none;
-        color: var(--color-text);
+        color: #F6F3EC;
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
@@ -95,24 +103,23 @@ const htmlClass = theme === 'light' ? 'theme-light' : '';
       header.site-header a.logo .logo-mark {
         width: 1.5rem;
         height: 1.5rem;
-        color: var(--color-accent);
+        color: #C9A24B;
         flex: none;
       }
 
       header.site-header nav {
-        display: inline-block;
         margin-left: 2rem;
       }
 
       header.site-header nav a {
         margin-right: 1.5rem;
-        color: var(--color-text-muted);
+        color: #8A93A3;
         text-decoration: none;
         font-size: 0.95rem;
       }
 
       header.site-header nav a:hover {
-        color: var(--color-accent);
+        color: #C9A24B;
       }
 
       h1 {
@@ -224,18 +231,24 @@ const htmlClass = theme === 'light' ? 'theme-light' : '';
         color: var(--color-text);
       }
 
+      /* Footer mirrors the header as a fixed dark brand band on every page. */
       footer.site-footer {
-        max-width: var(--max-width-page);
-        margin: 4rem auto 2rem;
-        padding: 1.5rem;
-        border-top: 1px solid var(--color-border);
-        color: var(--color-text-muted);
+        background: #0E1220;
+        border-top: 1px solid rgba(255, 255, 255, 0.10);
+        color: #8A93A3;
         font-size: 0.9rem;
         text-align: center;
+        margin-top: 4rem;
+      }
+
+      footer.site-footer .footer-inner {
+        max-width: var(--max-width-page);
+        margin: 0 auto;
+        padding: 1.5rem;
       }
 
       footer.site-footer a {
-        color: var(--color-text-muted);
+        color: #8A93A3;
       }
 
       .lead {
@@ -268,25 +281,29 @@ const htmlClass = theme === 'light' ? 'theme-light' : '';
   </head>
   <body>
     <header class="site-header">
-      <a href="/" class="logo" aria-label="al-Nizam home">
-        <svg class="logo-mark" viewBox="56.5 66.7 90 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path fill="currentColor" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
-          <ellipse fill="currentColor" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
-        </svg>
-        <span>al-Nizam</span>
-      </a>
-      <nav>
-        <a href="/leadership/">Leadership</a>
-        <a href="/about">About</a>
-        <a href="/founder">Founder</a>
-        <a href="/confidant">Confidant</a>
-      </nav>
+      <div class="header-inner">
+        <a href="/" class="logo" aria-label="al-Nizam home">
+          <svg class="logo-mark" viewBox="56.5 66.7 90 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill="currentColor" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+            <ellipse fill="currentColor" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+          </svg>
+          <span>al-Nizam</span>
+        </a>
+        <nav>
+          <a href="/leadership/">Leadership</a>
+          <a href="/about">About</a>
+          <a href="/founder">Founder</a>
+          <a href="/confidant">Confidant</a>
+        </nav>
+      </div>
     </header>
     <main>
       <slot />
     </main>
     <footer class="site-footer">
-      <p>al-Nizam — an operating layer between operator and AI.</p>
+      <div class="footer-inner">
+        <p>al-Nizam — an operating layer between operator and AI.</p>
+      </div>
     </footer>
   </body>
 </html>
