@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>al-Nizam — Brand Guide</title>
+<style>
+  :root{
+    /* core palette — see §3 */
+    --night:#0E1220; --gold:#C9A24B; --star:#E6C66E; --paper:#F6F3EC; --ink:#14171C;
+    --mut-d:#8A93A3; --mut-l:#6B7280; --hair:rgba(0,0,0,.10); --hair-d:rgba(255,255,255,.10);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font:16px/1.6 ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--paper)}
+  a{color:var(--gold)}
+  /* layout */
+  .wrap{max-width:1040px;margin:0 auto;padding:0 40px}
+  section{padding:46px 0;border-top:1px solid var(--hair)}
+  section:first-of-type{border-top:0}
+  h1{font:600 30px/1.15 Georgia,'Times New Roman',serif;letter-spacing:-.01em;margin:0 0 8px}
+  h2{font:600 13px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 6px}
+  h3{font:600 21px/1.25 Georgia,serif;margin:18px 0 6px}
+  p{max-width:760px;margin:0 0 12px}
+  .lede{font-size:18px;color:var(--ink)}
+  .mut{color:var(--mut-l)}
+  code{background:rgba(0,0,0,.06);padding:1px 6px;border-radius:5px;font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  /* hero */
+  .hero{background:var(--night);color:var(--paper);border-radius:0;border-top:0}
+  .hero .wrap{padding-top:60px;padding-bottom:60px}
+  .hero h1{color:var(--paper);font-size:40px}
+  .hero p{color:var(--mut-d)}
+  .hero .tag{color:var(--gold);font-size:15px;letter-spacing:.4px;margin-top:20px}
+  /* tiles */
+  .grid{display:flex;gap:20px;flex-wrap:wrap;align-items:stretch;margin-top:22px}
+  .tile{border-radius:16px;padding:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-width:190px}
+  .night{background:var(--night)} .light{background:#fff;border:1px solid rgba(0,0,0,.08)}
+  .cap{font-size:12px} .night .cap{color:var(--mut-d)} .light .cap{color:var(--mut-l)}
+  .lg{width:118px;height:118px}.md{width:74px;height:74px}.sm{width:34px;height:34px}
+  .gold{color:var(--gold)} .star{color:var(--star)} .inkc{color:var(--ink)} .papc{color:var(--paper)}
+  /* swatches */
+  .sw{display:flex;gap:14px;flex-wrap:wrap;margin:20px 0 6px}
+  .chip{display:flex;flex-direction:column;gap:7px;font-size:12px;color:var(--mut-l)}
+  .chip i{width:120px;height:64px;border-radius:10px;border:1px solid var(--hair);display:block}
+  .chip b{color:var(--ink);font-weight:600;font-size:13px}
+  /* tables */
+  table{border-collapse:collapse;width:100%;max-width:860px;margin:14px 0;font-size:14px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--hair)}
+  th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut-l)}
+  td .dot{display:inline-block;width:16px;height:16px;border-radius:4px;vertical-align:-3px;margin-right:8px;border:1px solid var(--hair)}
+  /* do / dont */
+  .dd{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px}
+  .card{flex:1 1 320px;border-radius:14px;padding:20px 22px;border:1px solid var(--hair);background:#fff}
+  .card h4{margin:0 0 10px;font-size:15px;display:flex;align-items:center;gap:8px}
+  .card ul{margin:0;padding-left:18px} .card li{margin:5px 0;font-size:14.5px}
+  .ok h4{color:#1F7A4D} .no h4{color:#A23A2E}
+  /* pending */
+  .pending{background:#FBF6E9;border:1px solid #E7D6A8;border-radius:14px;padding:22px 24px}
+  .pending h3{margin-top:0}
+  .pending li{margin:7px 0}
+  .badge{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a6d1f;background:#F2E6BE;border-radius:999px;padding:2px 9px;margin-left:6px;vertical-align:1px}
+  .toc{font-size:14px;color:var(--mut-l);display:flex;gap:18px;flex-wrap:wrap;margin-top:14px}
+  .toc a{color:var(--mut-l);text-decoration:none}
+  footer{border-top:1px solid var(--hair);padding:26px 0 70px;color:var(--mut-l);font-size:13.5px}
+</style>
+</head>
+<body>
+
+<!-- ───────────────── HERO ───────────────── -->
+<section class="hero">
+  <div class="wrap">
+    <svg viewBox="0 0 470 150" width="330" style="max-width:100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="al-Nizam">
+      <g transform="translate(-1.4 -25.5) scale(0.9)">
+        <path fill="#C9A24B" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+        <ellipse fill="#C9A24B" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+      </g>
+      <text x="150" y="86" font-family="Georgia,serif" font-size="46" font-weight="600" letter-spacing=".5" fill="#F6F3EC">al-Nizam</text>
+    </svg>
+    <div class="tag">Built so you can think.</div>
+    <h1 style="font-size:42px;margin-top:22px;max-width:780px">Working alone at the scale of an institution.</h1>
+    <p style="color:#cfd4de"><strong style="color:var(--gold);font-weight:600;letter-spacing:.12em;font-size:12px;text-transform:uppercase">Brand Guide</strong> &nbsp;·&nbsp; the single reference for the al-Nizam mark, color, type, and voice. Every surface — website, decks, social, documents — derives from this page.</p>
+    <div class="toc">
+      <a href="#mark">1 · The Mark</a>
+      <a href="#variants">2 · Variants</a>
+      <a href="#color">3 · Color</a>
+      <a href="#type">4 · Typography</a>
+      <a href="#voice">5 · Voice &amp; Taglines</a>
+      <a href="#rules">6 · Do &amp; Don't</a>
+      <a href="#pending">7 · Pending</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── 1 · THE MARK ───────────────── -->
+<section id="mark">
+  <div class="wrap">
+    <h2>01 — The Mark</h2>
+    <h1>A planet on an orbit</h1>
+    <p class="lede">The mark is the Arabic letter <strong>Noon</strong> (ن) read as celestial mechanics: a tilted orbital band with a single body resting on it.</p>
+    <p>It carries the meaning of the framework in one silhouette. The <strong>orbit</strong> is al-Nizam — the order that holds everything in relation. The <strong>dot</strong> is the Steward — you — held on that orbit, free to move because the structure is doing the holding. <em>Nizam</em> means order, system, arrangement; the mark says it without a word of explanation.</p>
+
+    <div class="grid">
+      <div class="tile light"><span class="lg inkc">
+        <svg viewBox="56.5 66.7 90 90" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="al-Nizam mark">
+          <path fill="currentColor" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+          <ellipse fill="currentColor" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+        </svg></span><span class="cap">primary — plain dot</span></div>
+      <div class="tile night"><span class="lg gold">
+        <svg viewBox="56.5 66.7 90 90" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="currentColor" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+          <ellipse fill="currentColor" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+        </svg></span><span class="cap">gold on night</span></div>
+      <div class="tile light"><span class="md inkc">
+        <svg viewBox="56.5 66.7 90 90" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="currentColor" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+          <ellipse fill="currentColor" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+        </svg></span><span class="cap">mono</span></div>
+      <div class="tile light"><span class="sm inkc">
+        <svg viewBox="56.5 66.7 90 90" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="currentColor" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+          <ellipse fill="currentColor" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+        </svg></span><span class="cap">favicon 34px</span></div>
+    </div>
+
+    <p class="mut">The dot is a <strong>plain dot</strong> — deliberately. The Confidant is present as the structure that holds the dot on its orbit, not drawn as a second element. A Saturn-ring variant was explored and set aside to keep the mark singular and reducible. (See <code>logo-saturn-v2.html</code> for that exploration.)</p>
+
+    <h3>Clear space &amp; construction</h3>
+    <p>The mark is drawn on a centered <code>90&times;90</code> viewBox (<code>viewBox="56.5 66.7 90 90"</code>) with the geometry already balanced inside it. Keep clear space around the mark equal to the height of the dot on all sides. Never place type or graphics inside that margin. Minimum size: <strong>16px</strong> (the plain dot holds down to favicon scale; the wordmark drops below ~24px — use the mark alone).</p>
+  </div>
+</section>
+
+<!-- ───────────────── 2 · VARIANTS ───────────────── -->
+<section id="variants">
+  <div class="wrap">
+    <h2>02 — Logo Variants</h2>
+    <h1>One mark, every surface</h1>
+    <p>Pick the variant by background, never by preference. The mark is monochrome and themeable (<code>fill="currentColor"</code>) — it inherits the surface's text color unless a brand color is explicitly set.</p>
+    <table>
+      <thead><tr><th>Variant</th><th>Use on</th><th>Color</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gold on night</strong> — primary</td><td>Dark / hero / brand surfaces</td><td><span class="dot" style="background:#C9A24B"></span>Gold <code>#C9A24B</code> on Night <code>#0E1220</code></td></tr>
+        <tr><td><strong>Ink on paper</strong></td><td>Reading surfaces, print, docs</td><td><span class="dot" style="background:#14171C"></span>Ink <code>#14171C</code> on Paper <code>#F6F3EC</code></td></tr>
+        <tr><td><strong>Mono black</strong></td><td>Single-color, fax/stamp, constraints</td><td><span class="dot" style="background:#000"></span>Black</td></tr>
+        <tr><td><strong>Mono white / reversed</strong></td><td>Photos, solid colors, dark UI</td><td><span class="dot" style="background:#fff"></span>White / paper</td></tr>
+        <tr><td><strong>Favicon</strong></td><td>Browser tab, app icon</td><td>Plain dot, current variant, &ge;16px</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Horizontal lockup</h3>
+    <p>Mark + wordmark, optionally with the tight tagline. The wordmark is set in a serif (Georgia shown as placeholder — see §4). The mark sits at cap-height of the wordmark with one mark-width of space between them.</p>
+    <div class="grid">
+      <div class="tile night" style="align-items:flex-start"><span style="width:360px;max-width:100%" class="papc">
+        <svg viewBox="0 0 470 150" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="al-Nizam lockup">
+          <g transform="translate(-1.4 -25.5) scale(0.9)">
+            <path fill="#C9A24B" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+            <ellipse fill="#C9A24B" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+          </g>
+          <text x="150" y="86" font-family="Georgia,serif" font-size="46" font-weight="600" letter-spacing=".5" fill="#F6F3EC">al-Nizam</text>
+          <text x="151" y="112" font-family="ui-sans-serif,system-ui,sans-serif" font-size="15" letter-spacing=".3" fill="#F6F3EC" fill-opacity=".65">Built so you can think.</text>
+        </svg></span><span class="cap">primary lockup — gold on night</span></div>
+      <div class="tile light" style="align-items:flex-start"><span style="width:360px;max-width:100%" class="inkc">
+        <svg viewBox="0 0 470 150" width="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g transform="translate(-1.4 -25.5) scale(0.9)">
+            <path fill="currentColor" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+            <ellipse fill="currentColor" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+          </g>
+          <text x="150" y="86" font-family="Georgia,serif" font-size="46" font-weight="600" letter-spacing=".5" fill="currentColor">al-Nizam</text>
+          <text x="151" y="112" font-family="ui-sans-serif,system-ui,sans-serif" font-size="15" letter-spacing=".3" fill="currentColor" fill-opacity=".55">Built so you can think.</text>
+        </svg></span><span class="cap">lockup — ink on paper</span></div>
+    </div>
+    <p class="mut"><strong>Wordmark casing:</strong> always <code>al-Nizam</code> — lowercase <em>al-</em>, capital <em>N</em>, hyphenated, one word after. Never "Al Nizam", "AlNizam", or "al nizam".</p>
+  </div>
+</section>
+
+<!-- ───────────────── 3 · COLOR ───────────────── -->
+<section id="color">
+  <div class="wrap">
+    <h2>03 — Color</h2>
+    <h1>Night sky &amp; gold <span class="badge">recommended — pending ratify</span></h1>
+    <p>A dark-first system: deep night as the brand ground, gold as the single accent, warm paper for reading. The palette reads as <em>night sky</em> — fitting a mark built from celestial mechanics — and stays sober and instrument-grade rather than decorative.</p>
+
+    <div class="sw">
+      <div class="chip"><i style="background:#0E1220"></i><b>Night</b> #0E1220</div>
+      <div class="chip"><i style="background:#C9A24B"></i><b>Gold</b> #C9A24B</div>
+      <div class="chip"><i style="background:#E6C66E"></i><b>Star-gold</b> #E6C66E</div>
+      <div class="chip"><i style="background:#F6F3EC"></i><b>Paper</b> #F6F3EC</div>
+      <div class="chip"><i style="background:#14171C"></i><b>Ink</b> #14171C</div>
+    </div>
+
+    <table>
+      <thead><tr><th>Token</th><th>Hex</th><th>RGB</th><th>Role</th></tr></thead>
+      <tbody>
+        <tr><td><span class="dot" style="background:#0E1220"></span><strong>Night</strong></td><td><code>#0E1220</code></td><td>14 / 18 / 32</td><td>Primary brand ground; hero, dark UI, backgrounds</td></tr>
+        <tr><td><span class="dot" style="background:#C9A24B"></span><strong>Gold</strong></td><td><code>#C9A24B</code></td><td>201 / 162 / 75</td><td>Primary accent; mark on night, links, emphasis</td></tr>
+        <tr><td><span class="dot" style="background:#E6C66E"></span><strong>Star-gold</strong></td><td><code>#E6C66E</code></td><td>230 / 198 / 110</td><td>Lighter gold; hovers, highlights, gradients</td></tr>
+        <tr><td><span class="dot" style="background:#F6F3EC"></span><strong>Paper</strong></td><td><code>#F6F3EC</code></td><td>246 / 243 / 236</td><td>Light reading surface; print, documents</td></tr>
+        <tr><td><span class="dot" style="background:#14171C"></span><strong>Ink</strong></td><td><code>#14171C</code></td><td>20 / 23 / 28</td><td>Body text on paper; mono mark on light</td></tr>
+        <tr><td><span class="dot" style="background:#8A93A3"></span>Muted (dark)</td><td><code>#8A93A3</code></td><td>138 / 147 / 163</td><td>Secondary text on night</td></tr>
+        <tr><td><span class="dot" style="background:#6B7280"></span>Muted (light)</td><td><code>#6B7280</code></td><td>107 / 114 / 128</td><td>Secondary text on paper</td></tr>
+      </tbody>
+    </table>
+    <p class="mut"><strong>Contrast:</strong> Gold <code>#C9A24B</code> on Night <code>#0E1220</code> passes WCAG AA for large text and UI; for small body text on night, use Paper or Muted-dark, not gold. Verify any new pairing before shipping.</p>
+  </div>
+</section>
+
+<!-- ───────────────── 4 · TYPOGRAPHY ───────────────── -->
+<section id="type">
+  <div class="wrap">
+    <h2>04 — Typography</h2>
+    <h1>Serif for the name, sans for the work</h1>
+    <p>A two-voice system: a <strong>serif</strong> carries the wordmark and headings — it gives al-Nizam the settled, authored, institutional weight the brand claims. A clean <strong>sans-serif</strong> carries everything functional: body copy, UI, labels.</p>
+    <table>
+      <thead><tr><th>Role</th><th>Typeface</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Wordmark &amp; headings</td><td><strong>Serif</strong> — Georgia (placeholder)</td><td>Final display serif is the design-system step <span class="badge">pending</span></td></tr>
+        <tr><td>Body &amp; UI</td><td><strong>Sans-serif</strong> — system / Inter-class</td><td>Regular for copy, Medium for subheads, Semibold for buttons</td></tr>
+        <tr><td>Code / tokens</td><td>Monospace</td><td>Hex values, file paths, technical references</td></tr>
+      </tbody>
+    </table>
+    <p class="mut">Georgia is a <em>placeholder</em> so the system is legible today without a web-font dependency. Selecting the final display serif (and confirming the body sans) is a deliberate type step before public ship — candidates should be evaluated against the wordmark at small and large sizes, light and dark.</p>
+  </div>
+</section>
+
+<!-- ───────────────── 5 · VOICE & TAGLINES ───────────────── -->
+<section id="voice">
+  <div class="wrap">
+    <h2>05 — Voice &amp; Taglines</h2>
+    <h1>Calm, exact, and on your side</h1>
+    <div class="grid" style="gap:26px">
+      <div style="flex:1 1 300px">
+        <h3>Primary tagline</h3>
+        <p class="lede">&ldquo;Working alone at the scale of an institution.&rdquo;</p>
+        <p class="mut">The promise. Use in hero, headers, the one-line pitch.</p>
+      </div>
+      <div style="flex:1 1 300px">
+        <h3>Tight tagline</h3>
+        <p class="lede">&ldquo;Built so you can think.&rdquo;</p>
+        <p class="mut">The compression. Use in lockups, footers, signatures, tight spaces.</p>
+      </div>
+    </div>
+    <h3>Voice principles</h3>
+    <table>
+      <thead><tr><th>We are</th><th>We are not</th></tr></thead>
+      <tbody>
+        <tr><td>Calm and exact — the instrument, not the showman</td><td>Hyped, breathless, "revolutionary"</td></tr>
+        <tr><td>Plain — lead with the answer, then the why</td><td>Jargon-stacked or padded</td></tr>
+        <tr><td>Grounded — claims we can show</td><td>Aspirational claims dressed as facts</td></tr>
+        <tr><td>On the operator's side — it holds the load so they can think</td><td>Self-aggrandizing; tool-centric</td></tr>
+      </tbody>
+    </table>
+    <p class="mut"><strong>Naming:</strong> the platform is <code>al-Nizam</code> (market-facing). Internal civilizational substrate names (al-Wilaya, al-Sijill, &hellip;) stay internal — the public surface speaks plainly.</p>
+  </div>
+</section>
+
+<!-- ───────────────── 6 · DO & DON'T ───────────────── -->
+<section id="rules">
+  <div class="wrap">
+    <h2>06 — Do &amp; Don't</h2>
+    <h1>Protecting the mark</h1>
+    <div class="dd">
+      <div class="card ok">
+        <h4>✓ Do</h4>
+        <ul>
+          <li>Use at 100% opacity, full strength</li>
+          <li>Keep clear space (= dot height) on all sides</li>
+          <li>Pick the variant by background contrast</li>
+          <li>Keep the wordmark as <code>al-Nizam</code> — exact casing &amp; hyphen</li>
+          <li>Let the mark inherit color via <code>currentColor</code> where possible</li>
+        </ul>
+      </div>
+      <div class="card no">
+        <h4>✕ Don't</h4>
+        <ul>
+          <li>Stretch, compress, rotate, or skew the geometry</li>
+          <li>Recolor outside the palette, or add gradients/shadows/outlines</li>
+          <li>Place the full mark on a busy or low-contrast background</li>
+          <li>Reduce opacity or use the mark as a faint watermark behind text</li>
+          <li>Re-letter, re-space, or set the wordmark in a non-brand face for logo use</li>
+          <li>Crop the orbit or detach the dot from the band</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── 7 · PENDING ───────────────── -->
+<section id="pending">
+  <div class="wrap">
+    <h2>07 — Pending Decisions</h2>
+    <div class="pending">
+      <h3>To lock before public ship</h3>
+      <p>This guide presents the <strong>proposed</strong> system. These calls are the Steward's and gate the production export:</p>
+      <ul>
+        <li><strong>Color — ratify gold-on-night</strong> as the primary palette (currently recommended). Gates the production SVG export and the site CSS tokens.</li>
+        <li><strong>Typography — select the final display serif</strong> (Georgia is a placeholder) and confirm the body sans.</li>
+        <li><strong>Lockup tagline — confirm</strong> "Built so you can think." stays in the horizontal lockup.</li>
+      </ul>
+      <p style="margin-bottom:0"><strong>Gate:</strong> al-&lsquo;Alim consult before any public ship. Then export production SVGs (gold / ink / reversed / mono + favicon + lockup) into the site <code>src/</code> and wire the favicon, header, and CSS tokens to this palette.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    al-Nizam Brand Guide · <code>brand/BRAND-GUIDE.html</code> · 2026-06-29 · proposed system pending Steward ratification + al-&lsquo;Alim consult.
+    Mark geometry = Steward&rsquo;s authored SVG, preserved. Source explorations: <code>logo-v3-yours.html</code> (mark), <code>theme.html</code> (color), <code>logo-saturn-v2.html</code> (Saturn variant).
+  </div>
+</footer>
+
+</body>
+</html>
