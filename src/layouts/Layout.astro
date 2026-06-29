@@ -1,10 +1,13 @@
 ---
-// Base layout — Phase 0 minimal typography; brand-identity Sitting will replace
-const { title, description } = Astro.props;
+// Base layout — al-Nizam brand (gold on night). `theme` selects the surface:
+//   'dark'  (default) — brand/marketing surfaces (gold on night)
+//   'light' — reading surfaces (ink on paper) per the brand's dark-first + warm-reading model
+const { title, description, theme = 'dark' } = Astro.props;
+const htmlClass = theme === 'light' ? 'theme-light' : '';
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class={htmlClass}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,10 +29,22 @@ const { title, description } = Astro.props;
         --color-accent-hover: #E6C66E;
         --color-bg: #0E1220;
         --color-border: rgba(255, 255, 255, 0.10);
+        --surface-subtle: rgba(255, 255, 255, 0.08);
         --font-body: 'Georgia', 'Cambria', serif;
         --font-mono: 'SF Mono', 'Monaco', 'Consolas', monospace;
         --max-width-prose: 38rem;
         --max-width-page: 56rem;
+      }
+
+      /* Light reading surface — ink on paper. Accent deepened for AA contrast on paper. */
+      html.theme-light {
+        --color-text: #14171C;
+        --color-text-muted: #6B7280;
+        --color-accent: #8C6A1F;
+        --color-accent-hover: #C9A24B;
+        --color-bg: #F6F3EC;
+        --color-border: rgba(0, 0, 0, 0.12);
+        --surface-subtle: rgba(0, 0, 0, 0.06);
       }
 
       * {
@@ -138,7 +153,7 @@ const { title, description } = Astro.props;
       code {
         font-family: var(--font-mono);
         font-size: 0.9em;
-        background: rgba(255, 255, 255, 0.08);
+        background: var(--surface-subtle);
         padding: 0.1rem 0.3rem;
         border-radius: 3px;
       }
