@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>al-Nizam — color theme (night sky + gold)</title>
+<style>
+  :root{ --night:#0E1220; --gold:#C9A24B; --star:#E6C66E; --paper:#F6F3EC; --ink:#14171C; --mut-d:#8A93A3; --mut-l:#6B7280; }
+  *{box-sizing:border-box}
+  body{margin:0;font:16px/1.55 ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--paper)}
+  header{max-width:1040px;margin:0 auto;padding:42px 40px 4px}
+  h1{font-size:24px;margin:0 0 6px;letter-spacing:-.01em}
+  .sub{color:var(--mut-l);margin:0;max-width:760px}
+  main{max-width:1040px;margin:0 auto;padding:6px 40px 60px}
+  .sw{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 6px}
+  .chip{display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--mut-l)}
+  .chip i{width:84px;height:54px;border-radius:9px;border:1px solid rgba(0,0,0,.12);display:block}
+  .row{display:flex;gap:20px;flex-wrap:wrap;align-items:stretch;margin-top:26px}
+  .tile{border-radius:16px;padding:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-width:210px}
+  .night{background:var(--night)} .lightt{background:#fff;border:1px solid rgba(0,0,0,.08)}
+  .cap{font-size:12px} .night .cap{color:var(--mut-d)} .lightt .cap{color:var(--mut-l)}
+  .lg{width:118px;height:118px}.sm{width:34px;height:34px}
+  .gold{color:var(--gold)} .ink{color:var(--ink)}
+  .hero{margin-top:30px;border-radius:16px;background:var(--night);padding:46px 40px;color:var(--paper)}
+  .hero h2{font:600 30px/1.2 Georgia,serif;margin:0 0 8px;color:var(--paper);letter-spacing:-.01em}
+  .hero p{margin:0;color:var(--mut-d);max-width:560px}
+  .hero .tag{color:var(--gold);font-size:14px;letter-spacing:.4px;margin-top:18px}
+  footer{max-width:1040px;margin:0 auto;padding:18px 40px 70px;color:var(--mut-l);font-size:14px;border-top:1px solid rgba(0,0,0,.1)}
+</style>
+</head>
+<body>
+<header>
+  <h1>al-Nizam — color theme: night sky + gold</h1>
+  <p class="sub">Recommended palette applied to your mark (plain dot) + lockup. Dark-first; warm-neutral light mode for reading surfaces.</p>
+  <div class="sw">
+    <div class="chip"><i style="background:#0E1220"></i>Night #0E1220</div>
+    <div class="chip"><i style="background:#C9A24B"></i>Gold #C9A24B</div>
+    <div class="chip"><i style="background:#E6C66E"></i>Star-gold #E6C66E</div>
+    <div class="chip"><i style="background:#F6F3EC"></i>Paper #F6F3EC</div>
+    <div class="chip"><i style="background:#14171C"></i>Ink #14171C</div>
+  </div>
+</header>
+
+<main>
+  <div class="row">
+    <div class="tile night"><span class="lg gold">
+      <svg viewBox="56.5 66.7 90 90" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="al-Nizam">
+        <path fill="currentColor" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+        <ellipse fill="currentColor" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+      </svg></span><span class="cap">gold on night — primary</span></div>
+
+    <div class="tile lightt"><span class="lg ink">
+      <svg viewBox="56.5 66.7 90 90" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="currentColor" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+        <ellipse fill="currentColor" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+      </svg></span><span class="cap">ink on paper — reading/print</span></div>
+
+    <div class="tile night"><span class="sm gold">
+      <svg viewBox="56.5 66.7 90 90" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="currentColor" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+        <ellipse fill="currentColor" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+      </svg></span><span class="cap">favicon</span></div>
+  </div>
+
+  <!-- hero mock -->
+  <div class="hero">
+    <svg viewBox="0 0 470 150" width="330" style="max-width:100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="al-Nizam lockup">
+      <g transform="translate(-1.4 -25.5) scale(0.9)">
+        <path fill="#C9A24B" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
+        <ellipse fill="#C9A24B" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+      </g>
+      <text x="150" y="86" font-family="Georgia,serif" font-size="46" font-weight="600" letter-spacing=".5" fill="#F6F3EC">al-Nizam</text>
+    </svg>
+    <h2>Working alone at the scale of an institution.</h2>
+    <p>The operating layer between you and AI that holds continuity, governance, and accountability structurally.</p>
+    <div class="tag">Built so you can think.</div>
+  </div>
+</main>
+
+<footer>
+  <p><strong>View:</strong> <code>brand/theme.html</code>. Mark = your geometry (plain dot). Gold on night = primary; ink on paper = reading surfaces. Wordmark serif is placeholder.</p>
+  <p>If gold + night is the call, I export production SVGs (gold + ink + reversed) and wire the favicon/header + set the site CSS tokens to this palette.</p>
+</footer>
+</body>
+</html>

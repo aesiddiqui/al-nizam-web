@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>al-Nizam — Noon (ن) logo concepts</title>
+<style>
+  :root{ --ink:#14171C; --paper:#F6F3EC; --muted:#6B7280;
+         --amber:#C49A3F; --blue:#2D6CDF; --teal:#1F8A82; }
+  *{box-sizing:border-box}
+  body{margin:0;font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+       color:var(--ink);background:var(--paper)}
+  header{padding:48px 40px 24px;max-width:1100px;margin:0 auto}
+  h1{font-size:28px;margin:0 0 6px;letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:0 0 4px}
+  main{max-width:1100px;margin:0 auto;padding:0 40px 80px}
+  .palette{display:flex;gap:14px;flex-wrap:wrap;margin:22px 0 8px}
+  .sw{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+  .chip{width:26px;height:26px;border-radius:6px;border:1px solid rgba(0,0,0,.12)}
+  .concept{margin:40px 0;padding-top:28px;border-top:1px solid rgba(0,0,0,.1)}
+  .concept h2{font-size:20px;margin:0 0 4px}
+  .concept .why{color:var(--muted);max-width:760px;margin:0 0 20px}
+  .row{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-end}
+  .tile{border-radius:14px;padding:22px;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .tile.light{background:#fff;border:1px solid rgba(0,0,0,.08)}
+  .tile.dark{background:#101319}
+  .tile .cap{font-size:12px;color:var(--muted)}
+  .tile.dark .cap{color:#8A93A3}
+  .lg{width:108px;height:108px}
+  .sm{width:32px;height:32px}
+  .ink{color:var(--ink)} .onpaper-dark{color:var(--paper)}
+  .amber{color:var(--amber)} .blue{color:var(--blue)} .teal{color:var(--teal)}
+  footer{max-width:1100px;margin:0 auto;padding:24px 40px 80px;color:var(--muted);font-size:14px;
+         border-top:1px solid rgba(0,0,0,.1)}
+  code{background:rgba(0,0,0,.06);padding:1px 6px;border-radius:5px;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <h1>al-Nizam — Noon (ن) logo concepts</h1>
+  <p class="sub">Draft exploration · 2026-06-28 · in-house (Claude design) · DRAFT — civilizational grounding pending al-'Alim consult before public use</p>
+  <p class="sub" style="max-width:780px">The Arabic letter <strong>Noon (ن)</strong> is a deep bowl with a dot above — and that shape <em>is</em> the thesis: the bowl is the structure that <strong>holds</strong> (continuity, governance, accountability); the dot is the operator, held above it. Every concept below is that idea, in a different voice. All are monochrome by design (a mark must work in one color first); accent options shown at the bottom.</p>
+  <div class="palette">
+    <div class="sw"><span class="chip" style="background:#14171C"></span> Ink #14171C</div>
+    <div class="sw"><span class="chip" style="background:#F6F3EC"></span> Paper #F6F3EC</div>
+    <div class="sw"><span class="chip" style="background:#C49A3F"></span> Amber (heritage)</div>
+    <div class="sw"><span class="chip" style="background:#2D6CDF"></span> Blue (technical)</div>
+    <div class="sw"><span class="chip" style="background:#1F8A82"></span> Teal (calm-system)</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- CONCEPT 1 — VESSEL -->
+  <section class="concept">
+    <h2>1 · Vessel — monoline, geometric minimal</h2>
+    <p class="why">The purest reading: a clean single-weight bowl + dot. Calm, modern, infinitely scalable, reads instantly as Noon. The "default" — confident and unfussy. Best favicon behaviour.</p>
+    <div class="row">
+      <div class="tile light"><span class="lg ink">
+        <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="al-Nizam Noon — Vessel">
+          <path d="M33 46 C33 82 87 82 87 46" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/>
+          <circle cx="60" cy="30" r="6.5" fill="currentColor"/>
+        </svg></span><span class="cap">ink on paper</span></div>
+      <div class="tile dark"><span class="lg onpaper-dark">
+        <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M33 46 C33 82 87 82 87 46" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/>
+          <circle cx="60" cy="30" r="6.5" fill="currentColor"/>
+        </svg></span><span class="cap">reversed (dark)</span></div>
+      <div class="tile light"><span class="sm ink">
+        <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M33 46 C33 82 87 82 87 46" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/>
+          <circle cx="60" cy="30" r="6.5" fill="currentColor"/>
+        </svg></span><span class="cap">favicon 32px</span></div>
+    </div>
+  </section>
+
+  <!-- CONCEPT 2 — FOUNDATION -->
+  <section class="concept">
+    <h2>2 · Foundation — solid bowl, the layer that holds</h2>
+    <p class="why">A filled crescent-bowl: heavier, more substantial — reads as a base / platform / vessel that bears weight. Leans into "operating <em>layer</em>" and structural solidity. Strong presence at small sizes.</p>
+    <div class="row">
+      <div class="tile light"><span class="lg ink">
+        <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="al-Nizam Noon — Foundation">
+          <path fill="currentColor" d="M30 44 C30 80 90 80 90 44 L81 44 C81 70 39 70 39 44 Z"/>
+          <circle cx="60" cy="28" r="7" fill="currentColor"/>
+        </svg></span><span class="cap">ink on paper</span></div>
+      <div class="tile dark"><span class="lg onpaper-dark">
+        <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="currentColor" d="M30 44 C30 80 90 80 90 44 L81 44 C81 70 39 70 39 44 Z"/>
+          <circle cx="60" cy="28" r="7" fill="currentColor"/>
+        </svg></span><span class="cap">reversed (dark)</span></div>
+      <div class="tile light"><span class="sm ink">
+        <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="currentColor" d="M30 44 C30 80 90 80 90 44 L81 44 C81 70 39 70 39 44 Z"/>
+          <circle cx="60" cy="28" r="7" fill="currentColor"/>
+        </svg></span><span class="cap">favicon 32px</span></div>
+    </div>
+  </section>
+
+  <!-- CONCEPT 3 — CALLIGRAPHIC -->
+  <section class="concept">
+    <h2>3 · Calligraphic — weighted stroke, heritage voice</h2>
+    <p class="why">Thin entry/exit tips swelling to a heavy bottom — the gesture of a pen. Most explicitly civilizational; warmest. (This is a <em>direction</em> — a true calligraphic mark would be refined with a type/calligraphy pass; al-'Alim consult especially relevant here.)</p>
+    <div class="row">
+      <div class="tile light"><span class="lg ink">
+        <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="al-Nizam Noon — Calligraphic">
+          <path fill="currentColor" d="M32 44 C32 80 88 80 88 44 C86 46 85 47 83.5 48 C81 68 39 68 36.5 48 C35 47 34 46 32 44 Z"/>
+          <circle cx="60" cy="29" r="6.5" fill="currentColor"/>
+        </svg></span><span class="cap">ink on paper</span></div>
+      <div class="tile dark"><span class="lg onpaper-dark">
+        <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="currentColor" d="M32 44 C32 80 88 80 88 44 C86 46 85 47 83.5 48 C81 68 39 68 36.5 48 C35 47 34 46 32 44 Z"/>
+          <circle cx="60" cy="29" r="6.5" fill="currentColor"/>
+        </svg></span><span class="cap">reversed (dark)</span></div>
+      <div class="tile light"><span class="sm ink">
+        <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="currentColor" d="M32 44 C32 80 88 80 88 44 C86 46 85 47 83.5 48 C81 68 39 68 36.5 48 C35 47 34 46 32 44 Z"/>
+          <circle cx="60" cy="29" r="6.5" fill="currentColor"/>
+        </svg></span><span class="cap">favicon 32px</span></div>
+    </div>
+  </section>
+
+  <!-- CONCEPT 4 — SYSTEM -->
+  <section class="concept">
+    <h2>4 · System — constructed, technical, ordered</h2>
+    <p class="why">Thin precise arc + a <em>square</em> dot on an implied grid: discipline, engineering, "the order/the system." The most technical / dev-tool voice — pairs naturally with the showcase + code surfaces.</p>
+    <div class="row">
+      <div class="tile light"><span class="lg ink">
+        <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="al-Nizam Noon — System">
+          <g stroke="currentColor" stroke-opacity=".14" stroke-width="1"><line x1="60" y1="14" x2="60" y2="106"/><line x1="22" y1="64" x2="98" y2="64"/></g>
+          <path d="M34 48 C34 80 86 80 86 48" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="square"/>
+          <rect x="55.5" y="26" width="9" height="9" fill="currentColor"/>
+        </svg></span><span class="cap">ink on paper</span></div>
+      <div class="tile dark"><span class="lg onpaper-dark">
+        <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g stroke="currentColor" stroke-opacity=".16" stroke-width="1"><line x1="60" y1="14" x2="60" y2="106"/><line x1="22" y1="64" x2="98" y2="64"/></g>
+          <path d="M34 48 C34 80 86 80 86 48" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="square"/>
+          <rect x="55.5" y="26" width="9" height="9" fill="currentColor"/>
+        </svg></span><span class="cap">reversed (dark)</span></div>
+      <div class="tile light"><span class="sm ink">
+        <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M34 48 C34 80 86 80 86 48" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="square"/>
+          <rect x="55" y="25" width="10" height="10" fill="currentColor"/>
+        </svg></span><span class="cap">favicon 32px (grid dropped)</span></div>
+    </div>
+  </section>
+
+  <!-- CONCEPT 5 — LOCKUP -->
+  <section class="concept">
+    <h2>5 · Lockup — mark + wordmark (using Vessel)</h2>
+    <p class="why">How the mark sits beside the name. Wordmark shown in a system serif as a placeholder — the final typeface is a brand-system decision (A1). Note the Noon dot can double as the separating accent.</p>
+    <div class="row">
+      <div class="tile light" style="align-items:flex-start"><span style="width:340px;max-width:100%" class="ink">
+        <svg viewBox="0 0 380 120" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="al-Nizam lockup">
+          <path d="M28 54 C28 84 76 84 76 54" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="52" cy="40" r="5.5" fill="currentColor"/>
+          <text x="104" y="74" font-family="Georgia,'Times New Roman',serif" font-size="44" font-weight="600" letter-spacing=".5" fill="currentColor">al<tspan fill="currentColor" font-weight="400">-</tspan>Nizam</text>
+        </svg></span><span class="cap">horizontal lockup</span></div>
+      <div class="tile dark" style="align-items:flex-start"><span style="width:340px;max-width:100%" class="onpaper-dark">
+        <svg viewBox="0 0 380 120" width="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M28 54 C28 84 76 84 76 54" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="52" cy="40" r="5.5" fill="currentColor"/>
+          <text x="104" y="74" font-family="Georgia,'Times New Roman',serif" font-size="44" font-weight="600" letter-spacing=".5" fill="currentColor">al-Nizam</text>
+        </svg></span><span class="cap">reversed (dark)</span></div>
+    </div>
+  </section>
+
+  <!-- ACCENT EXPLORATION -->
+  <section class="concept">
+    <h2>Accent options — Vessel mark in colour</h2>
+    <p class="why">Logos resolve in one colour first; this is just to feel each accent against the mark. My lean: <strong>amber</strong> reads heritage/manuscript (civilizational warmth); <strong>blue/teal</strong> read technical/calm-system. The brand can pick one accent + ink/paper neutrals.</p>
+    <div class="row">
+      <div class="tile light"><span class="lg amber"><svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M33 46 C33 82 87 82 87 46" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/><circle cx="60" cy="30" r="6.5" fill="currentColor"/></svg></span><span class="cap">amber</span></div>
+      <div class="tile light"><span class="lg blue"><svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M33 46 C33 82 87 82 87 46" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/><circle cx="60" cy="30" r="6.5" fill="currentColor"/></svg></span><span class="cap">blue</span></div>
+      <div class="tile light"><span class="lg teal"><svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M33 46 C33 82 87 82 87 46" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/><circle cx="60" cy="30" r="6.5" fill="currentColor"/></svg></span><span class="cap">teal</span></div>
+      <div class="tile dark"><span class="lg amber"><svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M33 46 C33 82 87 82 87 46" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round"/><circle cx="60" cy="30" r="6.5" fill="currentColor"/></svg></span><span class="cap">amber / dark</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p><strong>How to view:</strong> open <code>brand/logo-concepts.html</code> in a browser (or VS Code preview). All marks are scalable SVG; nothing is committed.</p>
+  <p><strong>Next:</strong> pick a direction (1–4) + an accent lean → I refine that one to a production SVG (exact geometry, optical centering, favicon/social variants) and build the design system around it. al-'Alim consult before the chosen mark ships publicly.</p>
+</footer>
+</body>
+</html>
