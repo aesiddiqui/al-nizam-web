@@ -213,6 +213,11 @@ import PlatformGraph from '../components/PlatformGraph.astro';
     transform: translateY(-1px);
   }
 
+  /* Homepage thesis prose shares the al-Mushahada content column (48rem) so the
+     text below the graph aligns with the stats/readout/arc above it, instead of
+     sitting in the narrower 38rem reading column the global stylesheet sets. */
+  article { max-width: 48rem; }
+
   @media (max-width: 760px) {
     .hero { padding: 3rem 1.25rem 2rem; }
     .hero-lead { font-size: 1.08rem; }

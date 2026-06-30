@@ -67,7 +67,10 @@ const { hero = false } = Astro.props;
      component's own h2/lede. The graph is the first thing the visitor meets
      (full-bleed); the maturity stats move BELOW it — the architecture greets
      you, the numbers reward the scroll. */
-  .platform-graph.pg-hero { margin-top: 0; display: flex; flex-direction: column; }
+  /* Hero zone shares one content column (48rem) — wider than the 38rem reading
+     prose so the six-stat strip fits comfortably, and everything (readout,
+     stats, arc) aligns to the same edges. The full-bleed stage ignores this. */
+  .platform-graph.pg-hero { margin-top: 0; display: flex; flex-direction: column; max-width: 48rem; }
   .platform-graph.pg-hero h2,
   .platform-graph.pg-hero .pg-lede { display: none; }
   .platform-graph.pg-hero .pg-stage {
@@ -81,31 +84,25 @@ const { hero = false } = Astro.props;
     margin-top: 0;
   }
   .platform-graph.pg-hero .pg-readout { order: 2; }
-  /* Hero stats — one centered row of all six, broken out wider than the prose
-     column so nothing wraps to a second line. Gaps + numbers scale with the
-     viewport (clamp), so it stays on one line and resizes fluidly. */
+  /* Hero stats — all six on one row, sized to the same 48rem column as the
+     readout/arc so the strip aligns instead of overhanging. space-between fills
+     the column edge-to-edge; numbers + gaps scale with the viewport (clamp) so
+     it stays one line and resizes fluidly; wraps under 760px for phones. */
   .platform-graph.pg-hero .pg-stats {
     order: 3;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: start;
-    gap: clamp(0.5rem, 2.2vw, 2rem);
-    width: min(94vw, 62rem);
-    margin-top: 2.4rem;
-    margin-bottom: 0;
-    margin-left: 50%;
-    transform: translateX(-50%);
+    gap: clamp(0.4rem, 1.6vw, 1.4rem);
+    width: 100%;
+    margin: 2.4rem 0 0;
   }
   .platform-graph.pg-hero .pg-stat { min-width: 0; align-items: center; text-align: center; }
-  .platform-graph.pg-hero .pg-num { font-size: clamp(1.2rem, 2.6vw, 1.8rem); }
-  /* On phones, let the row wrap again rather than crush six items onto one line. */
+  .platform-graph.pg-hero .pg-num { font-size: clamp(1.1rem, 2.4vw, 1.7rem); }
+  .platform-graph.pg-hero .pg-readout,
+  .platform-graph.pg-hero .pg-arc { max-width: 100%; }
   @media (max-width: 760px) {
-    .platform-graph.pg-hero .pg-stats {
-      flex-wrap: wrap;
-      width: 100%;
-      margin-left: 0;
-      transform: none;
-    }
+    .platform-graph.pg-hero .pg-stats { flex-wrap: wrap; justify-content: center; gap: 1.2rem 1.6rem; }
   }
   .platform-graph.pg-hero .pg-arc { order: 4; }
   @media (max-width: 760px) {
