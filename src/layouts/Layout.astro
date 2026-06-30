@@ -61,8 +61,10 @@ const year = new Date().getFullYear();
         background: var(--color-bg);
         /* Full-bleed bands use 100vw, which is wider than the content area by the
            scrollbar's width. Clip that sliver so it never opens a horizontal
-           scrollbar (which is what shifted the centered hero left on wide windows). */
-        overflow-x: hidden;
+           scrollbar (which is what shifted the centered hero left on wide windows).
+           `clip` (not `hidden`) clips WITHOUT creating a scroll container, so the
+           sticky header below keeps working. */
+        overflow-x: clip;
       }
 
       body {
@@ -86,6 +88,18 @@ const year = new Date().getFullYear();
       header.site-header {
         background: #0E1220;
         border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+        /* Sticky — stays pinned at the top through the scroll. */
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        transition: box-shadow 0.25s ease, border-color 0.25s ease;
+      }
+
+      /* Condense on scroll — toggled by a class once the page leaves the top.
+         A subtle shadow + gold hairline lifts the bar above the content. */
+      header.site-header.scrolled {
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+        border-bottom-color: rgba(201, 162, 75, 0.28);
       }
 
       header.site-header .header-inner {
@@ -94,6 +108,29 @@ const year = new Date().getFullYear();
         padding: 1.25rem 1.5rem;
         display: flex;
         align-items: center;
+        transition: padding 0.25s ease;
+      }
+
+      /* Smaller padding + logo once scrolled — the size change the bar makes. */
+      header.site-header.scrolled .header-inner {
+        padding: 0.65rem 1.5rem;
+      }
+
+      header.site-header a.logo {
+        transition: font-size 0.25s ease;
+      }
+
+      header.site-header.scrolled a.logo {
+        font-size: 1.1rem;
+      }
+
+      header.site-header a.logo .logo-mark {
+        transition: width 0.25s ease, height 0.25s ease;
+      }
+
+      header.site-header.scrolled a.logo .logo-mark {
+        width: 1.25rem;
+        height: 1.25rem;
       }
 
       header.site-header a.logo {
@@ -348,5 +385,14 @@ const year = new Date().getFullYear();
         <p class="footer-copy">© {year} al-Nizam. All rights reserved.</p>
       </div>
     </footer>
+    <script>
+      // Condense the sticky header once the page scrolls away from the very top.
+      const header = document.querySelector('header.site-header');
+      if (header) {
+        const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+    </script>
   </body>
 </html>
