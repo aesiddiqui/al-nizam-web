@@ -4,6 +4,8 @@
 //   'light' — reading surfaces (ink on paper) per the brand's dark-first + warm-reading model
 const { title, description, theme = 'dark' } = Astro.props;
 const htmlClass = theme === 'light' ? 'theme-light' : '';
+// Copyright year computed at build time — never goes stale.
+const year = new Date().getFullYear();
 ---
 
 <!DOCTYPE html>
@@ -244,7 +246,35 @@ const htmlClass = theme === 'light' ? 'theme-light' : '';
       footer.site-footer .footer-inner {
         max-width: var(--max-width-page);
         margin: 0 auto;
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
+      }
+
+      footer.site-footer .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem 1.5rem;
+        margin-bottom: 1.1rem;
+      }
+
+      footer.site-footer .footer-nav a {
+        color: #8A93A3;
+        text-decoration: none;
+        font-size: 0.88rem;
+      }
+
+      footer.site-footer .footer-nav a:hover {
+        color: #C9A24B;
+      }
+
+      footer.site-footer .footer-tagline {
+        margin: 0 0 0.4rem;
+      }
+
+      footer.site-footer .footer-copy {
+        margin: 0;
+        font-size: 0.82rem;
+        color: #6B7280;
       }
 
       footer.site-footer a {
@@ -302,7 +332,16 @@ const htmlClass = theme === 'light' ? 'theme-light' : '';
     </main>
     <footer class="site-footer">
       <div class="footer-inner">
-        <p>al-Nizam — an operating layer between operator and AI.</p>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/about">About</a>
+          <a href="/leadership/">Leadership</a>
+          <a href="/founder">Founder</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <p class="footer-tagline">al-Nizam — an operating layer between operator and AI.</p>
+        <p class="footer-copy">© {year} al-Nizam. All rights reserved.</p>
       </div>
     </footer>
   </body>
