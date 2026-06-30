@@ -127,8 +127,12 @@ import PlatformGraph from '../components/PlatformGraph.astro';
   .hero h1 {
     font-size: clamp(2.25rem, 5vw, 3.4rem);
     line-height: 1.12;
-    margin: 0 0 1.1rem;
+    /* `auto` left/right keeps the headline block centered — a bare `0 0` here
+       would override the margin:auto centering inherited from `.hero > *`,
+       which is what pinned the title left-of-center. */
+    margin: 0 auto 1.1rem;
     letter-spacing: -0.01em;
+    text-wrap: balance;
   }
 
   /* Kinetic composition — the headline assembles word by word on load, a quiet
