@@ -109,11 +109,11 @@ import PlatformGraph from '../components/PlatformGraph.astro';
      brand field flowing from the header into the immersive graph below. */
   .hero {
     width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    /* Single clean full-bleed technique — margin-only, no over-constrained
+       left/right offsets. Breaks out of <main>'s 56rem column to viewport width
+       while keeping content centered on the true viewport. */
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
     padding: 2.5rem 1.5rem 1.75rem;
     text-align: center;
   }
