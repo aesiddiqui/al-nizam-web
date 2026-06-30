@@ -51,7 +51,11 @@ import { meta } from '../data/platform-graph.js';
   .pg-readout { min-height: 4rem; margin-top: 1rem; max-width: var(--max-width-prose); }
   .pg-readout h3 { font-family: Georgia, serif; font-size: 1.2rem; margin: 0 0 0.4rem; color: #F6F3EC; }
   .pg-readout .pg-fam { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.09em; color: #C9A24B; margin: 0 0 0.5rem; }
+  .pg-readout h3 .pg-en { font-family: Georgia, serif; font-style: italic; font-weight: 400; font-size: 0.9rem; color: #8A93A3; }
   .pg-readout p { font-size: 0.95rem; color: #C7CCD6; margin: 0; line-height: 1.6; }
+  .pg-readout .pg-more { margin-top: 0.7rem; }
+  .pg-readout .pg-more a { font-size: 0.9rem; color: #C9A24B; text-decoration: none; border-bottom: 1px solid rgba(201,162,75,0.4); }
+  .pg-readout .pg-more a:hover { color: #E6C66E; border-bottom-color: #E6C66E; }
   .pg-hint { color: #8A93A3 !important; font-size: 0.88rem !important; }
   .pg-arc { margin-top: 1.6rem; color: var(--color-text-muted); max-width: var(--max-width-prose); }
   @media (max-width: 760px) { .pg-stage { height: 460px; } }
@@ -60,12 +64,17 @@ import { meta } from '../data/platform-graph.js';
 <script>
   import ForceGraph3D from '3d-force-graph';
   import SpriteText from 'three-spritetext';
+  import * as THREE from 'three';
   import { graph, familyLabel } from '../data/platform-graph.js';
 
-  function hexToRgba(hex, a) {
-    const h = hex.replace('#', '');
-    const n = parseInt(h, 16);
-    return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${a})`;
+  // Sphere radius matches 3d-force-graph's own formula: cbrt(nodeVal) * nodeRelSize.
+  // Computed once here so the matte sphere and the label offset always agree.
+  const NODE_REL_SIZE = 4;
+  function nodeVal(n) {
+    return n.level === 3 ? 28 : n.level === 2 ? 7 : n.kind === 'named' ? 3.5 : 1.1;
+  }
+  function nodeRadius(n) {
+    return Math.cbrt(nodeVal(n)) * NODE_REL_SIZE;
   }
 
   const el = document.getElementById('pg-cy');
@@ -76,22 +85,58 @@ import { meta } from '../data/platform-graph.js';
     const Graph = ForceGraph3D({ controlType: 'orbit' })(el)
       .backgroundColor('rgba(0,0,0,0)')
       .graphData(graph)
-      .nodeRelSize(4)
-      .nodeVal((n) => (n.level === 3 ? 28 : n.level === 2 ? 7 : n.kind === 'named' ? 3.5 : 1.1))
-      .nodeColor((n) => (n.kind === 'anon' ? hexToRgba(n.color, 0.42) : n.color))
-      .nodeOpacity(0.95)
-      .nodeResolution(18)
-      .nodeLabel((n) => (n.kind === 'anon' ? 'a private capability' : n.label))
-      .nodeThreeObjectExtend(true)
+      .nodeRelSize(NODE_REL_SIZE)
+      .nodeVal(nodeVal)
+      .nodeLabel((n) => (n.kind === 'anon' ? 'a private capability' : (n.en ? n.label + ' · ' + n.en : n.label)))
+      .nodeThreeObjectExtend(false)
       .nodeThreeObject((n) => {
-        if (n.kind === 'anon') return null;
-        const s = new SpriteText(n.label);
-        s.color = n.kind === 'core' ? '#F6F3EC' : '#D6DAE3';
-        s.fontFace = 'Georgia, serif';
-        s.textHeight = n.kind === 'core' ? 8 : n.kind === 'family' ? 4.5 : 3.4;
-        s.fontWeight = n.kind === 'core' ? 'bold' : 'normal';
-        s.position.set(0, -(n.level === 3 ? 16 : n.level === 2 ? 9 : 5.5), 0);
-        return s;
+        const radius = nodeRadius(n);
+        const isAnon = n.kind === 'anon';
+        const group = new THREE.Group();
+
+        // Matte sphere — high roughness, zero metalness, no specular sheen.
+        // Round shape kept; just the soft, non-glossy stone surface.
+        const geo = new THREE.SphereGeometry(radius, 24, 24);
+        const mat = new THREE.MeshStandardMaterial({
+          color: new THREE.Color(n.color),
+          roughness: 1.0,
+          metalness: 0.0,
+          flatShading: false,
+          transparent: true,
+          opacity: isAnon ? 0.42 : 0.95,
+        });
+        group.add(new THREE.Mesh(geo, mat));
+
+        // Label — skipped for anonymous (private) nodes. Offset is DYNAMIC:
+        // clears the actual sphere radius + half the text height + a gap, so big
+        // spheres no longer swallow their own name.
+        if (!isAnon) {
+          const primaryH = n.kind === 'core' ? 7 : n.kind === 'family' ? 4.2 : 3.2;
+          const gap = 3;
+          const s = new SpriteText(n.label);
+          s.color = n.kind === 'core' ? '#F6F3EC' : '#D6DAE3';
+          s.fontFace = 'Georgia, serif';
+          s.textHeight = primaryH;
+          s.fontWeight = n.kind === 'core' ? 'bold' : 'normal';
+          const primaryY = -(radius + primaryH / 2 + gap);
+          s.position.set(0, primaryY, 0);
+          group.add(s);
+
+          // Secondary English bridge — smaller + muted, stacked just below the
+          // primary. Layered-vocabulary discipline: Arabic carries the brand, the
+          // English is a quiet comprehension aid (omitted where the name is already
+          // English). Only renders when the node declares an `en` value.
+          if (n.en) {
+            const secH = primaryH * 0.62;
+            const sub = new SpriteText(n.en);
+            sub.color = '#8A93A3';
+            sub.fontFace = 'Georgia, serif';
+            sub.textHeight = secH;
+            sub.position.set(0, primaryY - (primaryH / 2 + secH / 2 + 1.2), 0);
+            group.add(sub);
+          }
+        }
+        return group;
       })
       .linkColor((l) => (l.kind === 'composition' ? '#E6C66E' : 'rgba(155,175,210,0.95)'))
       .linkOpacity(0.85)
@@ -123,7 +168,10 @@ import { meta } from '../data/platform-graph.js';
           '<p>A real substrate in this family, held private. The map shows the framework’s true breadth; the internals stay internal.</p>';
       } else if (node.desc) {
         const fam = node.kind === 'named' ? '<p class="pg-fam">' + familyLabel(node.family) + '</p>' : '';
-        panel.innerHTML = fam + '<h3>' + node.label + '</h3><p>' + node.desc + '</p>';
+        const en = node.en ? ' <span class="pg-en">· ' + node.en + '</span>' : '';
+        // Doc-link slot — dormant until a node declares a `doc` slug (Slice C).
+        const more = node.doc ? '<p class="pg-more"><a href="' + node.doc + '">Read more →</a></p>' : '';
+        panel.innerHTML = fam + '<h3>' + node.label + en + '</h3><p>' + node.desc + '</p>' + more;
       }
       // Fly the camera to the node.
       const d = 90;

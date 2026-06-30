@@ -32,22 +32,28 @@ export const families = [
 ];
 
 // Named, described substrates (allowlist headliners — all shipped/real).
+//   en  — optional English bridge name (the layered-vocabulary discipline: Arabic
+//         primary carries the brand; English is the quiet comprehension aid). Omit
+//         for substrates already named in English (the Continuum / Ark / Pulse).
+//   doc — optional slug for a public documentation page. DORMANT until the page
+//         ships (Slice C). When set, the readout panel renders a "Read more →" link;
+//         leave unset so no dead links reach production.
 const named = [
-  { id: 'al-wilaya', label: 'al-Wilaya', family: 'fam-structure',
+  { id: 'al-wilaya', label: 'al-Wilaya', en: 'the Tenancy', family: 'fam-structure', doc: null,
     desc: 'Organizes everything into a clear hierarchy of boundaries — project, client, domain — so the right context, permissions, and data-handling apply automatically, never by memory.' },
-  { id: 'continuum', label: 'the Continuum', family: 'fam-continuity',
+  { id: 'continuum', label: 'the Continuum', family: 'fam-continuity', doc: null,
     desc: 'Carries working state across sessions and machines, so continuity never depends on the AI remembering. Close the tab, switch machines, change models — the thread holds.' },
-  { id: 'ark', label: 'the Ark', family: 'fam-recovery',
+  { id: 'ark', label: 'the Ark', family: 'fam-recovery', doc: null,
     desc: 'Backup, recovery, and disaster-resilience for accumulated state — the work is never one mistake away from gone.' },
-  { id: 'al-sijill', label: 'al-Sijill', family: 'fam-governance',
+  { id: 'al-sijill', label: 'al-Sijill', en: 'the Registry', family: 'fam-governance', doc: null,
     desc: 'A unified registry of decisions and classifications — every significant choice is recorded, classified, and resolvable later.' },
-  { id: 'al-isnad', label: 'al-Isnad', family: 'fam-provenance',
+  { id: 'al-isnad', label: 'al-Isnad', en: 'the Attribution', family: 'fam-provenance', doc: null,
     desc: 'Provenance and attribution — capabilities and decisions are traceable to their origin and lineage, not floating free.' },
-  { id: 'pulse', label: 'the Pulse', family: 'fam-observability',
+  { id: 'pulse', label: 'the Pulse', family: 'fam-observability', doc: null,
     desc: 'Continuously checks the framework’s own health and invariants, surfacing drift or breakage before it becomes a problem.' },
-  { id: 'al-mushahada', label: 'al-Mushahada', family: 'fam-observability',
+  { id: 'al-mushahada', label: 'al-Mushahada', en: 'the Observation', family: 'fam-observability', doc: null,
     desc: 'The framework observing itself — the live architectural map you are looking at right now.' },
-  { id: 'al-bayan', label: 'al-Bayan / al-Muhasaba', family: 'fam-transparency',
+  { id: 'al-bayan', label: 'al-Bayan / al-Muhasaba', en: 'the Declaration / the Reckoning', family: 'fam-transparency', doc: null,
     desc: 'A declare-before, reckon-after discipline: substantial work is announced as intent, then honestly reviewed against what shipped — accountability built into the workflow.' },
 ];
 
@@ -63,10 +69,10 @@ const colorOf = (id) => (families.find((f) => f.id === id) || {}).color || '#8A9
 
 function build() {
   const nodes = [];
-  nodes.push({ id: 'core', label: 'al-Nizam', kind: 'core', level: 3, color: '#C9A24B',
+  nodes.push({ id: 'core', label: 'al-Nizam', en: 'the Order', kind: 'core', level: 3, color: '#C9A24B', doc: null,
     desc: 'The operating layer between you and AI — continuity, governance, and accountability, held structurally as one composed system.' });
   families.forEach((f) => nodes.push({ id: f.id, label: f.label, kind: 'family', level: 2, color: f.color }));
-  named.forEach((n) => nodes.push({ id: n.id, label: n.label, kind: 'named', level: 1, family: n.family, color: colorOf(n.family), desc: n.desc }));
+  named.forEach((n) => nodes.push({ id: n.id, label: n.label, en: n.en || null, doc: n.doc || null, kind: 'named', level: 1, family: n.family, color: colorOf(n.family), desc: n.desc }));
   let a = 0;
   families.forEach((f) => {
     for (let i = 0; i < (anonCounts[f.id] || 0); i++) {
