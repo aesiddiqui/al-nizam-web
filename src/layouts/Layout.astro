@@ -59,6 +59,10 @@ const year = new Date().getFullYear();
         line-height: 1.65;
         color: var(--color-text);
         background: var(--color-bg);
+        /* Full-bleed bands use 100vw, which is wider than the content area by the
+           scrollbar's width. Clip that sliver so it never opens a horizontal
+           scrollbar (which is what shifted the centered hero left on wide windows). */
+        overflow-x: hidden;
       }
 
       body {

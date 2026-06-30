@@ -73,11 +73,9 @@ const { hero = false } = Astro.props;
   .platform-graph.pg-hero .pg-stage {
     order: 1;
     width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    /* Same clean margin-only full-bleed as the hero band. */
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
     height: 70vh;
     min-height: 520px;
     margin-top: 0;
