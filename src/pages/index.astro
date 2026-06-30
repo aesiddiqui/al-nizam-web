@@ -10,7 +10,7 @@ import PlatformGraph from '../components/PlatformGraph.astro';
   <!-- Hero band — IFF-faithful: solid headline + single CTA, full-width, then the
        immersive full-bleed graph directly below (the architecture itself as the visual). -->
   <section class="hero">
-    <h1>Working alone at the scale of an institution.</h1>
+    <h1 class="hero-headline">{"Working alone at the scale of an institution.".split(" ").map((word, i) => (<><span class="hero-word" style={`animation-delay:${(0.05 * i).toFixed(2)}s`}>{word}</span>{" "}</>))}</h1>
     <p class="hero-lead">
       al-Nizam is the operating layer between you and AI that holds continuity,
       governance, and accountability structurally — so the operator does not
@@ -129,6 +129,52 @@ import PlatformGraph from '../components/PlatformGraph.astro';
     line-height: 1.12;
     margin: 0 0 1.1rem;
     letter-spacing: -0.01em;
+  }
+
+  /* Kinetic composition — the headline assembles word by word on load, a quiet
+     nod to al-Nizam's own thesis: parts compose into a whole. Then the lead and
+     CTA settle in beneath it. Purely additive: with prefers-reduced-motion the
+     whole hero is present and static from the first frame. */
+  .hero-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.5em);
+    animation: heroWordIn 0.62s cubic-bezier(0.22, 0.7, 0.2, 1) forwards;
+  }
+
+  @keyframes heroWordIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-lead {
+    opacity: 0;
+    animation: heroSettleIn 0.7s ease 0.62s forwards;
+  }
+
+  /* CTA fades opacity only — NOT transform — so the entrance's `forwards` fill
+     doesn't pin transform and clobber the hover lift defined below. */
+  .hero-cta {
+    opacity: 0;
+    animation: heroFadeIn 0.7s ease 0.82s forwards;
+  }
+
+  @keyframes heroSettleIn {
+    from { opacity: 0; transform: translateY(0.4em); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes heroFadeIn {
+    to { opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-word,
+    .hero-lead,
+    .hero-cta {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   .hero-lead {
