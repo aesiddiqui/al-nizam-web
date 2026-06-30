@@ -7,15 +7,21 @@ import PlatformGraph from '../components/PlatformGraph.astro';
   title="al-Nizam — an operating layer between operator and AI"
   description="al-Nizam is the discipline AI tools demand you provide yourself — built as a framework so you don't have to."
 >
-  <article>
+  <!-- Hero band — IFF-faithful: solid headline + single CTA, full-width, then the
+       immersive full-bleed graph directly below (the architecture itself as the visual). -->
+  <section class="hero">
     <h1>Working alone at the scale of an institution.</h1>
-
-    <p class="lead">
+    <p class="hero-lead">
       al-Nizam is the operating layer between you and AI that holds continuity,
       governance, and accountability structurally — so the operator does not
       have to enforce them by remembering to.
     </p>
+    <a class="hero-cta" href="#pg-cy">Explore the architecture <span aria-hidden="true">↓</span></a>
+  </section>
 
+  <PlatformGraph hero={true} />
+
+  <article>
     <p>
       AI changed the math of knowledge work, but not in the direction the
       marketing suggested. It did not give us a team. It gave us a more
@@ -30,11 +36,7 @@ import PlatformGraph from '../components/PlatformGraph.astro';
       that holds governance, continuity, and accountability structurally. That
       is what al-Nizam is.
     </p>
-  </article>
 
-  <PlatformGraph />
-
-  <article>
     <h2>What al-Nizam already operates that AI tools don't</h2>
 
     <ul>
@@ -100,3 +102,69 @@ import PlatformGraph from '../components/PlatformGraph.astro';
     </p>
   </article>
 </Layout>
+
+<style>
+  /* Full-bleed hero band — breaks out of <main>'s 56rem column to viewport width.
+     Background is the same night as the header/body, so it reads as one seamless
+     brand field flowing from the header into the immersive graph below. */
+  .hero {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 2.5rem 1.5rem 1.75rem;
+    text-align: center;
+  }
+
+  .hero > * {
+    max-width: 44rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.25rem, 5vw, 3.4rem);
+    line-height: 1.12;
+    margin: 0 0 1.1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-lead {
+    font-size: 1.18rem;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    margin: 0 auto 1.6rem;
+  }
+
+  /* Single CTA — gold pill with an organic, asymmetric corner (the IFF signature
+     touch) + letter-spaced uppercase label and an arrow. */
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2rem;
+    background: var(--color-accent);
+    color: #0E1220;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2rem 2rem 2rem 0.4rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .hero-cta:hover {
+    background: var(--color-accent-hover);
+    color: #0E1220;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 760px) {
+    .hero { padding: 3rem 1.25rem 2rem; }
+    .hero-lead { font-size: 1.08rem; }
+  }
+</style>
