@@ -12,8 +12,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.0.0",
+    "@astrojs/rss": "^4.0.0",
     "@astrojs/sitemap": "^3.0.0",
-    "@astrojs/rss": "^4.0.0"
+    "3d-force-graph": "^1.80.0",
+    "astro": "^5.0.0",
+    "three-spritetext": "^1.10.0"
   }
 }
