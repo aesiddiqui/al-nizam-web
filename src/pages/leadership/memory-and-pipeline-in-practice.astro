@@ -161,6 +161,15 @@ const heroMeta = `Introducing al-Nizam · Piece 1 (Amnesia) · Published 2026-06
       anything. The tool reads the files; the files contain the state.
     </p>
 
+    <figure class="fig">
+      <img src="/figures/state-continuity.svg" alt="Session A writes durable files to three tiers at close; the conversation window is discarded; Session B reconstructs its full context from those files at resume. The gold path — work to durable state to fresh session — survives; the grey conversation path does not." />
+      <figcaption>
+        <strong>Figure 1.</strong> The conversation is discarded at every close; because
+        each decision is already a file, a fresh window rebuilds the companion exactly —
+        the gold path, not the grey.
+      </figcaption>
+    </figure>
+
     <p>
       This is the kind of obvious-in-retrospect move that the industry skipped
       because capability-first development does not naturally produce it. You
@@ -318,3 +327,9 @@ const heroMeta = `Introducing al-Nizam · Piece 1 (Amnesia) · Published 2026-06
     <AuthorBio />
   </article>
 </Layout>
+
+<style>
+  .fig { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig img { width: 100%; height: auto; display: block; border-radius: 10px; border: 1px solid rgba(20,23,28,0.10); }
+  .fig figcaption { margin-top: 0.7rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+</style>

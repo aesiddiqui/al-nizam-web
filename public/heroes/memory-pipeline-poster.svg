@@ -6,28 +6,28 @@
     :root{
       --bg:#0E1220; --node:#171C2E; --node2:#1b2035; --stroke:#3A4155;
       --text:#F6F3EC; --muted:#8A93A3; --muted2:#6B7280;
-      --gold:#C9A24B; --goldtext:#E6C66E; --focal:#1E1B10; --dashed:#5A6172;
-      --mark:#C9A24B;   /* gold-on-night lockup */
+      --gold:#C49A3F; --goldtext:#E6C66E; --focal:#1E1B10; --dashed:#5A6172;
+      --markc:#F6F3EC; --markd:#C49A3F;   /* crescent=paper on night · dot=gold (canonical) */
     }
     @media (prefers-color-scheme:none){
       :root{
         --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1; --stroke:#D9D2C4;
         --text:#14171C; --muted:#6B7280; --muted2:#9A9484;
-        --gold:#B0801C; --goldtext:#8A6414; --focal:#FBF3DE; --dashed:#BEB6A4;
-        --mark:#14171C;   /* ink-on-paper lockup */
+        --gold:#A6791C; --goldtext:#8A6414; --focal:#FBF3DE; --dashed:#BEB6A4;
+        --markc:#14171C; --markd:#C49A3F;   /* crescent=ink on paper · dot=gold (canonical) */
       }
     }
-    :root.__disabled{
+    :root.light{
       --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1; --stroke:#D9D2C4;
       --text:#14171C; --muted:#6B7280; --muted2:#9A9484;
-      --gold:#B0801C; --goldtext:#8A6414; --focal:#FBF3DE; --dashed:#BEB6A4;
-      --mark:#14171C;   /* ink-on-paper lockup */
+      --gold:#A6791C; --goldtext:#8A6414; --focal:#FBF3DE; --dashed:#BEB6A4;
+      --markc:#14171C; --markd:#C49A3F;   /* crescent=ink on paper · dot=gold (canonical) */
     }
     .bg{fill:var(--bg)} .node{fill:var(--node);stroke:var(--stroke)} .node2{fill:var(--node2);stroke:var(--stroke)}
     .focal{fill:var(--focal);stroke:var(--gold)}
     .t{fill:var(--text)} .m{fill:var(--muted)} .m2{fill:var(--muted2)} .g{fill:var(--gold)} .gt{fill:var(--goldtext)}
     .goldline{stroke:var(--gold)} .mutline{stroke:var(--dashed)} .orbit{stroke:var(--orbit)}
-    .mark{fill:var(--mark)}
+    .markc{fill:var(--markc)} .markd{fill:var(--markd)}
   </style>
 
   <defs>
@@ -42,9 +42,9 @@
   <rect class="bg" width="1060" height="660"/>
 
   <!-- al-Nizam mark (subject IS al-Nizam) -->
-  <g class="mark" transform="translate(972,34) scale(0.62)" opacity="0.92" aria-hidden="true">
-    <path d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
-    <ellipse cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
+  <g transform="translate(972,34) scale(0.62)" opacity="0.95" aria-hidden="true">
+    <path class="markc" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
+    <ellipse class="markd" cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
   </g>
 
   <!-- title -->

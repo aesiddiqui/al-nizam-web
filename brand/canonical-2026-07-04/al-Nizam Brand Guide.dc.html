@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:#0d0f12;}
+  .nz-doc{width:1000px;margin:0 auto;font-family:'Hanken Grotesk',sans-serif;}
+  .over{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700;}
+</style>
+</helmet>
+<div class="nz-doc">
+
+  <!-- ============ COVER ============ -->
+  <section style="position:relative;height:1260px;overflow:hidden;background:radial-gradient(130% 90% at 26% 20%, #1c2128 0%, #14171C 58%);color:#F6F3EC;display:flex;flex-direction:column;">
+    <div style="position:absolute;top:120px;right:120px;width:3px;height:3px;border-radius:50%;background:#F6F3EC;opacity:.5;"></div>
+    <div style="position:absolute;top:230px;right:260px;width:2px;height:2px;border-radius:50%;background:#F6F3EC;opacity:.3;"></div>
+    <div style="position:absolute;top:420px;left:150px;width:2px;height:2px;border-radius:50%;background:#C49A3F;opacity:.7;"></div>
+    <div style="position:absolute;bottom:260px;right:180px;width:2px;height:2px;border-radius:50%;background:#F6F3EC;opacity:.25;"></div>
+    <div style="position:absolute;bottom:170px;left:240px;width:2px;height:2px;border-radius:50%;background:#F6F3EC;opacity:.3;"></div>
+
+    <div style="padding:80px 90px 0;display:flex;justify-content:space-between;align-items:center;">
+      <span class="over" style="color:#9AA0A8;">al&#8209;Nizam</span>
+      <span class="over" style="color:#9AA0A8;">Brand &amp; Design Guidelines</span>
+    </div>
+
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:52px;">
+      <div style="display:flex;align-items:center;justify-content:center;width:230px;height:230px;">
+        <dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:230px;height:230px;" hint-size="230px,230px"></dc-import>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:22px;">
+        <h1 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:92px;letter-spacing:.5px;line-height:1;">al&#8209;Nizam</h1>
+        <div style="width:56px;height:1px;background:#C49A3F;"></div>
+        <p style="margin:0;font-size:15px;letter-spacing:4px;text-transform:uppercase;color:#9AA0A8;font-weight:500;">Built so you can think</p>
+      </div>
+    </div>
+
+    <div style="padding:0 90px 80px;display:flex;justify-content:space-between;align-items:flex-end;">
+      <p style="margin:0;font-family:'Spectral',serif;font-style:italic;font-size:19px;color:#C8C2B2;max-width:440px;line-height:1.5;">The order, the system, the discipline &mdash; an operating layer for people who work with AI.</p>
+      <span class="over" style="color:#6B7079;">Version 1.0 &middot; 2026</span>
+    </div>
+  </section>
+
+  <!-- ============ CONTENTS ============ -->
+  <section style="background:#F6F3EC;color:#14171C;padding:96px 90px;">
+    <p class="over" style="color:#C49A3F;margin:0 0 40px;">Contents</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 80px;">
+      <div style="display:flex;flex-direction:column;">
+        <div style="display:flex;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E4DECF;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;width:34px;">01</span><span style="font-size:17px;font-weight:600;flex:1;">Brand foundation</span></div>
+        <div style="display:flex;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E4DECF;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;width:34px;">02</span><span style="font-size:17px;font-weight:600;flex:1;">The mark</span></div>
+        <div style="display:flex;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E4DECF;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;width:34px;">03</span><span style="font-size:17px;font-weight:600;flex:1;">Construction &amp; clear space</span></div>
+        <div style="display:flex;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E4DECF;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;width:34px;">04</span><span style="font-size:17px;font-weight:600;flex:1;">Minimum size &amp; misuse</span></div>
+        <div style="display:flex;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E4DECF;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;width:34px;">05</span><span style="font-size:17px;font-weight:600;flex:1;">Lockups</span></div>
+        <div style="display:flex;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E4DECF;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;width:34px;">06</span><span style="font-size:17px;font-weight:600;flex:1;">Color</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;">
+        <div style="display:flex;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E4DECF;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;width:34px;">07</span><span style="font-size:17px;font-weight:600;flex:1;">Typography</span></div>
+        <div style="display:flex;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E4DECF;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;width:34px;">08</span><span style="font-size:17px;font-weight:600;flex:1;">Graphic language</span></div>
+        <div style="display:flex;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E4DECF;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;width:34px;">09</span><span style="font-size:17px;font-weight:600;flex:1;">Voice &amp; tone</span></div>
+        <div style="display:flex;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E4DECF;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;width:34px;">10</span><span style="font-size:17px;font-weight:600;flex:1;">Applications</span></div>
+        <div style="display:flex;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E4DECF;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;width:34px;">11</span><span style="font-size:17px;font-weight:600;flex:1;">Digital &amp; dark mode</span></div>
+        <div style="display:flex;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid #E4DECF;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;width:34px;">12</span><span style="font-size:17px;font-weight:600;flex:1;">Assets &amp; contact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 01 BRAND FOUNDATION ============ -->
+  <section style="background:#14171C;color:#F6F3EC;padding:110px 90px;">
+    <div style="display:flex;align-items:baseline;gap:22px;margin-bottom:52px;">
+      <span style="font-family:'Spectral',serif;color:#C49A3F;font-size:20px;">01</span>
+      <h2 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:44px;line-height:1;">Brand foundation</h2>
+    </div>
+
+    <div style="max-width:720px;margin-bottom:72px;">
+      <p style="font-family:'Spectral',serif;font-weight:300;font-size:30px;line-height:1.4;margin:0;color:#EDE9DE;">al&#8209;Nizam is the layer between an operator and their AI tools &mdash; the place where continuity, governance, and accountability live <span style="color:#C49A3F;font-style:italic;">structurally</span>, in files the operator controls.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-bottom:76px;">
+      <div>
+        <p class="over" style="color:#C49A3F;margin:0 0 14px;">The name</p>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:#B7BCC3;">Arabic for <em>the order, the system, the discipline</em>. Styled with a capital N &mdash; al&#8209;Nizam. The name is always set in Spectral, never abbreviated, and never written &ldquo;Al Nizam&rdquo; or &ldquo;AlNizam.&rdquo;</p>
+      </div>
+      <div>
+        <p class="over" style="color:#C49A3F;margin:0 0 14px;">The audience</p>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:#B7BCC3;">AI&#8209;forward operators, engineering and IT leaders, and founders &mdash; people who need their systems to hold their thinking so they can do more of it.</p>
+      </div>
+    </div>
+
+    <p class="over" style="color:#C49A3F;margin:0 0 28px;">Principles</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#2A2F38;border:1px solid #2A2F38;">
+      <div style="background:#14171C;padding:36px 32px;">
+        <p style="font-family:'Spectral',serif;font-size:24px;margin:0 0 10px;color:#F6F3EC;">Ordered</p>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:#8A8E96;">Structure before flourish. Every element sits on a grid, in a system, for a reason.</p>
+      </div>
+      <div style="background:#14171C;padding:36px 32px;">
+        <p style="font-family:'Spectral',serif;font-size:24px;margin:0 0 10px;color:#F6F3EC;">Enduring</p>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:#8A8E96;">Classical, not trendy. Built to read the same in a decade as it does today.</p>
+      </div>
+      <div style="background:#14171C;padding:36px 32px;">
+        <p style="font-family:'Spectral',serif;font-size:24px;margin:0 0 10px;color:#F6F3EC;">Accountable</p>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:#8A8E96;">Confident and plain&#8209;spoken. We show the mechanism; we don&#39;t hide behind it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 THE MARK ============ -->
+  <section style="background:#F6F3EC;color:#14171C;padding:110px 90px;">
+    <div style="display:flex;align-items:baseline;gap:22px;margin-bottom:20px;">
+      <span style="font-family:'Spectral',serif;color:#C49A3F;font-size:20px;">02</span>
+      <h2 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:44px;line-height:1;">The mark</h2>
+    </div>
+    <p style="margin:0 0 60px;max-width:620px;font-size:17px;line-height:1.6;color:#4A4E56;">A tapered crescent bowl carrying its dot &mdash; the Arabic letter Noon (&#1606;). One form, read three ways at once.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;">
+      <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:38px 32px;display:flex;flex-direction:column;gap:26px;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:22px;height:130px;">
+          <dc-import name="NizamMark" crescent="#14171C" dot="#C49A3F" style="width:120px;height:120px;" hint-size="120px,120px"></dc-import>
+          <span style="font-family:'Spectral',serif;font-size:70px;color:#CFC9B9;line-height:1;">&#1606;</span>
+        </div>
+        <div>
+          <p style="margin:0 0 6px;font-family:'Spectral',serif;font-size:22px;font-weight:600;">As a letter</p>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:#5A5E66;">The crescent is the bowl of the Noon; the orb is its dot, held in the classic position above the curve.</p>
+        </div>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:38px 32px;display:flex;flex-direction:column;gap:26px;">
+        <div style="display:flex;align-items:center;justify-content:center;height:130px;">
+          <dc-import name="NizamMark" crescent="#14171C" dot="#C49A3F" style="width:140px;height:140px;" hint-size="140px,140px"></dc-import>
+        </div>
+        <div>
+          <p style="margin:0 0 6px;font-family:'Spectral',serif;font-size:22px;font-weight:600;">As meaning</p>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:#5A5E66;">The orb is the Steward; the curve that cradles it, the framework and families that hold continuity in orbit.</p>
+        </div>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:38px 32px;display:flex;flex-direction:column;gap:26px;">
+        <div style="position:relative;display:flex;align-items:center;justify-content:center;height:130px;">
+          <svg width="150" height="130" viewBox="40 52 124 124" fill="none" style="position:absolute;">
+            <circle cx="101.6" cy="112.6" r="56" stroke="#14171C" stroke-width="0.9" opacity="0.28"></circle>
+            <line x1="45.6" y1="112.6" x2="157.6" y2="112.6" stroke="#14171C" stroke-width="0.7" opacity="0.28"></line>
+            <line x1="101.6" y1="56.6" x2="101.6" y2="168.6" stroke="#14171C" stroke-width="0.7" opacity="0.28"></line>
+          </svg>
+          <dc-import name="NizamMark" crescent="#14171C" dot="#C49A3F" style="width:118px;height:118px;position:relative;" hint-size="118px,118px"></dc-import>
+        </div>
+        <div>
+          <p style="margin:0 0 6px;font-family:'Spectral',serif;font-size:22px;font-weight:600;">As heritage</p>
+          <p style="margin:0;font-size:14.5px;line-height:1.55;color:#5A5E66;">A crescent and orb &mdash; golden&#8209;age astronomy &mdash; echoing the framework&#39;s own al&#8209;Mushahada, observation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 CONSTRUCTION & CLEAR SPACE ============ -->
+  <section style="background:#F6F3EC;color:#14171C;padding:0 90px 110px;">
+    <div style="display:flex;align-items:baseline;gap:22px;margin-bottom:20px;">
+      <span style="font-family:'Spectral',serif;color:#C49A3F;font-size:20px;">03</span>
+      <h2 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:44px;line-height:1;">Construction &amp; clear space</h2>
+    </div>
+    <p style="margin:0 0 56px;max-width:620px;font-size:17px;line-height:1.6;color:#4A4E56;">The clear space around the mark equals the diameter of the dot &mdash; one <strong>X</strong>. Keep this margin free of type, imagery, and other marks.</p>
+
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:28px;">
+      <!-- clear space -->
+      <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:48px;display:flex;flex-direction:column;align-items:center;gap:26px;">
+        <div style="position:relative;padding:44px;border:1px dashed #C9A24A;">
+          <div style="position:absolute;inset:0;pointer-events:none;">
+            <span style="position:absolute;top:14px;left:50%;transform:translateX(-50%);font-size:11px;color:#C49A3F;font-weight:700;letter-spacing:1px;">X</span>
+            <span style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-size:11px;color:#C49A3F;font-weight:700;letter-spacing:1px;">X</span>
+            <span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:11px;color:#C49A3F;font-weight:700;letter-spacing:1px;">X</span>
+            <span style="position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:11px;color:#C49A3F;font-weight:700;letter-spacing:1px;">X</span>
+          </div>
+          <div style="width:150px;height:150px;border:1px solid #EDE7D8;display:flex;align-items:center;justify-content:center;">
+            <dc-import name="NizamMark" crescent="#14171C" dot="#C49A3F" style="width:130px;height:130px;" hint-size="130px,130px"></dc-import>
+          </div>
+        </div>
+        <p style="margin:0;font-size:13.5px;color:#5A5E66;text-align:center;">Minimum clear space = <strong>1X</strong> on every side, where X is the dot diameter.</p>
+      </div>
+      <!-- proportions -->
+      <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:48px;display:flex;flex-direction:column;gap:22px;">
+        <p class="over" style="color:#C49A3F;margin:0;">Proportion rules</p>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;gap:14px;align-items:baseline;border-bottom:1px solid #EFE9DB;padding-bottom:14px;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;">&mdash;</span><p style="margin:0;font-size:14.5px;line-height:1.55;color:#4A4E56;">The dot sits above the crescent&#39;s inner peak and never touches it.</p></div>
+          <div style="display:flex;gap:14px;align-items:baseline;border-bottom:1px solid #EFE9DB;padding-bottom:14px;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;">&mdash;</span><p style="margin:0;font-size:14.5px;line-height:1.55;color:#4A4E56;">The mark is drawn from a fixed vector. Never redraw, re&#8209;space, or re&#8209;weight it.</p></div>
+          <div style="display:flex;gap:14px;align-items:baseline;border-bottom:1px solid #EFE9DB;padding-bottom:14px;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;">&mdash;</span><p style="margin:0;font-size:14.5px;line-height:1.55;color:#4A4E56;">Only two colors ever appear in the mark: one for the crescent, one for the dot.</p></div>
+          <div style="display:flex;gap:14px;align-items:baseline;"><span style="font-family:'Spectral',serif;color:#C49A3F;font-size:15px;">&mdash;</span><p style="margin:0;font-size:14.5px;line-height:1.55;color:#4A4E56;">In one&#8209;color contexts, the dot takes the same color as the crescent.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 MINIMUM SIZE & MISUSE ============ -->
+  <section style="background:#14171C;color:#F6F3EC;padding:110px 90px;">
+    <div style="display:flex;align-items:baseline;gap:22px;margin-bottom:20px;">
+      <span style="font-family:'Spectral',serif;color:#C49A3F;font-size:20px;">04</span>
+      <h2 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:44px;line-height:1;">Minimum size &amp; misuse</h2>
+    </div>
+    <p style="margin:0 0 52px;max-width:620px;font-size:17px;line-height:1.6;color:#B7BCC3;">The mark holds down to 16&nbsp;px on screen and 6&nbsp;mm in print. Below that, legibility of the dot fails &mdash; use the solid favicon build instead.</p>
+
+    <!-- min sizes -->
+    <div style="display:flex;align-items:flex-end;gap:48px;margin-bottom:64px;flex-wrap:wrap;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;"><div style="width:96px;height:96px;display:flex;align-items:center;justify-content:center;"><dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:96px;height:96px;" hint-size="96px,96px"></dc-import></div><span style="font-size:12px;color:#8A8E96;">96&nbsp;px</span></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;"><div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;"><dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:48px;height:48px;" hint-size="48px,48px"></dc-import></div><span style="font-size:12px;color:#8A8E96;">48&nbsp;px</span></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;"><div style="width:24px;height:24px;display:flex;align-items:center;justify-content:center;"><dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:24px;height:24px;" hint-size="24px,24px"></dc-import></div><span style="font-size:12px;color:#8A8E96;">24&nbsp;px</span></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;"><div style="width:16px;height:16px;display:flex;align-items:center;justify-content:center;"><dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:16px;height:16px;" hint-size="16px,16px"></dc-import></div><span style="font-size:12px;color:#C49A3F;">16&nbsp;px &middot; min</span></div>
+    </div>
+
+    <p class="over" style="color:#C49A3F;margin:0 0 24px;">Never do this</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#2A2F38;border:1px solid #2A2F38;">
+      <div style="background:#1A1E25;padding:34px;display:flex;flex-direction:column;align-items:center;gap:20px;">
+        <div style="height:90px;display:flex;align-items:center;justify-content:center;transform:scaleX(1.5);"><dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:90px;height:90px;" hint-size="90px,90px"></dc-import></div>
+        <p style="margin:0;font-size:13px;color:#9AA0A8;text-align:center;">Don&#39;t stretch or distort.</p>
+      </div>
+      <div style="background:#1A1E25;padding:34px;display:flex;flex-direction:column;align-items:center;gap:20px;">
+        <div style="height:90px;display:flex;align-items:center;justify-content:center;transform:rotate(28deg);"><dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:90px;height:90px;" hint-size="90px,90px"></dc-import></div>
+        <p style="margin:0;font-size:13px;color:#9AA0A8;text-align:center;">Don&#39;t rotate the mark.</p>
+      </div>
+      <div style="background:#1A1E25;padding:34px;display:flex;flex-direction:column;align-items:center;gap:20px;">
+        <div style="height:90px;display:flex;align-items:center;justify-content:center;"><dc-import name="NizamMark" crescent="#1F8A82" dot="#7a3fc4" style="width:90px;height:90px;" hint-size="90px,90px"></dc-import></div>
+        <p style="margin:0;font-size:13px;color:#9AA0A8;text-align:center;">Don&#39;t recolor off&#8209;palette.</p>
+      </div>
+      <div style="background:#1A1E25;padding:34px;display:flex;flex-direction:column;align-items:center;gap:20px;">
+        <div style="height:90px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(3px 5px 4px rgba(0,0,0,.6));"><dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:90px;height:90px;" hint-size="90px,90px"></dc-import></div>
+        <p style="margin:0;font-size:13px;color:#9AA0A8;text-align:center;">Don&#39;t add shadows or effects.</p>
+      </div>
+      <div style="background:#5a6470;padding:34px;display:flex;flex-direction:column;align-items:center;gap:20px;">
+        <div style="height:90px;display:flex;align-items:center;justify-content:center;"><dc-import name="NizamMark" crescent="#14171C" dot="#C49A3F" style="width:90px;height:90px;" hint-size="90px,90px"></dc-import></div>
+        <p style="margin:0;font-size:13px;color:#e6e8ea;text-align:center;">Don&#39;t place on low&#8209;contrast fields.</p>
+      </div>
+      <div style="background:#1A1E25;padding:34px;display:flex;flex-direction:column;align-items:center;gap:20px;">
+        <div style="height:90px;display:flex;align-items:center;justify-content:center;gap:6px;"><dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:60px;height:60px;" hint-size="60px,60px"></dc-import><span style="font-family:'Spectral',serif;font-size:26px;color:#F6F3EC;">Nizam</span></div>
+        <p style="margin:0;font-size:13px;color:#9AA0A8;text-align:center;">Don&#39;t crowd the clear space.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 LOCKUPS ============ -->
+  <section style="background:#F6F3EC;color:#14171C;padding:110px 90px;">
+    <div style="display:flex;align-items:baseline;gap:22px;margin-bottom:20px;">
+      <span style="font-family:'Spectral',serif;color:#C49A3F;font-size:20px;">05</span>
+      <h2 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:44px;line-height:1;">Lockups</h2>
+    </div>
+    <p style="margin:0 0 56px;max-width:620px;font-size:17px;line-height:1.6;color:#4A4E56;">Four approved lockups. The horizontal is primary; use the mark alone only where the name already appears nearby.</p>
+
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:48px 60px;display:flex;align-items:center;">
+        <dc-import name="NizamMark" crescent="#14171C" dot="#C49A3F" style="width:104px;height:104px;" hint-size="104px,104px"></dc-import>
+        <div style="width:1px;height:64px;background:#E4DECF;margin:0 36px;"></div>
+        <span style="font-family:'Spectral',serif;font-weight:500;font-size:56px;letter-spacing:.5px;">al&#8209;Nizam</span>
+        <span style="margin-left:auto;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#9AA0A8;">Horizontal &middot; primary</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
+        <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:44px 30px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+          <dc-import name="NizamMark" crescent="#14171C" dot="#C49A3F" style="width:96px;height:96px;" hint-size="96px,96px"></dc-import>
+          <span style="font-family:'Spectral',serif;font-weight:500;font-size:36px;letter-spacing:.5px;">al&#8209;Nizam</span>
+          <span style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#9AA0A8;">Stacked</span>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:44px 30px;display:flex;flex-direction:column;align-items:center;gap:10px;justify-content:center;">
+          <dc-import name="NizamMark" crescent="#14171C" dot="#C49A3F" style="width:80px;height:80px;" hint-size="80px,80px"></dc-import>
+          <span style="font-family:'Spectral',serif;font-weight:500;font-size:32px;letter-spacing:.5px;">al&#8209;Nizam</span>
+          <div style="width:36px;height:1px;background:#C49A3F;margin:3px 0;"></div>
+          <span style="font-family:'Spectral',serif;font-style:italic;font-size:14px;color:#4A4E56;">Built so you can think.</span>
+          <span style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#9AA0A8;margin-top:6px;">Tagline</span>
+        </div>
+        <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:44px 30px;display:flex;flex-direction:column;align-items:center;gap:16px;justify-content:center;">
+          <dc-import name="NizamMark" crescent="#14171C" dot="#C49A3F" style="width:110px;height:110px;" hint-size="110px,110px"></dc-import>
+          <span style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#9AA0A8;">Mark only</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 COLOR ============ -->
+  <section style="background:#14171C;color:#F6F3EC;padding:110px 90px;">
+    <div style="display:flex;align-items:baseline;gap:22px;margin-bottom:20px;">
+      <span style="font-family:'Spectral',serif;color:#C49A3F;font-size:20px;">06</span>
+      <h2 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:44px;line-height:1;">Color</h2>
+    </div>
+    <p style="margin:0 0 52px;max-width:620px;font-size:17px;line-height:1.6;color:#B7BCC3;">Ink and paper carry the system; amber is the single accent. Teal is reserved for data and system states, never for the mark.</p>
+
+    <!-- core -->
+    <p class="over" style="color:#C49A3F;margin:0 0 20px;">Core</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:20px;margin-bottom:52px;">
+      <div style="border-radius:8px;overflow:hidden;border:1px solid #2A2F38;">
+        <div style="height:120px;background:#14171C;"></div>
+        <div style="padding:16px 18px;background:#1A1E25;"><p style="margin:0;font-weight:600;font-size:15px;">Ink</p><p style="margin:2px 0 0;font-size:12.5px;color:#8A8E96;">#14171C</p></div>
+      </div>
+      <div style="border-radius:8px;overflow:hidden;border:1px solid #2A2F38;">
+        <div style="height:120px;background:#F6F3EC;"></div>
+        <div style="padding:16px 18px;background:#1A1E25;"><p style="margin:0;font-weight:600;font-size:15px;">Paper</p><p style="margin:2px 0 0;font-size:12.5px;color:#8A8E96;">#F6F3EC</p></div>
+      </div>
+      <div style="border-radius:8px;overflow:hidden;border:1px solid #2A2F38;">
+        <div style="height:120px;background:#C49A3F;"></div>
+        <div style="padding:16px 18px;background:#1A1E25;"><p style="margin:0;font-weight:600;font-size:15px;">Amber &middot; accent</p><p style="margin:2px 0 0;font-size:12.5px;color:#8A8E96;">#C49A3F</p></div>
+      </div>
+      <div style="border-radius:8px;overflow:hidden;border:1px solid #2A2F38;">
+        <div style="height:120px;background:#1F8A82;"></div>
+        <div style="padding:16px 18px;background:#1A1E25;"><p style="margin:0;font-weight:600;font-size:15px;">Teal &middot; system</p><p style="margin:2px 0 0;font-size:12.5px;color:#8A8E96;">#1F8A82</p></div>
+      </div>
+    </div>
+
+    <!-- ramps -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-bottom:56px;">
+      <div>
+        <p class="over" style="color:#C49A3F;margin:0 0 16px;">Neutral ramp</p>
+        <div style="display:flex;border-radius:8px;overflow:hidden;">
+          <div style="flex:1;height:66px;background:#14171C;"></div>
+          <div style="flex:1;height:66px;background:#22272F;"></div>
+          <div style="flex:1;height:66px;background:#3A414B;"></div>
+          <div style="flex:1;height:66px;background:#6E747C;"></div>
+          <div style="flex:1;height:66px;background:#B7BCC3;"></div>
+          <div style="flex:1;height:66px;background:#E4DECF;"></div>
+          <div style="flex:1;height:66px;background:#F6F3EC;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:10.5px;color:#6B7079;letter-spacing:.5px;"><span>900</span><span>800</span><span>600</span><span>400</span><span>200</span><span>100</span><span>50</span></div>
+      </div>
+      <div>
+        <p class="over" style="color:#C49A3F;margin:0 0 16px;">Amber ramp</p>
+        <div style="display:flex;border-radius:8px;overflow:hidden;">
+          <div style="flex:1;height:66px;background:#5E4718;"></div>
+          <div style="flex:1;height:66px;background:#9A7628;"></div>
+          <div style="flex:1;height:66px;background:#C49A3F;"></div>
+          <div style="flex:1;height:66px;background:#D9BC7C;"></div>
+          <div style="flex:1;height:66px;background:#EFE3C9;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:10.5px;color:#6B7079;letter-spacing:.5px;"><span>800</span><span>700</span><span>500</span><span>300</span><span>100</span></div>
+      </div>
+    </div>
+
+    <!-- usage + contrast -->
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:44px;">
+      <div>
+        <p class="over" style="color:#C49A3F;margin:0 0 16px;">Usage balance</p>
+        <div style="display:flex;height:56px;border-radius:8px;overflow:hidden;margin-bottom:12px;">
+          <div style="width:62%;background:#F6F3EC;"></div>
+          <div style="width:30%;background:#14171C;"></div>
+          <div style="width:8%;background:#C49A3F;"></div>
+        </div>
+        <div style="display:flex;gap:24px;font-size:12.5px;color:#8A8E96;">
+          <span><span style="color:#F6F3EC;">&#9632;</span> Paper 60%</span>
+          <span><span style="color:#B7BCC3;">&#9632;</span> Ink 30%</span>
+          <span><span style="color:#C49A3F;">&#9632;</span> Amber 10%</span>
+        </div>
+      </div>
+      <div>
+        <p class="over" style="color:#C49A3F;margin:0 0 16px;">Contrast (AA+)</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;background:#F6F3EC;color:#14171C;padding:10px 16px;border-radius:6px;"><span style="font-size:14px;font-weight:600;">Ink on paper</span><span style="font-size:12px;opacity:.6;">16.2 : 1</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;background:#14171C;color:#F6F3EC;padding:10px 16px;border-radius:6px;border:1px solid #2A2F38;"><span style="font-size:14px;font-weight:600;">Paper on ink</span><span style="font-size:12px;opacity:.6;">16.2 : 1</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;background:#C49A3F;color:#14171C;padding:10px 16px;border-radius:6px;"><span style="font-size:14px;font-weight:600;">Ink on amber</span><span style="font-size:12px;opacity:.6;">7.4 : 1</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 TYPOGRAPHY ============ -->
+  <section style="background:#F6F3EC;color:#14171C;padding:110px 90px;">
+    <div style="display:flex;align-items:baseline;gap:22px;margin-bottom:20px;">
+      <span style="font-family:'Spectral',serif;color:#C49A3F;font-size:20px;">07</span>
+      <h2 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:44px;line-height:1;">Typography</h2>
+    </div>
+    <p style="margin:0 0 56px;max-width:620px;font-size:17px;line-height:1.6;color:#4A4E56;">Spectral carries the voice &mdash; classical, considered. Hanken Grotesk carries the work &mdash; interfaces, labels, and long text.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;">
+      <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:40px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span class="over" style="color:#C49A3F;">Display &amp; voice</span><span style="font-size:12px;color:#9AA0A8;">Spectral</span></div>
+        <p style="font-family:'Spectral',serif;font-weight:500;font-size:76px;line-height:.95;margin:0 0 12px;">Aa</p>
+        <p style="font-family:'Spectral',serif;font-size:16px;color:#5A5E66;margin:0 0 8px;letter-spacing:.5px;">ABCDEFGHIJKLM &middot; abcdefghijklm</p>
+        <p style="font-size:13px;color:#9AA0A8;margin:0;">Light 300 &middot; Regular 400 &middot; Medium 500 &middot; SemiBold 600 &middot; Italic</p>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:40px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span class="over" style="color:#C49A3F;">Interface &amp; text</span><span style="font-size:12px;color:#9AA0A8;">Hanken Grotesk</span></div>
+        <p style="font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:76px;line-height:.95;margin:0 0 12px;letter-spacing:-2px;">Aa</p>
+        <p style="font-family:'Hanken Grotesk',sans-serif;font-size:16px;color:#5A5E66;margin:0 0 8px;">ABCDEFGHIJKLM &middot; abcdefghijklm</p>
+        <p style="font-size:13px;color:#9AA0A8;margin:0;">Regular 400 &middot; Medium 500 &middot; SemiBold 600 &middot; Bold 700</p>
+      </div>
+    </div>
+
+    <!-- scale -->
+    <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:16px 40px;margin-bottom:44px;">
+      <div style="display:flex;align-items:baseline;gap:24px;padding:18px 0;border-bottom:1px solid #EFE9DB;"><span style="width:120px;font-size:12px;color:#9AA0A8;letter-spacing:.5px;">Display / 64</span><span style="font-family:'Spectral',serif;font-weight:500;font-size:44px;line-height:1;">Built so you can think</span></div>
+      <div style="display:flex;align-items:baseline;gap:24px;padding:18px 0;border-bottom:1px solid #EFE9DB;"><span style="width:120px;font-size:12px;color:#9AA0A8;letter-spacing:.5px;">H1 / 44 Spectral</span><span style="font-family:'Spectral',serif;font-weight:500;font-size:34px;line-height:1;">Section heading</span></div>
+      <div style="display:flex;align-items:baseline;gap:24px;padding:18px 0;border-bottom:1px solid #EFE9DB;"><span style="width:120px;font-size:12px;color:#9AA0A8;letter-spacing:.5px;">H3 / 22 Hanken</span><span style="font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:22px;line-height:1;">Subsection label</span></div>
+      <div style="display:flex;align-items:baseline;gap:24px;padding:18px 0;border-bottom:1px solid #EFE9DB;"><span style="width:120px;font-size:12px;color:#9AA0A8;letter-spacing:.5px;">Body / 16 Hanken</span><span style="font-family:'Hanken Grotesk',sans-serif;font-size:16px;line-height:1;color:#4A4E56;">Body copy for interfaces and running text.</span></div>
+      <div style="display:flex;align-items:baseline;gap:24px;padding:18px 0;"><span style="width:120px;font-size:12px;color:#9AA0A8;letter-spacing:.5px;">Overline / 12</span><span class="over" style="color:#14171C;">Tracked label</span></div>
+    </div>
+
+    <!-- wordmark spec -->
+    <div style="background:#14171C;color:#F6F3EC;border-radius:6px;padding:44px 48px;display:flex;align-items:center;gap:48px;">
+      <span style="font-family:'Spectral',serif;font-weight:500;font-size:52px;letter-spacing:.5px;">al&#8209;Nizam</span>
+      <div style="width:1px;height:70px;background:#2A2F38;"></div>
+      <div style="font-size:14px;line-height:1.7;color:#B7BCC3;">
+        <p style="margin:0;"><span style="color:#C49A3F;">Typeface</span> &nbsp;Spectral Medium (500)</p>
+        <p style="margin:0;"><span style="color:#C49A3F;">Tracking</span> &nbsp;+0.5&nbsp;px &middot; capital N</p>
+        <p style="margin:0;"><span style="color:#C49A3F;">Set with</span> &nbsp;non&#8209;breaking hyphen &mdash; never &ldquo;AlNizam&rdquo;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 GRAPHIC LANGUAGE ============ -->
+  <section style="background:#14171C;color:#F6F3EC;padding:110px 90px;">
+    <div style="display:flex;align-items:baseline;gap:22px;margin-bottom:20px;">
+      <span style="font-family:'Spectral',serif;color:#C49A3F;font-size:20px;">08</span>
+      <h2 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:44px;line-height:1;">Graphic language</h2>
+    </div>
+    <p style="margin:0 0 52px;max-width:620px;font-size:17px;line-height:1.6;color:#B7BCC3;">Beyond the mark, the brand draws on celestial mechanics: quiet orbits, sparse stars, and the astrolabe grid. Used sparingly, as structure &mdash; never decoration.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
+      <div style="background:#1A1E25;border:1px solid #2A2F38;border-radius:6px;height:220px;position:relative;overflow:hidden;">
+        <svg width="100%" height="100%" viewBox="0 0 300 220" fill="none" preserveAspectRatio="xMidYMid slice">
+          <ellipse cx="150" cy="110" rx="120" ry="52" stroke="#3A414B" stroke-width="1"></ellipse>
+          <ellipse cx="150" cy="110" rx="80" ry="34" stroke="#3A414B" stroke-width="1"></ellipse>
+          <circle cx="150" cy="110" r="9" fill="#C49A3F"></circle>
+          <circle cx="270" cy="110" r="3.5" fill="#F6F3EC"></circle>
+          <circle cx="70" cy="76" r="2.5" fill="#F6F3EC"></circle>
+        </svg>
+        <span style="position:absolute;bottom:14px;left:16px;font-size:12px;color:#8A8E96;">Orbits</span>
+      </div>
+      <div style="background:#1A1E25;border:1px solid #2A2F38;border-radius:6px;height:220px;position:relative;overflow:hidden;">
+        <svg width="100%" height="100%" viewBox="0 0 300 220" fill="none" preserveAspectRatio="xMidYMid slice">
+          <circle cx="150" cy="110" r="80" stroke="#3A414B" stroke-width="1"></circle>
+          <circle cx="150" cy="110" r="52" stroke="#3A414B" stroke-width="1"></circle>
+          <line x1="70" y1="110" x2="230" y2="110" stroke="#3A414B" stroke-width="1"></line>
+          <line x1="150" y1="30" x2="150" y2="190" stroke="#3A414B" stroke-width="1"></line>
+          <line x1="93" y1="53" x2="207" y2="167" stroke="#3A414B" stroke-width="1"></line>
+          <line x1="207" y1="53" x2="93" y2="167" stroke="#3A414B" stroke-width="1"></line>
+          <circle cx="150" cy="110" r="4" fill="#C49A3F"></circle>
+        </svg>
+        <span style="position:absolute;bottom:14px;left:16px;font-size:12px;color:#8A8E96;">Astrolabe grid</span>
+      </div>
+      <div style="background:#1A1E25;border:1px solid #2A2F38;border-radius:6px;height:220px;position:relative;overflow:hidden;">
+        <svg width="100%" height="100%" viewBox="0 0 300 220" fill="none" preserveAspectRatio="xMidYMid slice">
+          <circle cx="60" cy="60" r="2.5" fill="#F6F3EC"></circle>
+          <circle cx="140" cy="42" r="1.8" fill="#F6F3EC" opacity="0.7"></circle>
+          <circle cx="220" cy="70" r="2.5" fill="#C49A3F"></circle>
+          <circle cx="250" cy="140" r="1.8" fill="#F6F3EC" opacity="0.6"></circle>
+          <circle cx="90" cy="160" r="2.2" fill="#F6F3EC" opacity="0.8"></circle>
+          <circle cx="170" cy="175" r="1.6" fill="#F6F3EC" opacity="0.5"></circle>
+          <circle cx="150" cy="110" r="3.5" fill="#F6F3EC"></circle>
+        </svg>
+        <span style="position:absolute;bottom:14px;left:16px;font-size:12px;color:#8A8E96;">Star field</span>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:16px;margin-top:40px;">
+      <div style="flex:1;height:1px;background:#2A2F38;"></div>
+      <div style="width:5px;height:5px;border-radius:50%;background:#C49A3F;"></div>
+      <div style="flex:1;height:1px;background:#2A2F38;"></div>
+    </div>
+    <p style="text-align:center;font-size:12.5px;color:#6B7079;margin:14px 0 0;">Section divider &mdash; a single amber orb on a hairline rule.</p>
+  </section>
+
+  <!-- ============ 09 VOICE & TONE ============ -->
+  <section style="background:#F6F3EC;color:#14171C;padding:110px 90px;">
+    <div style="display:flex;align-items:baseline;gap:22px;margin-bottom:20px;">
+      <span style="font-family:'Spectral',serif;color:#C49A3F;font-size:20px;">09</span>
+      <h2 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:44px;line-height:1;">Voice &amp; tone</h2>
+    </div>
+    <p style="margin:0 0 56px;max-width:620px;font-size:17px;line-height:1.6;color:#4A4E56;">Confident, plain&#8209;spoken, and structural. We explain the mechanism and let it earn trust &mdash; no hype, no mysticism.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:44px;">
+      <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:38px;">
+        <p class="over" style="color:#1F8A82;margin:0 0 20px;">We say</p>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <p style="margin:0;font-family:'Spectral',serif;font-size:20px;line-height:1.4;">&ldquo;Continuity you own, in files you control.&rdquo;</p>
+          <p style="margin:0;font-family:'Spectral',serif;font-size:20px;line-height:1.4;">&ldquo;Built so you can think.&rdquo;</p>
+          <p style="margin:0;font-family:'Spectral',serif;font-size:20px;line-height:1.4;">&ldquo;The system holds the state, so you don&#39;t have to.&rdquo;</p>
+        </div>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:6px;padding:38px;">
+        <p class="over" style="color:#B4462F;margin:0 0 20px;">We avoid</p>
+        <div style="display:flex;flex-direction:column;gap:14px;color:#9AA0A8;">
+          <p style="margin:0;font-family:'Spectral',serif;font-size:20px;line-height:1.4;text-decoration:line-through;">&ldquo;Revolutionary AI magic.&rdquo;</p>
+          <p style="margin:0;font-family:'Spectral',serif;font-size:20px;line-height:1.4;text-decoration:line-through;">&ldquo;Supercharge your workflow!&rdquo;</p>
+          <p style="margin:0;font-family:'Spectral',serif;font-size:20px;line-height:1.4;text-decoration:line-through;">&ldquo;The future is here.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
+      <div style="border-top:2px solid #14171C;padding-top:18px;"><p style="font-family:'Spectral',serif;font-size:22px;margin:0 0 8px;">Ordered</p><p style="margin:0;font-size:14px;color:#5A5E66;line-height:1.55;">Lead with the structure. Name the parts.</p></div>
+      <div style="border-top:2px solid #14171C;padding-top:18px;"><p style="font-family:'Spectral',serif;font-size:22px;margin:0 0 8px;">Precise</p><p style="margin:0;font-size:14px;color:#5A5E66;line-height:1.55;">Short sentences. Concrete nouns. No filler.</p></div>
+      <div style="border-top:2px solid #14171C;padding-top:18px;"><p style="font-family:'Spectral',serif;font-size:22px;margin:0 0 8px;">Assured</p><p style="margin:0;font-size:14px;color:#5A5E66;line-height:1.55;">Calm authority. We don&#39;t oversell.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ 10 APPLICATIONS ============ -->
+  <section style="background:#14171C;color:#F6F3EC;padding:110px 90px;">
+    <div style="display:flex;align-items:baseline;gap:22px;margin-bottom:52px;">
+      <span style="font-family:'Spectral',serif;color:#C49A3F;font-size:20px;">10</span>
+      <h2 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:44px;line-height:1;">Applications</h2>
+    </div>
+
+    <!-- app icons -->
+    <p class="over" style="color:#C49A3F;margin:0 0 22px;">App icon &amp; favicon</p>
+    <div style="display:flex;align-items:flex-end;gap:36px;margin-bottom:56px;flex-wrap:wrap;">
+      <div style="width:150px;height:150px;border-radius:34px;background:radial-gradient(120% 110% at 30% 22%, #20262e 0%, #14171C 70%);display:flex;align-items:center;justify-content:center;border:1px solid #2A2F38;"><dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:100px;height:100px;" hint-size="100px,100px"></dc-import></div>
+      <div style="width:150px;height:150px;border-radius:34px;background:#F6F3EC;display:flex;align-items:center;justify-content:center;"><dc-import name="NizamMark" crescent="#14171C" dot="#C49A3F" style="width:100px;height:100px;" hint-size="100px,100px"></dc-import></div>
+      <div style="width:150px;height:150px;border-radius:34px;background:#C49A3F;display:flex;align-items:center;justify-content:center;"><dc-import name="NizamMark" crescent="#14171C" dot="#F6F3EC" style="width:100px;height:100px;" hint-size="100px,100px"></dc-import></div>
+      <div style="display:flex;align-items:center;gap:16px;margin-left:8px;">
+        <div style="width:64px;height:64px;border-radius:15px;background:radial-gradient(120% 110% at 30% 22%, #20262e 0%, #14171C 70%);display:flex;align-items:center;justify-content:center;border:1px solid #2A2F38;"><dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:44px;height:44px;" hint-size="44px,44px"></dc-import></div>
+        <div style="width:40px;height:40px;border-radius:10px;background:radial-gradient(120% 110% at 30% 22%, #20262e 0%, #14171C 70%);display:flex;align-items:center;justify-content:center;border:1px solid #2A2F38;"><dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:26px;height:26px;" hint-size="26px,26px"></dc-import></div>
+      </div>
+    </div>
+
+    <!-- business cards -->
+    <p class="over" style="color:#C49A3F;margin:0 0 22px;">Business card</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:56px;">
+      <div style="aspect-ratio:1.75/1;border-radius:10px;background:radial-gradient(130% 120% at 26% 20%, #1c2128 0%, #14171C 60%);border:1px solid #2A2F38;padding:34px;display:flex;flex-direction:column;justify-content:space-between;">
+        <dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:64px;height:64px;" hint-size="64px,64px"></dc-import>
+        <div>
+          <p style="margin:0;font-family:'Spectral',serif;font-size:30px;">al&#8209;Nizam</p>
+          <p style="margin:4px 0 0;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#9AA0A8;">Built so you can think</p>
+        </div>
+      </div>
+      <div style="aspect-ratio:1.75/1;border-radius:10px;background:#F6F3EC;color:#14171C;padding:34px;display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <p style="margin:0;font-family:'Spectral',serif;font-size:22px;font-weight:600;">Operator Name</p>
+          <p style="margin:2px 0 0;font-size:13px;color:#6B7079;">Founder &amp; Steward</p>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+          <div style="font-size:12.5px;color:#5A5E66;line-height:1.7;"><p style="margin:0;">name@al&#8209;nizam.systems</p><p style="margin:0;">al&#8209;nizam.systems</p></div>
+          <dc-import name="NizamMark" crescent="#14171C" dot="#C49A3F" style="width:40px;height:40px;" hint-size="40px,40px"></dc-import>
+        </div>
+      </div>
+    </div>
+
+    <!-- social -->
+    <p class="over" style="color:#C49A3F;margin:0 0 22px;">Social avatar &amp; banner</p>
+    <div style="display:flex;gap:24px;align-items:stretch;">
+      <div style="width:150px;height:150px;border-radius:50%;background:radial-gradient(120% 110% at 30% 22%, #20262e 0%, #14171C 70%);display:flex;align-items:center;justify-content:center;border:1px solid #2A2F38;flex-shrink:0;"><dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:96px;height:96px;" hint-size="96px,96px"></dc-import></div>
+      <div style="flex:1;border-radius:12px;background:radial-gradient(120% 130% at 82% 30%, #1c2128 0%, #14171C 60%);border:1px solid #2A2F38;position:relative;overflow:hidden;display:flex;align-items:center;padding:0 48px;">
+        <div style="position:absolute;top:36px;right:70px;width:2px;height:2px;border-radius:50%;background:#C49A3F;opacity:.8;"></div>
+        <div style="position:absolute;bottom:44px;right:150px;width:2px;height:2px;border-radius:50%;background:#F6F3EC;opacity:.4;"></div>
+        <svg style="position:absolute;right:-40px;top:50%;transform:translateY(-50%);" width="260" height="180" viewBox="0 0 260 180" fill="none"><ellipse cx="150" cy="90" rx="150" ry="60" stroke="#2A2F38" stroke-width="1"></ellipse><ellipse cx="150" cy="90" rx="100" ry="40" stroke="#2A2F38" stroke-width="1"></ellipse></svg>
+        <div style="position:relative;">
+          <p style="margin:0;font-family:'Spectral',serif;font-size:38px;">al&#8209;Nizam</p>
+          <p style="margin:6px 0 0;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#9AA0A8;">The operating layer for AI work</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 DIGITAL & DARK MODE ============ -->
+  <section style="background:#F6F3EC;color:#14171C;padding:110px 90px;">
+    <div style="display:flex;align-items:baseline;gap:22px;margin-bottom:20px;">
+      <span style="font-family:'Spectral',serif;color:#C49A3F;font-size:20px;">11</span>
+      <h2 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:44px;line-height:1;">Digital &amp; dark mode</h2>
+    </div>
+    <p style="margin:0 0 52px;max-width:620px;font-size:17px;line-height:1.6;color:#4A4E56;">The brand is dark&#8209;mode native. Paper is the default surface for documents; ink is the default for product. Amber remains the single accent in both.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;">
+      <!-- light UI -->
+      <div style="border:1px solid #E4DECF;border-radius:10px;overflow:hidden;">
+        <div style="background:#FFFFFF;padding:20px 24px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #EFE9DB;">
+          <dc-import name="NizamMark" crescent="#14171C" dot="#C49A3F" style="width:28px;height:28px;" hint-size="28px,28px"></dc-import>
+          <span style="font-family:'Spectral',serif;font-size:20px;">al&#8209;Nizam</span>
+          <span style="margin-left:auto;background:#C49A3F;color:#14171C;font-size:12px;font-weight:600;padding:7px 14px;border-radius:6px;">New file</span>
+        </div>
+        <div style="background:#F6F3EC;padding:24px;">
+          <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:8px;padding:16px 18px;margin-bottom:12px;"><p style="margin:0;font-size:13px;font-weight:600;">Steward</p><p style="margin:4px 0 0;font-size:12px;color:#8A8E96;">Continuity active &middot; 3 files</p></div>
+          <div style="background:#FFFFFF;border:1px solid #E4DECF;border-radius:8px;padding:16px 18px;"><p style="margin:0;font-size:13px;font-weight:600;">Confidant</p><p style="margin:4px 0 0;font-size:12px;color:#1F8A82;">&#9679; System nominal</p></div>
+        </div>
+        <div style="background:#FFFFFF;padding:10px 24px;font-size:11px;color:#9AA0A8;letter-spacing:1px;text-transform:uppercase;border-top:1px solid #EFE9DB;">Light &middot; documents</div>
+      </div>
+      <!-- dark UI -->
+      <div style="border:1px solid #2A2F38;border-radius:10px;overflow:hidden;">
+        <div style="background:#14171C;padding:20px 24px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #2A2F38;">
+          <dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:28px;height:28px;" hint-size="28px,28px"></dc-import>
+          <span style="font-family:'Spectral',serif;font-size:20px;color:#F6F3EC;">al&#8209;Nizam</span>
+          <span style="margin-left:auto;background:#C49A3F;color:#14171C;font-size:12px;font-weight:600;padding:7px 14px;border-radius:6px;">New file</span>
+        </div>
+        <div style="background:#0f1216;padding:24px;">
+          <div style="background:#1A1E25;border:1px solid #2A2F38;border-radius:8px;padding:16px 18px;margin-bottom:12px;"><p style="margin:0;font-size:13px;font-weight:600;color:#F6F3EC;">Steward</p><p style="margin:4px 0 0;font-size:12px;color:#8A8E96;">Continuity active &middot; 3 files</p></div>
+          <div style="background:#1A1E25;border:1px solid #2A2F38;border-radius:8px;padding:16px 18px;"><p style="margin:0;font-size:13px;font-weight:600;color:#F6F3EC;">Confidant</p><p style="margin:4px 0 0;font-size:12px;color:#5FC7BE;">&#9679; System nominal</p></div>
+        </div>
+        <div style="background:#14171C;padding:10px 24px;font-size:11px;color:#6B7079;letter-spacing:1px;text-transform:uppercase;border-top:1px solid #2A2F38;">Dark &middot; product</div>
+      </div>
+    </div>
+
+    <!-- tokens -->
+    <div style="background:#14171C;color:#F6F3EC;border-radius:10px;padding:40px 44px;">
+      <p class="over" style="color:#C49A3F;margin:0 0 22px;">Core tokens</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 48px;font-family:'Hanken Grotesk',monospace;font-size:13.5px;">
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #22272F;padding:8px 0;"><span style="color:#8A8E96;">--nz-ink</span><span>#14171C</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #22272F;padding:8px 0;"><span style="color:#8A8E96;">--nz-paper</span><span>#F6F3EC</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #22272F;padding:8px 0;"><span style="color:#8A8E96;">--nz-accent</span><span>#C49A3F</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #22272F;padding:8px 0;"><span style="color:#8A8E96;">--nz-system</span><span>#1F8A82</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #22272F;padding:8px 0;"><span style="color:#8A8E96;">--nz-surface-dark</span><span>#0f1216</span></div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid #22272F;padding:8px 0;"><span style="color:#8A8E96;">--nz-line-dark</span><span>#2A2F38</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="color:#8A8E96;">--nz-radius</span><span>8px</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="color:#8A8E96;">--nz-font-display</span><span>Spectral</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BACK / ASSETS ============ -->
+  <section style="background:#14171C;color:#F6F3EC;padding:110px 90px 130px;text-align:center;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:40px;">
+      <dc-import name="NizamMark" crescent="#F6F3EC" dot="#C49A3F" style="width:120px;height:120px;" hint-size="120px,120px"></dc-import>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+        <h2 style="margin:0;font-family:'Spectral',serif;font-weight:500;font-size:40px;">al&#8209;Nizam</h2>
+        <div style="width:48px;height:1px;background:#C49A3F;"></div>
+        <p style="margin:0;font-family:'Spectral',serif;font-style:italic;font-size:18px;color:#C8C2B2;max-width:420px;line-height:1.5;">Order is not decoration. It is the thing that lets you think.</p>
+      </div>
+      <p style="margin:20px 0 0;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6B7079;">Brand &amp; Design Guidelines &middot; Version 1.0 &middot; 2026</p>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+</body>
+</html>

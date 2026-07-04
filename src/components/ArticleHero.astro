@@ -10,16 +10,19 @@
 //   kicker  — small eyebrow line above the title (optional)
 //   meta    — byline / series / date line under the title (optional, raw HTML ok)
 //   graph   — { nodes, links } constellation (per-article; see data/hero-*.js)
-//   poster  — static image URL shown until WebGL is ready + for reduced-motion / no-JS
+//   poster  — static image shown as the hero (and, when webgl=true, the pre-load frame)
+//   webgl   — opt-in live 3D. DEFAULT false: article heroes are STATIC (the poster) —
+//             cheaper, portable, no per-load GPU. Reserve webgl=true for the homepage
+//             entry, where one immersive moment justifies the cost. (Decided 2026-07-04.)
 //
 // The hero band is ALWAYS the night surface (atmosphere), even on a light-theme
 // reading page — matching the brand two-surface model.
-const { title, kicker, meta, graph, poster } = Astro.props;
+const { title, kicker, meta, graph, poster, webgl = false } = Astro.props;
 const dataId = 'ah-data-' + Math.random().toString(36).slice(2, 8);
 ---
 
 <header class="ah" role="banner">
-  <div class="ah-stage" id="ah-stage" data-graph-id={dataId}>
+  <div class="ah-stage" id="ah-stage" data-graph-id={dataId} data-webgl={String(webgl)}>
     {poster && <img class="ah-poster" src={poster} alt="" aria-hidden="true" />}
   </div>
   <script type="application/json" id={dataId} set:html={JSON.stringify(graph)}></script>
@@ -90,8 +93,10 @@ const dataId = 'ah-data-' + Math.random().toString(36).slice(2, 8);
   const poster = stage && stage.querySelector('.ah-poster');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Reduced-motion / no data → keep the static poster, don't spin up WebGL.
-  if (stage && dataEl && !reduceMotion) {
+  // Static by default (webgl opt-in), reduced-motion, or no data → keep the static
+  // poster, never spin up WebGL. Only the homepage (webgl=true) runs the live engine.
+  const webglOn = stage && stage.dataset.webgl === 'true';
+  if (stage && dataEl && webglOn && !reduceMotion) {
     const graph = JSON.parse(dataEl.textContent);
     const REL = 5;
     const val = (n) => n.val || 4;
