@@ -86,7 +86,7 @@
     <rect class="node" x="320" y="488" width="420" height="38" rx="8" stroke-width="1"/>
     <text x="334" y="512" class="t"><tspan font-weight="600">Tier 2 · private state</tspan><tspan class="m">  — identity, memory, per-project state</tspan></text>
     <rect class="node" x="320" y="532" width="420" height="38" rx="8" stroke-width="1"/>
-    <text x="334" y="556" class="t"><tspan font-weight="600">Tier 3 · personal cloud</tspan><tspan class="m">  — handoff signal + session logs</tspan></text>
+    <text x="334" y="556" class="t"><tspan font-weight="600">Tier 3 · cloud sync</tspan><tspan class="m">  — handoff signal + session logs</tspan></text>
   </g>
 
   <!-- ONE ORBIT: ellipse center (530,312) rx402 ry183. Nodes sit at its vertices
