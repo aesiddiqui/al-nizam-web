@@ -7,21 +7,23 @@ import PlatformGraph from '../components/PlatformGraph.astro';
   title="al-Nizam — an operating layer between operator and AI"
   description="al-Nizam is the discipline AI tools demand you provide yourself — built as a framework so you don't have to."
 >
-  <!-- Hero band — IFF-faithful: solid headline + single CTA, full-width, then the
-       immersive full-bleed graph directly below (the architecture itself as the visual). -->
-  <section class="hero">
-    <h1 class="hero-headline">{"Working alone at the scale of an institution.".split(" ").map((word, i) => (<><span class="hero-word" style={`animation-delay:${(0.05 * i).toFixed(2)}s`}>{word}</span>{" "}</>))}</h1>
-    <p class="hero-lead">
-      al-Nizam is the operating layer between you and AI that holds continuity,
-      governance, and accountability structurally — so the operator does not
-      have to enforce them by remembering to.
-    </p>
-    <a class="hero-cta" href="#pg-cy">Explore the architecture <span aria-hidden="true">↓</span></a>
+  <!-- Full-viewport entry — the al-Mushahada graph IS the entry visual (iff.com-class);
+       headline + Enter CTA overlaid on it, the site content sits below the fold. The
+       graph's own stats/readout/arc chrome is suppressed here (splash mode) via CSS. -->
+  <section class="entry">
+    <div class="entry-graph"><PlatformGraph hero={true} /></div>
+    <div class="entry-overlay">
+      <h1 class="hero-headline">{"Working alone at the scale of an institution.".split(" ").map((word, i) => (<><span class="hero-word" style={`animation-delay:${(0.05 * i).toFixed(2)}s`}>{word}</span>{" "}</>))}</h1>
+      <p class="hero-lead">
+        al-Nizam is the operating layer between you and AI that holds continuity,
+        governance, and accountability structurally — so the operator does not
+        have to enforce them by remembering to.
+      </p>
+      <a class="enter-cta" href="#site">Enter <span aria-hidden="true">↓</span></a>
+    </div>
   </section>
 
-  <PlatformGraph hero={true} />
-
-  <article>
+  <article id="site">
     <p>
       AI changed the math of knowledge work, but not in the direction the
       marketing suggested. It did not give us a team. It gave us a more
@@ -107,24 +109,37 @@ import PlatformGraph from '../components/PlatformGraph.astro';
   /* Full-bleed hero band — breaks out of <main>'s 56rem column to viewport width.
      Background is the same night as the header/body, so it reads as one seamless
      brand field flowing from the header into the immersive graph below. */
-  .hero {
+  /* Full-viewport entry: the graph fills the viewport as the entry visual; the
+     headline + Enter CTA overlay it; the site content sits below the fold. */
+  .entry {
+    position: relative;
     width: 100vw;
-    /* Single clean full-bleed technique — margin-only, no over-constrained
-       left/right offsets. Breaks out of <main>'s 56rem column to viewport width
-       while keeping content centered on the true viewport. */
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    padding: 2.5rem 1.5rem 1.75rem;
-    text-align: center;
+    height: 100vh;
+    min-height: 620px;
+    overflow: hidden;
   }
+  /* the graph as full-bleed background; suppress its section chrome in splash mode */
+  .entry-graph { position: absolute; inset: 0; }
+  .entry-graph :global(.platform-graph.pg-hero) { margin: 0; max-width: none; height: 100%; }
+  .entry-graph :global(.pg-stage) { height: 100% !important; min-height: 0 !important; width: 100vw !important; margin: 0 !important; }
+  .entry-graph :global(.pg-stats),
+  .entry-graph :global(.pg-readout),
+  .entry-graph :global(.pg-arc) { display: none !important; }
 
-  .hero > * {
-    max-width: 44rem;
-    margin-left: auto;
-    margin-right: auto;
+  /* overlay — centered headline + Enter, scrim for legibility, click-through to the
+     graph everywhere except the text/CTA (pointer-events). */
+  .entry-overlay {
+    position: absolute; inset: 0; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 1.5rem;
+    background: radial-gradient(ellipse 70% 55% at 50% 46%, rgba(14,18,32,0.78) 0%, rgba(14,18,32,0.35) 55%, rgba(14,18,32,0) 100%);
+    pointer-events: none;
   }
+  .entry-overlay > * { pointer-events: auto; max-width: 44rem; margin-left: auto; margin-right: auto; }
 
-  .hero h1 {
+  .entry-overlay .hero-headline {
     font-size: clamp(2.25rem, 5vw, 3.4rem);
     line-height: 1.12;
     /* `auto` left/right keeps the headline block centered — a bare `0 0` here
@@ -157,7 +172,7 @@ import PlatformGraph from '../components/PlatformGraph.astro';
 
   /* CTA fades opacity only — NOT transform — so the entrance's `forwards` fill
      doesn't pin transform and clobber the hover lift defined below. */
-  .hero-cta {
+  .enter-cta {
     opacity: 0;
     animation: heroFadeIn 0.7s ease 0.82s forwards;
   }
@@ -174,7 +189,7 @@ import PlatformGraph from '../components/PlatformGraph.astro';
   @media (prefers-reduced-motion: reduce) {
     .hero-word,
     .hero-lead,
-    .hero-cta {
+    .enter-cta {
       animation: none;
       opacity: 1;
       transform: none;
@@ -190,7 +205,7 @@ import PlatformGraph from '../components/PlatformGraph.astro';
 
   /* Single CTA — gold pill with an organic, asymmetric corner (the IFF signature
      touch) + letter-spaced uppercase label and an arrow. */
-  .hero-cta {
+  .enter-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
@@ -207,7 +222,7 @@ import PlatformGraph from '../components/PlatformGraph.astro';
     transition: background 0.2s ease, transform 0.2s ease;
   }
 
-  .hero-cta:hover {
+  .enter-cta:hover {
     background: var(--color-accent-hover);
     color: #0E1220;
     transform: translateY(-1px);
@@ -219,7 +234,7 @@ import PlatformGraph from '../components/PlatformGraph.astro';
   article { max-width: 48rem; }
 
   @media (max-width: 760px) {
-    .hero { padding: 3rem 1.25rem 2rem; }
+    .entry { min-height: 520px; }
     .hero-lead { font-size: 1.08rem; }
   }
 </style>
