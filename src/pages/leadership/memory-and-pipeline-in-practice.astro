@@ -124,6 +124,21 @@ const heroMeta = `Introducing al-Nizam · Piece 1 (Amnesia) · Published 2026-06
       — the discipline lapses and the continuity gap reopens.
     </p>
 
+    <figure class="fig-table">
+      <table>
+        <thead>
+          <tr><th>Coping strategy</th><th>What it holds</th><th>Where it fails</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Paste in the last conversation</td><td>Recent context</td><td>You must re-read it — faster than nothing, slower than something</td></tr>
+          <tr><td>Custom instructions / projects</td><td>Identity &amp; preferences</td><td>Holds <em>style</em>, not <em>state</em></td></tr>
+          <tr><td>Keep tabs open</td><td>The raw history</td><td>Browser becomes a graveyard; nothing gets resumed</td></tr>
+          <tr><td>External notes</td><td>Decisions &amp; why</td><td>Burden falls on operator memory — lapses the instant attention slips</td></tr>
+        </tbody>
+      </table>
+      <figcaption><strong>Table 1.</strong> Every coping strategy holds <em>something</em> and drops the rest — and each puts the operator, not the framework, in charge of continuity.</figcaption>
+    </figure>
+
     <p>
       Across all the coping strategies, the pattern is the same: the operator
       is doing the framework's work. They are being the substrate. That works
@@ -332,4 +347,16 @@ const heroMeta = `Introducing al-Nizam · Piece 1 (Amnesia) · Published 2026-06
   .fig { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
   .fig img { width: 100%; height: auto; display: block; border-radius: 10px; border: 1px solid rgba(20,23,28,0.10); }
   .fig figcaption { margin-top: 0.7rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+</style>
+
+<style>
+  .fig-table { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig-table table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .fig-table thead th {
+    text-align: left; font-weight: 600; color: #14171C;
+    border-bottom: 2px solid #C49A3F; padding: 0.5rem 0.8rem 0.5rem 0;
+  }
+  .fig-table tbody td { padding: 0.7rem 0.8rem 0.7rem 0; border-bottom: 1px solid rgba(20,23,28,0.10); vertical-align: top; line-height: 1.5; }
+  .fig-table tbody td:first-child { font-weight: 600; }
+  .fig-table figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
 </style>
