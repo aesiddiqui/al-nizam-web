@@ -205,12 +205,65 @@ const { hero = false } = Astro.props;
     controls.enableDamping = true;
     controls.dampingFactor = 0.12;
 
+    // Node-focus flag — true while a node is selected (camera flown to it). The
+    // cinematic loops below stand down while focused so they don't fight the fly-to.
+    let nodeFocused = false;
+
     // Fit the graph to the frame once the force layout settles (and as a fallback).
     let fitted = false;
     Graph.onEngineStop(() => { if (!fitted) { Graph.zoomToFit(700, 55); fitted = true; } });
     setTimeout(() => Graph.zoomToFit(700, 55), 1600);
 
+    // ── Cinematic hero camera ────────────────────────────────────────────────
+    // ONLY on the homepage hero (el lives inside .pg-hero) and ONLY when motion
+    // is allowed. The graph should awe the first-time visitor: the rotation speed
+    // and direction DRIFT organically instead of a mechanical constant spin, and
+    // the camera BREATHES — easing to a new random zoom distance every few
+    // seconds via zoomToFit(padding) (small padding = close/dramatic, large =
+    // wide overview). zoomToFit only dollies along the view axis, so it layers
+    // cleanly over autoRotate's orbit. Both loops yield to user drag/scroll
+    // (OrbitControls 'start' event) and to node-focus, resuming when idle.
+    const heroMode = !!el.closest('.pg-hero');
+    if (heroMode && !reduceMotion) {
+      let userActive = false, idleTimer = null;
+      const idle = () => !userActive && !nodeFocused;
+      controls.addEventListener('start', () => {
+        userActive = true;
+        controls.autoRotate = false;
+        if (idleTimer) clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
+          userActive = false;
+          if (!nodeFocused) controls.autoRotate = true;
+        }, 4200);
+      });
+
+      // Rotation drift — two slow sines + occasional gentle reversal. Speed
+      // wanders through roughly 0.1–1.0 and flips direction every 16–32s, so the
+      // spin never reads as a fixed turntable.
+      const t0 = performance.now();
+      let dir = 1, nextFlip = 20000 + Math.random() * 12000;
+      (function driftRotation() {
+        if (idle()) {
+          const t = performance.now() - t0;
+          if (t > nextFlip) { dir *= -1; nextFlip = t + 16000 + Math.random() * 16000; }
+          const mag = 0.55 + 0.35 * Math.sin(t / 5200) + 0.12 * Math.sin(t / 1700);
+          controls.autoRotateSpeed = dir * mag;
+        }
+        requestAnimationFrame(driftRotation);
+      })();
+
+      // Breathing zoom — ease to a new random distance on a varying cadence.
+      (function breathe() {
+        if (idle()) {
+          const padding = 24 + Math.random() * 120;      // close ↔ wide
+          Graph.zoomToFit(2600 + Math.random() * 1600, padding);
+        }
+        setTimeout(breathe, 5500 + Math.random() * 5000);
+      })();
+    }
+
     Graph.onNodeClick((node) => {
+      nodeFocused = true;
       controls.autoRotate = false;
       if (node.kind === 'anon') {
         panel.innerHTML =
@@ -231,6 +284,7 @@ const { hero = false } = Astro.props;
     });
 
     Graph.onBackgroundClick(() => {
+      nodeFocused = false;
       panel.innerHTML = defaultHTML;
       controls.autoRotate = !reduceMotion;
       Graph.zoomToFit(600, 55);
