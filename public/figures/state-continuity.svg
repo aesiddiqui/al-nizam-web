@@ -9,7 +9,7 @@
       --gold:#C49A3F; --goldtext:#E6C66E; --focal:#1E1B10; --dashed:#5A6172;
       --markc:#F6F3EC; --markd:#C49A3F;   /* crescent=paper on night · dot=gold (canonical) */
     }
-    @media (prefers-color-scheme:none){
+    @media all{
       :root{
         --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1; --stroke:#D9D2C4;
         --text:#14171C; --muted:#6B7280; --muted2:#9A9484;
