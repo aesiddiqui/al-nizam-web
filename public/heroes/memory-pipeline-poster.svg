@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 660" font-family="ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif" role="img" aria-labelledby="ttl desc">
+  <title id="ttl">How al-Nizam holds continuity across the session boundary</title>
+  <desc id="desc">A live session writes durable files across three tiers; the conversation window is discarded at close; a fresh session reconstructs its full context from those files. The gold orbital path — work to durable state to fresh session — is the state that survives; the muted dashed path is the conversation, which does not.</desc>
+
+  <style>
+    :root{
+      --bg:#0E1220; --node:#171C2E; --node2:#1b2035; --stroke:#3A4155;
+      --text:#F6F3EC; --muted:#8A93A3; --muted2:#6B7280;
+      --gold:#C9A24B; --goldtext:#E6C66E; --focal:#1E1B10; --dashed:#5A6172;
+      --mark:#C9A24B;   /* gold-on-night lockup */
+    }
+    @media (prefers-color-scheme:none){
+      :root{
+        --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1; --stroke:#D9D2C4;
+        --text:#14171C; --muted:#6B7280; --muted2:#9A9484;
+        --gold:#B0801C; --goldtext:#8A6414; --focal:#FBF3DE; --dashed:#BEB6A4;
+        --mark:#14171C;   /* ink-on-paper lockup */
+      }
+    }
+    :root.__disabled{
+      --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1; --stroke:#D9D2C4;
+      --text:#14171C; --muted:#6B7280; --muted2:#9A9484;
+      --gold:#B0801C; --goldtext:#8A6414; --focal:#FBF3DE; --dashed:#BEB6A4;
+      --mark:#14171C;   /* ink-on-paper lockup */
+    }
+    .bg{fill:var(--bg)} .node{fill:var(--node);stroke:var(--stroke)} .node2{fill:var(--node2);stroke:var(--stroke)}
+    .focal{fill:var(--focal);stroke:var(--gold)}
+    .t{fill:var(--text)} .m{fill:var(--muted)} .m2{fill:var(--muted2)} .g{fill:var(--gold)} .gt{fill:var(--goldtext)}
+    .goldline{stroke:var(--gold)} .mutline{stroke:var(--dashed)} .orbit{stroke:var(--orbit)}
+    .mark{fill:var(--mark)}
+  </style>
+
+  <defs>
+    <marker id="goldArrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--gold)"/>
+    </marker>
+    <marker id="mutArrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--dashed)"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1060" height="660"/>
+
+  <!-- al-Nizam mark (subject IS al-Nizam) -->
+  <g class="mark" transform="translate(972,34) scale(0.62)" opacity="0.92" aria-hidden="true">
+    <path d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
+    <ellipse cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
+  </g>
+
+  <!-- title -->
+  <text x="48" y="52" font-family="Georgia,serif" font-size="27" font-weight="600" class="t" letter-spacing="-.01em">Continuity across the session boundary</text>
+  <text x="48" y="80" font-size="14.5" class="m">Nothing is held in the conversation — durable files carry the companion forward.</text>
+
+  <!-- SESSION A -->
+  <rect class="node" x="44" y="248" width="168" height="128" rx="14" stroke-width="1.5"/>
+  <text x="128" y="298" text-anchor="middle" font-size="16" font-weight="600" class="t">Session A</text>
+  <text x="128" y="320" text-anchor="middle" font-size="13" class="m">live work &amp; decisions</text>
+  <text x="128" y="350" text-anchor="middle" font-size="12.5" class="m">→ /close</text>
+
+  <!-- SESSION B (gold focal endpoint) -->
+  <rect class="focal" x="848" y="248" width="168" height="128" rx="14" stroke-width="2"/>
+  <text x="932" y="298" text-anchor="middle" font-size="16" font-weight="600" class="t">Session B</text>
+  <text x="932" y="320" text-anchor="middle" font-size="13" class="gt">fresh window</text>
+  <text x="932" y="350" text-anchor="middle" font-size="12.5" class="m">/resume →</text>
+
+  <!-- UPPER LANE — conversation (muted, discarded) -->
+  <rect x="392" y="104" width="276" height="72" rx="12" fill="none" class="mutline" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="530" y="136" text-anchor="middle" font-size="14.5" font-weight="600" class="m">Conversation window</text>
+  <text x="530" y="157" text-anchor="middle" font-size="12.5" class="m2">ephemeral context</text>
+  <g transform="translate(717,140)" aria-hidden="true">
+    <circle r="15" fill="none" class="mutline" stroke-width="1.5"/>
+    <path d="M-6,-6 L6,6 M6,-6 L-6,6" class="mutline" stroke-width="1.6"/>
+  </g>
+  <text x="757" y="144" font-size="12" class="m2">discarded at /close</text>
+
+  <!-- A -> conversation : orbital arc, muted -->
+  <path d="M152,250 A 300,150 -14 0 1 388,148" fill="none" class="mutline" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#mutArrow)"/>
+  <text x="238" y="224" font-size="12" class="m2">holds context</text>
+
+  <!-- DURABLE STATE container -->
+  <rect class="node2" x="300" y="404" width="460" height="182" rx="16" stroke-width="1.6" stroke="var(--gold)"/>
+  <text x="320" y="432" font-size="13.5" font-weight="700" class="gt" letter-spacing=".02em">DURABLE STATE — survives the boundary</text>
+  <g font-size="13">
+    <rect class="node" x="320" y="444" width="420" height="38" rx="8" stroke-width="1"/>
+    <text x="334" y="468" class="t"><tspan font-weight="600">Tier 1 · the Continuum</tspan><tspan class="m">  — framework canon, versioned strands</tspan></text>
+    <rect class="node" x="320" y="488" width="420" height="38" rx="8" stroke-width="1"/>
+    <text x="334" y="512" class="t"><tspan font-weight="600">Tier 2 · private state</tspan><tspan class="m">  — identity, memory, per-project state</tspan></text>
+    <rect class="node" x="320" y="532" width="420" height="38" rx="8" stroke-width="1"/>
+    <text x="334" y="556" class="t"><tspan font-weight="600">Tier 3 · personal cloud</tspan><tspan class="m">  — handoff signal + session logs</tspan></text>
+  </g>
+
+  <!-- ONE ORBIT: ellipse center (530,312) rx402 ry183. Nodes sit at its vertices
+       (A left, Durable bottom, B right); both gold connectors are true segments of it,
+       so they align into a single continuous celestial belt. -->
+  <!-- A -> durable : segment of the orbit, GOLD focal -->
+  <path d="M154,376 A402,183 0 0 0 300,462" fill="none" class="goldline" stroke-width="2.4" marker-end="url(#goldArrow)"/>
+  <text x="126" y="446" font-size="12.5" font-weight="600" class="g" text-anchor="middle">writes files</text>
+
+  <!-- durable -> B : same-orbit segment, GOLD focal -->
+  <path d="M760,462 A402,183 0 0 0 906,376" fill="none" class="goldline" stroke-width="2.4" marker-end="url(#goldArrow)"/>
+  <text x="836" y="498" font-size="12.5" font-weight="600" class="g" text-anchor="middle">reconstructs from</text>
+
+  <!-- session boundary -->
+  <line x1="530" y1="196" x2="530" y2="248" class="mutline" stroke-width="1" stroke-dasharray="3 4"/>
+  <text x="530" y="230" text-anchor="middle" font-size="10.5" class="m2" letter-spacing=".08em">SESSION BOUNDARY</text>
+
+  <!-- caption -->
+  <text x="48" y="638" font-size="13" class="m"><tspan font-weight="600" class="t">Figure 1. </tspan>The conversation is discarded at every close; because each decision is already a file, a fresh window rebuilds the companion exactly — the gold path, not the grey.</text>
+</svg>

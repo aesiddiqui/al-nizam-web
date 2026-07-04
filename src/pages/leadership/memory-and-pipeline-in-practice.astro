@@ -1,8 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ArticleHero from '../../components/ArticleHero.astro';
 import AuthorBio from '../../components/AuthorBio.astro';
 import { substrates } from '../../data/substrates';
+import { graph as heroGraph } from '../../data/hero-memory-pipeline.js';
 import { durationSince, formatDate } from '../../lib/duration';
+
+const heroMeta = `Introducing al-Nizam · Piece 1 (Amnesia) · Published 2026-06-10 · Substrate operating ${durationSince(substrates.memorySystem.since)} · <a href="#lineage">Details ↓</a>`;
 ---
 
 <Layout
@@ -10,13 +14,15 @@ import { durationSince, formatDate } from '../../lib/duration';
   description='How al-Nizam keeps continuity that does not depend on the AI tool remembering. Piece 1 of introducing-al-nizam series.'
   theme="light"
 >
+  <ArticleHero
+    kicker="Continuity is an architecture"
+    title="AI forgets everything the moment I close the tab"
+    meta={heroMeta}
+    graph={heroGraph}
+    poster="/heroes/memory-pipeline-poster.svg"
+  />
+
   <article>
-    <p class="meta" style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">
-      Introducing al-Nizam · Piece 1 (Amnesia) · Published 2026-06-10 · Substrate operating {durationSince(substrates.memorySystem.since)} · <a href="#lineage">Details ↓</a>
-    </p>
-
-    <h1>AI forgets everything the moment I close the tab</h1>
-
     <p class="lead">
       How al-Nizam keeps continuity that doesn't depend on the AI tool remembering.
     </p>
