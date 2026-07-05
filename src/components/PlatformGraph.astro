@@ -131,6 +131,14 @@ const { hero = false } = Astro.props;
   if (el && panel) {
     const defaultHTML = panel.innerHTML;
 
+    // TEMP DIAGNOSTIC — on-screen badge reporting cinematic runtime state. Remove
+    // once the hero motion is confirmed. (Screenshot this to diagnose.)
+    const dbg = document.createElement('div');
+    dbg.style.cssText = 'position:fixed;top:8px;left:8px;z-index:99999;background:#000;color:#0f0;font:12px/1.4 monospace;padding:5px 9px;border:1px solid #0f0;white-space:pre;pointer-events:none;';
+    dbg.textContent = 'graph script loaded';
+    document.body.appendChild(dbg);
+    const setDbg = (m) => { dbg.textContent = m; };
+
     const Graph = ForceGraph3D({ controlType: 'orbit' })(el)
       .backgroundColor('rgba(0,0,0,0)')
       .graphData(graph)
@@ -152,7 +160,11 @@ const { hero = false } = Astro.props;
           metalness: 0.0,
           flatShading: false,
           transparent: true,
-          opacity: isAnon ? 0.42 : 0.95,
+          opacity: isAnon ? 0.5 : 0.98,
+          // Self-illumination so nodes glow against the night and read THROUGH the
+          // hero scrim — named/core/family shine; private nodes stay a dim ember.
+          emissive: new THREE.Color(n.color),
+          emissiveIntensity: isAnon ? 0.12 : 0.5,
         });
         group.add(new THREE.Mesh(geo, mat));
 
@@ -224,42 +236,82 @@ const { hero = false } = Astro.props;
     // cleanly over autoRotate's orbit. Both loops yield to user drag/scroll
     // (OrbitControls 'start' event) and to node-focus, resuming when idle.
     const heroMode = !!el.closest('.pg-hero');
-    if (heroMode && !reduceMotion) {
-      let userActive = false, idleTimer = null;
+    setDbg('hero=' + heroMode + ' reduceMotion=' + reduceMotion + ' cameraFn=' + (typeof Graph.camera) + ' controlsFn=' + (typeof Graph.controls));
+    // DIAGNOSTIC OVERRIDE: run the cinematic even under reduce-motion so we can confirm
+    // it executes at all. (Revert to `heroMode && !reduceMotion` after diagnosis.)
+    if (heroMode) {
+      const V3 = THREE.Vector3;
+      const camera = Graph.camera();
+      // Drive the camera through the library's cameraPosition() API — the SAME call the
+      // node-click fly-to uses, which demonstrably moves the view — instead of writing
+      // camera.position directly (OrbitControls' own update() was overwriting those).
+      // We disable autoRotate and compute the orbit ourselves: azimuth advances
+      // (rotation), the look-at glides across the family hubs (travel), radius breathes
+      // (zoom). All committed each frame via cameraPosition(pos, lookAt, 0).
+      controls.autoRotate = false;
+
+      let userActive = false, idleTimer = null, wasIdle = true;
       const idle = () => !userActive && !nodeFocused;
       controls.addEventListener('start', () => {
         userActive = true;
-        controls.autoRotate = false;
         if (idleTimer) clearTimeout(idleTimer);
-        idleTimer = setTimeout(() => {
-          userActive = false;
-          if (!nodeFocused) controls.autoRotate = true;
-        }, 4200);
+        idleTimer = setTimeout(() => { userActive = false; }, 4500);
       });
 
-      // Rotation drift — two slow sines + occasional gentle reversal. Speed
-      // wanders through roughly 0.1–1.0 and flips direction every 16–32s, so the
-      // spin never reads as a fixed turntable.
       const t0 = performance.now();
-      let dir = 1, nextFlip = 20000 + Math.random() * 12000;
-      (function driftRotation() {
-        if (idle()) {
-          const t = performance.now() - t0;
-          if (t > nextFlip) { dir *= -1; nextFlip = t + 16000 + Math.random() * 16000; }
-          const mag = 0.55 + 0.35 * Math.sin(t / 5200) + 0.12 * Math.sin(t / 1700);
-          controls.autoRotateSpeed = dir * mag;
-        }
-        requestAnimationFrame(driftRotation);
-      })();
+      let seeded = false, baseR = 600, theta = 0, phi = Math.PI / 2;
+      let rNow = 0.7, rTarget = 0.7, nextZoom = 0, dir = 1, nextFlip = 20000;
+      const tgt = new V3(), desired = new V3();
+      let wps = [], wpi = 0, legEnd = 0;
 
-      // Breathing zoom — ease to a new random distance on a varying cadence.
-      (function breathe() {
-        if (idle()) {
-          const padding = 24 + Math.random() * 120;      // close ↔ wide
-          Graph.zoomToFit(2600 + Math.random() * 1600, padding);
+      const seed = () => {
+        const off = camera.position.clone().sub(controls.target);
+        baseR = off.length() || 600;
+        const s = new THREE.Spherical().setFromVector3(off);
+        theta = s.theta; phi = s.phi;
+        tgt.copy(controls.target);
+        rNow = 0.9;
+        seeded = true;
+      };
+
+      let last = t0, frames = 0;
+      (function cine(now) {
+        requestAnimationFrame(cine);
+        const dt = Math.min(0.05, (now - last) / 1000); last = now;
+        frames++;
+        // Reseed whenever we return to idle (after a drag or a node fly-to) so the
+        // cinematic picks up smoothly from wherever the camera now is.
+        if (!idle()) { wasIdle = false; return; }
+        if (!wasIdle) { wasIdle = true; seeded = false; }
+        if (!seeded) seed();
+        const t = now - t0;
+
+        // Collect travel waypoints once the layout has given nodes positions.
+        if (!wps.length) {
+          const live = Graph.graphData().nodes || [];
+          const fams = live.filter((n) => (n.kind === 'family' || n.level === 2) && typeof n.x === 'number');
+          if (fams.length) { wps = fams.map((n) => new V3(n.x, n.y, n.z || 0)); wpi = 0; desired.copy(wps[0]); legEnd = t + 5500; }
         }
-        setTimeout(breathe, 5500 + Math.random() * 5000);
-      })();
+        // TRAVEL — glide the look-at across the hubs so regions sweep the frame.
+        if (wps.length) {
+          if (t > legEnd) { wpi = (wpi + 1) % wps.length; desired.copy(wps[wpi]); legEnd = t + 5500 + Math.random() * 4500; }
+          tgt.lerp(desired, 1 - Math.pow(0.5, dt * 0.8));
+        }
+        // ROTATION — advance azimuth with drifting speed + reversal; gentle vertical bob.
+        if (t > nextFlip) { dir *= -1; nextFlip = t + 16000 + Math.random() * 16000; }
+        theta += dt * dir * (0.3 + 0.12 * Math.sin(t / 5000));
+        phi = Math.PI / 2 + 0.3 * Math.sin(t / 8000);
+        // ZOOM — breathe the radius, close/commanding range (0.5×–0.78× fit).
+        if (t > nextZoom) { rTarget = 0.5 + Math.random() * 0.28; nextZoom = t + 4500 + Math.random() * 3500; }
+        rNow += (rTarget - rNow) * 0.02;
+        // Compose + COMMIT via the API (instant set; called every frame = smooth).
+        const s = new THREE.Spherical(baseR * rNow, phi, theta);
+        const pos = new V3().setFromSpherical(s).add(tgt);
+        Graph.cameraPosition({ x: pos.x, y: pos.y, z: pos.z }, tgt, 0);
+
+        if (frames % 20 === 0) setDbg('cine f=' + frames + ' theta=' + theta.toFixed(2) +
+          ' r=' + (baseR * rNow).toFixed(0) + ' wps=' + wps.length + ' tgt=' + tgt.x.toFixed(0) + ',' + tgt.y.toFixed(0));
+      })(t0);
     }
 
     Graph.onNodeClick((node) => {
