@@ -168,7 +168,7 @@ const { hero = false } = Astro.props;
           const gap = 3;
           const s = new SpriteText(n.label);
           s.color = n.kind === 'core' ? '#F6F3EC' : '#D6DAE3';
-          s.fontFace = 'Georgia, serif';
+          s.fontFace = 'Spectral, Georgia, serif';
           s.textHeight = primaryH;
           s.fontWeight = n.kind === 'core' ? 'bold' : 'normal';
           const primaryY = -(radius + primaryH / 2 + gap);
@@ -183,7 +183,7 @@ const { hero = false } = Astro.props;
             const secH = primaryH * 0.62;
             const sub = new SpriteText(n.en);
             sub.color = '#8A93A3';
-            sub.fontFace = 'Georgia, serif';
+            sub.fontFace = 'Spectral, Georgia, serif';
             sub.textHeight = secH;
             sub.position.set(0, primaryY - (primaryH / 2 + secH / 2 + 1.2), 0);
             group.add(sub);
@@ -216,6 +216,12 @@ const { hero = false } = Astro.props;
     let fitted = false;
     Graph.onEngineStop(() => { if (!fitted) { Graph.zoomToFit(700, 55); fitted = true; } });
     setTimeout(() => Graph.zoomToFit(700, 55), 1600);
+
+    // Label sprites render in the fallback (Georgia) until Spectral finishes loading;
+    // regenerate them once the brand display face is ready so the floating names match.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => { try { Graph.refresh(); } catch (e) {} });
+    }
 
     // ── Record mode ──────────────────────────────────────────────────────────
     // Visit ?record to produce the homepage hero loop. NOT a production path — it
