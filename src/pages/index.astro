@@ -134,8 +134,15 @@ import PlatformGraph from '../components/PlatformGraph.astro';
     position: absolute; inset: 0; z-index: 2;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     text-align: center; padding: 1.5rem;
-    background: radial-gradient(ellipse 70% 55% at 50% 46%, rgba(14,18,32,0.78) 0%, rgba(14,18,32,0.35) 55%, rgba(14,18,32,0) 100%);
+    /* Lighter, tighter scrim — just enough to seat the headline, letting the larger
+       glowing graph read brightly around it (the graph is the awe; the scrim only
+       protects the text). Legibility comes from the text-shadow below, not a heavy veil. */
+    background: radial-gradient(ellipse 58% 46% at 50% 47%, rgba(14,18,32,0.62) 0%, rgba(14,18,32,0.22) 58%, rgba(14,18,32,0) 100%);
     pointer-events: none;
+  }
+  .entry-overlay .hero-headline,
+  .entry-overlay .hero-lead {
+    text-shadow: 0 1px 22px rgba(14,18,32,0.85), 0 1px 4px rgba(14,18,32,0.9);
   }
   .entry-overlay > * { pointer-events: auto; max-width: 44rem; margin-left: auto; margin-right: auto; }
 
@@ -232,9 +239,36 @@ import PlatformGraph from '../components/PlatformGraph.astro';
      text below the graph aligns with the stats/readout/arc above it, instead of
      sitting in the narrower 38rem reading column the global stylesheet sets. */
   article { max-width: 48rem; }
+  /* Anchor lands the FIRST line clear of the sticky (condensed) header — the JS
+     handler below refines this after the header settles; this is the no-JS fallback. */
+  #site { scroll-margin-top: 72px; }
 
   @media (max-width: 760px) {
     .entry { min-height: 520px; }
     .hero-lead { font-size: 1.08rem; }
   }
 </style>
+
+<script>
+  // Enter CTA — scroll to the article's FIRST line, clear of the sticky header.
+  // A plain #site hash-jump lands past the first lines because the header is sticky
+  // AND condenses on scroll (reflow mid-scroll). We scroll with a live header-height
+  // offset, then re-correct once the header has settled into its condensed height.
+  const cta = document.querySelector('.enter-cta');
+  const site = document.getElementById('site');
+  const header = document.querySelector('header.site-header');
+  if (cta && site) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const go = () => {
+      const h = (header ? header.getBoundingClientRect().height : 0) + 14;
+      const y = window.scrollY + site.getBoundingClientRect().top - h;
+      window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
+    };
+    cta.addEventListener('click', (e) => {
+      e.preventDefault();
+      go();
+      // Re-correct after the sticky header finishes condensing (~0.25s transition).
+      window.setTimeout(go, 600);
+    });
+  }
+</script>
