@@ -16,9 +16,12 @@ import PlatformGraph from '../components/PlatformGraph.astro';
          figure: a recorded loop gives full art-direction, zero runtime camera
          cost, and a mobile / reduced-motion-safe poster. The interactive graph
          lives in its own section below the fold, where drag-to-orbit is the point. -->
-    <video class="entry-video" autoplay loop muted playsinline preload="auto"
+    <video class="entry-video" loop muted playsinline preload="none"
            poster="/heroes/hero-poster.jpg">
-      <source src="/heroes/hero.webm" type="video/webm" />
+      <!-- No src in markup: JS injects it ONLY on desktop / motion-ok / not-save-data.
+           Phones (<=760px), prefers-reduced-motion, and data-saver connections keep
+           the poster still and NEVER fetch the ~19MB loop. -->
+      <source data-src="/heroes/hero.webm" type="video/webm" />
     </video>
     <div class="entry-overlay">
       <h1 class="hero-headline">{"Working alone at the scale of an institution.".split(" ").map((word, i) => (<><span class="hero-word" style={`animation-delay:${(0.05 * i).toFixed(2)}s`}>{word}</span>{" "}</>))}</h1>
@@ -258,12 +261,26 @@ import PlatformGraph from '../components/PlatformGraph.astro';
 </style>
 
 <script>
-  // Reduced motion — hold the hero video on its poster frame instead of looping.
+  // Hero video loads + plays ONLY where it's worth it: desktop, motion allowed, and
+  // not a data-saver connection. On phones (<=760px), prefers-reduced-motion, or
+  // Save-Data we leave the poster still in place and NEVER fetch the ~19MB loop (the
+  // <source> carries no src until we set it). Cheapest thing that still looks
+  // intentional — the mobile / data win. Desktop gets the full cinematic loop.
   const heroVideo = document.querySelector('.entry-video');
-  if (heroVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    heroVideo.removeAttribute('autoplay');
-    heroVideo.pause();
-    heroVideo.currentTime = 0;
+  if (heroVideo) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const smallScreen = window.matchMedia('(max-width: 760px)').matches;
+    const conn = navigator.connection || {};
+    const heavyOk = !reduce && !smallScreen && !conn.saveData;
+    if (heavyOk) {
+      const source = heroVideo.querySelector('source[data-src]');
+      if (source && !source.src) {
+        source.src = source.dataset.src;
+        heroVideo.load();
+        heroVideo.play().catch(() => {});
+      }
+    }
+    // else: poster stays; zero video bytes fetched.
   }
 
   // Enter CTA — scroll to the article's FIRST line, clear of the sticky header.
