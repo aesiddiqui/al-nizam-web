@@ -20,7 +20,7 @@ export const meta = {
 
 // Generalized PUBLIC capability families (NOT internal family names).
 export const families = [
-  { id: 'fam-structure',     label: 'Structure & Boundaries',        color: '#C9A24B' },
+  { id: 'fam-structure',     label: 'Structure & Boundaries',        color: '#C49A3F' },
   { id: 'fam-continuity',    label: 'Continuity & State',            color: '#6BA3C9' },
   { id: 'fam-recovery',      label: 'Recovery & Resilience',         color: '#C97B6B' },
   { id: 'fam-governance',    label: 'Governance & Decisions',        color: '#8FB36B' },
@@ -69,7 +69,7 @@ const colorOf = (id) => (families.find((f) => f.id === id) || {}).color || '#8A9
 
 function build() {
   const nodes = [];
-  nodes.push({ id: 'core', label: 'al-Nizam', en: 'the Order', kind: 'core', level: 3, color: '#C9A24B', doc: null,
+  nodes.push({ id: 'core', label: 'al-Nizam', en: 'the Order', kind: 'core', level: 3, color: '#C49A3F', doc: null,
     desc: 'The operating layer between you and AI — continuity, governance, and accountability, held structurally as one composed system.' });
   families.forEach((f) => nodes.push({ id: f.id, label: f.label, kind: 'family', level: 2, color: f.color }));
   named.forEach((n) => nodes.push({ id: n.id, label: n.label, en: n.en || null, doc: n.doc || null, kind: 'named', level: 1, family: n.family, color: colorOf(n.family), desc: n.desc }));

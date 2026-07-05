@@ -6,6 +6,15 @@ const { title, description, theme = 'dark' } = Astro.props;
 const htmlClass = theme === 'light' ? 'theme-light' : '';
 // Copyright year computed at build time — never goes stale.
 const year = new Date().getFullYear();
+
+// Self-hosted brand fonts (canonical): Spectral = display/headings + wordmark,
+// Hanken Grotesk = body/UI ("carries the work"). Self-hosted (no third-party
+// request) per al-Nizam's ownership ethos.
+import '@fontsource-variable/hanken-grotesk/index.css';
+import '@fontsource/spectral/latin-400.css';
+import '@fontsource/spectral/latin-500.css';
+import '@fontsource/spectral/latin-600.css';
+import '@fontsource/spectral/latin-700.css';
 ---
 
 <!DOCTYPE html>
@@ -22,17 +31,20 @@ const year = new Date().getFullYear();
     <link rel="canonical" href={`https://al-nizam.ai${Astro.url.pathname}`} />
     <link rel="alternate" type="application/rss+xml" title="al-Nizam Leadership" href="/leadership/rss.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180.png" />
     <style is:global>
       :root {
-        /* al-Nizam brand — gold on night (see brand/BRAND-GUIDE.html) */
+        /* al-Nizam canonical brand — amber on warm ink (brand/canonical-2026-07-04). */
         --color-text: #F6F3EC;
         --color-text-muted: #8A93A3;
-        --color-accent: #C9A24B;
+        --color-accent: #C49A3F;
         --color-accent-hover: #E6C66E;
-        --color-bg: #0E1220;
+        --color-bg: #14171C;
         --color-border: rgba(255, 255, 255, 0.10);
         --surface-subtle: rgba(255, 255, 255, 0.08);
-        --font-body: 'Georgia', 'Cambria', serif;
+        --font-display: 'Spectral', Georgia, 'Times New Roman', serif;
+        --font-body: 'Hanken Grotesk Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
         --font-mono: 'SF Mono', 'Monaco', 'Consolas', monospace;
         --max-width-prose: 48rem;
         --max-width-page: 56rem;
@@ -43,7 +55,7 @@ const year = new Date().getFullYear();
         --color-text: #14171C;
         --color-text-muted: #6B7280;
         --color-accent: #8C6A1F;
-        --color-accent-hover: #C9A24B;
+        --color-accent-hover: #C49A3F;
         --color-bg: #F6F3EC;
         --color-border: rgba(0, 0, 0, 0.12);
         --surface-subtle: rgba(0, 0, 0, 0.06);
@@ -86,7 +98,7 @@ const year = new Date().getFullYear();
       /* Header is a fixed dark brand band on EVERY page (theme-independent),
          full-width, wrapping a centered inner container. */
       header.site-header {
-        background: #0E1220;
+        background: #14171C;
         border-bottom: 1px solid rgba(255, 255, 255, 0.10);
         /* Sticky — stays pinned at the top through the scroll. */
         position: sticky;
@@ -99,7 +111,7 @@ const year = new Date().getFullYear();
          A subtle shadow + gold hairline lifts the bar above the content. */
       header.site-header.scrolled {
         box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
-        border-bottom-color: rgba(201, 162, 75, 0.28);
+        border-bottom-color: rgba(196, 154, 63, 0.28);
       }
 
       header.site-header .header-inner {
@@ -134,8 +146,10 @@ const year = new Date().getFullYear();
       }
 
       header.site-header a.logo {
-        font-size: 1.25rem;
-        font-weight: bold;
+        font-family: var(--font-display);
+        font-size: 1.35rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
         text-decoration: none;
         color: #F6F3EC;
         display: inline-flex;
@@ -143,10 +157,13 @@ const year = new Date().getFullYear();
         gap: 0.5rem;
       }
 
+      /* Two-color canonical mark: the crescent inherits the surface color via
+         `currentColor` (paper on this dark header); the gold dot is a fixed fill in
+         the SVG. Gold stays scarce — the focal accent, not the whole mark. */
       header.site-header a.logo .logo-mark {
-        width: 1.5rem;
-        height: 1.5rem;
-        color: #C9A24B;
+        width: 1.6rem;
+        height: 1.6rem;
+        color: #F6F3EC;
         flex: none;
       }
 
@@ -162,7 +179,11 @@ const year = new Date().getFullYear();
       }
 
       header.site-header nav a:hover {
-        color: #C9A24B;
+        color: #C49A3F;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-display);
       }
 
       h1 {
@@ -305,7 +326,7 @@ const year = new Date().getFullYear();
       }
 
       footer.site-footer .footer-nav a:hover {
-        color: #C9A24B;
+        color: #C49A3F;
       }
 
       footer.site-footer .footer-tagline {
@@ -356,7 +377,7 @@ const year = new Date().getFullYear();
         <a href="/" class="logo" aria-label="al-Nizam home">
           <svg class="logo-mark" viewBox="56.5 66.7 90 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path fill="currentColor" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z"/>
-            <ellipse fill="currentColor" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
+            <ellipse fill="#C49A3F" cx="80.580521" cy="88.287498" rx="6.3862953" ry="6.0728579"/>
           </svg>
           <span>al-Nizam</span>
         </a>

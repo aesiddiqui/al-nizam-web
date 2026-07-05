@@ -14,9 +14,9 @@ export const graph = {
     { id: 'close',  label: '', kind: 'gate', val: 5, color: '#E6C66E', fx: -78, fy: 2,  fz: 10 },
     { id: 'resume', label: '', kind: 'gate', val: 5, color: '#E6C66E', fx: 78,  fy: 2,  fz: 10 },
     // Durable core — three tiers clustered at centre; the middle one carries the label.
-    { id: 't1', label: '',              kind: 'tier', val: 12, color: '#C9A24B', fx: -6, fy: 30,  fz: -6 },
-    { id: 't2', label: 'durable state', kind: 'core', val: 16, color: '#C9A24B', fx: 0,  fy: 0,   fz: 8  },
-    { id: 't3', label: '',              kind: 'tier', val: 12, color: '#C9A24B', fx: -4, fy: -30, fz: -3 },
+    { id: 't1', label: '',              kind: 'tier', val: 12, color: '#C49A3F', fx: -6, fy: 30,  fz: -6 },
+    { id: 't2', label: 'durable state', kind: 'core', val: 16, color: '#C49A3F', fx: 0,  fy: 0,   fz: 8  },
+    { id: 't3', label: '',              kind: 'tier', val: 12, color: '#C49A3F', fx: -4, fy: -30, fz: -3 },
     // The conversation — off the flow, dim, discarded.
     { id: 'conv', label: '', kind: 'ghost', val: 8, color: '#8A93A3', fx: -70, fy: 60, fz: -26 },
   ],
