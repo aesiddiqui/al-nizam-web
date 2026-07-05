@@ -387,9 +387,18 @@ const year = new Date().getFullYear();
     </footer>
     <script>
       // Condense the sticky header once the page scrolls away from the very top.
+      // Hysteresis (condense >64, expand <12) with a dead-band between: the condense
+      // changes the header height, so a SINGLE threshold thrashed on/off from
+      // sub-pixel scroll jitter near the boundary (the flicker). Two thresholds with
+      // a gap mean it can't oscillate — it only flips after a decisive move.
       const header = document.querySelector('header.site-header');
       if (header) {
-        const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+        const CONDENSE = 64, EXPAND = 12;
+        const onScroll = () => {
+          const y = window.scrollY;
+          if (y > CONDENSE) header.classList.add('scrolled');
+          else if (y < EXPAND) header.classList.remove('scrolled');
+        };
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
       }
