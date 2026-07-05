@@ -11,7 +11,15 @@ import PlatformGraph from '../components/PlatformGraph.astro';
        headline + Enter CTA overlaid on it, the site content sits below the fold. The
        graph's own stats/readout/arc chrome is suppressed here (splash mode) via CSS. -->
   <section class="entry">
-    <div class="entry-graph"><PlatformGraph hero={true} /></div>
+    <!-- Pre-rendered cinematic loop of the al-Mushahada graph (recorded via
+         PlatformGraph's ?record harness). WebGL is ATMOSPHERE here, not a live
+         figure: a recorded loop gives full art-direction, zero runtime camera
+         cost, and a mobile / reduced-motion-safe poster. The interactive graph
+         lives in its own section below the fold, where drag-to-orbit is the point. -->
+    <video class="entry-video" autoplay loop muted playsinline preload="auto"
+           poster="/heroes/hero-poster.jpg">
+      <source src="/heroes/hero.webm" type="video/webm" />
+    </video>
     <div class="entry-overlay">
       <h1 class="hero-headline">{"Working alone at the scale of an institution.".split(" ").map((word, i) => (<><span class="hero-word" style={`animation-delay:${(0.05 * i).toFixed(2)}s`}>{word}</span>{" "}</>))}</h1>
       <p class="hero-lead">
@@ -78,6 +86,10 @@ import PlatformGraph from '../components/PlatformGraph.astro';
       </li>
     </ul>
 
+    <!-- The interactive al-Mushahada graph — its own surface, where drag-to-orbit
+         and click-a-node are the point (the hero above is the pre-rendered loop). -->
+    <PlatformGraph />
+
     <h2>Read</h2>
 
     <p>
@@ -120,13 +132,9 @@ import PlatformGraph from '../components/PlatformGraph.astro';
     min-height: 620px;
     overflow: hidden;
   }
-  /* the graph as full-bleed background; suppress its section chrome in splash mode */
-  .entry-graph { position: absolute; inset: 0; }
-  .entry-graph :global(.platform-graph.pg-hero) { margin: 0; max-width: none; height: 100%; }
-  .entry-graph :global(.pg-stage) { height: 100% !important; min-height: 0 !important; width: 100vw !important; margin: 0 !important; }
-  .entry-graph :global(.pg-stats),
-  .entry-graph :global(.pg-readout),
-  .entry-graph :global(.pg-arc) { display: none !important; }
+  /* Pre-rendered hero loop as full-bleed background; object-fit: cover fills any
+     viewport aspect (the recorded buffer is 16:9). Sits behind the text overlay. */
+  .entry-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 
   /* overlay — centered headline + Enter, scrim for legibility, click-through to the
      graph everywhere except the text/CTA (pointer-events). */
@@ -250,6 +258,14 @@ import PlatformGraph from '../components/PlatformGraph.astro';
 </style>
 
 <script>
+  // Reduced motion — hold the hero video on its poster frame instead of looping.
+  const heroVideo = document.querySelector('.entry-video');
+  if (heroVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroVideo.removeAttribute('autoplay');
+    heroVideo.pause();
+    heroVideo.currentTime = 0;
+  }
+
   // Enter CTA — scroll to the article's FIRST line, clear of the sticky header.
   // A plain #site hash-jump lands past the first lines because the header is sticky
   // AND condenses on scroll (reflow mid-scroll). We scroll with a live header-height
