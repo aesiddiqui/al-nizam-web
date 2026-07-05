@@ -247,7 +247,7 @@ const { hero = false } = Astro.props;
       // Opaque night background (matches the site hero band → no alpha compositing);
       // fixed 16:9 DRAWING BUFFER so the shipped <video> covers any viewport via
       // object-fit. The buffer (1920×1080) is what MediaRecorder captures.
-      Graph.backgroundColor('#0E1220').width(REC_W).height(REC_H);
+      Graph.backgroundColor('#14171C').width(REC_W).height(REC_H);
       // Preview only: pin the stage to the full window and scale the canvas to fit
       // (object-fit:contain letterboxes the whole 16:9 frame so it's judgeable) —
       // this is DISPLAY size, independent of the 1920×1080 capture buffer.
@@ -278,7 +278,7 @@ const { hero = false } = Astro.props;
       // for judging; click to capture exactly ONE seamless 24s loop → hero.webm.
       const btn = document.createElement('button');
       btn.textContent = '⏺ Capture 24s loop';
-      btn.style.cssText = 'position:fixed;top:44px;left:8px;z-index:99999;background:#C49A3F;color:#0E1220;font:13px/1.4 system-ui;font-weight:700;padding:7px 12px;border:0;border-radius:4px;cursor:pointer;';
+      btn.style.cssText = 'position:fixed;top:44px;left:8px;z-index:99999;background:#C49A3F;color:#14171C;font:13px/1.4 system-ui;font-weight:700;padding:7px 12px;border:0;border-radius:4px;cursor:pointer;';
       document.body.appendChild(btn);
 
       let baseR = 600, theta0 = 0, phi0 = Math.PI / 2;
