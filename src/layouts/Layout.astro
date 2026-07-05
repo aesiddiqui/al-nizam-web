@@ -50,12 +50,15 @@ import '@fontsource/spectral/latin-700.css';
         --max-width-page: 56rem;
       }
 
-      /* Light reading surface — ink on paper. Accent deepened for AA contrast on paper. */
+      /* Light reading surface — ink on paper. Accent deepened for AA contrast on paper:
+         #7E5C18 = 5.52:1 (comfortable AA); hover DARKENS (#6E5013, ~7:1) rather than
+         brightening — the canonical amber #C49A3F is only 2.36:1 on paper, so a
+         brighten-on-hover washes out. Emphasis on paper reads as "more ink", not "more gold". */
       html.theme-light {
         --color-text: #14171C;
         --color-text-muted: #6B7280;
-        --color-accent: #8C6A1F;
-        --color-accent-hover: #C49A3F;
+        --color-accent: #7E5C18;
+        --color-accent-hover: #6E5013;
         --color-bg: #F6F3EC;
         --color-border: rgba(0, 0, 0, 0.12);
         --surface-subtle: rgba(0, 0, 0, 0.06);
