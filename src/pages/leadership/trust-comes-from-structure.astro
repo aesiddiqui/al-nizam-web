@@ -1,8 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ArticleHero from '../../components/ArticleHero.astro';
 import AuthorBio from '../../components/AuthorBio.astro';
 import { substrates } from '../../data/substrates';
 import { durationSince, formatDate } from '../../lib/duration';
+
+const heroMeta = `Introducing al-Nizam · Boundaries · Published 2026-06-10 · Substrate operating ${durationSince(substrates.visibilityTiered.since)} · <a href="#lineage">Details ↓</a>`;
 ---
 
 <Layout
@@ -10,13 +13,15 @@ import { durationSince, formatDate } from '../../lib/duration';
   description="Why al-Nizam can be trusted with PII, HIPAA, PCI, and the work that makes the difference between safe and exposed. Part of the introducing-al-nizam series."
   theme="light"
 >
+  <ArticleHero
+    kicker="Trust comes from structure"
+    title="I can't let AI near my real, sensitive work"
+    meta={heroMeta}
+    graph={{ nodes: [], links: [] }}
+    poster="/heroes/trust-poster.svg"
+  />
+
   <article>
-    <p class="meta" style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">
-      Introducing al-Nizam · Boundaries · Published 2026-06-10 · Substrate operating {durationSince(substrates.visibilityTiered.since)} · <a href="#lineage">Details ↓</a>
-    </p>
-
-    <h1>I can't let AI near my real, sensitive work</h1>
-
     <p class="lead">
       Why al-Nizam can be trusted with PII, HIPAA, PCI, and the work that makes the difference between safe and exposed.
     </p>
@@ -65,7 +70,7 @@ import { durationSince, formatDate } from '../../lib/duration';
       If you have ever worked at the edge of something regulated — PII, HIPAA,
       PCI, SOC 2, GDPR, ITAR, CMMC — you already know why. You have lived the
       exact opposite of what just happened. You have watched a colleague paste
-      something into ChatGPT they should not have. You have shipped a
+      something into a chat tool they should not have. You have shipped a
       deliverable to a client whose contract you forgot included a no-AI
       clause. You have caught yourself, mid-decision, realizing that the AI
       you were going to ask for help on a problem has access to information
@@ -166,6 +171,21 @@ import { durationSince, formatDate } from '../../lib/duration';
       that person leaves.
     </p>
 
+    <figure class="fig-table">
+      <table>
+        <thead>
+          <tr><th>Coping strategy</th><th>What it holds</th><th>Where it fails</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Redact manually before pasting</td><td>Control, in the moment</td><td>One missed field the instant attention slips</td></tr>
+          <tr><td>Separate personal / work accounts</td><td>Structural separation</td><td>High friction; the burden becomes <em>which account is open</em></td></tr>
+          <tr><td>Refuse AI for sensitive work</td><td>Compliance posture</td><td>Competitive position — colleagues run circles with AI</td></tr>
+          <tr><td>Build internal wrappers</td><td>A real partial answer</td><td>Rebuilt from scratch per org; rots when its author leaves</td></tr>
+        </tbody>
+      </table>
+      <figcaption><strong>Table 1.</strong> Every coping strategy holds <em>something</em> and drops the rest — and each one puts the operator, not the framework, in charge of the boundary.</figcaption>
+    </figure>
+
     <p>
       Across all the coping strategies, the same pattern: the operator is
       doing the framework's work. They are being the discipline. That works
@@ -185,77 +205,64 @@ import { durationSince, formatDate } from '../../lib/duration';
     <p>
       al-Nizam approaches this differently. Not by trusting the operator to
       remember. By making the boundaries structural — twelve layers of them,
-      each one operating without the operator having to invoke it.
+      each one operating without the operator having to invoke it. They are
+      not twelve independent checkboxes; they are <em>defense in depth</em>,
+      arranged so that regulated content cannot reach the outside world without
+      crossing every one of them.
+    </p>
+
+    <figure class="fig">
+      <img src="/figures/trust-defense-in-depth.svg" alt="A protected core of regulated content at the centre, wrapped in six concentric rings that group the twelve structural layers: from the inside out — tenant classification, visibility tiers, IP-separation, continuous audit by the security and audit substrates, recorded compliance obligations, and the outermost gold ring, the pre-publish gate that refuses to let anything reach the public until it is clean. A key on the right names each ring. Nothing reaches the outside without crossing every ring." />
+      <figcaption>
+        <strong>Figure 1.</strong> The boundaries are concentric, not optional. Regulated
+        content sits at the core; the gold outer ring — the pre-publish gate — is the last
+        refusal before anything is public, and it only opens on <em>clean</em>.
+      </figcaption>
+    </figure>
+
+    <p>
+      The rings group the layers by what they do. The innermost layers
+      establish <strong>what the content is</strong>: every operating context —
+      personal work, client A, client B, internal company — is declared as a
+      <em>tenant</em> with a default classification (Public, Personal,
+      Sensitive, Regulated), and content carries that classification with it,
+      so the framework always knows the regulatory exposure of what it is
+      touching. The middle layers govern <strong>where it can go</strong>:
+      four visibility tiers with explicit, never-silent transitions; an
+      IP-separation guard that fires an audit every run so one tenant cannot
+      bleed into another; and continuous enforcement-plus-audit — one substrate
+      prevents the wrong handling, another catches the drift if it happens
+      anyway. The outer layers govern <strong>what it takes to leave</strong>:
+      recorded compliance obligations captured at project inception, and the
+      pre-publish gate that refuses the visibility-flip until the scan is clean.
     </p>
 
     <p>
-      The first layer is <strong>data classification at the tenant level</strong>.
-      Every operating context in the framework — personal work, client A,
-      client B, internal company — is declared as a <em>tenant</em>. Each
-      tenant has a default classification: Public, Personal, Sensitive,
-      Regulated. Content that originates in a regulated tenant carries that
-      classification with it. The framework knows, at all times, the
-      regulatory exposure of the content it is touching.
+      Spelled out, the twelve layers are these:
     </p>
 
-    <p>
-      The second layer is <strong>visibility-tiered exposure</strong>. There
-      are four tiers — Private, Personal, Sensitive-with-audit,
-      Public-with-sanitization-gate — and every artifact in the framework
-      belongs to exactly one tier. Tier transitions are explicit. Moving
-      content from Sensitive to Public requires running a sanitization gate.
-      The framework refuses to let the transition happen quietly.
-    </p>
-
-    <p>
-      The third layer is <strong>the IP-separation guard</strong>. A
-      per-tenant flag that triggers framework-level audits if content from
-      one tenant accidentally lands in another. Personal work cannot drift
-      into a client tenant. Client A cannot leak into Client B. The audit
-      fires every time the framework operates, not just at annual review.
-    </p>
-
-    <p>
-      The fourth layer is <strong>the pre-publish skill</strong>. The one that
-      fired this morning before this site went public. It is a structural
-      gate — invoked before any repository changes visibility, before any
-      content goes to a public destination. It scans for personal identifiers
-      configured in a private operator-only file. It surfaces findings. It
-      refuses to let the visibility-change proceed until the operator either
-      resolves or explicitly accepts each finding. The discipline is not
-      aspirational. It is the gate.
-    </p>
-
-    <p>
-      The fifth and sixth layers — <em>the Sanctum</em> (al-Nizam's security
-      substrate) and <em>the Quaestor</em> (its audit substrate) — operate
-      continuously. They tier-classify content by operating context, enforce
-      handling rules, and audit for drift between what the framework's
-      classifications claim and what its content actually contains. The
-      Sanctum prevents the wrong thing from happening; the Quaestor catches
-      it if it does anyway.
-    </p>
-
-    <p>
-      The seventh layer is <strong>pre-publish-aware project inception</strong>.
-      Every project the framework operates on captures, at the moment it is
-      created, its data inventory, its classification, its threat model, its
-      compliance obligations. These are recorded structurally in a per-project
-      file the framework reads on every subsequent session. The project's
-      compliance posture is not a memory; it is data.
-    </p>
-
-    <p>
-      Layers eight through twelve handle the rest: an explicit
-      consult-the-scholar requirement before any civilizational-naming or
-      theologically-loaded terminology is used outwardly; lineage preservation
-      for every rename and re-classification so audit trails persist; a
-      per-tenant declaration of which compliance framework applies (HIPAA,
-      PCI-DSS, CMMC, FedRAMP, GDPR, ITAR, SOC 2, ISO 27001); a structural
-      prohibition on cross-boundary copies in tenants flagged as regulated;
-      and a per-project threats document that the framework refuses to let
-      regulated projects ship without.
-    </p>
+    <figure class="fig-table">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Layer</th><th>What it enforces</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Tenant data classification</td><td>Every context declared Public / Personal / Sensitive / Regulated; content carries its class</td></tr>
+          <tr><td>2</td><td>Visibility-tiered exposure</td><td>Four tiers; every transition is explicit, never quiet</td></tr>
+          <tr><td>3</td><td>IP-separation guard</td><td>Per-tenant flag; audits every run so tenants can't cross-contaminate</td></tr>
+          <tr><td>4</td><td>Pre-publish gate</td><td>Scans for personal identifiers; refuses the visibility-flip until resolved</td></tr>
+          <tr><td>5</td><td>Security substrate</td><td>Enforces handling rules by operating context, continuously</td></tr>
+          <tr><td>6</td><td>Audit substrate</td><td>Catches drift between what a classification claims and what content holds</td></tr>
+          <tr><td>7</td><td>Pre-publish-aware inception</td><td>Data inventory, classification, threat model captured when a project is created</td></tr>
+          <tr><td>8</td><td>Scholar-consult requirement</td><td>Gate before any civilizational / theologically-loaded term is used outwardly</td></tr>
+          <tr><td>9</td><td>Lineage preservation</td><td>Every rename and re-classification keeps its audit trail</td></tr>
+          <tr><td>10</td><td>Per-tenant compliance declaration</td><td>Which standard applies — HIPAA, PCI-DSS, CMMC, FedRAMP, GDPR, ITAR, SOC 2, ISO 27001</td></tr>
+          <tr><td>11</td><td>Cross-boundary-copy prohibition</td><td>Structural block on copies out of tenants flagged Regulated</td></tr>
+          <tr><td>12</td><td>Required threats document</td><td>Regulated projects cannot ship without one</td></tr>
+        </tbody>
+      </table>
+      <figcaption><strong>Table 2.</strong> Twelve layers, none of them depending on the operator remembering to apply it. Each fires automatically, in the path of any work that touches the framework.</figcaption>
+    </figure>
 
     <p>
       <strong>Twelve structural layers.</strong> None of them depending on
@@ -411,3 +418,29 @@ import { durationSince, formatDate } from '../../lib/duration';
     <AuthorBio />
   </article>
 </Layout>
+
+<style>
+  .fig { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig img { width: 100%; height: auto; display: block; border-radius: 10px; border: 1px solid rgba(20,23,28,0.10); }
+  .fig figcaption { margin-top: 0.7rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+</style>
+
+<style>
+  /* Figure-card treatment — matches Fig 1: paper surface, rounded border, brand amber. */
+  .fig-table { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig-table table {
+    width: 100%; border-collapse: collapse; font-size: 0.95rem;
+    background: #FBF8F1; border: 1px solid rgba(20,23,28,0.10);
+    border-radius: 10px; overflow: hidden;
+  }
+  .fig-table thead th {
+    text-align: left; font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
+    color: #8A6414; background: #F3EEE1;
+    border-bottom: 2px solid #C49A3F; padding: 0.75rem 1.1rem;
+  }
+  .fig-table tbody td { padding: 0.8rem 1.1rem; border-bottom: 1px solid rgba(20,23,28,0.08); vertical-align: top; line-height: 1.5; }
+  .fig-table tbody tr:last-child td { border-bottom: none; }
+  .fig-table tbody td:first-child { font-weight: 600; color: #14171C; }
+  .fig-table figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+</style>

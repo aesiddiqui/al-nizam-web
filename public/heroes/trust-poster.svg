@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 660" role="img" aria-label="Concentric defensive rings around a regulated core — atmosphere for the article on structural trust.">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="52%">
+      <stop offset="0" stop-color="#20262E"/>
+      <stop offset="1" stop-color="#14171C"/>
+    </radialGradient>
+  </defs>
+
+  <!-- night surface (always dark — heroes never invert) -->
+  <rect width="1060" height="660" fill="url(#glow)"/>
+
+  <!-- concentric defensive rings, centred; outermost gold (the public boundary) -->
+  <g fill="none" stroke="#3A4150" stroke-width="1.4" opacity="0.9">
+    <circle cx="530" cy="330" r="70"/>
+    <circle cx="530" cy="330" r="118"/>
+    <circle cx="530" cy="330" r="168"/>
+    <circle cx="530" cy="330" r="220"/>
+    <circle cx="530" cy="330" r="274"/>
+  </g>
+  <circle cx="530" cy="330" r="330" fill="none" stroke="#C49A3F" stroke-width="2.2" opacity="0.85"/>
+
+  <!-- protected core -->
+  <circle cx="530" cy="330" r="34" fill="#20262E" stroke="#C49A3F" stroke-width="1.4"/>
+  <circle cx="530" cy="330" r="6" fill="#C49A3F"/>
+
+  <!-- faint orbital beads on the outer boundary (celestial vein) -->
+  <g fill="#E6C66E" opacity="0.7">
+    <circle cx="860" cy="330" r="4"/>
+    <circle cx="200" cy="330" r="4"/>
+  </g>
+</svg>
