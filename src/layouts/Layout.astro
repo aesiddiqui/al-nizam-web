@@ -36,6 +36,25 @@ import '@fontsource/spectral/latin-700.css';
     <style is:global>
       :root {
         /* al-Nizam canonical brand — amber on warm ink (brand/canonical-2026-07-04). */
+
+        /* Brand-CONSTANT tokens — the canonical palette. These do NOT flip with
+           theme (unlike the --color-* semantic tokens below). Figures, tiles, and
+           night bands reference these, so changing a brand color is one edit here
+           instead of a hunt across files. Single source of truth for the palette. */
+        --brand-night: #14171C;            /* canonical ink / night ground */
+        --brand-paper: #F6F3EC;            /* canonical paper */
+        --brand-paper-raised: #FBF8F1;     /* figure / tile surface */
+        --brand-paper-sunk: #F3EEE1;       /* emphasized tile · table header */
+        --brand-gold: #C49A3F;             /* canonical gold accent */
+        --brand-star: #E6C66E;             /* brighter gold — hover / highlight */
+        --brand-gold-ink: #8A6414;         /* gold on paper — tags, kickers */
+        --brand-gold-ink-strong: #7E5C18;  /* accent on paper (AA-safe) */
+        --brand-red: #A24B3B;              /* semantic failure on paper */
+        --brand-red-bright: #E0796B;       /* semantic failure on night (tool output) */
+        --brand-muted: #8A93A3;            /* muted text on night */
+        --brand-muted-paper: #6B7280;      /* muted text on paper */
+
+        /* Theme-relative semantic tokens — these DO flip in html.theme-light below. */
         --color-text: #F6F3EC;
         --color-text-muted: #8A93A3;
         --color-accent: #C49A3F;

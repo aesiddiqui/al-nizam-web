@@ -4,7 +4,7 @@
 
   <style>
     :root{
-      --bg:#0E1220; --node:#171C2E; --node2:#1b2035; --stroke:#3A4155;
+      --bg:#14171C; --node:#171C2E; --node2:#1b2035; --stroke:#3A4155;
       --text:#F6F3EC; --muted:#8A93A3; --muted2:#6B7280;
       --gold:#C49A3F; --goldtext:#E6C66E; --focal:#1E1B10; --dashed:#5A6172;
       --markc:#F6F3EC; --markd:#C49A3F;   /* crescent=paper on night · dot=gold (canonical) */
