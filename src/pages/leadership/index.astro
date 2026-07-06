@@ -1,22 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
-const articles = [
-  {
-    title: 'I can\'t let AI near my real, sensitive work',
-    subtitle: 'Why al-Nizam can be trusted with PII, HIPAA, PCI, and the work that makes the difference between safe and exposed',
-    date: '2026-06-10',
-    href: '/leadership/trust-comes-from-structure/',
-    series: 'Introducing al-Nizam — Boundaries',
-  },
-  {
-    title: 'AI forgets everything the moment I close the tab',
-    subtitle: 'How al-Nizam keeps continuity that doesn\'t depend on the AI tool remembering',
-    date: '2026-06-10',
-    href: '/leadership/memory-and-pipeline-in-practice/',
-    series: 'Introducing al-Nizam — Amnesia',
-  },
-];
+import { articles, allTags, hrefFor } from '../../data/articles';
 ---
 
 <Layout
@@ -43,15 +27,27 @@ const articles = [
 
     <h2>Articles</h2>
 
-    <ul class="article-list">
-      {articles.map((article) => (
-        <li>
-          <h3><a href={article.href}>{article.title}</a></h3>
-          <p class="meta">{article.series} · {article.date}</p>
-          <p>{article.subtitle}</p>
+    <div class="tag-filter" role="group" aria-label="Filter articles by tag">
+      <button class="tag-chip is-active" data-tag="*" type="button">All</button>
+      {allTags.map((t) => (
+        <button class="tag-chip" data-tag={t} type="button">{t}</button>
+      ))}
+    </div>
+
+    <ul class="article-list" id="article-list">
+      {articles.map((a) => (
+        <li data-tags={a.tags.join('|')}>
+          <h3><a href={hrefFor(a)}>{a.title}</a></h3>
+          <p class="meta">{a.series} · {a.date}</p>
+          <p>{a.description}</p>
+          <p class="tags">
+            {a.tags.map((t) => <span class="tag">{t}</span>)}
+          </p>
         </li>
       ))}
     </ul>
+
+    <p class="no-match" hidden>No pieces tagged that — yet.</p>
 
     <hr />
 
@@ -63,3 +59,44 @@ const articles = [
     </p>
   </article>
 </Layout>
+
+<style>
+  .tag-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.6rem; }
+  .tag-chip {
+    font-family: var(--font-body); font-size: 0.82rem; line-height: 1;
+    padding: 0.4rem 0.85rem; border-radius: 999px; cursor: pointer;
+    border: 1px solid rgba(20,23,28,0.16); background: #FBF8F1; color: var(--color-text-muted);
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .tag-chip:hover { border-color: #C49A3F; color: #14171C; }
+  .tag-chip.is-active { background: #14171C; color: #F6F3EC; border-color: #14171C; }
+
+  .article-list .tags { margin: 0.55rem 0 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .article-list .tag {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;
+    color: #8A6414; background: #F3EEE1; border-radius: 4px; padding: 0.14rem 0.5rem;
+  }
+  .no-match { color: var(--color-text-muted); font-style: italic; }
+</style>
+
+<script>
+  // Client-side tag filtering (foundation; full-text search comes later via Pagefind).
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.tag-chip'));
+  const items = Array.from(document.querySelectorAll<HTMLLIElement>('#article-list > li'));
+  const noMatch = document.querySelector<HTMLParagraphElement>('.no-match');
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      chips.forEach((c) => c.classList.remove('is-active'));
+      chip.classList.add('is-active');
+      const tag = chip.dataset.tag;
+      let shown = 0;
+      items.forEach((li) => {
+        const tags = (li.dataset.tags || '').split('|');
+        const show = tag === '*' || tags.includes(tag as string);
+        li.hidden = !show;
+        if (show) shown++;
+      });
+      if (noMatch) noMatch.hidden = shown > 0;
+    });
+  });
+</script>
