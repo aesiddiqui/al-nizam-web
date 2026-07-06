@@ -47,6 +47,40 @@ const heroMeta = `Introducing al-Nizam · Amnesia · Published 2026-06-10 · Sub
       work converge.
     </p>
 
+    <figure class="fig-terminal">
+      <div class="term">
+        <div class="term-bar" aria-hidden="true">
+          <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+          <span class="term-title">/resume · session brief</span>
+        </div>
+        <div class="term-body">
+          <div class="t-h">Session Brief — Northwind Migration — Wed 2026-06-10</div>
+          <div><span class="t-k">Last session</span> 2026-06-09 (Tue) · last commit a3f19c2</div>
+          <div class="t-sp"></div>
+          <div class="t-sec">Where we left off</div>
+          <div><span class="t-ok">✓</span> schema mapping done for 6 of 9 tables</div>
+          <div><span class="t-run">→</span> reconciling the legacy audit-log format</div>
+          <div class="t-sp"></div>
+          <div class="t-sec">Current state</div>
+          <div><span class="t-ok">✓</span> extract + transform pipeline green</div>
+          <div><span class="t-x">✗</span> load blocked on a null-tenant edge case</div>
+          <div class="t-sp"></div>
+          <div class="t-sec">Next up (prioritized)</div>
+          <div>1. resolve null-tenant rows before load</div>
+          <div>2. dry-run the full pipeline against staging</div>
+          <div>3. peer-strand converged at 20:14 — review before sign-off</div>
+          <div class="t-sp"></div>
+          <div><span class="t-k">Key files</span> pipeline/transform.py · docs/SCHEMA_MAP.md</div>
+        </div>
+      </div>
+      <figcaption>
+        <strong>Figure 1.</strong> Representative <code>/resume</code> output — <em>real format,
+        synthetic project</em>. Three seconds after opening the laptop: what was built (by commit),
+        what state the work is in, what is blocked, the ranked next move, and where the peer machine's
+        parallel work converged — reconstructed from durable files, not from a chat history.
+      </figcaption>
+    </figure>
+
     <p>
       I did not have to remind the AI of anything. I did not paste in yesterday's
       context. I did not even type the word "yesterday." The brief just
@@ -179,7 +213,7 @@ const heroMeta = `Introducing al-Nizam · Amnesia · Published 2026-06-10 · Sub
     <figure class="fig">
       <img src="/figures/state-continuity.svg" alt="Session A writes durable files to three tiers at close; the conversation window is discarded; Session B reconstructs its full context from those files at resume. The gold path — work to durable state to fresh session — survives; the grey conversation path does not." />
       <figcaption>
-        <strong>Figure 1.</strong> The conversation is discarded at every close; because
+        <strong>Figure 2.</strong> The conversation is discarded at every close; because
         each decision is already a file, a fresh window rebuilds the companion exactly —
         the gold path, not the grey.
       </figcaption>
@@ -367,4 +401,37 @@ const heroMeta = `Introducing al-Nizam · Amnesia · Published 2026-06-10 · Sub
   .fig-table tbody tr:last-child td { border-bottom: none; }
   .fig-table tbody td:first-child { font-weight: 600; color: #14171C; }
   .fig-table figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+</style>
+
+<style>
+  /* Worked-artifact card — tool output on the night surface (the brand's
+     "atmosphere/tool" surface), distinct from the paper prose + tables.
+     Content is synthetic by construction: a public page cannot show a real brief. */
+  .fig-terminal { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig-terminal .term {
+    background: #14171C; border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 10px; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(20,23,28,0.16);
+    font-family: var(--font-mono, ui-monospace, 'SF Mono', Menlo, Consolas, monospace);
+    font-size: 0.82rem; line-height: 1.75;
+  }
+  .fig-terminal .term-bar {
+    display: flex; align-items: center; gap: 0.4rem;
+    padding: 0.6rem 0.9rem; background: #1C2027;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .fig-terminal .term-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: rgba(255,255,255,0.16); }
+  .fig-terminal .term-title { margin-left: 0.5rem; color: #8A93A3; font-size: 0.76rem; letter-spacing: 0.02em; }
+  .fig-terminal .term-body { padding: 1.1rem 1.2rem; color: #D8DBE0; overflow-x: auto; }
+  .fig-terminal .t-h { color: #F6F3EC; font-weight: 600; margin-bottom: 0.55rem; }
+  .fig-terminal .t-k { color: #8A93A3; display: inline-block; min-width: 9.5rem; }
+  .fig-terminal .t-sec { color: #C49A3F; text-transform: uppercase; letter-spacing: 0.09em; font-size: 0.72rem; margin: 0.15rem 0; }
+  .fig-terminal .t-sp { height: 0.55rem; }
+  .fig-terminal .t-file, .fig-terminal .t-val { color: #E6C66E; }
+  .fig-terminal .t-src { color: #6B7280; }
+  .fig-terminal .t-sev { color: #14171C; background: #C49A3F; border-radius: 3px; padding: 0 0.35rem; font-size: 0.68rem; font-weight: 700; }
+  .fig-terminal .t-x { color: #E0796B; font-weight: 700; }   /* semantic failure marker — the one non-amber accent, confined to tool output */
+  .fig-terminal .t-ok { color: #86BE93; font-weight: 700; }
+  .fig-terminal .t-run { color: #C49A3F; font-weight: 700; }
+  .fig-terminal figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
 </style>

@@ -34,13 +34,42 @@ const heroMeta = `Introducing al-Nizam · Boundaries · Published 2026-06-10 · 
       This morning I shipped a website to a public domain. Before the framework
       let me flip the repository to public visibility, it ran a sanitization
       gate. The gate scanned every committed file for personal identifiers —
-      my name, my GitHub usernames, my employer names, the path patterns where
+      my name, my GitHub usernames, my clients' names, the path patterns where
       my personal work lives on my disk. It found one match. Not a critical
       one. A README file mentioned the framework-internal directory paths where
       the project's source code lives on my machine. Not a secret. Not a leak.
       But the framework refused to let the visibility-flip proceed until I
       either accepted the finding or removed it.
     </p>
+
+    <figure class="fig-terminal">
+      <div class="term">
+        <div class="term-bar" aria-hidden="true">
+          <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+          <span class="term-title">/pre-publish · safety scan</span>
+        </div>
+        <div class="term-body">
+          <div class="t-h">Pre-Publish Safety Check — 2026-06-10</div>
+          <div><span class="t-k">Repo</span> github.com/…/field-notes-site</div>
+          <div><span class="t-k">Currently</span> Private</div>
+          <div><span class="t-k">Identifiers scanned</span> 14</div>
+          <div class="t-sp"></div>
+          <div class="t-sec">Findings</div>
+          <div><span class="t-file">README.md:12</span> — "<span class="t-val">/home/dana/clients/northwind-health/…</span>" <span class="t-src">(steward.md → home path pattern)</span> <span class="t-sev">LOW</span></div>
+          <div class="t-sp"></div>
+          <div class="t-sec">Verdict</div>
+          <div><span class="t-x">✗ NOT SAFE</span> — 1 finding must be resolved before going public.</div>
+          <div class="t-src">Visibility-flip refused. Resolve or explicitly accept each finding.</div>
+        </div>
+      </div>
+      <figcaption>
+        <strong>Figure 1.</strong> Representative <code>/pre-publish</code> output — <em>real format,
+        synthetic identifiers</em>. It has to be synthetic: the framework's own sanitization gate
+        forbids putting a real scan on a public page, which is precisely the property the article
+        is about. One low finding, a path pattern in a README; the visibility-flip stays refused
+        until it is resolved or explicitly accepted.
+      </figcaption>
+    </figure>
 
     <p>
       I removed it. The framework re-scanned. Clean. Then it allowed the
@@ -214,7 +243,7 @@ const heroMeta = `Introducing al-Nizam · Boundaries · Published 2026-06-10 · 
     <figure class="fig">
       <img src="/figures/trust-defense-in-depth.svg" alt="A protected core of regulated content at the centre, wrapped in six concentric rings that group the twelve structural layers: from the inside out — tenant classification, visibility tiers, IP-separation, continuous audit by the security and audit substrates, recorded compliance obligations, and the outermost gold ring, the pre-publish gate that refuses to let anything reach the public until it is clean. A key on the right names each ring. Nothing reaches the outside without crossing every ring." />
       <figcaption>
-        <strong>Figure 1.</strong> The boundaries are concentric, not optional. Regulated
+        <strong>Figure 2.</strong> The boundaries are concentric, not optional. Regulated
         content sits at the core; the gold outer ring — the pre-publish gate — is the last
         refusal before anything is public, and it only opens on <em>clean</em>.
       </figcaption>
@@ -443,4 +472,37 @@ const heroMeta = `Introducing al-Nizam · Boundaries · Published 2026-06-10 · 
   .fig-table tbody tr:last-child td { border-bottom: none; }
   .fig-table tbody td:first-child { font-weight: 600; color: #14171C; }
   .fig-table figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+</style>
+
+<style>
+  /* Worked-artifact card — tool output on the night surface (the brand's
+     "atmosphere/tool" surface), distinct from the paper prose + tables.
+     Content is synthetic by construction: a public page cannot show a real scan. */
+  .fig-terminal { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig-terminal .term {
+    background: #14171C; border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 10px; overflow: hidden;
+    box-shadow: 0 10px 30px rgba(20,23,28,0.16);
+    font-family: var(--font-mono, ui-monospace, 'SF Mono', Menlo, Consolas, monospace);
+    font-size: 0.82rem; line-height: 1.75;
+  }
+  .fig-terminal .term-bar {
+    display: flex; align-items: center; gap: 0.4rem;
+    padding: 0.6rem 0.9rem; background: #1C2027;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .fig-terminal .term-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: rgba(255,255,255,0.16); }
+  .fig-terminal .term-title { margin-left: 0.5rem; color: #8A93A3; font-size: 0.76rem; letter-spacing: 0.02em; }
+  .fig-terminal .term-body { padding: 1.1rem 1.2rem; color: #D8DBE0; overflow-x: auto; }
+  .fig-terminal .t-h { color: #F6F3EC; font-weight: 600; margin-bottom: 0.55rem; }
+  .fig-terminal .t-k { color: #8A93A3; display: inline-block; min-width: 9.5rem; }
+  .fig-terminal .t-sec { color: #C49A3F; text-transform: uppercase; letter-spacing: 0.09em; font-size: 0.72rem; margin: 0.15rem 0; }
+  .fig-terminal .t-sp { height: 0.55rem; }
+  .fig-terminal .t-file, .fig-terminal .t-val { color: #E6C66E; }
+  .fig-terminal .t-src { color: #6B7280; }
+  .fig-terminal .t-sev { color: #14171C; background: #C49A3F; border-radius: 3px; padding: 0 0.35rem; font-size: 0.68rem; font-weight: 700; }
+  .fig-terminal .t-x { color: #E0796B; font-weight: 700; }   /* semantic failure marker — the one non-amber accent, confined to tool output */
+  .fig-terminal .t-ok { color: #86BE93; font-weight: 700; }
+  .fig-terminal .t-run { color: #C49A3F; font-weight: 700; }
+  .fig-terminal figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
 </style>
