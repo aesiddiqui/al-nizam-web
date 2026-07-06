@@ -65,7 +65,7 @@ export const founder = {
     {
       heading: 'Where the work happens now',
       body: [
-        "I am Founder and CEO of ERSA Technologies. The engagements continue to span government, healthcare, financial services, and commercial sectors. al-Nizam is the operating layer I built for myself, am building in the open, and intend to make available to other operators who hold serious work and cannot afford to lose continuity, boundary, or honest accounting to AI tooling that was not designed for either.",
+        "I am Founder and CEO of ERSA Technologies. The engagements continue to span government, healthcare, financial services, and commercial sectors. al-Nizam is the operating layer I built for myself, am building in the open, and intend to make available to other operators — both those who already hold serious work and cannot afford to lose continuity, boundary, or honest accounting, and those taking that work on for the first time, who would rather start with the guardrails than earn them through costly mistakes.",
       ],
     },
     {
@@ -78,7 +78,7 @@ export const founder = {
     {
       heading: 'What this is',
       body: [
-        "Partnership with teeth, not partnership with slogans. I built al-Nizam because the structural answer was missing. If you are a peer operator who has felt the same gap, you are who this work is for.",
+        "Partnership with teeth, not partnership with slogans. I built al-Nizam because the structural answer was missing. If you have felt the same gap — whether you are a peer operator who has carried this weight for years, or someone earlier in the work who would rather not learn these lessons the hard way — you are who this work is for.",
       ],
     },
   ] as FounderSection[],
