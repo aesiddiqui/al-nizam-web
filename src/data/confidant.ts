@@ -106,7 +106,4 @@ export const confidant = {
       ],
     },
   ] as ConfidantSection[],
-
-  futureExtensionNote:
-    "Civilizational lineage research queued: al-mu'tamad (the trusted) / al-amīn (the faithful trustee) under al-'Alim (the Scholar) consult before substrate-name finalization. The English persona name 'the Confidant' bridges until consult completes.",
 };
