@@ -42,6 +42,9 @@ const dataId = 'ah-data-' + Math.random().toString(36).slice(2, 8);
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
+    /* Sit flush under the sticky header — cancel <main>'s top padding (2.5rem)
+       so no paper band shows above the night hero. */
+    margin-top: -2.5rem;
     height: 45vh;
     min-height: 360px;
     max-height: 620px;
