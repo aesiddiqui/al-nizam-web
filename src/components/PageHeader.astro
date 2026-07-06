@@ -1,0 +1,81 @@
+---
+// PageHeader — lightweight night-surface header band for static pages
+// (founder / about / confidant). The static, no-WebGL sibling of ArticleHero:
+// it gives these pages the same "night band flush under the nav → light paper
+// body" shape the articles have, without the graph engine.
+//
+// Props:
+//   kicker   — small gold eyebrow line above the title
+//   title    — the page H1 (rendered inside the band)
+//   subtitle — optional tagline/byline under the title (raw HTML ok)
+//   portrait — optional image src; when present the band is two-column
+//              (text left, portrait right) on desktop, stacked on mobile
+//   portraitAlt — alt text for the portrait
+//   links    — optional array of { label, href } rendered as a link row
+const { kicker, title, subtitle, portrait, portraitAlt = '', links } = Astro.props;
+---
+
+<header class="ph" role="banner">
+  <div class="ph-inner">
+    <div class="ph-text">
+      {kicker && <p class="ph-kicker">{kicker}</p>}
+      <h1 class="ph-title">{title}</h1>
+      {subtitle && <p class="ph-subtitle" set:html={subtitle}></p>}
+      {links && links.length > 0 && (
+        <p class="ph-links">
+          {links.map((l) => (
+            <a href={l.href} rel={l.href.startsWith('http') ? 'noopener' : undefined}>{l.label}</a>
+          ))}
+        </p>
+      )}
+    </div>
+    {portrait && (
+      <img class="ph-portrait" src={portrait} alt={portraitAlt} width="150" height="214" />
+    )}
+  </div>
+</header>
+
+<style>
+  .ph {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    /* Sit flush under the sticky header — cancel <main>'s top padding (2.5rem)
+       so the band continues the dark nav with no paper seam. */
+    margin-top: -2.5rem;
+    background: #14171C;                 /* night surface — always */
+    border-bottom: 1px solid rgba(196,154,63,0.22);
+  }
+  .ph-inner {
+    max-width: var(--max-width-page, 56rem);
+    margin: 0 auto;
+    padding: 3.6rem 1.5rem 2.6rem;
+    display: flex; align-items: center; gap: 2.2rem;
+  }
+  .ph-text { flex: 1 1 auto; min-width: 0; }
+  .ph-kicker {
+    margin: 0 0 0.55rem; font-size: 0.78rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #C49A3F;
+  }
+  .ph-title {
+    margin: 0; color: #F6F3EC; font-family: var(--font-display);
+    font-weight: 600; line-height: 1.12; letter-spacing: -0.01em;
+    font-size: clamp(1.9rem, 4.4vw, 2.9rem); text-wrap: balance;
+  }
+  .ph-subtitle { margin: 0.85rem 0 0; color: #8A93A3; font-size: 1.05rem; line-height: 1.5; }
+  .ph-links { margin: 1.15rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; }
+  .ph-links a {
+    color: #C49A3F; text-decoration: none; font-size: 0.9rem;
+    display: inline-flex; align-items: center; gap: 0.35rem;
+  }
+  .ph-links a:hover { color: #E6C66E; text-decoration: underline; text-underline-offset: 2px; }
+  .ph-portrait {
+    flex: none; width: 150px; height: 214px; object-fit: cover; object-position: top center;
+    border-radius: 12px; border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  }
+  @media (max-width: 640px) {
+    .ph-inner { flex-direction: column-reverse; align-items: flex-start; gap: 1.4rem; padding-top: 2.4rem; }
+    .ph-portrait { width: 132px; height: 188px; }
+  }
+</style>

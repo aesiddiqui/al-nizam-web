@@ -22,17 +22,33 @@ export type FounderSection = {
   body: string[];
 };
 
+export type FounderDimension = {
+  label: string;
+  note: string;
+};
+
 export const founder = {
   pageTitle: 'Ebadullah Siddiqui',
-  description: "Ebadullah Siddiqui — Founder of al-Nizam, Founder and CEO of ERSA Technologies. Three decades in IT across government, healthcare, financial services, and commercial sectors.",
+  description: "Ebadullah Siddiqui — Founder of al-Nizam, Founder and CEO of ERSA Technologies. Three decades across enterprise IT, business development, program management, government contracting, entrepreneurship, and product development.",
 
   subtitle: 'Founder of al-Nizam. Founder and CEO of ERSA Technologies.',
+
+  // Breadth-of-experience strip — the credibility argument for al-Nizam is that
+  // it comes from someone who has operated across the business, not only the IT.
+  dimensions: [
+    { label: 'Enterprise IT', note: 'Virtualization, cloud, cybersecurity, governance, automation — the infrastructure built to hold.' },
+    { label: 'Business Development', note: 'Finding the opportunity, shaping the offer, building the relationships that turn capability into a business.' },
+    { label: 'Program & Project Management', note: 'Running complex delivery to scope, schedule, and accountability across many stakeholders.' },
+    { label: 'Government Contracting', note: 'Operating inside the compliance, structure, and rigor that public-sector work demands.' },
+    { label: 'Entrepreneurship', note: 'Founder and CEO of ERSA Technologies — carrying the risk and building the company.' },
+    { label: 'Product Development', note: 'Turning a lived problem into a built product. al-Nizam is the latest.' },
+  ] as FounderDimension[],
 
   sections: [
     {
       heading: 'Three decades in the work',
       body: [
-        "I have spent thirty years in IT — virtualization, cloud, governance, cybersecurity, scripting, automation, enterprise infrastructure. The engagements have spanned government, healthcare, financial services, and commercial sectors, often the parts of those sectors where the stakes are highest and the structure has to hold.",
+        "I have spent thirty years in serious work — and not only the technical kind. I have built and run enterprise infrastructure: virtualization, cloud, cybersecurity, governance, automation. And I have done the work around it that decides whether technology becomes a business — development, program and project management, government contracting, and building a company from the ground up. The engagements have spanned government, healthcare, financial services, and commercial sectors, often the parts where the stakes are highest and the structure has to hold.",
         "The work taught me one thing I keep returning to: serious infrastructure does not get built by tools. It gets built by the discipline that operates the tools. The substrate underneath is what determines whether the work compounds across years or evaporates across months.",
         "In recent years, the discipline question shifted shape. AI tooling arrived in a serious way, and with it the operator-AI partnership problem: how does a single operator wield AI as a coequal partner without losing the structural discipline that made the prior thirty years' work compound? The capability was suddenly available; the substrate to operate it correctly was not.",
       ],
@@ -50,6 +66,13 @@ export const founder = {
       heading: 'Where the work happens now',
       body: [
         "I am Founder and CEO of ERSA Technologies. The engagements continue to span government, healthcare, financial services, and commercial sectors. al-Nizam is the operating layer I built for myself, am building in the open, and intend to make available to other operators who hold serious work and cannot afford to lose continuity, boundary, or honest accounting to AI tooling that was not designed for either.",
+      ],
+    },
+    {
+      heading: 'Why it comes from me',
+      body: [
+        "al-Nizam is not an IT tool with better branding. It is an operating discipline — governance, accountability, continuity, honest accounting of cost and reasoning. Those are business concerns before they are technical ones.",
+        "Building it took the full breadth. The infrastructure lens, yes — but also the program-management rigor that holds delivery accountable, the government-contracting discipline where boundaries are not optional, the business-development judgment about what is actually worth building, and the founder's willingness to carry the risk of building something new before anyone asked for it. That is why al-Nizam looks the way it does: structural where a narrower background would have shipped a slogan.",
       ],
     },
     {

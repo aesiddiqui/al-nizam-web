@@ -1,6 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
 import { confidant } from '../data/confidant';
+
+// Derive the mobile fallback (holds / doesn't-hold) straight from the page sections —
+// single source of truth, so the visual can never drift from the prose.
+const holds = confidant.sections.find((s) => s.heading === 'What the role contributes')?.bullets ?? [];
+const notHold = confidant.sections.find((s) => s.heading === 'What the role does not do')?.bullets ?? [];
+const clean = (s: string) => s.replace(/[—–-]\s*$/, '').trim();
 ---
 
 <Layout
@@ -8,14 +15,107 @@ import { confidant } from '../data/confidant';
   description={confidant.description}
   theme="light"
 >
-  <article>
-    <h1>{confidant.pageTitle}</h1>
+  <PageHeader kicker="The Partnership" title={confidant.pageTitle} />
 
+  <article>
     <p class="lead">
       {confidant.leadParagraph}
     </p>
 
     <hr />
+
+    <figure class="fig-orbit">
+      <!-- Standard paper "tile" (matches the other figures) containing the diagram. -->
+      <div class="orbit-card">
+        <!-- Desktop: orbital diagram — the Confidant at centre (echoing the al-Nizam
+             mark), contributions orbiting it on a tilted ring (near edge brighter for
+             depth), and what it does NOT hold placed outside the boundary. -->
+        <svg class="orbit" viewBox="0 0 1120 640" role="img"
+             aria-label="A coequal partner, honestly bounded. The Confidant sits at the centre of a tilted orbit. Orbiting it — what it holds: research-based knowledge, decision partnership, structural pairing, calibrated uncertainty, and partnership with teeth. Outside its boundary — what it does not hold: cross-session memory (held by the substrate), operational risk (held by the operator), strategic authority (held by the operator), and a single fixed instance (substrate-replaceable).">
+          <!-- title + explanation (matches the article SVG illustration tiles) -->
+          <text x="48" y="52" fill="#14171C" font-family="'Spectral',Georgia,serif" font-size="27" font-weight="600" letter-spacing="-.01em">A coequal partner, honestly bounded</text>
+          <text x="48" y="80" fill="#6B7280" font-family="'Hanken Grotesk',system-ui,sans-serif" font-size="14.5">What the role holds orbits the centre; what it does not hold sits outside it.</text>
+          <!-- al-Nizam mark (canonical placement, top-right) -->
+          <g transform="translate(1032,34) scale(0.62)" opacity="0.95" aria-hidden="true">
+            <path fill="#14171C" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
+            <ellipse fill="#C49A3F" cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
+          </g>
+
+          <!-- role boundary (flattened to match the tilt) -->
+          <ellipse cx="560" cy="350" rx="315" ry="172" fill="none" stroke="rgba(20,23,28,0.15)" stroke-width="1.3" stroke-dasharray="3 7"/>
+          <!-- orbit: far/back edge dim + thin -->
+          <ellipse cx="560" cy="350" rx="235" ry="100" fill="none" stroke="#D8BE8C" stroke-width="2"/>
+          <!-- centre node -->
+          <circle cx="560" cy="350" r="58" fill="#14171C" stroke="#C49A3F" stroke-width="2.4"/>
+          <text x="560" y="343" text-anchor="middle" fill="#F6F3EC" font-family="'Hanken Grotesk',system-ui,sans-serif" font-size="18">The</text>
+          <text x="560" y="366" text-anchor="middle" fill="#F6F3EC" font-family="'Spectral',Georgia,serif" font-size="21" font-weight="600">Confidant</text>
+          <!-- orbit: near/front edge (bottom half) bright + thick → depth -->
+          <path d="M 325 350 A 235 100 0 0 0 795 350" fill="none" stroke="#C49A3F" stroke-width="3.6"/>
+
+          <!-- HELD — gold nodes on the ring (front nodes larger) -->
+          <g fill="#C49A3F">
+            <circle cx="560" cy="250" r="7.5"/>
+            <circle cx="336" cy="319" r="7.5"/>
+            <circle cx="783" cy="319" r="7.5"/>
+            <circle cx="422" cy="431" r="9.5"/>
+            <circle cx="698" cy="431" r="9.5"/>
+          </g>
+          <g fill="#14171C" font-family="'Hanken Grotesk',system-ui,sans-serif" font-size="19" font-weight="600">
+            <text x="560" y="194" text-anchor="middle">Research &amp;</text>
+            <text x="560" y="216" text-anchor="middle">knowledge</text>
+            <text x="310" y="313" text-anchor="end">Decision</text>
+            <text x="310" y="335" text-anchor="end">partnership</text>
+            <text x="810" y="313" text-anchor="start">Partnership</text>
+            <text x="810" y="335" text-anchor="start">with teeth</text>
+            <text x="396" y="455" text-anchor="end">Structural</text>
+            <text x="396" y="477" text-anchor="end">pairing</text>
+            <text x="724" y="455" text-anchor="start">Calibrated</text>
+            <text x="724" y="477" text-anchor="start">uncertainty</text>
+          </g>
+
+          <!-- HELD ELSEWHERE — outside the boundary -->
+          <g fill="none" stroke="#8A93A3" stroke-width="1.8">
+            <circle cx="838" cy="162" r="6"/>
+            <circle cx="282" cy="162" r="6"/>
+            <circle cx="282" cy="538" r="6"/>
+            <circle cx="838" cy="538" r="6"/>
+          </g>
+          <g font-family="'Hanken Grotesk',system-ui,sans-serif">
+            <text x="856" y="158" text-anchor="start" fill="#6B7280" font-size="17">Cross-session memory</text>
+            <text x="856" y="178" text-anchor="start" fill="#9AA1AC" font-size="13">held by the substrate</text>
+            <text x="264" y="158" text-anchor="end" fill="#6B7280" font-size="17">Operational risk</text>
+            <text x="264" y="178" text-anchor="end" fill="#9AA1AC" font-size="13">held by the operator</text>
+            <text x="264" y="534" text-anchor="end" fill="#6B7280" font-size="17">Strategic authority</text>
+            <text x="264" y="554" text-anchor="end" fill="#9AA1AC" font-size="13">held by the operator</text>
+            <text x="856" y="534" text-anchor="start" fill="#6B7280" font-size="17">A single fixed instance</text>
+            <text x="856" y="554" text-anchor="start" fill="#9AA1AC" font-size="13">substrate-replaceable</text>
+          </g>
+        </svg>
+
+        <!-- Mobile fallback: the radial doesn't shrink well, so below ~560px we show
+             the same content as two clean columns (derived from the same data). -->
+        <div class="orbit-fallback">
+          <div class="split-col holds">
+            <p class="split-head">The role holds</p>
+            <ul>
+              {holds.map((b) => (<li><span class="mk ok" aria-hidden="true">✓</span>{clean(b.strong)}</li>))}
+            </ul>
+          </div>
+          <div class="split-col nothold">
+            <p class="split-head">Held elsewhere</p>
+            <ul>
+              {notHold.map((b) => (<li><span class="mk no" aria-hidden="true">✗</span>{clean(b.strong)}</li>))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <figcaption>
+        <strong>Figure 1.</strong> The role is drawn the way the al-Nizam mark is — a body held on
+        an orbit by the structure around it. Each thing the Confidant does not hold is held instead
+        by the operator or the substrate.
+      </figcaption>
+    </figure>
 
     {confidant.sections.map((section) => (
       <section>
@@ -34,11 +134,39 @@ import { confidant } from '../data/confidant';
         )}
       </section>
     ))}
-
-    <hr />
-
-    <p style="font-style: italic; color: var(--color-text-muted); font-size: 0.9rem;">
-      <strong>Future-extension note:</strong> {confidant.futureExtensionNote}
-    </p>
   </article>
 </Layout>
+
+<style>
+  /* Orbital "coequal partner, honestly bounded" figure — on the standard paper
+     tile (matches .fig-table / .fig-flow / .fig-arch). Confidant at centre echoes
+     the al-Nizam mark; holds orbit it, held-elsewhere sits outside the boundary. */
+  .fig-orbit { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig-orbit .orbit-card {
+    background: #FBF8F1; border: 1px solid rgba(20,23,28,0.10); border-radius: 10px;
+    padding: 1rem 1.2rem;
+  }
+  .fig-orbit .orbit { width: 100%; height: auto; display: block; }
+  .fig-orbit .orbit-fallback { display: none; }
+  .fig-orbit figcaption { margin-top: 0.9rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+
+  /* Mobile fallback — two columns, same content as the radial. */
+  @media (max-width: 560px) {
+    .fig-orbit .orbit { display: none; }
+    .fig-orbit .orbit-card { padding: 0.9rem; }
+    .fig-orbit .orbit-fallback { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .fig-orbit .split-col {
+      background: #F3EEE1; border: 1px solid rgba(20,23,28,0.10); border-radius: 10px; padding: 0.9rem 1rem;
+    }
+    .fig-orbit .split-col.holds { border-top: 3px solid #7E5C18; }
+    .fig-orbit .split-col.nothold { border-top: 3px solid #A24B3B; }
+    .fig-orbit .split-head { margin: 0 0 0.55rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+    .fig-orbit .holds .split-head { color: #7E5C18; }
+    .fig-orbit .nothold .split-head { color: #A24B3B; }
+    .fig-orbit ul { list-style: none; margin: 0; padding: 0; }
+    .fig-orbit li { display: flex; gap: 0.5rem; align-items: baseline; padding: 0.35rem 0; font-size: 0.88rem; line-height: 1.4; }
+    .fig-orbit .mk { flex: none; font-weight: 700; }
+    .fig-orbit .mk.ok { color: #7E5C18; }
+    .fig-orbit .mk.no { color: #A24B3B; }
+  }
+</style>
