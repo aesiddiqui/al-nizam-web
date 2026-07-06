@@ -95,6 +95,7 @@ export const about = {
       heading: 'For whom',
       body: [
         "al-Nizam is for operators who hold serious work and cannot afford to lose continuity, boundary, or honest accounting to AI tooling that was not designed for either.",
+        "It is just as much for the operator working alone, or early in the work — arguably more so. The guardrails are structural, not earned. You do not need three decades of hard-won discipline already internalized; the framework holds it for you. Enterprise-grade boundary, continuity, and honest accounting come with the substrate, so taking on serious work with AI is safer, more efficient, and far less daunting from the first session — not something you grow into after the costly mistakes. The discipline that usually takes years to build is there on day one.",
         "The leadership channel makes the design visible. The Confidant role makes the partnership tangible. The framework is operating now; this site is one of its surfaces.",
       ],
     },
