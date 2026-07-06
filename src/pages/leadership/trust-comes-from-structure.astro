@@ -325,6 +325,37 @@ const heroMeta = `Introducing al-Nizam · Boundaries · Published 2026-06-10 · 
       the boundary problem. It has slogans.
     </p>
 
+    <figure class="fig-flow">
+      <div class="flow">
+        <div class="flow-step">
+          <span class="flow-tag">The test</span>
+          Take any operator + AI + tooling setup. Try to cross a boundary —
+          expose PII, mix two tenants, ship a personal identifier into a public artifact.
+        </div>
+        <div class="flow-arrow" aria-hidden="true">↓</div>
+        <div class="flow-gate">
+          Does it <strong>refuse, prompt, or audit</strong> — every time, without being asked?
+        </div>
+        <div class="flow-branches">
+          <div class="flow-out pass">
+            <span class="flow-label pass">Yes ↘</span>
+            <strong>Structural answer.</strong> Refusal-by-default; the boundary holds
+            whether or not the operator remembers it. This is what earns trust.
+          </div>
+          <div class="flow-out fail">
+            <span class="flow-label fail">No ↘</span>
+            <strong>Slogans.</strong> No structural boundary — the discipline is yours to
+            carry, and it fails the instant attention slips.
+          </div>
+        </div>
+      </div>
+      <figcaption>
+        <strong>Figure 3.</strong> The test is binary and runs on demand: a tool either
+        refuses to cross the boundary structurally, or it leaves the boundary to the operator.
+        There is no third option that merely "looks great in a demo."
+      </figcaption>
+    </figure>
+
     <p>
       This morning, my framework refused to let my own site go public with a
       procedural finding I would have shrugged off if I had been making the
@@ -505,4 +536,32 @@ const heroMeta = `Introducing al-Nizam · Boundaries · Published 2026-06-10 · 
   .fig-terminal .t-ok { color: #86BE93; font-weight: 700; }
   .fig-terminal .t-run { color: #C49A3F; font-weight: 700; }
   .fig-terminal figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+</style>
+
+<style>
+  /* Decision-flow figure — argument-carrying, on the paper reading surface
+     (matches the .fig-table card treatment). Binary test: challenge -> gate -> two outcomes. */
+  .fig-flow { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig-flow .flow { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+  .fig-flow .flow-step, .fig-flow .flow-gate, .fig-flow .flow-out {
+    width: 100%; border-radius: 10px; padding: 0.9rem 1.1rem; line-height: 1.5;
+    background: #FBF8F1; border: 1px solid rgba(20,23,28,0.10); font-size: 0.95rem;
+  }
+  .fig-flow .flow-tag, .fig-flow .flow-label {
+    display: block; font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem;
+  }
+  .fig-flow .flow-tag { color: #8A6414; }
+  .fig-flow .flow-gate {
+    background: #F3EEE1; border-color: #C49A3F; border-width: 1.5px;
+    text-align: center; font-weight: 500;
+  }
+  .fig-flow .flow-arrow { color: #C49A3F; font-size: 1.2rem; line-height: 1; }
+  .fig-flow .flow-branches { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; width: 100%; }
+  .fig-flow .flow-out.pass { border-left: 3px solid #7E5C18; }
+  .fig-flow .flow-out.fail { border-left: 3px solid #A24B3B; }
+  .fig-flow .flow-label.pass { color: #7E5C18; }
+  .fig-flow .flow-label.fail { color: #A24B3B; }
+  .fig-flow figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+  @media (max-width: 620px) { .fig-flow .flow-branches { grid-template-columns: 1fr; } }
 </style>

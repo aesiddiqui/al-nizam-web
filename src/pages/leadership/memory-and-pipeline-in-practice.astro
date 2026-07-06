@@ -258,6 +258,26 @@ const heroMeta = `Introducing al-Nizam · Amnesia · Published 2026-06-10 · Sub
       through everything underneath it.
     </p>
 
+    <figure class="fig-table">
+      <table>
+        <thead>
+          <tr><th>Failure mode</th><th>What the framework does</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>The AI tool's context window fills up</td><td>The important state was already written to files before it filled</td></tr>
+          <tr><td>The session ends</td><td>The next session reconstructs from those files</td></tr>
+          <tr><td>The vendor changes models</td><td>The new model reads the same files — nothing to relearn</td></tr>
+          <tr><td>The vendor goes dark</td><td>The files are still in the git repository on your own disk</td></tr>
+          <tr><td>The operator switches machines</td><td>The files synchronize across both</td></tr>
+        </tbody>
+      </table>
+      <figcaption>
+        <strong>Table 2.</strong> The continuity survives every interesting failure mode because
+        it lives in files the operator owns — not in a conversation, a context window, or a vendor.
+        Each row is a place the tool-owned approach loses the work; the file-owned approach does not.
+      </figcaption>
+    </figure>
+
     <h2>The falsifiable test</h2>
 
     <p>
@@ -268,6 +288,37 @@ const heroMeta = `Introducing al-Nizam · Amnesia · Published 2026-06-10 · Sub
       coherent operator-perspective, not like two strangers each doing their
       own thing.
     </p>
+
+    <figure class="fig-flow">
+      <div class="flow">
+        <div class="flow-step">
+          <span class="flow-tag">The test</span>
+          Two instances of the framework on two machines. Both resume on the same day,
+          each doing its own work.
+        </div>
+        <div class="flow-arrow" aria-hidden="true">↓</div>
+        <div class="flow-gate">
+          Do the two session briefs <strong>align</strong> into one coherent operator-perspective?
+        </div>
+        <div class="flow-branches">
+          <div class="flow-out pass">
+            <span class="flow-label pass">Yes ↘</span>
+            <strong>Continuity is real.</strong> Yesterday's convergences visible on both,
+            the same decisions surfaced, the same open items — one operator's view, rebuilt
+            from shared canon.
+          </div>
+          <div class="flow-out fail">
+            <span class="flow-label fail">No ↘</span>
+            <strong>Failing its own claim.</strong> Two strangers each doing their own thing —
+            the continuity was asked of the tool, not built as architecture.
+          </div>
+        </div>
+      </div>
+      <figcaption>
+        <strong>Figure 3.</strong> The claim exposes itself to a test the reader can demand,
+        and it runs every time the operator resumes — not a demo, a standing check.
+      </figcaption>
+    </figure>
 
     <p>
       This morning I resumed on one machine and got my session brief. The peer
@@ -434,4 +485,32 @@ const heroMeta = `Introducing al-Nizam · Amnesia · Published 2026-06-10 · Sub
   .fig-terminal .t-ok { color: #86BE93; font-weight: 700; }
   .fig-terminal .t-run { color: #C49A3F; font-weight: 700; }
   .fig-terminal figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+</style>
+
+<style>
+  /* Decision-flow figure — argument-carrying, on the paper reading surface
+     (matches the .fig-table card treatment). Binary test: challenge -> gate -> two outcomes. */
+  .fig-flow { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig-flow .flow { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+  .fig-flow .flow-step, .fig-flow .flow-gate, .fig-flow .flow-out {
+    width: 100%; border-radius: 10px; padding: 0.9rem 1.1rem; line-height: 1.5;
+    background: #FBF8F1; border: 1px solid rgba(20,23,28,0.10); font-size: 0.95rem;
+  }
+  .fig-flow .flow-tag, .fig-flow .flow-label {
+    display: block; font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem;
+  }
+  .fig-flow .flow-tag { color: #8A6414; }
+  .fig-flow .flow-gate {
+    background: #F3EEE1; border-color: #C49A3F; border-width: 1.5px;
+    text-align: center; font-weight: 500;
+  }
+  .fig-flow .flow-arrow { color: #C49A3F; font-size: 1.2rem; line-height: 1; }
+  .fig-flow .flow-branches { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; width: 100%; }
+  .fig-flow .flow-out.pass { border-left: 3px solid #7E5C18; }
+  .fig-flow .flow-out.fail { border-left: 3px solid #A24B3B; }
+  .fig-flow .flow-label.pass { color: #7E5C18; }
+  .fig-flow .flow-label.fail { color: #A24B3B; }
+  .fig-flow figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+  @media (max-width: 620px) { .fig-flow .flow-branches { grid-template-columns: 1fr; } }
 </style>
