@@ -21,3 +21,7 @@ pnpm-debug.log*
 # JetBrains / VS Code
 .idea/
 .vscode/
+
+# framework / scratch artifacts (not deployed content)
+SESSION_JOURNAL.md
+/*.png
