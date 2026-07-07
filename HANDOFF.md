@@ -1,8 +1,10 @@
 # HANDOFF — al-nizam-web
-*Imported to al-Nizam 2026-07-01*
 
-- **Built:** LIVE al-nizam.ai (Astro v5 on Cloudflare, git-integration deploy). Landing + 6 static pages + Leadership section (index, RSS, 2 articles). Homepage modernized 2026-06-30. Onboarded to al-Nizam 2026-07-01 (`.claude/` resumable core created).
-- **Stopped:** `.claude/` files committed locally only (`d7c1b6b` + import commit) — NOT pushed (push = prod deploy; needs leak-scan + go). Untracked viz work in `public/` (Steward's).
-- **Next:** Steward provides Phase-0 done-definition → reconstruct full INCEPTION.md; confirm Atlas + ERSA tenant registration; push pending `.claude/` at next deliberate deploy.
+## 2026-07-06 — ERSA (standalone)
+**Built:** Large content+design pass shipped and verified live on al-nizam.ai (many pushes, latest `5cc5992`): pages overhaul (night `PageHeader` on founder/about/confidant; founder portrait + links + dimensions + "Why it comes from me"), 3 visualizations (About operating-layer, Confidant orbital SVG, founder dimensions), tags foundation (single-source `articles.ts` + tag filtering + RSS categories), audience broadening (solo/early operators), homepage headline `scale`→`discipline of an institution`, brand-constant `--brand-*` token layer, last `#0E1220`→`#14171C` canonicalization. DEC-008 recorded (reader theme toggle model).
 
-Read `.claude/PROJECT_STATE.md` for full state, `.claude/DECISIONS.md` for decision log, `.claude/DEPLOYMENT.md` for deploy details.
+**Stopped:** Clean close. Everything code-wise committed, pushed, live. Token refactor was checkpoint-banked but NOT started. Only `.claude/` state + HANDOFF committed at close.
+
+**Next:** Token refactor (~155 hardcoded brand hex → `var(--brand-*)` / `var(--color-*)`, per-instance judgment, file-by-file, build-verify, publish). Then reader theme toggle per DEC-008. See `.claude/PROJECT_STATE.md` → "Exact Next Action".
+
+<!-- previous session blocks (import 2026-07-01) metabolized into PROJECT_STATE; older flat handoff superseded -->
