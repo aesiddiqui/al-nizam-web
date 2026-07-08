@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 336" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" role="img" aria-labelledby="ttl desc">
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#">
+      <cc:Work rdf:about="">
+        <dc:title>al-Nizam — the Chronicle</dc:title>
+        <dc:creator><cc:Agent><dc:title>al-Nizam</dc:title></cc:Agent></dc:creator>
+        <dc:rights>© 2026 al-Nizam. Attribution required; reuse without permission not licensed. Source: al-nizam.ai</dc:rights>
+        <dc:source>https://al-nizam.ai</dc:source>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title id="ttl">Green in the suite, inert in production — the same-form fixture</title>
+  <desc id="desc">A console window with two runs. In the test run, a stored path is minted in POSIX form and compared to a POSIX form, they match, and the suite reports ten of ten green. In the production run, the OS hands the stored path in Windows form, compared against the code's POSIX assumption, which never equals, so the feature is inert and falls back every time. Representative content, real failure shape, referential names and paths.</desc>
+  <rect x="2" y="2" width="896" height="332" rx="10" fill="#14171C" stroke="rgba(255,255,255,0.10)"/>
+  <path d="M2,12 a10,10 0 0 1 10,-10 h876 a10,10 0 0 1 10,10 v28 h-896 z" fill="#1C2027"/>
+  <line x1="2" y1="40" x2="898" y2="40" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="24" cy="21" r="5" fill="rgba(255,255,255,0.16)"/>
+  <circle cx="42" cy="21" r="5" fill="rgba(255,255,255,0.16)"/>
+  <circle cx="60" cy="21" r="5" fill="rgba(255,255,255,0.16)"/>
+  <text x="84" y="26" font-size="13" fill="#8A93A3">test vs. production · the path-form boundary</text>
+  <g font-size="14">
+    <text x="24" y="72"><tspan fill="#C49A3F">$</tspan><tspan fill="#D8DBE0"> run tests</tspan></text>
+    <text x="24" y="94"><tspan fill="#D8DBE0">  stored_path = "&lt;posix&gt;/proj"</tspan><tspan fill="#6B7280">      # fixture, POSIX form</tspan></text>
+    <text x="24" y="116"><tspan fill="#D8DBE0">  resolve(stored_path) == "&lt;posix&gt;/proj"</tspan><tspan fill="#6B7280">   → match</tspan></text>
+    <text x="24" y="138"><tspan fill="#86BE93">  ✓ 10 / 10 GREEN</tspan></text>
+    <text x="24" y="176"><tspan fill="#C49A3F">$</tspan><tspan fill="#D8DBE0"> run in production</tspan></text>
+    <text x="24" y="198"><tspan fill="#D8DBE0">  stored_path = "&lt;windows&gt;\proj"</tspan><tspan fill="#6B7280">   # OS hands Windows form</tspan></text>
+    <text x="24" y="220"><tspan fill="#D8DBE0">  resolve(stored_path) == "&lt;posix&gt;/proj"</tspan><tspan fill="#6B7280">   → never equal</tspan></text>
+    <text x="24" y="242"><tspan fill="#E0796B">  ✗ inert — falls back every time</tspan></text>
+  </g>
+  <text x="24" y="312" font-size="11.5" fill="#6B7280">Paraphrased — real failure shape, referential names and paths.</text>
+  <!-- attribution signature (IP credit) -->
+  <g transform="translate(800,50) scale(0.46)" opacity="0.92" aria-hidden="true">
+    <path fill="#F6F3EC" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
+    <ellipse fill="#C49A3F" cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
+  </g>
+  <text x="813" y="104" text-anchor="middle" font-size="11" fill="#8A93A3" letter-spacing=".02em">al-nizam.ai</text>
+</svg>

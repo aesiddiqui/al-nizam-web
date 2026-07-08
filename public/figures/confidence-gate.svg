@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 600" font-family="ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif" role="img" aria-labelledby="ttl desc">
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#">
+      <cc:Work rdf:about="">
+        <dc:title>al-Nizam — the Chronicle</dc:title>
+        <dc:creator><cc:Agent><dc:title>al-Nizam</dc:title></cc:Agent></dc:creator>
+        <dc:rights>© 2026 al-Nizam. Attribution required; reuse without permission not licensed. Source: al-nizam.ai</dc:rights>
+        <dc:source>https://al-nizam.ai</dc:source>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title id="ttl">The confidence gate — one claim labeled know, believe, or guess before it reaches you</title>
+  <desc id="desc">A claim the tool is about to make passes through a gate. If it is verified from source this session it is labeled Know. If it is strong inference not checked it is labeled Believe. If it has no basis it is labeled Guess and flagged verify before acting. The generic tool has no gate: all three leave in a single confident voice you cannot tell apart.</desc>
+
+  <style>
+    :root{
+      --bg:#0E1220; --node:#171C2E; --node2:#1b2035; --stroke:#3A4155;
+      --text:#F6F3EC; --muted:#8A93A3; --muted2:#6B7280;
+      --gold:#C49A3F; --goldtext:#E6C66E; --focal:#1E1B10; --dashed:#5A6172; --teal:#1F8A82;
+      --markc:#F6F3EC; --markd:#C49A3F;
+    }
+    @media (prefers-color-scheme:light){
+      :root{
+        --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1; --stroke:#D9D2C4;
+        --text:#14171C; --muted:#6B7280; --muted2:#9A9484;
+        --gold:#A6791C; --goldtext:#8A6414; --focal:#FBF3DE; --dashed:#BEB6A4; --teal:#176F68;
+        --markc:#14171C; --markd:#C49A3F;
+      }
+    }
+    :root.light{
+      --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1; --stroke:#D9D2C4;
+      --text:#14171C; --muted:#6B7280; --muted2:#9A9484;
+      --gold:#A6791C; --goldtext:#8A6414; --focal:#FBF3DE; --dashed:#BEB6A4; --teal:#176F68;
+      --markc:#14171C; --markd:#C49A3F;
+    }
+    .bg{fill:var(--bg)} .node{fill:var(--node);stroke:var(--stroke)} .node2{fill:var(--node2);stroke:var(--stroke)}
+    .focal{fill:var(--focal);stroke:var(--gold)}
+    .t{fill:var(--text)} .m{fill:var(--muted)} .m2{fill:var(--muted2)} .g{fill:var(--gold)} .gt{fill:var(--goldtext)}
+    .goldline{stroke:var(--gold)} .mutline{stroke:var(--dashed)} .line{stroke:var(--muted)}
+    .markc{fill:var(--markc)} .markd{fill:var(--markd)}
+      .el{paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+  </style>
+
+  <defs>
+    <marker id="gArr" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--gold)"/></marker>
+    <marker id="lArr" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+    <marker id="mArr" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--dashed)"/></marker>
+  </defs>
+
+  <rect class="bg" width="1060" height="600"/>
+
+  <!-- al-Nizam mark -->
+  <g transform="translate(972,34) scale(0.62)" opacity="0.95" aria-hidden="true">
+    <path class="markc" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
+    <ellipse class="markd" cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
+  </g>
+
+  <!-- title -->
+  <text x="48" y="52" font-family="Georgia,serif" font-size="27" font-weight="600" class="t" letter-spacing="-.01em">One gate, three honest labels</text>
+  <text x="48" y="80" font-size="14.5" class="m el">The tool must say which claims it verified, which it inferred, and which it is guessing.</text>
+
+  <!-- CLAIM node -->
+  <rect class="node" x="44" y="235" width="180" height="86" rx="14" stroke-width="1.5"/>
+  <text x="134" y="272" text-anchor="middle" font-size="15" font-weight="600" class="t">A claim the tool</text>
+  <text x="134" y="292" text-anchor="middle" font-size="15" font-weight="600" class="t">is about to make</text>
+
+  <!-- GATE -->
+  <rect class="node2" x="290" y="228" width="150" height="100" rx="14" stroke-width="1.6" stroke="var(--gold)"/>
+  <text x="365" y="264" text-anchor="middle" font-size="14.5" font-weight="700" class="gt">The gate</text>
+  <text x="365" y="286" text-anchor="middle" font-size="12" class="m">what is the</text>
+  <text x="365" y="302" text-anchor="middle" font-size="12" class="m">basis for this?</text>
+
+  <!-- claim -> gate -->
+  <path d="M224,278 L288,278" fill="none" class="line" stroke-width="2" marker-end="url(#lArr)"/>
+
+  <!-- three labeled outputs -->
+  <!-- KNOW (gold focal) -->
+  <rect class="focal" x="700" y="120" width="300" height="72" rx="13" stroke-width="2"/>
+  <text x="720" y="150" font-size="15" font-weight="700" class="gt">KNOW</text>
+  <text x="720" y="172" font-size="12.5" class="m">verified from source / code this session</text>
+  <path d="M440,255 C560,220 590,160 698,156" fill="none" class="goldline" stroke-width="2.4" marker-end="url(#gArr)"/>
+  <text x="556" y="196" font-size="12" class="g el">confirmed</text>
+
+  <!-- BELIEVE -->
+  <rect class="node" x="700" y="242" width="300" height="72" rx="13" stroke-width="1.5"/>
+  <text x="720" y="272" font-size="15" font-weight="700" class="t">BELIEVE</text>
+  <text x="720" y="294" font-size="12.5" class="m">strong inference — not directly checked</text>
+  <path d="M440,278 L698,278" fill="none" class="line" stroke-width="2" marker-end="url(#lArr)"/>
+  <text x="556" y="270" font-size="12" class="m2">inferred</text>
+
+  <!-- GUESS -->
+  <rect class="node" x="700" y="364" width="300" height="72" rx="13" stroke-width="1.5"/>
+  <text x="720" y="394" font-size="15" font-weight="700" class="t">GUESS</text>
+  <text x="720" y="416" font-size="12.5" class="m">no basis — flagged <tspan class="g" font-weight="600">verify before acting</tspan></text>
+  <path d="M440,301 C560,336 590,396 698,400" fill="none" class="line" stroke-width="2" marker-end="url(#lArr)"/>
+  <text x="556" y="372" font-size="12" class="m2 el">unbacked</text>
+
+  <!-- CONTRAST lane: generic tool -->
+  <line x1="48" y1="486" x2="1012" y2="486" class="mutline" stroke-width="1" stroke-dasharray="3 5"/>
+  <text x="48" y="516" font-size="14" font-weight="700" class="m">Generic tool — no gate</text>
+  <rect x="270" y="496" width="170" height="64" rx="12" fill="none" class="mutline" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="355" y="524" text-anchor="middle" font-size="12.5" class="m">know · believe · guess</text>
+  <text x="355" y="543" text-anchor="middle" font-size="11.5" class="m2">all collapsed</text>
+  <path d="M440,528 L642,528" fill="none" class="mutline" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#mArr)"/>
+  <rect x="646" y="496" width="366" height="64" rx="12" fill="none" class="mutline" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="829" y="524" text-anchor="middle" font-size="13" font-weight="600" class="m">One confident voice</text>
+  <text x="829" y="543" text-anchor="middle" font-size="11.5" class="m2">you can't tell the guess from the fact</text>
+
+  <!-- caption -->
+  <text x="48" y="588" font-size="13" class="m"><tspan font-weight="600" class="t">Figure 1. </tspan>Hallucination is not the tool being wrong — it is the tool being wrong <tspan font-style="italic">in the same confident voice it is right</tspan>. The gate doesn't make it never wrong; it makes it say which is which.</text>
+  <text x="985" y="100" text-anchor="middle" font-size="13" class="m" letter-spacing=".02em">al-nizam.ai</text>
+</svg>

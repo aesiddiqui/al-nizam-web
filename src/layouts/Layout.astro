@@ -120,7 +120,7 @@ import '@fontsource/spectral/latin-700.css';
       /* Header is a fixed dark brand band on EVERY page (theme-independent),
          full-width, wrapping a centered inner container. */
       header.site-header {
-        background: #14171C;
+        background: var(--brand-night);
         border-bottom: 1px solid rgba(255, 255, 255, 0.10);
         /* Sticky — stays pinned at the top through the scroll. */
         position: sticky;
@@ -173,7 +173,7 @@ import '@fontsource/spectral/latin-700.css';
         font-weight: 600;
         letter-spacing: 0.01em;
         text-decoration: none;
-        color: #F6F3EC;
+        color: var(--brand-paper);
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
@@ -185,7 +185,7 @@ import '@fontsource/spectral/latin-700.css';
       header.site-header a.logo .logo-mark {
         width: 1.6rem;
         height: 1.6rem;
-        color: #F6F3EC;
+        color: var(--brand-paper);
         flex: none;
       }
 
@@ -195,13 +195,13 @@ import '@fontsource/spectral/latin-700.css';
 
       header.site-header nav a {
         margin-right: 1.5rem;
-        color: #8A93A3;
+        color: var(--brand-muted);
         text-decoration: none;
         font-size: 0.95rem;
       }
 
       header.site-header nav a:hover {
-        color: #C49A3F;
+        color: var(--brand-gold);
       }
 
       h1, h2, h3, h4, h5, h6 {
@@ -319,9 +319,9 @@ import '@fontsource/spectral/latin-700.css';
 
       /* Footer mirrors the header as a fixed dark brand band on every page. */
       footer.site-footer {
-        background: #14171C;
+        background: var(--brand-night);
         border-top: 1px solid rgba(255, 255, 255, 0.10);
-        color: #8A93A3;
+        color: var(--brand-muted);
         font-size: 0.9rem;
         text-align: center;
         margin-top: 4rem;
@@ -342,13 +342,13 @@ import '@fontsource/spectral/latin-700.css';
       }
 
       footer.site-footer .footer-nav a {
-        color: #8A93A3;
+        color: var(--brand-muted);
         text-decoration: none;
         font-size: 0.88rem;
       }
 
       footer.site-footer .footer-nav a:hover {
-        color: #C49A3F;
+        color: var(--brand-gold);
       }
 
       footer.site-footer .footer-tagline {
@@ -358,11 +358,11 @@ import '@fontsource/spectral/latin-700.css';
       footer.site-footer .footer-copy {
         margin: 0;
         font-size: 0.82rem;
-        color: #6B7280;
+        color: var(--brand-muted-paper);
       }
 
       footer.site-footer a {
-        color: #8A93A3;
+        color: var(--brand-muted);
       }
 
       .lead {

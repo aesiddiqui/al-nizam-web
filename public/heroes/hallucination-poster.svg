@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 660" role="img" aria-label="One beam splitting into three labeled paths — atmosphere for the article on labeling a claim know, believe, or guess.">
+  <defs>
+    <radialGradient id="glow" cx="30%" cy="50%" r="70%">
+      <stop offset="0" stop-color="#20262E"/>
+      <stop offset="1" stop-color="#14171C"/>
+    </radialGradient>
+  </defs>
+  <rect width="1060" height="660" fill="url(#glow)"/>
+
+  <!-- the gate — a single claim entering -->
+  <circle cx="250" cy="330" r="9" fill="#C49A3F"/>
+  <path d="M250,330 L360,330" stroke="#C49A3F" stroke-width="2.4" opacity="0.9"/>
+
+  <!-- three paths splitting out, one gold (verified), two muted -->
+  <path d="M360,330 C520,300 620,190 830,178" fill="none" stroke="#C49A3F" stroke-width="2.2" opacity="0.85"/>
+  <path d="M360,330 L830,330" fill="none" stroke="#8A93A3" stroke-width="1.6" opacity="0.6"/>
+  <path d="M360,330 C520,360 620,470 830,482" fill="none" stroke="#8A93A3" stroke-width="1.6" opacity="0.5" stroke-dasharray="6 6"/>
+
+  <!-- terminal nodes -->
+  <circle cx="838" cy="178" r="6" fill="#E6C66E"/>
+  <circle cx="838" cy="330" r="5" fill="#8A93A3" opacity="0.8"/>
+  <circle cx="838" cy="482" r="5" fill="#8A93A3" opacity="0.55"/>
+</svg>

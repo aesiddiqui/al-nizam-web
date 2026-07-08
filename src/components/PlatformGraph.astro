@@ -46,20 +46,20 @@ const { hero = false } = Astro.props;
   .pg-lede { color: var(--color-text-muted); max-width: var(--max-width-prose); }
   .pg-stats { display: flex; flex-wrap: wrap; gap: 1.6rem 2.2rem; margin: 1.6rem 0 1.2rem; }
   .pg-stat { display: flex; flex-direction: column; }
-  .pg-num { font-size: 1.8rem; font-weight: 700; color: #C49A3F; line-height: 1.1; }
+  .pg-num { font-size: 1.8rem; font-weight: 700; color: var(--brand-gold); line-height: 1.1; }
   .pg-lab { font-size: 0.8rem; color: var(--color-text-muted); letter-spacing: 0.02em; }
   /* No frame — the transparent 3D canvas blends straight into the page. */
   .pg-stage { position: relative; width: 100%; height: 580px; margin-top: 0.5rem; }
   #pg-cy { width: 100%; height: 100%; }
   .pg-readout { min-height: 4rem; margin-top: 1rem; max-width: var(--max-width-prose); }
-  .pg-readout h3 { font-family: var(--font-display); font-size: 1.2rem; margin: 0 0 0.4rem; color: #F6F3EC; }
-  .pg-readout .pg-fam { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.09em; color: #C49A3F; margin: 0 0 0.5rem; }
-  .pg-readout h3 .pg-en { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 0.9rem; color: #8A93A3; }
+  .pg-readout h3 { font-family: var(--font-display); font-size: 1.2rem; margin: 0 0 0.4rem; color: var(--brand-paper); }
+  .pg-readout .pg-fam { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--brand-gold); margin: 0 0 0.5rem; }
+  .pg-readout h3 .pg-en { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 0.9rem; color: var(--brand-muted); }
   .pg-readout p { font-size: 0.95rem; color: #C7CCD6; margin: 0; line-height: 1.6; }
   .pg-readout .pg-more { margin-top: 0.7rem; }
-  .pg-readout .pg-more a { font-size: 0.9rem; color: #C49A3F; text-decoration: none; border-bottom: 1px solid rgba(201,162,75,0.4); }
-  .pg-readout .pg-more a:hover { color: #E6C66E; border-bottom-color: #E6C66E; }
-  .pg-hint { color: #8A93A3 !important; font-size: 0.88rem !important; }
+  .pg-readout .pg-more a { font-size: 0.9rem; color: var(--brand-gold); text-decoration: none; border-bottom: 1px solid rgba(201,162,75,0.4); }
+  .pg-readout .pg-more a:hover { color: var(--brand-star); border-bottom-color: var(--brand-star); }
+  .pg-hint { color: var(--brand-muted) !important; font-size: 0.88rem !important; }
   .pg-arc { margin-top: 1.6rem; color: var(--color-text-muted); max-width: var(--max-width-prose); }
   @media (max-width: 760px) { .pg-stage { height: 460px; } }
 
@@ -116,6 +116,20 @@ const { hero = false } = Astro.props;
   import * as THREE from 'three';
   import { graph, familyLabel } from '../data/platform-graph.js';
 
+  // Brand palette for the WebGL layer. Canvas / Three.js cannot read CSS custom
+  // properties, so the brand colors the graph draws are centralized here as JS
+  // constants — mirroring Layout's --brand-* tokens, so a brand-color change for
+  // the graph is a single edit in this block (the CSS-var equivalent for canvas).
+  const BRAND = {
+    night: '#14171C', // --brand-night
+    paper: '#F6F3EC', // --brand-paper
+    gold: '#C49A3F',  // --brand-gold
+    star: '#E6C66E',  // --brand-star
+    muted: '#8A93A3', // --brand-muted
+    label: '#D6DAE3', // graph-only: secondary node label (no brand token)
+    link: 'rgba(155,175,210,0.95)', // graph-only: neutral (non-composition) link
+  };
+
   // Sphere radius matches 3d-force-graph's own formula: cbrt(nodeVal) * nodeRelSize.
   // Computed once here so the matte sphere and the label offset always agree.
   const NODE_REL_SIZE = 4;
@@ -167,7 +181,7 @@ const { hero = false } = Astro.props;
           const primaryH = n.kind === 'core' ? 7 : n.kind === 'family' ? 4.2 : 3.2;
           const gap = 3;
           const s = new SpriteText(n.label);
-          s.color = n.kind === 'core' ? '#F6F3EC' : '#D6DAE3';
+          s.color = n.kind === 'core' ? BRAND.paper : BRAND.label;
           s.fontFace = 'Spectral, Georgia, serif';
           s.textHeight = primaryH;
           s.fontWeight = n.kind === 'core' ? 'bold' : 'normal';
@@ -182,7 +196,7 @@ const { hero = false } = Astro.props;
           if (n.en) {
             const secH = primaryH * 0.62;
             const sub = new SpriteText(n.en);
-            sub.color = '#8A93A3';
+            sub.color = BRAND.muted;
             sub.fontFace = 'Spectral, Georgia, serif';
             sub.textHeight = secH;
             sub.position.set(0, primaryY - (primaryH / 2 + secH / 2 + 1.2), 0);
@@ -191,12 +205,12 @@ const { hero = false } = Astro.props;
         }
         return group;
       })
-      .linkColor((l) => (l.kind === 'composition' ? '#E6C66E' : 'rgba(155,175,210,0.95)'))
+      .linkColor((l) => (l.kind === 'composition' ? BRAND.star : BRAND.link))
       .linkOpacity(0.85)
       .linkWidth((l) => (l.kind === 'composition' ? 1.1 : 0.55))
       .linkDirectionalParticles((l) => (l.kind === 'composition' ? 2 : 0))
       .linkDirectionalParticleWidth(1.4)
-      .linkDirectionalParticleColor(() => '#E6C66E')
+      .linkDirectionalParticleColor(() => BRAND.star)
       .width(el.clientWidth)
       .height(el.clientHeight);
 
@@ -247,7 +261,7 @@ const { hero = false } = Astro.props;
       // Opaque night background (matches the site hero band → no alpha compositing);
       // fixed 16:9 DRAWING BUFFER so the shipped <video> covers any viewport via
       // object-fit. The buffer (1920×1080) is what MediaRecorder captures.
-      Graph.backgroundColor('#14171C').width(REC_W).height(REC_H);
+      Graph.backgroundColor(BRAND.night).width(REC_W).height(REC_H);
       // Preview only: pin the stage to the full window and scale the canvas to fit
       // (object-fit:contain letterboxes the whole 16:9 frame so it's judgeable) —
       // this is DISPLAY size, independent of the 1920×1080 capture buffer.

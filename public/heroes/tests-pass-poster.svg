@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 660" role="img" aria-label="A form boundary the test never crosses but production always does — atmosphere for the article on why green tests can be inert.">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="46%" r="60%">
+      <stop offset="0" stop-color="#20262E"/>
+      <stop offset="1" stop-color="#14171C"/>
+    </radialGradient>
+  </defs>
+  <rect width="1060" height="660" fill="url(#glow)"/>
+
+  <!-- the form boundary — a gold vertical line down the middle -->
+  <line x1="530" y1="120" x2="530" y2="540" stroke="#C49A3F" stroke-width="2" opacity="0.8" stroke-dasharray="7 7"/>
+
+  <!-- left lane (the test) — stays on one side, green tick -->
+  <g stroke="#5FBAB1" stroke-width="1.6" fill="none" opacity="0.8">
+    <circle cx="250" cy="250" r="30"/>
+    <path d="M236,250 l10,10 l20,-22"/>
+  </g>
+  <path d="M280,250 L470,250" stroke="#8A93A3" stroke-width="1.4" opacity="0.5"/>
+
+  <!-- right lane (reality) — crosses the boundary, red x -->
+  <path d="M590,410 L510,410" stroke="#B4544B" stroke-width="1.6" opacity="0.75" stroke-dasharray="5 5"/>
+  <g stroke="#B4544B" stroke-width="1.8" opacity="0.85">
+    <circle cx="810" cy="410" r="30" fill="none"/>
+    <path d="M797,397 l26,26 M823,397 l-26,26"/>
+  </g>
+</svg>

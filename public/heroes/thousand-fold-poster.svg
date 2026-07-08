@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 660" role="img" aria-label="Two faint trajectories on a night field — a grey curve that rises then flattens, and a gold curve that starts lower then compounds upward past it. Atmosphere for the article on capability that compounds instead of plateauing.">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="46%" r="60%">
+      <stop offset="0" stop-color="#20262E"/>
+      <stop offset="1" stop-color="#14171C"/>
+    </radialGradient>
+  </defs>
+
+  <!-- night surface (always dark — heroes never invert) -->
+  <rect width="1060" height="660" fill="url(#glow)"/>
+
+  <!-- faint baseline -->
+  <line x1="150" y1="520" x2="910" y2="520" stroke="#3A4150" stroke-width="1.2" opacity="0.7"/>
+
+  <!-- grey trajectory — jumps early, then plateaus (snapshot) -->
+  <path d="M150,470 C300,300 380,268 470,262 C620,252 760,250 910,250"
+        fill="none" stroke="#8A93A3" stroke-width="2.2" opacity="0.55"/>
+  <circle cx="910" cy="250" r="4.5" fill="#8A93A3" opacity="0.6"/>
+
+  <!-- gold trajectory — starts lower, then compounds upward past the grey (trajectory) -->
+  <path d="M150,500 C330,470 430,430 560,350 C700,264 800,168 910,96"
+        fill="none" stroke="#C49A3F" stroke-width="2.8" opacity="0.9"/>
+
+  <!-- gold focal node — where the compounding curve overtakes -->
+  <circle cx="910" cy="96" r="7.5" fill="#C49A3F"/>
+  <circle cx="910" cy="96" r="15" fill="none" stroke="#C49A3F" stroke-width="1.4" opacity="0.55"/>
+
+  <!-- a scattering of faint stars, keeping the celestial family -->
+  <g fill="#8A93A3" opacity="0.5">
+    <circle cx="250" cy="150" r="2"/>
+    <circle cx="700" cy="120" r="2.5"/>
+    <circle cx="820" cy="430" r="2"/>
+    <circle cx="360" cy="470" r="2"/>
+  </g>
+</svg>

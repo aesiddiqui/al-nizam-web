@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 660" role="img" aria-label="A single orbit with one gold node — atmosphere for the article on self-correction that writes itself to a file.">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="46%" r="55%">
+      <stop offset="0" stop-color="#20262E"/>
+      <stop offset="1" stop-color="#14171C"/>
+    </radialGradient>
+  </defs>
+
+  <!-- night surface (always dark — heroes never invert) -->
+  <rect width="1060" height="660" fill="url(#glow)"/>
+
+  <!-- one orbit — the self-correction cycle, implied -->
+  <ellipse cx="530" cy="330" rx="360" ry="196" fill="none" stroke="#3A4150" stroke-width="1.4" opacity="0.85" stroke-dasharray="2 8"/>
+
+  <!-- muted beads on the belt (the cycle stages) -->
+  <g fill="#8A93A3" opacity="0.7">
+    <circle cx="530" cy="134" r="4.5"/>
+    <circle cx="872" cy="268" r="4.5"/>
+    <circle cx="742" cy="520" r="4.5"/>
+    <circle cx="188" cy="268" r="4.5"/>
+  </g>
+
+  <!-- the gold node — "codify to a file", the step that persists -->
+  <circle cx="318" cy="520" r="7.5" fill="#C49A3F"/>
+  <circle cx="318" cy="520" r="15" fill="none" stroke="#C49A3F" stroke-width="1.4" opacity="0.55"/>
+
+  <!-- a faint gold arc leaving the node (the correction carried forward) -->
+  <path d="M305,506 A360,196 0 0 0 176,286" fill="none" stroke="#C49A3F" stroke-width="2" opacity="0.8"/>
+</svg>
