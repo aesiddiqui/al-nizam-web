@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 680" font-family="ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif" role="img" aria-labelledby="ttl desc">
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#">
+      <cc:Work rdf:about="">
+        <dc:title>al-Nizam — the Chronicle</dc:title>
+        <dc:creator><cc:Agent><dc:title>al-Nizam</dc:title></cc:Agent></dc:creator>
+        <dc:rights>© 2026 al-Nizam. Attribution required; reuse without permission not licensed. Source: al-nizam.ai</dc:rights>
+        <dc:source>https://al-nizam.ai</dc:source>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title id="ttl">Self-correction as a closed cycle that codifies the lesson to a file</title>
+  <desc id="desc">A single orbital cycle with five stages: drift, operator catches it, acknowledge and name the failure mode, codify the lesson to a file, and the next session inherits the discipline already in place. The gold focal arc is codify to next-session — the step that makes the correction persist. A muted path branches off the orbit at acknowledge, showing the generic case where no file is written and the lesson evaporates at session close.</desc>
+
+  <style>
+    :root{
+      --bg:#0E1220; --node:#171C2E; --node2:#1b2035; --stroke:#3A4155;
+      --text:#F6F3EC; --muted:#8A93A3; --muted2:#6B7280;
+      --gold:#C49A3F; --goldtext:#E6C66E; --focal:#1E1B10; --dashed:#5A6172; --orbit:#2C3346;
+      --markc:#F6F3EC; --markd:#C49A3F;
+    }
+    @media (prefers-color-scheme:light){
+      :root{
+        --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1; --stroke:#D9D2C4;
+        --text:#14171C; --muted:#6B7280; --muted2:#9A9484;
+        --gold:#A6791C; --goldtext:#8A6414; --focal:#FBF3DE; --dashed:#BEB6A4; --orbit:#E3DCCC;
+        --markc:#14171C; --markd:#C49A3F;
+      }
+    }
+    :root.light{
+      --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1; --stroke:#D9D2C4;
+      --text:#14171C; --muted:#6B7280; --muted2:#9A9484;
+      --gold:#A6791C; --goldtext:#8A6414; --focal:#FBF3DE; --dashed:#BEB6A4; --orbit:#E3DCCC;
+      --markc:#14171C; --markd:#C49A3F;
+    }
+    .bg{fill:var(--bg)} .node{fill:var(--node);stroke:var(--stroke)} .node2{fill:var(--node2);stroke:var(--stroke)}
+    .focal{fill:var(--focal);stroke:var(--gold)}
+    .t{fill:var(--text)} .m{fill:var(--muted)} .m2{fill:var(--muted2)} .g{fill:var(--gold)} .gt{fill:var(--goldtext)}
+    .goldline{stroke:var(--gold)} .mutline{stroke:var(--dashed)} .cycline{stroke:var(--muted)} .orbitline{stroke:var(--orbit)}
+    .markc{fill:var(--markc)} .markd{fill:var(--markd)}
+      .el{paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+  </style>
+
+  <defs>
+    <marker id="goldArrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--gold)"/>
+    </marker>
+    <marker id="cycArrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+    </marker>
+    <marker id="mutArrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--dashed)"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1060" height="680"/>
+
+  <!-- al-Nizam mark (subject IS al-Nizam) -->
+  <g transform="translate(972,34) scale(0.62)" opacity="0.95" aria-hidden="true">
+    <path class="markc" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
+    <ellipse class="markd" cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
+  </g>
+
+  <!-- title -->
+  <text x="48" y="52" font-family="Georgia,serif" font-size="27" font-weight="600" class="t" letter-spacing="-.01em">Self-correction is a cycle, and it writes to disk</text>
+  <text x="48" y="80" font-size="14.5" class="m">A caught mistake becomes a file the next session reads — so the same drift does not return.</text>
+
+  <!-- ONE ORBIT: ellipse cx530 cy350 rx380 ry210. Nodes are beads on it; every
+       connector is a true segment of this ellipse, so the whole reads as one cycle. -->
+  <ellipse cx="530" cy="350" rx="380" ry="210" fill="none" class="orbitline" stroke-width="1.4" stroke-dasharray="2 7"/>
+
+  <!-- cycle arcs (muted), clockwise: N1 top -> N2 -> N3 -> N4 -> N5 -> N1 -->
+  <!-- N1 Drift (530,140) -> N2 Operator catches (891,285) -->
+  <path d="M622,146 A380,210 0 0 1 852,239" fill="none" class="cycline" stroke-width="2" marker-end="url(#cycArrow)"/>
+  <!-- N2 -> N3 Acknowledge (753,520) -->
+  <path d="M909,335 A380,210 0 0 1 821,485" fill="none" class="cycline" stroke-width="2" marker-end="url(#cycArrow)"/>
+  <!-- N3 -> N4 Codify (307,520) -->
+  <path d="M672,545 A380,210 0 0 1 388,545" fill="none" class="cycline" stroke-width="2" marker-end="url(#cycArrow)"/>
+  <!-- N4 Codify -> N5 Next session (169,285) : GOLD FOCAL — the arc that makes it persist -->
+  <path d="M239,485 A380,210 0 0 1 151,335" fill="none" class="goldline" stroke-width="2.6" marker-end="url(#goldArrow)"/>
+  <text x="126" y="404" text-anchor="middle" font-size="12.5" font-weight="600" class="g el">persists</text>
+  <!-- N5 -> N1 : back to the top; the loop closes -->
+  <path d="M208,239 A380,210 0 0 1 438,146" fill="none" class="cycline" stroke-width="2" marker-end="url(#cycArrow)"/>
+  <text x="300" y="150" text-anchor="middle" font-size="12" class="m2 el">less of that drift next time</text>
+
+  <!-- OFF-ORBIT branch at N3: generic case, no file written, lesson evaporates -->
+  <path d="M818,548 C878,588 928,600 968,600" fill="none" class="mutline" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#mutArrow)"/>
+  <text x="862" y="576" font-size="12" class="m2 el">no file</text>
+  <rect x="852" y="586" width="176" height="66" rx="12" fill="none" class="mutline" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="940" y="612" text-anchor="middle" font-size="13" font-weight="600" class="m">Generic tool</text>
+  <text x="940" y="632" text-anchor="middle" font-size="11.5" class="m2">apology gone at /close</text>
+  <g transform="translate(1006,584)" aria-hidden="true">
+    <circle r="12" fill="var(--bg)" class="mutline" stroke-width="1.4"/>
+    <path d="M-5,-5 L5,5 M5,-5 L-5,5" class="mutline" stroke-width="1.5"/>
+  </g>
+
+  <!-- NODES (beads on the orbit) -->
+  <!-- N1 Drift -->
+  <rect class="node" x="446" y="110" width="168" height="60" rx="13" stroke-width="1.5"/>
+  <text x="530" y="136" text-anchor="middle" font-size="15" font-weight="600" class="t">Drift</text>
+  <text x="530" y="155" text-anchor="middle" font-size="12" class="m">a lapse in discipline</text>
+
+  <!-- N2 Operator catches it -->
+  <rect class="node" x="807" y="255" width="168" height="60" rx="13" stroke-width="1.5"/>
+  <text x="891" y="281" text-anchor="middle" font-size="15" font-weight="600" class="t">Operator catches it</text>
+  <text x="891" y="300" text-anchor="middle" font-size="12" class="m">partnership with teeth</text>
+
+  <!-- N3 Acknowledge -->
+  <rect class="node" x="669" y="490" width="168" height="60" rx="13" stroke-width="1.5"/>
+  <text x="753" y="516" text-anchor="middle" font-size="15" font-weight="600" class="t">Acknowledge</text>
+  <text x="753" y="535" text-anchor="middle" font-size="12" class="m">name the failure mode</text>
+
+  <!-- N4 Codify — GOLD FOCAL -->
+  <rect class="focal" x="223" y="490" width="168" height="60" rx="13" stroke-width="2"/>
+  <text x="307" y="516" text-anchor="middle" font-size="15" font-weight="700" class="gt">Codify to a file</text>
+  <text x="307" y="535" text-anchor="middle" font-size="12" class="m">the lesson becomes state</text>
+
+  <!-- N5 Next session inherits -->
+  <rect class="node" x="85" y="255" width="168" height="60" rx="13" stroke-width="1.5"/>
+  <text x="169" y="281" text-anchor="middle" font-size="15" font-weight="600" class="t">Next session inherits</text>
+  <text x="169" y="300" text-anchor="middle" font-size="12" class="m">the discipline is already on</text>
+
+  <!-- center label -->
+  <text x="530" y="344" text-anchor="middle" font-size="13" font-weight="700" class="g" letter-spacing=".06em">THE SELF-CORRECTION CYCLE</text>
+  <text x="530" y="368" text-anchor="middle" font-size="12.5" class="m">the framework working correctly looks like this —</text>
+  <text x="530" y="386" text-anchor="middle" font-size="12.5" class="m">not like a system that never drifts</text>
+
+  <!-- caption -->
+  <text x="48" y="666" font-size="13" class="m"><tspan font-weight="600" class="t">Figure 1. </tspan>Both paths acknowledge the mistake. Only the gold one writes it down — so only the gold one still knows it next session. Correction that lives in a file is a substrate; correction that lives in a reply is a personality.</text>
+  <text x="985" y="100" text-anchor="middle" font-size="13" class="m" letter-spacing=".02em">al-nizam.ai</text>
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" role="img" aria-labelledby="ttl desc">
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#">
+      <cc:Work rdf:about="">
+        <dc:title>al-Nizam — the Chronicle</dc:title>
+        <dc:creator><cc:Agent><dc:title>al-Nizam</dc:title></cc:Agent></dc:creator>
+        <dc:rights>© 2026 al-Nizam. Attribution required; reuse without permission not licensed. Source: al-nizam.ai</dc:rights>
+        <dc:source>https://al-nizam.ai</dc:source>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title id="ttl">Two capability trajectories over time, same tool underneath</title>
+  <desc id="desc">Two curves share the same AI tool. The grey curve — raw AI use — rises fast in the first weeks then flattens into a plateau. The gold curve — a disciplined operating framework — starts lower, then accelerates, overtakes the grey curve near the mid-point, and opens a widening gap. Capability compounds instead of plateauing.</desc>
+
+  <style>
+    :root{
+      --bg:#14171C; --text:#F6F3EC; --muted:#AEB4BD; --axis:#7B828C;
+      --stroke:#333A44; --gold:#C49A3F; --goldtext:#E6C66E; --grey:#6B7280;
+      --markc:#F6F3EC; --markd:#C49A3F;
+    }
+    @media (prefers-color-scheme:light){
+      :root{ --bg:#F6F3EC; --text:#14171C; --muted:#5E6772; --axis:#8A8474;
+             --stroke:#D9D2C4; --gold:#A6791C; --goldtext:#8A6414; --grey:#9A9484;
+             --markc:#14171C; --markd:#C49A3F; }
+    }
+    :root.light{ --bg:#F6F3EC; --text:#14171C; --muted:#5E6772; --axis:#8A8474;
+                 --stroke:#D9D2C4; --gold:#A6791C; --goldtext:#8A6414; --grey:#9A9484;
+                 --markc:#14171C; --markd:#C49A3F; }
+    .ttl{font-family:Spectral,Georgia,serif;fill:var(--text)}
+    .sub{font-family:'Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;fill:var(--muted)}
+    .ax {font-family:'Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;fill:var(--axis)}
+    .g  {font-family:'Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;fill:var(--gold)}
+    .gr {font-family:'Hanken Grotesk',ui-sans-serif,system-ui,sans-serif;fill:var(--grey)}
+    .goldline{stroke:var(--gold)} .greyline{stroke:var(--grey)} .axisline{stroke:var(--stroke)}
+    .markc{fill:var(--markc)} .markd{fill:var(--markd)}
+  </style>
+
+  <defs>
+    <linearGradient id="goldFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="var(--gold)" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="var(--gold)" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="470" rx="12" fill="var(--bg)"/>
+
+  <!-- al-Nizam mark (subject IS al-Nizam) -->
+  <g transform="translate(858,26) scale(0.5)" opacity="0.95" aria-hidden="true">
+    <path class="markc" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
+    <ellipse class="markd" cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
+  </g>
+
+  <!-- title band -->
+  <text class="ttl" x="40" y="46" font-size="23" font-weight="500">Two trajectories, same tool underneath</text>
+  <text class="sub" x="40" y="70" font-size="13.5">A snapshot boost that plateaus vs. discipline that compounds</text>
+
+  <!-- axes -->
+  <line class="axisline" x1="96" y1="104" x2="96" y2="402" stroke-width="1.25"/>
+  <line class="axisline" x1="96" y1="402" x2="776" y2="402" stroke-width="1.25"/>
+  <text class="ax" x="96" y="96" font-size="11.5">more capability &#8593;</text>
+  <text class="ax" x="776" y="424" font-size="11.5" text-anchor="end">time using AI &#8594;</text>
+
+  <!-- focal area under the gold curve -->
+  <path d="M 96,394 C 210,384 320,362 420,305 C 520,250 620,168 772,78 L 772,402 L 96,402 Z" fill="url(#goldFill)"/>
+
+  <!-- grey curve: raw AI use — fast rise, then plateau -->
+  <path class="greyline" d="M 96,372 C 168,300 236,214 330,198 C 470,176 630,166 772,160" fill="none" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- gold curve: framework — lower start, then compounds and overtakes -->
+  <path class="goldline" d="M 96,394 C 210,384 320,362 420,305 C 520,250 620,168 772,78" fill="none" stroke-width="3.75" stroke-linecap="round"/>
+
+  <!-- widening-gap indicator, in the open space between the two curve ends -->
+  <g class="goldline" stroke-width="1.25">
+    <line x1="738" y1="96" x2="738" y2="150"/>
+    <path d="M 738,96 l -4,7 M 738,96 l 4,7" fill="none"/>
+    <path d="M 738,150 l -4,-7 M 738,150 l 4,-7" fill="none"/>
+  </g>
+
+  <!-- direct end-of-line labels, in the empty right margin (x > 782) -->
+  <text class="g"  x="786" y="76"  font-size="13.5" font-weight="600">Framework</text>
+  <text class="g"  x="786" y="93"  font-size="11.5">compounds &#8593;</text>
+  <text class="gr" x="786" y="157" font-size="13.5" font-weight="600">Raw AI use</text>
+  <text class="gr" x="786" y="174" font-size="11.5">plateaus</text>
+  <text x="838" y="452" text-anchor="middle" font-size="12" class="m" letter-spacing=".02em">al-nizam.ai</text>
+</svg>

@@ -17,6 +17,38 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: 'thousand-fold-acceleration',
+    title: 'Your AI got faster. Your work with it plateaued anyway.',
+    description: "Why raw AI use flattens after the first few months — and what changes when the discipline compounds instead of you. Snapshot capability plateaus; trajectory compounds.",
+    date: '2026-07-07',
+    series: 'Introducing al-Nizam — Trajectory',
+    tags: ['Trajectory', 'Compounding', 'Memory', 'Continuity'],
+  },
+  {
+    slug: 'self-correction-is-a-substrate',
+    title: 'Your AI apologized. Then it made the same mistake tomorrow.',
+    description: "Why a sincere-sounding correction that nothing carries forward isn't self-correction at all — and what changes when the fix becomes a file.",
+    date: '2026-07-07',
+    series: 'Introducing al-Nizam — Trust & Correctness',
+    tags: ['Trust', 'Correctness', 'Memory', 'Architecture'],
+  },
+  {
+    slug: 'hallucination-multi-layer-answer',
+    title: "Your AI didn't lie to you. It just can't tell you when it's guessing.",
+    description: "Hallucination isn't the model being wrong — it's the model being wrong in the same confident voice it's right. The fix is a protocol, not a smarter model.",
+    date: '2026-07-07',
+    series: 'Introducing al-Nizam — Trust & Correctness',
+    tags: ['Trust', 'Correctness', 'Honesty'],
+  },
+  {
+    slug: 'tests-pass-not-works',
+    title: 'All ten tests passed. The feature never ran.',
+    description: "A test that builds its own fixtures can encode the exact wrong assumption as the code it checks. Green is not verified — it's self-consistent.",
+    date: '2026-07-07',
+    series: 'Introducing al-Nizam — Trust & Correctness',
+    tags: ['Correctness', 'Testing', 'Verification'],
+  },
+  {
     slug: 'trust-comes-from-structure',
     title: "I can't let AI near my real, sensitive work",
     description: 'Why al-Nizam can be trusted with PII, HIPAA, PCI, and the work that makes the difference between safe and exposed.',

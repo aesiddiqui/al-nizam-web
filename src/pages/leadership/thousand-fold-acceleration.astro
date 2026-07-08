@@ -1,0 +1,291 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArticleHero from '../../components/ArticleHero.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+
+const heroMeta = `Introducing al-Nizam · Trajectory · Drafted 2026-07-07`;
+---
+
+<Layout
+  title="Your AI got faster. Your work with it plateaued anyway. — al-Nizam"
+  description="Why raw AI use flattens after the first few months — and what changes when the discipline compounds instead of you. Part of the introducing-al-nizam series."
+  theme="light"
+>
+  <ArticleHero
+    kicker="Trajectory, not snapshot"
+    title="Your AI got faster. Your work with it plateaued anyway."
+    meta={heroMeta}
+    graph={{ nodes: [], links: [] }}
+    poster="/heroes/thousand-fold-poster.svg"
+  />
+
+  <article>
+    <p class="lead">
+      The tool keeps getting better. Your results with it stopped getting better months ago.
+      That gap is not about the model — it is about what accumulates between your sessions,
+      and whether anything does.
+    </p>
+
+    <hr />
+
+    <h2>The plateau you have already hit</h2>
+
+    <p>
+      It is month six. The model is objectively better than the one you started with — faster,
+      longer context, a new version every few weeks. And yet the work you get <em>out</em> of it
+      looks about the same as it did in month two.
+    </p>
+
+    <p>
+      You have lived this. The first weeks with a capable AI tool are a genuine jump: things that
+      took an afternoon take twenty minutes. Then the curve bends. You are still productive, but you
+      are not <em>more</em> productive than last month. You upgrade to the newest model expecting the
+      old jump and get a nudge. You start to suspect the ceiling is just where AI tops out.
+    </p>
+
+    <p>
+      It is not the ceiling. It is that nothing you learned in month two is still working for you in
+      month six. Every session started from roughly the same place — a smart tool with no memory of
+      the last time you were smart together.
+    </p>
+
+    <h2>Why it flattens — and why fighting it harder doesn't help</h2>
+
+    <p>
+      The plateau has an honest cause, and most of the ways people fight it make the tool sharper
+      without making the <em>trajectory</em> steeper.
+    </p>
+
+    <p>
+      You write better prompts. That raises the floor of any single session — and resets to zero the
+      next one. You paste in more context. That reconstructs the last conversation, at the cost of
+      re-reading it every time. You wait for the next model. That is real, but it is <em>someone
+      else's</em> compounding, not yours — you are renting their progress on a monthly cycle.
+    </p>
+
+    <p>
+      Notice what none of these do: <strong>carry anything forward.</strong> The mistake you caught
+      on Tuesday, you catch again on Friday. The convention you settled on last month, you re-litigate
+      this month because the tool never knew it was settled. The clever decomposition that finally
+      cracked a hard problem evaporates when the tab closes. You are not building a working
+      relationship with a system that gets better at <em>your</em> work — you are re-onboarding a
+      brilliant stranger every morning.
+    </p>
+
+    <p>
+      That is the distinction the whole piece turns on. <em>Snapshot</em> capability is how good the
+      tool is on a given day. <em>Trajectory</em> is whether your capability with it rises over
+      months. The industry sells snapshot — a better model, this week — because snapshot is what a
+      vendor can ship. Trajectory is what you have to build, and almost nobody tells you that you
+      have to.
+    </p>
+
+    <h2>The turn: make the discipline compound instead of you</h2>
+
+    <p>
+      The framework I have been building — al-Nizam, Arabic for <em>the order, the system, the
+      discipline</em> — is not a better prompt or a smarter model. It sits <em>around</em> whatever
+      model you use and does one structural thing: it makes every session deposit something the next
+      session can stand on.
+    </p>
+
+    <p>The two trajectories that come out of that choice look like this:</p>
+
+    <figure class="fig">
+      <img src="/figures/trajectory-compounding.svg" alt="Two curves over time on a night field. Raw AI use, in grey, jumps early then flattens into a plateau. A disciplined framework, in gold, starts below the grey curve — the first weeks buy substrate rather than output — then compounds and overtakes it, opening a widening gap." />
+      <figcaption>
+        <strong>Figure 1.</strong> Same tool underneath both curves. Raw AI use (grey) jumps early,
+        then plateaus. A disciplined framework (gold) starts <em>slower</em> — the first weeks buy
+        substrate, not output — then compounds and overtakes, opening a widening gap. The claim of
+        this piece is the shape of the gold curve, not a single point on it.
+      </figcaption>
+    </figure>
+
+    <p>
+      The mechanism is mundane, which is the point. Nothing here is invented — it is files, git, and
+      a protocol, primitives that have existed for decades. What is missing from the default way
+      people use AI is not the primitive; it is the <em>discipline</em> of using it.
+    </p>
+
+    <p>
+      Concretely: every correction, every settled convention, every hard-won decomposition is written
+      to a small file the moment it happens — not a chat log, a <em>deliberate artifact</em>. The
+      next session loads them. So the tool does not re-learn; it resumes from the accumulated state.
+      Here is the shape of that memory on disk:
+    </p>
+
+    <figure class="fig">
+      <img src="/figures/memory-on-disk.svg" alt="A console showing the framework's memory on disk: a names-only map loaded at every session start, then individual lesson files — each a short frontmatter block plus a plain lesson — loaded thereafter. Real file format, illustrative lesson names and content." />
+      <figcaption>
+        <strong>Figure 2.</strong> Representative — real file format, illustrative lesson names and
+        content; the actual internal entries stay off a public page by the framework's own boundary
+        rules. The names-only map is loaded at every session start; each lesson file is loaded
+        thereafter.
+      </figcaption>
+    </figure>
+
+    <p>
+      Each file is thirty seconds of a lesson learned the hard way, once — and now loaded at the
+      start of every session, forever. Multiply it by a few hundred and you have a collaborator that
+      is measurably less naive this month than last — the opposite of the brilliant-stranger reset.
+    </p>
+
+    <p>Set the two ways of working side by side and the divergence is not subtle:</p>
+
+    <figure class="fig-table">
+      <table>
+        <thead>
+          <tr><th>Dimension</th><th>Raw AI use — <em>snapshot</em></th><th>Disciplined framework — <em>trajectory</em></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>First month</td><td>Big, visible boost</td><td>Slower — you are building the substrate, not just output</td></tr>
+          <tr><td>A caught mistake</td><td>Re-learned the next time it bites</td><td>Codified once; enforced every session after</td></tr>
+          <tr><td>A settled convention</td><td>Re-litigated when context is lost</td><td>Held in a file the tool cannot forget</td></tr>
+          <tr><td>Breadth</td><td>New capability each session, built ad-hoc</td><td>New capability <em>composes</em> from what already exists</td></tr>
+          <tr><td>Consistency</td><td>Degrades as sessions lose the thread</td><td>Structurally held across sessions and machines</td></tr>
+          <tr><td>At month six</td><td>Plateau; model upgrades give diminishing returns</td><td>Compounds; each session starts from a richer base</td></tr>
+        </tbody>
+      </table>
+      <figcaption>
+        <strong>Table 1.</strong> The left column is a series of independent sprints. The right column
+        is one accumulating body of work — which is why one plateaus and the other does not.
+      </figcaption>
+    </figure>
+
+    <h2>What compounding looks like in a single day</h2>
+
+    <p>
+      The macro curve in Figure 1 is made of ordinary days. Here is one representative working
+      session, counted honestly:
+    </p>
+
+    <figure class="fig-table">
+      <table>
+        <thead>
+          <tr><th>One representative working session</th><th>Output</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Distinct thread-shifts handled</td><td>20+</td></tr>
+          <tr><td>Threads dropped</td><td>0</td></tr>
+          <tr><td>Reusable disciplines codified (now permanent)</td><td>2</td></tr>
+          <tr><td>New capability arcs queued with context</td><td>5</td></tr>
+          <tr><td>Capabilities shipped</td><td>2</td></tr>
+          <tr><td>Cross-machine handoffs, no context lost</td><td>1</td></tr>
+          <tr><td>Operator corrections folded back into canon</td><td>5+</td></tr>
+          <tr><td>Commits</td><td>~10</td></tr>
+        </tbody>
+      </table>
+      <figcaption>
+        <strong>Table 2.</strong> No single row is remarkable. The point is that <em>none of it
+        leaks</em> — the two codified disciplines and the five queued arcs are still there next
+        session, and the session after that. A day like this does not just produce output; it raises
+        the floor the next day starts from.
+      </figcaption>
+    </figure>
+
+    <p>
+      Compare that to the pre-framework version of the same day — the one many readers are living
+      now: the context window fills and you start over; the threads you did not personally hold are
+      gone by tomorrow; the discipline you exercised lived only in your head and transferred to no
+      one, not even to your own next session. Same effort. Nothing compounds.
+    </p>
+
+    <h2>The principle</h2>
+
+    <p>
+      <strong>Capability compounds when the discipline lives outside your head.</strong> If you want
+      your work with AI to get better over months — not just your tool — the move is not a better
+      prompt and not the next model. It is to make each session deposit its lessons, decisions, and
+      state into something durable the tool reads back at the start of the next one. Then you are
+      buying capability, not renting it.
+    </p>
+
+    <p>
+      That principle is portable even if you never adopt al-Nizam. A single decisions file and the
+      habit of writing to it will out-compound a year of prompt-tuning. The framework is just what
+      happens when you take the same move seriously across many disciplines, many machines, and
+      several years.
+    </p>
+
+    <h2>The calibration — what the number is and is not</h2>
+
+    <p>
+      Living both sides of this, I would put the rise in the breadth, depth, consistency, and speed
+      of what I can build at roughly a <em>thousand-fold</em> since before the framework existed.
+    </p>
+
+    <p>
+      Now let me take that number's certainty away. It is not a benchmark. There is no lab harness
+      behind it — it is an order-of-magnitude estimate from someone who remembers the frustration of
+      the before and works inside the after every day. The honest, testable claim is not the digit.
+      It is the <em>shape</em> of Figure 1's gold curve: compounding, not flat. Hold me to the shape.
+    </p>
+
+    <p>
+      And it costs something. The gold curve starts <em>below</em> the grey one — the first weeks buy
+      substrate instead of visible output, which is exactly why the disciplined path is a harder
+      initial sell than the snapshot boost. The compounding is also conditional: the framework cannot
+      save a discipline you never deposit. Skip the close-out that writes state to disk and that
+      session compounds nothing — the substrate only holds what you actually put in it. Some of what
+      makes this work is shipped and running daily (the file-based memory, the resume/close protocols,
+      cross-machine continuity); other parts are scaffolded or still aspirational, and I would rather
+      say so than show a roadmap as a fact.
+    </p>
+
+    <p>
+      None of that changes the direction of the two curves. It just means the gold one is earned, not
+      free.
+    </p>
+
+    <h2>The reframe</h2>
+
+    <p>
+      Most AI advice optimizes the snapshot — the best model, the best prompt, today. It is not
+      wrong; it is just the flat curve. The question worth asking is not <em>how good is the tool
+      this week</em>, but <em>is my work with it better this month than last, and will it be better
+      again next month.</em>
+    </p>
+
+    <p>
+      The tool is the engine, and engines keep getting better on their own. The trajectory is the
+      vehicle you build around it. You cannot get somewhere on an engine. You get there on what you
+      built around it — and what you built is the only part that compounds.
+    </p>
+
+    <hr />
+
+    <p style="font-style: italic; color: var(--color-text-muted);">
+      Second in a series introducing al-Nizam. The first piece — "AI forgets everything the moment I
+      close the tab" — is the mechanism this one measures over time: the same file-based continuity,
+      watched across months instead of across a single overnight.
+    </p>
+
+    <AuthorBio />
+  </article>
+</Layout>
+
+<style>
+  .fig { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig img { width: 100%; height: auto; display: block; border-radius: 10px; border: 1px solid rgba(20,23,28,0.10); }
+  .fig figcaption { margin-top: 0.7rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+</style>
+
+<style>
+  /* Figure-card table treatment — paper surface, rounded border, brand amber. */
+  .fig-table { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig-table table {
+    width: 100%; border-collapse: collapse; font-size: 0.95rem;
+    background: var(--brand-paper-raised); border: 1px solid rgba(20,23,28,0.10);
+    border-radius: 10px; overflow: hidden;
+  }
+  .fig-table thead th {
+    text-align: left; font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--brand-gold-ink); background: var(--brand-paper-sunk);
+    border-bottom: 2px solid var(--brand-gold); padding: 0.75rem 1.1rem;
+  }
+  .fig-table tbody td { padding: 0.8rem 1.1rem; border-bottom: 1px solid rgba(20,23,28,0.08); vertical-align: top; line-height: 1.5; }
+  .fig-table tbody tr:last-child td { border-bottom: none; }
+  .fig-table tbody td:first-child { font-weight: 600; color: var(--color-text); }
+  .fig-table figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+</style>

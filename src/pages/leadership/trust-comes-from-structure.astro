@@ -490,18 +490,18 @@ const heroMeta = `Introducing al-Nizam · Boundaries · Published 2026-06-10 · 
   .fig-table { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
   .fig-table table {
     width: 100%; border-collapse: collapse; font-size: 0.95rem;
-    background: #FBF8F1; border: 1px solid rgba(20,23,28,0.10);
+    background: var(--brand-paper-raised); border: 1px solid rgba(20,23,28,0.10);
     border-radius: 10px; overflow: hidden;
   }
   .fig-table thead th {
     text-align: left; font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
     font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
-    color: #8A6414; background: #F3EEE1;
-    border-bottom: 2px solid #C49A3F; padding: 0.75rem 1.1rem;
+    color: var(--brand-gold-ink); background: var(--brand-paper-sunk);
+    border-bottom: 2px solid var(--brand-gold); padding: 0.75rem 1.1rem;
   }
   .fig-table tbody td { padding: 0.8rem 1.1rem; border-bottom: 1px solid rgba(20,23,28,0.08); vertical-align: top; line-height: 1.5; }
   .fig-table tbody tr:last-child td { border-bottom: none; }
-  .fig-table tbody td:first-child { font-weight: 600; color: #14171C; }
+  .fig-table tbody td:first-child { font-weight: 600; color: var(--color-text); }
   .fig-table figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
 </style>
 
@@ -511,7 +511,7 @@ const heroMeta = `Introducing al-Nizam · Boundaries · Published 2026-06-10 · 
      Content is synthetic by construction: a public page cannot show a real scan. */
   .fig-terminal { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
   .fig-terminal .term {
-    background: #14171C; border: 1px solid rgba(255,255,255,0.10);
+    background: var(--brand-night); border: 1px solid rgba(255,255,255,0.10);
     border-radius: 10px; overflow: hidden;
     box-shadow: 0 10px 30px rgba(20,23,28,0.16);
     font-family: var(--font-mono, ui-monospace, 'SF Mono', Menlo, Consolas, monospace);
@@ -523,18 +523,18 @@ const heroMeta = `Introducing al-Nizam · Boundaries · Published 2026-06-10 · 
     border-bottom: 1px solid rgba(255,255,255,0.08);
   }
   .fig-terminal .term-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: rgba(255,255,255,0.16); }
-  .fig-terminal .term-title { margin-left: 0.5rem; color: #8A93A3; font-size: 0.76rem; letter-spacing: 0.02em; }
+  .fig-terminal .term-title { margin-left: 0.5rem; color: var(--brand-muted); font-size: 0.76rem; letter-spacing: 0.02em; }
   .fig-terminal .term-body { padding: 1.1rem 1.2rem; color: #D8DBE0; overflow-x: auto; }
-  .fig-terminal .t-h { color: #F6F3EC; font-weight: 600; margin-bottom: 0.55rem; }
-  .fig-terminal .t-k { color: #8A93A3; display: inline-block; min-width: 9.5rem; }
-  .fig-terminal .t-sec { color: #C49A3F; text-transform: uppercase; letter-spacing: 0.09em; font-size: 0.72rem; margin: 0.15rem 0; }
+  .fig-terminal .t-h { color: var(--brand-paper); font-weight: 600; margin-bottom: 0.55rem; }
+  .fig-terminal .t-k { color: var(--brand-muted); display: inline-block; min-width: 9.5rem; }
+  .fig-terminal .t-sec { color: var(--brand-gold); text-transform: uppercase; letter-spacing: 0.09em; font-size: 0.72rem; margin: 0.15rem 0; }
   .fig-terminal .t-sp { height: 0.55rem; }
-  .fig-terminal .t-file, .fig-terminal .t-val { color: #E6C66E; }
-  .fig-terminal .t-src { color: #6B7280; }
-  .fig-terminal .t-sev { color: #14171C; background: #C49A3F; border-radius: 3px; padding: 0 0.35rem; font-size: 0.68rem; font-weight: 700; }
-  .fig-terminal .t-x { color: #E0796B; font-weight: 700; }   /* semantic failure marker — the one non-amber accent, confined to tool output */
+  .fig-terminal .t-file, .fig-terminal .t-val { color: var(--brand-star); }
+  .fig-terminal .t-src { color: var(--brand-muted-paper); }
+  .fig-terminal .t-sev { color: var(--brand-night); background: var(--brand-gold); border-radius: 3px; padding: 0 0.35rem; font-size: 0.68rem; font-weight: 700; }
+  .fig-terminal .t-x { color: var(--brand-red-bright); font-weight: 700; }   /* semantic failure marker — the one non-amber accent, confined to tool output */
   .fig-terminal .t-ok { color: #86BE93; font-weight: 700; }
-  .fig-terminal .t-run { color: #C49A3F; font-weight: 700; }
+  .fig-terminal .t-run { color: var(--brand-gold); font-weight: 700; }
   .fig-terminal figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
 </style>
 
@@ -545,23 +545,23 @@ const heroMeta = `Introducing al-Nizam · Boundaries · Published 2026-06-10 · 
   .fig-flow .flow { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
   .fig-flow .flow-step, .fig-flow .flow-gate, .fig-flow .flow-out {
     width: 100%; border-radius: 10px; padding: 0.9rem 1.1rem; line-height: 1.5;
-    background: #FBF8F1; border: 1px solid rgba(20,23,28,0.10); font-size: 0.95rem;
+    background: var(--brand-paper-raised); border: 1px solid rgba(20,23,28,0.10); font-size: 0.95rem;
   }
   .fig-flow .flow-tag, .fig-flow .flow-label {
     display: block; font-size: 0.7rem; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem;
   }
-  .fig-flow .flow-tag { color: #8A6414; }
+  .fig-flow .flow-tag { color: var(--brand-gold-ink); }
   .fig-flow .flow-gate {
-    background: #F3EEE1; border-color: #C49A3F; border-width: 1.5px;
+    background: var(--brand-paper-sunk); border-color: var(--brand-gold); border-width: 1.5px;
     text-align: center; font-weight: 500;
   }
-  .fig-flow .flow-arrow { color: #C49A3F; font-size: 1.2rem; line-height: 1; }
+  .fig-flow .flow-arrow { color: var(--brand-gold); font-size: 1.2rem; line-height: 1; }
   .fig-flow .flow-branches { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; width: 100%; }
-  .fig-flow .flow-out.pass { border-left: 3px solid #7E5C18; }
-  .fig-flow .flow-out.fail { border-left: 3px solid #A24B3B; }
-  .fig-flow .flow-label.pass { color: #7E5C18; }
-  .fig-flow .flow-label.fail { color: #A24B3B; }
+  .fig-flow .flow-out.pass { border-left: 3px solid var(--brand-gold-ink-strong); }
+  .fig-flow .flow-out.fail { border-left: 3px solid var(--brand-red); }
+  .fig-flow .flow-label.pass { color: var(--brand-gold-ink-strong); }
+  .fig-flow .flow-label.fail { color: var(--brand-red); }
   .fig-flow figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
   @media (max-width: 620px) { .fig-flow .flow-branches { grid-template-columns: 1fr; } }
 </style>

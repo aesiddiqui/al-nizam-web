@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 560" font-family="ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif" role="img" aria-labelledby="ttl desc">
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#">
+      <cc:Work rdf:about="">
+        <dc:title>al-Nizam — the Chronicle</dc:title>
+        <dc:creator><cc:Agent><dc:title>al-Nizam</dc:title></cc:Agent></dc:creator>
+        <dc:rights>© 2026 al-Nizam. Attribution required; reuse without permission not licensed. Source: al-nizam.ai</dc:rights>
+        <dc:source>https://al-nizam.ai</dc:source>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title id="ttl">The same-form fixture blind spot — why 10/10 green tests were inert in production</title>
+  <desc id="desc">On the left, the test lane: the code assumes a POSIX path, the test mints its fixture in the same POSIX form, and compares POSIX to POSIX, so it matches and the suite is green. All of this stays on one side of the form boundary. On the right, the reality lane: the runtime supplies a Windows path, which must cross the form boundary to be compared against the code's POSIX assumption, and never matches, so the feature is inert. The gold focal is the form boundary the test never crosses but real operation always does.</desc>
+
+  <style>
+    :root{
+      --bg:#0E1220; --node:#171C2E; --node2:#1b2035; --stroke:#3A4155;
+      --text:#F6F3EC; --muted:#8A93A3; --muted2:#6B7280;
+      --gold:#C49A3F; --goldtext:#E6C66E; --focal:#1E1B10; --dashed:#5A6172;
+      --green:#1F8A82; --greentext:#5FBAB1; --red:#B4544B;
+      --markc:#F6F3EC; --markd:#C49A3F;
+    }
+    @media (prefers-color-scheme:light){
+      :root{
+        --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1; --stroke:#D9D2C4;
+        --text:#14171C; --muted:#6B7280; --muted2:#9A9484;
+        --gold:#A6791C; --goldtext:#8A6414; --focal:#FBF3DE; --dashed:#BEB6A4;
+        --green:#176F68; --greentext:#0F5A54; --red:#A2453C;
+        --markc:#14171C; --markd:#C49A3F;
+      }
+    }
+    :root.light{
+      --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1; --stroke:#D9D2C4;
+      --text:#14171C; --muted:#6B7280; --muted2:#9A9484;
+      --gold:#A6791C; --goldtext:#8A6414; --focal:#FBF3DE; --dashed:#BEB6A4;
+      --green:#176F68; --greentext:#0F5A54; --red:#A2453C;
+      --markc:#14171C; --markd:#C49A3F;
+    }
+    .bg{fill:var(--bg)} .node{fill:var(--node);stroke:var(--stroke)} .node2{fill:var(--node2);stroke:var(--stroke)}
+    .t{fill:var(--text)} .m{fill:var(--muted)} .m2{fill:var(--muted2)} .g{fill:var(--gold)} .gt{fill:var(--goldtext)}
+    .line{stroke:var(--muted)} .goldline{stroke:var(--gold)} .redline{stroke:var(--red)}
+    .green{fill:var(--green)} .greentext{fill:var(--greentext)} .red{fill:var(--red)}
+    .mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+    .markc{fill:var(--markc)} .markd{fill:var(--markd)}
+      .el{paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+  </style>
+
+  <defs>
+    <marker id="lArr" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+    <marker id="rArr" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--red)"/></marker>
+  </defs>
+
+  <rect class="bg" width="1060" height="560"/>
+
+  <!-- al-Nizam mark -->
+  <g transform="translate(972,34) scale(0.62)" opacity="0.95" aria-hidden="true">
+    <path class="markc" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
+    <ellipse class="markd" cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
+  </g>
+
+  <!-- title -->
+  <text x="48" y="52" font-family="Georgia,serif" font-size="27" font-weight="600" class="t" letter-spacing="-.01em">Green, and inert</text>
+  <text x="48" y="80" font-size="14.5" class="m">The test built its own fixture with the code's wrong assumption — so it could only agree.</text>
+
+  <!-- FORM BOUNDARY (gold focal) -->
+  <line x1="500" y1="112" x2="500" y2="470" class="goldline" stroke-width="2.2" stroke-dasharray="7 6"/>
+  <text x="500" y="128" text-anchor="middle" font-size="12.5" font-weight="700" class="g el">THE FORM BOUNDARY</text>
+  <text x="500" y="456" text-anchor="middle" font-size="11.5" class="g mono el">/c/Users/…  ≠  C:\Users\…</text>
+
+  <!-- ===== TEST LANE (left, self-consistent, green) ===== -->
+  <text x="48" y="112" font-size="13.5" font-weight="700" class="greentext">THE TEST — stays on one side</text>
+
+  <rect class="node" x="48" y="126" width="404" height="52" rx="12" stroke-width="1.4"/>
+  <text x="68" y="149" font-size="13" class="t"><tspan font-weight="600">1 · Code assumes</tspan> a POSIX path</text>
+  <text x="68" y="167" font-size="12" class="m mono">/c/Users/… (Git-Bash form)</text>
+
+  <rect class="node" x="48" y="196" width="404" height="52" rx="12" stroke-width="1.4"/>
+  <text x="68" y="219" font-size="13" class="t"><tspan font-weight="600">2 · Test mints its fixture</tspan> the same way</text>
+  <text x="68" y="237" font-size="12" class="m mono">same /c/… form — never the other</text>
+
+  <rect class="node" x="48" y="266" width="404" height="52" rx="12" stroke-width="1.4"/>
+  <text x="68" y="289" font-size="13" class="t"><tspan font-weight="600">3 · Compares</tspan> /c/…  to  /c/…</text>
+  <text x="68" y="307" font-size="12" class="m">they match — of course they do</text>
+
+  <rect class="node2" x="48" y="342" width="404" height="50" rx="12" stroke-width="1.5" stroke="var(--green)"/>
+  <text x="250" y="373" text-anchor="middle" font-size="15" font-weight="700" class="greentext">✓  10 / 10 GREEN</text>
+
+  <line x1="250" y1="178" x2="250" y2="196" class="line" stroke-width="1.6" marker-end="url(#lArr)"/>
+  <line x1="250" y1="248" x2="250" y2="266" class="line" stroke-width="1.6" marker-end="url(#lArr)"/>
+  <line x1="250" y1="318" x2="250" y2="342" class="line" stroke-width="1.6" marker-end="url(#lArr)"/>
+
+  <!-- ===== REALITY LANE (right, crosses the boundary, fails) ===== -->
+  <text x="560" y="112" font-size="13.5" font-weight="700" class="red" text-anchor="start">REALITY — comes from the other side</text>
+
+  <rect class="node" x="560" y="160" width="452" height="52" rx="12" stroke-width="1.4"/>
+  <text x="580" y="183" font-size="13" class="t"><tspan font-weight="600">Runtime hands it a Windows path</tspan></text>
+  <text x="580" y="201" font-size="12" class="m mono">C:\Users\… — the actual OS form</text>
+
+  <rect class="node" x="560" y="252" width="452" height="52" rx="12" stroke-width="1.4"/>
+  <text x="580" y="275" font-size="13" class="t"><tspan font-weight="600">Compared against the code's</tspan> /c/… assumption</text>
+  <text x="580" y="293" font-size="12" class="m">never equal → silently falls back every time</text>
+
+  <rect class="node2" x="560" y="342" width="452" height="50" rx="12" stroke-width="1.5" stroke="var(--red)"/>
+  <text x="786" y="373" text-anchor="middle" font-size="15" font-weight="700" class="red">✗  functionally inert on Windows</text>
+
+  <line x1="786" y1="212" x2="786" y2="252" class="redline" stroke-width="1.6" marker-end="url(#rArr)"/>
+  <line x1="786" y1="304" x2="786" y2="342" class="redline" stroke-width="1.6" marker-end="url(#rArr)"/>
+
+  <!-- the crossing: reality's compare reaches across the boundary and breaks -->
+  <path d="M576,268 L508,268" fill="none" class="redline" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#rArr)"/>
+  <g transform="translate(500,268)" aria-hidden="true">
+    <circle r="10" fill="var(--bg)" class="redline" stroke-width="1.5"/>
+    <path d="M-4.5,-4.5 L4.5,4.5 M4.5,-4.5 L-4.5,4.5" class="redline" stroke-width="1.6"/>
+  </g>
+
+  <!-- caption -->
+  <text x="48" y="512" font-size="13" class="m"><tspan font-weight="600" class="t">Figure 1. </tspan>The suite proved the code agreed with itself, not that it worked. A fixture built by the same hand that wrote the bug will hold the same wrong assumption — and the one boundary that breaks in production is the one the test is built never to cross.</text>
+  <text x="985" y="100" text-anchor="middle" font-size="13" class="m" letter-spacing=".02em">al-nizam.ai</text>
+</svg>

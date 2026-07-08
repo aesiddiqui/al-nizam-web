@@ -43,7 +43,7 @@ const { kicker, title, subtitle, portrait, portraitAlt = '', links } = Astro.pro
     /* Sit flush under the sticky header — cancel <main>'s top padding (2.5rem)
        so the band continues the dark nav with no paper seam. */
     margin-top: -2.5rem;
-    background: #14171C;                 /* night surface — always */
+    background: var(--brand-night);      /* night surface — always (brand constant, never theme-relative) */
     border-bottom: 1px solid rgba(196,154,63,0.22);
   }
   .ph-inner {
@@ -55,20 +55,20 @@ const { kicker, title, subtitle, portrait, portraitAlt = '', links } = Astro.pro
   .ph-text { flex: 1 1 auto; min-width: 0; }
   .ph-kicker {
     margin: 0 0 0.55rem; font-size: 0.78rem; letter-spacing: 0.14em;
-    text-transform: uppercase; color: #C49A3F;
+    text-transform: uppercase; color: var(--brand-gold);
   }
   .ph-title {
-    margin: 0; color: #F6F3EC; font-family: var(--font-display);
+    margin: 0; color: var(--brand-paper); font-family: var(--font-display);
     font-weight: 600; line-height: 1.12; letter-spacing: -0.01em;
     font-size: clamp(1.9rem, 4.4vw, 2.9rem); text-wrap: balance;
   }
-  .ph-subtitle { margin: 0.85rem 0 0; color: #8A93A3; font-size: 1.05rem; line-height: 1.5; }
+  .ph-subtitle { margin: 0.85rem 0 0; color: var(--brand-muted); font-size: 1.05rem; line-height: 1.5; }
   .ph-links { margin: 1.15rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; }
   .ph-links a {
-    color: #C49A3F; text-decoration: none; font-size: 0.9rem;
+    color: var(--brand-gold); text-decoration: none; font-size: 0.9rem;
     display: inline-flex; align-items: center; gap: 0.35rem;
   }
-  .ph-links a:hover { color: #E6C66E; text-decoration: underline; text-underline-offset: 2px; }
+  .ph-links a:hover { color: var(--brand-star); text-decoration: underline; text-underline-offset: 2px; }
   .ph-portrait {
     flex: none; width: 150px; height: 214px; object-fit: cover; object-position: top center;
     border-radius: 12px; border: 1px solid rgba(255,255,255,0.12);

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 312" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" role="img" aria-labelledby="ttl desc">
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#">
+      <cc:Work rdf:about="">
+        <dc:title>al-Nizam — the Chronicle</dc:title>
+        <dc:creator><cc:Agent><dc:title>al-Nizam</dc:title></cc:Agent></dc:creator>
+        <dc:rights>© 2026 al-Nizam. Attribution required; reuse without permission not licensed. Source: al-nizam.ai</dc:rights>
+        <dc:source>https://al-nizam.ai</dc:source>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title id="ttl">One answer, three honest confidence labels</title>
+  <desc id="desc">A console window. A question is asked about whether a config supports hot-reload. The answer is split into three labeled parts: I know — it exposes a reload flag, verified in the config reference this session; I believe — the default is off, strong inference not checked; I'm guessing — changes apply without a restart, verify before acting. Representative content in real format.</desc>
+  <rect x="2" y="2" width="896" height="308" rx="10" fill="#14171C" stroke="rgba(255,255,255,0.10)"/>
+  <path d="M2,12 a10,10 0 0 1 10,-10 h876 a10,10 0 0 1 10,10 v28 h-896 z" fill="#1C2027"/>
+  <line x1="2" y1="40" x2="898" y2="40" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="24" cy="21" r="5" fill="rgba(255,255,255,0.16)"/>
+  <circle cx="42" cy="21" r="5" fill="rgba(255,255,255,0.16)"/>
+  <circle cx="60" cy="21" r="5" fill="rgba(255,255,255,0.16)"/>
+  <text x="84" y="26" font-size="13" fill="#8A93A3">session · one claim, labeled before it reaches you</text>
+  <g font-size="14">
+    <text x="24" y="72"><tspan fill="#C49A3F">$</tspan><tspan fill="#D8DBE0"> ask "does the config support hot-reload?"</tspan></text>
+    <text x="24" y="104"><tspan fill="#86BE93">I know</tspan><tspan fill="#D8DBE0">       · it exposes a reload flag</tspan></text>
+    <text x="24" y="126" fill="#6B7280">              — verified in the config reference this session</text>
+    <text x="24" y="158"><tspan fill="#E6C66E">I believe</tspan><tspan fill="#D8DBE0">    · the default is off</tspan></text>
+    <text x="24" y="180" fill="#6B7280">              — strong inference, not directly checked</text>
+    <text x="24" y="212"><tspan fill="#E0796B">I'm guessing</tspan><tspan fill="#D8DBE0"> · changes apply without a restart</tspan></text>
+    <text x="24" y="234" fill="#6B7280">              — no basis; verify before acting</text>
+  </g>
+  <text x="24" y="288" font-size="11.5" fill="#6B7280">Representative — real labeling discipline (know / believe / guess), illustrative claim.</text>
+  <!-- attribution signature (IP credit) -->
+  <g transform="translate(800,50) scale(0.46)" opacity="0.92" aria-hidden="true">
+    <path fill="#F6F3EC" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
+    <ellipse fill="#C49A3F" cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
+  </g>
+  <text x="813" y="104" text-anchor="middle" font-size="11" fill="#8A93A3" letter-spacing=".02em">al-nizam.ai</text>
+</svg>

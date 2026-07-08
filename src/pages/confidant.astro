@@ -142,8 +142,11 @@ const clean = (s: string) => s.replace(/[—–-]\s*$/, '').trim();
      tile (matches .fig-table / .fig-flow / .fig-arch). Confidant at centre echoes
      the al-Nizam mark; holds orbit it, held-elsewhere sits outside the boundary. */
   .fig-orbit { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  /* Note: the inline <svg> above uses presentation-attribute fills holding the
+     canonical brand hex directly (SVG-figure principle — illustration internals
+     stay canonical-in-file). The tile chrome below is tokenized. */
   .fig-orbit .orbit-card {
-    background: #FBF8F1; border: 1px solid rgba(20,23,28,0.10); border-radius: 10px;
+    background: var(--brand-paper-raised); border: 1px solid rgba(20,23,28,0.10); border-radius: 10px;
     padding: 1rem 1.2rem;
   }
   .fig-orbit .orbit { width: 100%; height: auto; display: block; }
@@ -156,17 +159,17 @@ const clean = (s: string) => s.replace(/[—–-]\s*$/, '').trim();
     .fig-orbit .orbit-card { padding: 0.9rem; }
     .fig-orbit .orbit-fallback { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
     .fig-orbit .split-col {
-      background: #F3EEE1; border: 1px solid rgba(20,23,28,0.10); border-radius: 10px; padding: 0.9rem 1rem;
+      background: var(--brand-paper-sunk); border: 1px solid rgba(20,23,28,0.10); border-radius: 10px; padding: 0.9rem 1rem;
     }
-    .fig-orbit .split-col.holds { border-top: 3px solid #7E5C18; }
-    .fig-orbit .split-col.nothold { border-top: 3px solid #A24B3B; }
+    .fig-orbit .split-col.holds { border-top: 3px solid var(--brand-gold-ink-strong); }
+    .fig-orbit .split-col.nothold { border-top: 3px solid var(--brand-red); }
     .fig-orbit .split-head { margin: 0 0 0.55rem; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
-    .fig-orbit .holds .split-head { color: #7E5C18; }
-    .fig-orbit .nothold .split-head { color: #A24B3B; }
+    .fig-orbit .holds .split-head { color: var(--brand-gold-ink-strong); }
+    .fig-orbit .nothold .split-head { color: var(--brand-red); }
     .fig-orbit ul { list-style: none; margin: 0; padding: 0; }
     .fig-orbit li { display: flex; gap: 0.5rem; align-items: baseline; padding: 0.35rem 0; font-size: 0.88rem; line-height: 1.4; }
     .fig-orbit .mk { flex: none; font-weight: 700; }
-    .fig-orbit .mk.ok { color: #7E5C18; }
-    .fig-orbit .mk.no { color: #A24B3B; }
+    .fig-orbit .mk.ok { color: var(--brand-gold-ink-strong); }
+    .fig-orbit .mk.no { color: var(--brand-red); }
   }
 </style>

@@ -71,21 +71,21 @@ import { about } from '../data/about';
   .fig-arch .arch { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; }
   .fig-arch .arch-node {
     width: 100%; text-align: center; border-radius: 10px; padding: 0.95rem 1.1rem;
-    background: #FBF8F1; border: 1px solid rgba(20,23,28,0.10); line-height: 1.5;
+    background: var(--brand-paper-raised); border: 1px solid rgba(20,23,28,0.10); line-height: 1.5;
     font-size: 0.95rem; color: var(--color-text);
   }
   .fig-arch .arch-node.layer {
-    background: #F3EEE1; border-color: #C49A3F; border-width: 1.5px; padding: 1.15rem 1.1rem;
+    background: var(--brand-paper-sunk); border-color: var(--brand-gold); border-width: 1.5px; padding: 1.15rem 1.1rem;
   }
   .fig-arch .arch-tag {
     display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.09em; color: #6B7280; margin-bottom: 0.3rem;
+    letter-spacing: 0.09em; color: var(--color-text-muted); margin-bottom: 0.3rem;
   }
-  .fig-arch .arch-tag.gold { color: #8A6414; }
-  .fig-arch .arch-node.layer strong { display: block; font-size: 1.05rem; color: #14171C; }
+  .fig-arch .arch-tag.gold { color: var(--brand-gold-ink); }
+  .fig-arch .arch-node.layer strong { display: block; font-size: 1.05rem; color: var(--color-text); }
   .fig-arch .arch-sub { display: block; margin-top: 0.4rem; font-size: 0.85rem; color: var(--color-text-muted); }
   .fig-arch .arch-flow {
-    font-size: 0.8rem; color: #8A6414; letter-spacing: 0.02em;
+    font-size: 0.8rem; color: var(--brand-gold-ink); letter-spacing: 0.02em;
     font-family: var(--font-body); padding: 0.15rem 0;
   }
   .fig-arch figcaption { margin-top: 0.9rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }

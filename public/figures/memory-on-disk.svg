@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 402" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" role="img" aria-labelledby="ttl desc">
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#">
+      <cc:Work rdf:about="">
+        <dc:title>al-Nizam — the Chronicle</dc:title>
+        <dc:creator><cc:Agent><dc:title>al-Nizam</dc:title></cc:Agent></dc:creator>
+        <dc:rights>© 2026 al-Nizam. Attribution required; reuse without permission not licensed. Source: al-nizam.ai</dc:rights>
+        <dc:source>https://al-nizam.ai</dc:source>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title id="ttl">The framework's memory on disk — representative files</title>
+  <desc id="desc">A console window. First a listing of the memory directory showing lesson files such as verify-before-destroy.md, close-the-loop.md, less-prose-more-diagrams.md, hundreds more, and MEMORY-CORE.md described as a names-only map loaded at every start. Then the file verify-before-destroy.md is read, showing frontmatter and a short lesson: before deleting or overwriting, look at the target; if it contradicts how it was described, surface that first. Representative content in real file format.</desc>
+  <rect x="2" y="2" width="896" height="398" rx="10" fill="#14171C" stroke="rgba(255,255,255,0.10)"/>
+  <path d="M2,12 a10,10 0 0 1 10,-10 h876 a10,10 0 0 1 10,10 v28 h-896 z" fill="#1C2027"/>
+  <line x1="2" y1="40" x2="898" y2="40" stroke="rgba(255,255,255,0.08)"/>
+  <circle cx="24" cy="21" r="5" fill="rgba(255,255,255,0.16)"/>
+  <circle cx="42" cy="21" r="5" fill="rgba(255,255,255,0.16)"/>
+  <circle cx="60" cy="21" r="5" fill="rgba(255,255,255,0.16)"/>
+  <text x="84" y="26" font-size="13" fill="#8A93A3">~/memory</text>
+  <g font-size="14">
+    <text x="24" y="70"><tspan fill="#C49A3F">$</tspan><tspan fill="#D8DBE0"> ls memory/</tspan></text>
+    <text x="24" y="92" fill="#E6C66E">verify-before-destroy.md      close-the-loop.md</text>
+    <text x="24" y="114" fill="#E6C66E">less-prose-more-diagrams.md   <tspan fill="#6B7280">… (hundreds more)</tspan></text>
+    <text x="24" y="136"><tspan fill="#E6C66E">MEMORY-CORE.md</tspan><tspan fill="#6B7280">   ← names-only map, loaded every start</tspan></text>
+    <text x="24" y="170"><tspan fill="#C49A3F">$</tspan><tspan fill="#D8DBE0"> cat memory/verify-before-destroy.md</tspan></text>
+    <text x="24" y="192" fill="#6B7280">---</text>
+    <text x="24" y="214"><tspan fill="#8A93A3">name:</tspan><tspan fill="#E6C66E"> verify-before-destroy</tspan></text>
+    <text x="24" y="236"><tspan fill="#8A93A3">description:</tspan><tspan fill="#D8DBE0"> confirm a file's real contents before</tspan></text>
+    <text x="24" y="258" fill="#D8DBE0">             deleting or overwriting it</text>
+    <text x="24" y="280"><tspan fill="#8A93A3">type:</tspan><tspan fill="#D8DBE0"> feedback</tspan></text>
+    <text x="24" y="302" fill="#6B7280">---</text>
+    <text x="24" y="324" fill="#D8DBE0">Before deleting or overwriting, look at the target. If</text>
+    <text x="24" y="346" fill="#D8DBE0">it contradicts how it was described, surface that first.</text>
+  </g>
+  <text x="24" y="384" font-size="11.5" fill="#6B7280">Representative — real file format, illustrative lesson names and content.</text>
+  <!-- attribution signature (IP credit) -->
+  <g transform="translate(800,50) scale(0.46)" opacity="0.92" aria-hidden="true">
+    <path fill="#F6F3EC" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
+    <ellipse fill="#C49A3F" cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
+  </g>
+  <text x="813" y="104" text-anchor="middle" font-size="11" fill="#8A93A3" letter-spacing=".02em">al-nizam.ai</text>
+</svg>
