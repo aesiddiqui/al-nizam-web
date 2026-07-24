@@ -21,7 +21,7 @@
 // Output: .visual-verify/*.png at the repo root (gitignored). Review by eye now; a
 // committed baseline + pixel diff can be layered on later if this earns its keep.
 
-import { chromium } from 'playwright';
+import { chromium, devices } from 'playwright';
 import { readdir, mkdir } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
@@ -30,9 +30,12 @@ const REPO_ROOT = path.resolve(process.cwd());
 const OUT = path.join(REPO_ROOT, '.visual-verify');
 const BASE = process.env.VERIFY_BASE ?? 'http://localhost:4321';
 
-const VIEWPORTS = [
-  { tag: 'desktop', width: 1280, height: 900 },
-  { tag: 'mobile', width: 390, height: 844 },
+// Desktop = plain viewport; mobile = a REAL device profile (touch, mobile UA,
+// deviceScaleFactor, and — critically — a true mobile layout viewport that honours
+// `width=device-width`, which the headless-Chrome CLI does not).
+const PROFILES = [
+  { tag: 'desktop', context: { viewport: { width: 1280, height: 900 }, deviceScaleFactor: 1 } },
+  { tag: 'mobile', context: { ...devices['iPhone 13'] } },
 ];
 
 // Representative surfaces — the marketing entry, the section index, an article (hero +
@@ -63,15 +66,17 @@ try {
       console.log(`✓ figure ${f}`);
     }
   } else {
-    for (const vp of VIEWPORTS) {
+    for (const p of PROFILES) {
+      const context = await browser.newContext(p.context);
       for (const route of PAGES) {
-        const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height } });
+        const page = await context.newPage();
         await page.goto(BASE + route, { waitUntil: 'networkidle' });
         const name = route === '/' ? 'home' : route.replace(/^\/|\/$/g, '').replace(/\//g, '-');
-        await page.screenshot({ path: path.join(OUT, `${name}@${vp.tag}.png`), fullPage: true });
+        await page.screenshot({ path: path.join(OUT, `${name}@${p.tag}.png`), fullPage: true });
         await page.close();
-        console.log(`✓ ${route} @ ${vp.tag}`);
+        console.log(`✓ ${route} @ ${p.tag}`);
       }
+      await context.close();
     }
   }
 } finally {
