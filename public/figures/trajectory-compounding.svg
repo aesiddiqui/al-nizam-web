@@ -44,12 +44,6 @@
 
   <rect width="900" height="470" rx="12" fill="var(--bg)"/>
 
-  <!-- al-Nizam mark (subject IS al-Nizam) -->
-  <g transform="translate(858,26) scale(0.5)" opacity="0.95" aria-hidden="true">
-    <path class="markc" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
-    <ellipse class="markd" cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
-  </g>
-
   <!-- title band -->
   <text class="ttl" x="40" y="46" font-size="23" font-weight="500">Two trajectories, same tool underneath</text>
   <text class="sub" x="40" y="70" font-size="13.5">A snapshot boost that plateaus vs. discipline that compounds</text>
@@ -81,5 +75,10 @@
   <text class="g"  x="786" y="93"  font-size="11.5">compounds &#8593;</text>
   <text class="gr" x="786" y="157" font-size="13.5" font-weight="600">Raw AI use</text>
   <text class="gr" x="786" y="174" font-size="11.5">plateaus</text>
-  <text x="838" y="452" text-anchor="middle" font-size="12" class="m" letter-spacing=".02em">al-nizam.ai</text>
+  <!-- attribution signature (IP credit) — mark + wordmark paired, standard treatment -->
+  <g transform="translate(824,398) scale(0.46)" opacity="0.92" aria-hidden="true">
+    <path class="markc" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
+    <ellipse class="markd" cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
+  </g>
+  <text x="835" y="452" text-anchor="middle" font-size="11" class="sub" letter-spacing=".02em">al-nizam.ai</text>
 </svg>
