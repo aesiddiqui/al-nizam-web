@@ -239,11 +239,21 @@ import '@fontsource/spectral/latin-700.css';
         color: var(--brand-muted);
         text-decoration: none;
         font-size: 0.95rem;
+        position: relative;
+        transition: color 0.2s ease;
       }
-
-      header.site-header nav a:hover {
-        color: var(--brand-gold);
+      /* Animated gold underline that wipes in from the left on hover/focus. */
+      header.site-header nav a::after {
+        content: "";
+        position: absolute; left: 0; right: 0; bottom: -5px; height: 1.5px;
+        background: var(--brand-gold);
+        transform: scaleX(0); transform-origin: left center;
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
       }
+      header.site-header nav a:hover,
+      header.site-header nav a:focus-visible { color: var(--brand-gold); }
+      header.site-header nav a:hover::after,
+      header.site-header nav a:focus-visible::after { transform: scaleX(1); }
 
       h1, h2, h3, h4, h5, h6 {
         font-family: var(--font-display);
@@ -274,6 +284,31 @@ import '@fontsource/spectral/latin-700.css';
 
       a:hover {
         color: var(--color-accent-hover);
+      }
+
+      /* Keyboard focus — a visible brand ring site-wide (previously only the
+         leadership index defined focus styles). */
+      :focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 3px;
+        border-radius: 3px;
+      }
+
+      /* Skip-to-content — hidden until keyboard-focused (WCAG bypass block). */
+      .skip-link {
+        position: fixed; top: 0.6rem; left: 0.6rem; z-index: 100;
+        transform: translateY(-160%);
+        background: var(--brand-gold); color: var(--brand-night);
+        padding: 0.6rem 1rem; border-radius: 6px;
+        font-family: var(--font-body); font-size: 0.9rem; font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.2s ease;
+      }
+      .skip-link:focus { transform: translateY(0); color: var(--brand-night); }
+
+      @media (prefers-reduced-motion: reduce) {
+        header.site-header nav a::after,
+        .skip-link { transition: none; }
       }
 
       blockquote {
@@ -435,6 +470,7 @@ import '@fontsource/spectral/latin-700.css';
     </style>
   </head>
   <body>
+    <a href="#main" class="skip-link">Skip to content</a>
     <header class="site-header">
       <div class="header-inner">
         <a href="/" class="logo" aria-label="al-Nizam home">
@@ -452,7 +488,7 @@ import '@fontsource/spectral/latin-700.css';
         </nav>
       </div>
     </header>
-    <main>
+    <main id="main">
       <slot />
     </main>
     <footer class="site-footer">
