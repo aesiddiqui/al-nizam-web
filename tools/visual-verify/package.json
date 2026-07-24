@@ -1,0 +1,10 @@
+{
+  "name": "al-nizam-web-visual-verify",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Isolated dev-only visual verification (Playwright CLI). Kept OUT of the site's root package.json on purpose so the Cloudflare build never installs Playwright. Absorbed 2026-07-23 from the assessed playwright-visual-testing skill (methodology only) — upgrades the prior headless-Edge screenshot approach.",
+  "devDependencies": {
+    "playwright": "^1.61.1"
+  }
+}

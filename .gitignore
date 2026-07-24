@@ -25,3 +25,10 @@ pnpm-debug.log*
 # framework / scratch artifacts (not deployed content)
 SESSION_JOURNAL.md
 /*.png
+
+# skills CLI redundant agent-dir copies (canonical copy lives in .claude/skills/)
+.agents/
+
+# visual-verify (Playwright) — dev-only tool + its output, isolated from the site build
+.visual-verify/
+tools/visual-verify/node_modules/

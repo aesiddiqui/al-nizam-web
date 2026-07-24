@@ -9,7 +9,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "verify:visual": "node tools/visual-verify/verify.mjs",
+    "verify:figures": "node tools/visual-verify/verify.mjs --figures"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.0",
