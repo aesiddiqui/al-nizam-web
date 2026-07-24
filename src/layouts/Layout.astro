@@ -2,10 +2,37 @@
 // Base layout — al-Nizam brand (gold on night). `theme` selects the surface:
 //   'dark'  (default) — brand/marketing surfaces (gold on night)
 //   'light' — reading surfaces (ink on paper) per the brand's dark-first + warm-reading model
-const { title, description, theme = 'dark' } = Astro.props;
+const { title, description, theme = 'dark', article } = Astro.props;
 const htmlClass = theme === 'light' ? 'theme-light' : '';
 // Copyright year computed at build time — never goes stale.
 const year = new Date().getFullYear();
+
+// --- SEO: canonical URL, social card, structured data ---
+const SITE = 'https://al-nizam.ai';
+const pageUrl = `${SITE}${Astro.url.pathname}`;
+const ogImage = `${SITE}/og-image.png`;
+const metaDesc = description ?? 'al-Nizam — an operating layer between you and AI that holds continuity, governance, and accountability structurally.';
+
+// Organization + WebSite entity — emitted site-wide so search engines resolve al-Nizam
+// as an entity. Article (BlogPosting) is emitted only when a page passes `article`.
+const orgLd = {
+  '@context': 'https://schema.org', '@type': 'Organization',
+  name: 'al-Nizam', url: SITE, logo: `${SITE}/app-icon-512.png`,
+  description: 'An operating layer between you and AI — continuity, governance, and accountability held structurally.',
+  founder: { '@type': 'Person', name: 'Ebadullah Siddiqui' },
+};
+const siteLd = {
+  '@context': 'https://schema.org', '@type': 'WebSite', name: 'al-Nizam', url: SITE,
+};
+const articleLd = article ? {
+  '@context': 'https://schema.org', '@type': 'BlogPosting',
+  headline: article.title, description: article.description ?? metaDesc,
+  datePublished: article.datePublished, dateModified: article.dateModified ?? article.datePublished,
+  url: pageUrl, image: ogImage,
+  author: { '@type': 'Person', name: 'Ebadullah Siddiqui' },
+  publisher: { '@type': 'Organization', name: 'al-Nizam', logo: { '@type': 'ImageObject', url: `${SITE}/app-icon-512.png` } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+} : null;
 
 // Self-hosted brand fonts (canonical): Spectral = display/headings + wordmark,
 // Hanken Grotesk = body/UI ("carries the work"). Self-hosted (no third-party
@@ -22,14 +49,28 @@ import '@fontsource/spectral/latin-700.css';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description ?? 'al-Nizam — an operating layer between you and AI that holds continuity, governance, and accountability structurally.'} />
+    <meta name="description" content={metaDesc} />
+    <meta name="theme-color" content="#14171C" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description ?? 'al-Nizam — an operating layer for AI-powered work.'} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={`https://al-nizam.ai${Astro.url.pathname}`} />
+    <meta property="og:description" content={metaDesc} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:site_name" content="al-Nizam" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="al-Nizam — an operating layer between you and AI" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={metaDesc} />
+    <meta name="twitter:image" content={ogImage} />
     <title>{title}</title>
-    <link rel="canonical" href={`https://al-nizam.ai${Astro.url.pathname}`} />
+    <link rel="canonical" href={pageUrl} />
     <link rel="alternate" type="application/rss+xml" title="al-Nizam Leadership" href="/leadership/rss.xml" />
+    <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(siteLd)} />
+    {articleLd && <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180.png" />
