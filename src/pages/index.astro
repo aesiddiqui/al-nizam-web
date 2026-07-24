@@ -145,17 +145,24 @@ import PlatformGraph from '../components/PlatformGraph.astro';
     position: absolute; inset: 0; z-index: 2;
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     text-align: center; padding: 1.5rem;
-    /* Lighter, tighter scrim — just enough to seat the headline, letting the larger
-       glowing graph read brightly around it (the graph is the awe; the scrim only
-       protects the text). Legibility comes from the text-shadow below, not a heavy veil. */
-    background: radial-gradient(ellipse 58% 46% at 50% 47%, rgba(20,23,28,0.62) 0%, rgba(20,23,28,0.22) 58%, rgba(20,23,28,0) 100%);
+    /* Layered scrim — a stronger radial seats the centered copy on its own legible
+       plane, while a top/bottom linear vignette adds depth and softens the header
+       seam. The graph still glows through at the mid-edges (radial fades to 0), so
+       the awe survives while the text reads cleanly (the earlier scrim was too light,
+       and text collided with bright nodes — badly on mobile). */
+    background:
+      radial-gradient(ellipse 64% 54% at 50% 48%, rgba(20,23,28,0.82) 0%, rgba(20,23,28,0.46) 52%, rgba(20,23,28,0) 100%),
+      linear-gradient(to bottom, rgba(20,23,28,0.38) 0%, rgba(20,23,28,0) 24%, rgba(20,23,28,0) 70%, rgba(20,23,28,0.5) 100%);
     pointer-events: none;
   }
   .entry-overlay .hero-headline,
   .entry-overlay .hero-lead {
-    text-shadow: 0 1px 22px rgba(20,23,28,0.85), 0 1px 4px rgba(20,23,28,0.9);
+    text-shadow: 0 1px 24px rgba(20,23,28,0.9), 0 1px 4px rgba(20,23,28,0.95);
   }
-  .entry-overlay > * { pointer-events: auto; max-width: 44rem; margin-left: auto; margin-right: auto; }
+  /* min(44rem, 100%) — on narrow viewports the 100% cap forces the centered flex
+     children to the container width so the headline WRAPS instead of growing to its
+     content width and clipping off the right edge. */
+  .entry-overlay > * { pointer-events: auto; max-width: min(44rem, 100%); margin-left: auto; margin-right: auto; }
 
   .entry-overlay .hero-headline {
     font-family: var(--font-display);
@@ -251,13 +258,48 @@ import PlatformGraph from '../components/PlatformGraph.astro';
      text below the graph aligns with the stats/readout/arc above it, instead of
      sitting in the narrower 38rem reading column the global stylesheet sets. */
   article { max-width: 48rem; }
+  /* Capability list — custom gold markers with a soft glow ring + breathing room,
+     so "what al-Nizam operates" reads as a considered feature list, not default
+     bullets. A quiet bit of depth on an otherwise flat prose surface. */
+  article ul { list-style: none; padding: 0; margin: 1.6rem 0; }
+  article ul li {
+    position: relative;
+    padding-left: 1.7rem;
+    margin-bottom: 1.15rem;
+    line-height: 1.62;
+  }
+  article ul li::before {
+    content: "";
+    position: absolute; left: 0; top: 0.52em;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 4px rgba(196, 154, 63, 0.12);
+  }
   /* Anchor lands the FIRST line clear of the sticky (condensed) header — the JS
      handler below refines this after the header settles; this is the no-JS fallback. */
   #site { scroll-margin-top: 72px; }
 
   @media (max-width: 760px) {
-    .entry { min-height: 520px; }
-    .hero-lead { font-size: 1.08rem; }
+    .entry { min-height: 540px; }
+    /* Stronger, wider scrim on mobile — the graph is a still poster here, and the
+       narrow column put the copy right on top of bright nodes. */
+    .entry-overlay {
+      padding: 1.25rem;
+      background:
+        radial-gradient(ellipse 96% 46% at 50% 46%, rgba(20,23,28,0.9) 0%, rgba(20,23,28,0.55) 62%, rgba(20,23,28,0.15) 100%),
+        linear-gradient(to bottom, rgba(20,23,28,0.45) 0%, rgba(20,23,28,0.05) 34%, rgba(20,23,28,0.6) 100%);
+    }
+    /* VIEWPORT-relative cap (not parent-relative): the full-bleed `.entry` renders
+       wider than the mobile viewport, so a `100%` cap inherited that width and the
+       copy overran into html's `overflow-x: clip`. `min(., 84vw)` ties the text to
+       the actual screen width, so it always wraps on-screen. Scoped to text, NOT CTA. */
+    .entry-overlay .hero-headline,
+    .entry-overlay .hero-lead { max-width: min(32rem, 84vw); }
+    .entry-overlay .hero-headline {
+      font-size: clamp(1.65rem, 6.4vw, 2.2rem);
+      overflow-wrap: break-word;
+    }
+    .hero-lead { font-size: 1.04rem; }
   }
 </style>
 
