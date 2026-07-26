@@ -18,7 +18,7 @@ import { about } from '../data/about';
 
     <hr />
 
-    <figure class="fig-arch">
+    <figure class="fig-arch" data-reveal>
       <div class="arch">
         <div class="arch-node">
           <span class="arch-tag">The operator</span>
@@ -45,7 +45,7 @@ import { about } from '../data/about';
     </figure>
 
     {about.sections.map((section) => (
-      <section>
+      <section data-reveal>
         <h2>{section.heading}</h2>
         {section.body.map((para) => (
           <p>{para}</p>

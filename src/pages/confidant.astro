@@ -24,7 +24,7 @@ const clean = (s: string) => s.replace(/[—–-]\s*$/, '').trim();
 
     <hr />
 
-    <figure class="fig-orbit">
+    <figure class="fig-orbit" data-reveal>
       <!-- Standard paper "tile" (matches the other figures) containing the diagram. -->
       <div class="orbit-card">
         <!-- Desktop: orbital diagram — the Confidant at centre (echoing the al-Nizam
@@ -118,7 +118,7 @@ const clean = (s: string) => s.replace(/[—–-]\s*$/, '').trim();
     </figure>
 
     {confidant.sections.map((section) => (
-      <section>
+      <section data-reveal>
         <h2>{section.heading}</h2>
         {section.body.map((para) => (
           <p>{para}</p>
