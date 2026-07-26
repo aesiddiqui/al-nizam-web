@@ -124,7 +124,7 @@ const clean = (s: string) => s.replace(/[—–-]\s*$/, '').trim();
           <p>{para}</p>
         ))}
         {section.bullets && (
-          <ul>
+          <ul class="card-list">
             {section.bullets.map((b) => (
               <li>
                 <strong>{b.strong}</strong> {b.rest}
