@@ -16,13 +16,13 @@ const { hero = false } = Astro.props;
     <strong>al-Mushahada</strong> — the substrate that lets the framework see itself.
   </p>
 
-  <div class="pg-stats">
-    <div class="pg-stat"><span class="pg-num">{meta.families}</span><span class="pg-lab">families</span></div>
-    <div class="pg-stat"><span class="pg-num">{meta.substrates}</span><span class="pg-lab">substrates</span></div>
-    <div class="pg-stat"><span class="pg-num">{meta.disciplines}</span><span class="pg-lab">codified disciplines &amp; decisions</span></div>
-    <div class="pg-stat"><span class="pg-num">{meta.chapters}</span><span class="pg-lab">canonical specs</span></div>
-    <div class="pg-stat"><span class="pg-num">{meta.skills}</span><span class="pg-lab">skills</span></div>
-    <div class="pg-stat"><span class="pg-num">{meta.hooks}</span><span class="pg-lab">enforcement hooks</span></div>
+  <div class="pg-stats" data-reveal>
+    <div class="pg-stat"><span class="pg-num" data-count={meta.families}>{meta.families}</span><span class="pg-lab">families</span></div>
+    <div class="pg-stat"><span class="pg-num" data-count={meta.substrates}>{meta.substrates}</span><span class="pg-lab">substrates</span></div>
+    <div class="pg-stat"><span class="pg-num" data-count={meta.disciplines}>{meta.disciplines}</span><span class="pg-lab">codified disciplines &amp; decisions</span></div>
+    <div class="pg-stat"><span class="pg-num" data-count={meta.chapters}>{meta.chapters}</span><span class="pg-lab">canonical specs</span></div>
+    <div class="pg-stat"><span class="pg-num" data-count={meta.skills}>{meta.skills}</span><span class="pg-lab">skills</span></div>
+    <div class="pg-stat"><span class="pg-num" data-count={meta.hooks}>{meta.hooks}</span><span class="pg-lab">enforcement hooks</span></div>
   </div>
 
   <div class="pg-stage">

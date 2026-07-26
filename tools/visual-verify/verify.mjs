@@ -70,7 +70,20 @@ try {
       const context = await browser.newContext(p.context);
       for (const route of PAGES) {
         const page = await context.newPage();
-        await page.goto(BASE + route, { waitUntil: 'networkidle' });
+        await page.goto(BASE + route, { waitUntil: 'load', timeout: 45000 });
+        await page.waitForTimeout(600);
+        // Scroll through so IntersectionObserver-driven reveals + count-ups fire,
+        // then return to top — captures the settled state and proves the motion ran.
+        await page.evaluate(() => new Promise((resolve) => {
+          let y = 0;
+          const step = () => {
+            window.scrollTo(0, y);
+            y += 500;
+            if (y < document.body.scrollHeight) setTimeout(step, 60);
+            else { window.scrollTo(0, 0); setTimeout(resolve, 500); }
+          };
+          step();
+        }));
         const name = route === '/' ? 'home' : route.replace(/^\/|\/$/g, '').replace(/\//g, '-');
         await page.screenshot({ path: path.join(OUT, `${name}@${p.tag}.png`), fullPage: true });
         await page.close();
