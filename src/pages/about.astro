@@ -51,7 +51,7 @@ import { about } from '../data/about';
           <p>{para}</p>
         ))}
         {section.bullets && (
-          <ul>
+          <ul class="card-list">
             {section.bullets.map((b) => (
               <li>
                 <strong>{b.strong}</strong> {b.rest}
@@ -73,10 +73,17 @@ import { about } from '../data/about';
     width: 100%; text-align: center; border-radius: 10px; padding: 0.95rem 1.1rem;
     background: var(--brand-paper-raised); border: 1px solid rgba(20,23,28,0.10); line-height: 1.5;
     font-size: 0.95rem; color: var(--color-text);
+    transition: transform 0.25s cubic-bezier(0.22, 0.7, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .fig-arch .arch-node:hover {
+    transform: translateY(-2px);
+    border-color: var(--brand-gold);
+    box-shadow: 0 10px 24px -14px rgba(20, 23, 28, 0.3);
   }
   .fig-arch .arch-node.layer {
     background: var(--brand-paper-sunk); border-color: var(--brand-gold); border-width: 1.5px; padding: 1.15rem 1.1rem;
   }
+  @media (prefers-reduced-motion: reduce) { .fig-arch .arch-node { transition: none; } }
   .fig-arch .arch-tag {
     display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
     letter-spacing: 0.09em; color: var(--color-text-muted); margin-bottom: 0.3rem;
