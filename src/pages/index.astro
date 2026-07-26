@@ -50,44 +50,44 @@ import PlatformGraph from '../components/PlatformGraph.astro';
       is what al-Nizam is.
     </p>
 
-    <h2>What al-Nizam already operates that AI tools don't</h2>
+    <h2 data-reveal>What al-Nizam already operates that AI tools don't</h2>
 
-    <ul>
-      <li>
-        <strong>Memory and pipeline.</strong> State lives in files, not in any
-        vendor's model. If every AI provider went dark tomorrow, the work would
-        still be there. Sessions resume coherently — across days, across
-        machines.
-      </li>
-      <li>
-        <strong>Continuity across multiple machines.</strong> Two strands of
-        work on two machines compose into one coherent operator-perspective,
-        because the framework's metabolism propagates state deliberately and
-        gradually — without forcing alignment that would destroy what diverged.
-      </li>
-      <li>
-        <strong>Roles, not personas.</strong> One operator engages many
-        disciplines — engineering, governance, security, content, research —
-        without confusing them. The roles are structural; the right discipline
-        fires for the work at hand.
-      </li>
-      <li>
-        <strong>Calibrated uncertainty.</strong> A protocol layer, not a
-        personality trait. The framework forces the system to say what it does
-        not know — and the operator to label confidence on any claim that
-        isn't directly verified from source.
-      </li>
-      <li>
-        <strong>Bounded scope per decision.</strong> Substantive moves pause
-        before execution to verify they are <em>best, simplest, and most
-        scalable</em> — not just available.
-      </li>
-      <li>
-        <strong>Honest reckoning after the work.</strong> Declared versus
-        delivered — not self-aggrandizing summary but honest accounting,
-        recorded permanently in append-only logs.
-      </li>
-    </ul>
+    <div class="bento">
+      <div class="bento-cell bento-hero" data-reveal>
+        <h3>Memory &amp; pipeline</h3>
+        <p>State lives in files, not in any vendor's model. If every AI provider
+          went dark tomorrow, the work would still be there. Sessions resume
+          coherently — across days, across machines.</p>
+      </div>
+      <div class="bento-cell" data-reveal style="--reveal-delay:.05s">
+        <h3>Continuity across machines</h3>
+        <p>Two strands of work on two machines compose into one coherent
+          operator-perspective — the framework's metabolism propagates state
+          deliberately, without forcing alignment that would destroy what diverged.</p>
+      </div>
+      <div class="bento-cell" data-reveal style="--reveal-delay:.1s">
+        <h3>Roles, not personas</h3>
+        <p>One operator engages many disciplines — engineering, governance,
+          security, content, research — without confusing them. The right
+          discipline fires for the work at hand.</p>
+      </div>
+      <div class="bento-cell" data-reveal style="--reveal-delay:.15s">
+        <h3>Calibrated uncertainty</h3>
+        <p>A protocol layer, not a personality trait. The system must say what it
+          does not know — and label confidence on any claim not directly verified
+          from source.</p>
+      </div>
+      <div class="bento-cell" data-reveal style="--reveal-delay:.2s">
+        <h3>Bounded scope per decision</h3>
+        <p>Substantive moves pause before execution to verify they are
+          <em>best, simplest, and most scalable</em> — not just available.</p>
+      </div>
+      <div class="bento-cell bento-wide" data-reveal style="--reveal-delay:.25s">
+        <h3>Honest reckoning after the work</h3>
+        <p>Declared versus delivered — not self-aggrandizing summary but honest
+          accounting, recorded permanently in append-only logs.</p>
+      </div>
+    </div>
 
     <!-- The interactive al-Mushahada graph — its own surface, where drag-to-orbit
          and click-a-node are the point (the hero above is the pre-rendered loop). -->
@@ -258,22 +258,41 @@ import PlatformGraph from '../components/PlatformGraph.astro';
      text below the graph aligns with the stats/readout/arc above it, instead of
      sitting in the narrower 38rem reading column the global stylesheet sets. */
   article { max-width: 48rem; }
-  /* Capability list — custom gold markers with a soft glow ring + breathing room,
-     so "what al-Nizam operates" reads as a considered feature list, not default
-     bullets. A quiet bit of depth on an otherwise flat prose surface. */
-  article ul { list-style: none; padding: 0; margin: 1.6rem 0; }
-  article ul li {
-    position: relative;
-    padding-left: 1.7rem;
-    margin-bottom: 1.15rem;
-    line-height: 1.62;
+
+  /* Bento grid — the capability set as a composed board (the defining 2026 SaaS
+     layout), replacing the flat list. Night-raised cards, gold titles, hover lift;
+     one hero cell + one wide footer cell give it asymmetry. */
+  .bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+    margin: 1.75rem 0 2.25rem;
   }
-  article ul li::before {
-    content: "";
-    position: absolute; left: 0; top: 0.52em;
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--color-accent);
-    box-shadow: 0 0 0 4px rgba(196, 154, 63, 0.12);
+  .bento-cell {
+    padding: 1.4rem 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.025);
+    transition: transform 0.28s cubic-bezier(0.22, 0.7, 0.2, 1),
+                border-color 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
+  }
+  .bento-cell:hover {
+    transform: translateY(-3px);
+    border-color: rgba(196, 154, 63, 0.5);
+    background: rgba(255, 255, 255, 0.045);
+    box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(196, 154, 63, 0.06);
+  }
+  .bento-cell h3 { margin: 0 0 0.5rem; font-size: 1.12rem; color: var(--brand-gold); }
+  .bento-cell p { margin: 0; color: var(--color-text-muted); line-height: 1.55; font-size: 0.98rem; }
+  .bento-hero { grid-column: span 2; }
+  .bento-hero h3 { font-size: 1.35rem; }
+  .bento-wide { grid-column: span 3; }
+  @media (max-width: 720px) {
+    .bento { grid-template-columns: 1fr; gap: 0.75rem; }
+    .bento-hero, .bento-wide { grid-column: span 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bento-cell { transition: none; }
   }
   /* Anchor lands the FIRST line clear of the sticky (condensed) header — the JS
      handler below refines this after the header settles; this is the no-JS fallback. */
