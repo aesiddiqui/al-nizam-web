@@ -1,5 +1,24 @@
 # HANDOFF — al-nizam-web
 
+## 2026-07-27 — ERSA (standalone)
+**Built:** Shipped + LIVE (8 commits): SEO completeness (robots.txt, branded OG card, Organization/WebSite/BlogPosting JSON-LD); a modern UI/UX pass (hero legibility scrim + mobile clip fix, site-wide focus-visible + skip-link + nav underlines, capabilities BENTO, leadership + About/Confidant CARDS via a theme-aware `.card-list`, scroll-reveal + stat count-up); absorbed `ui-ux-polish` + `astro-seo` skills + native **Playwright visual-verify** (real iPhone-13 device emulation). Then ran the **first end-to-end publication pipeline** — published `mention-vs-use` (week-1 ship) live on al-nizam.ai. Also relocated the Marketing Channel (al-Tarwij) out of the framework engine → `~/ersa/al-tarwij` (own repo).
+
+**Stopped:** Clean. Everything committed + pushed + verified live. Foreign WIP left UNTOUCHED (`.claude/CLAUDE.md`, `public/platform-graph-data.js`, `public/vendor/`) — do NOT `git add -A`. `tools/visual-verify/verify.mjs` route-add committed at close.
+
+**Next:** Build the **markdown→`.astro` transformer** (double-justified: kills the manual body-conversion typo-ships risk AND is the home for the sanitization gate `/pre-publish` doesn't provide). Then DEC-012 config split; changelog (awaits al-Tarwij framing). See `.claude/PROJECT_STATE.md` → Exact Next Action.
+
+Transfer candidate → al-Tarwij (Marketing Channel): the publication-pipeline observations (body-conversion = automation target; sanitization-gate is discipline-only) are already metabolized in its week-01 RUN-REPORT.
+
+**Spec added (leadership-channel session, 2026-07-27):** the Next-action above (markdown→`.astro`
+transformer / kill manual body-conversion) now has a full executable design at
+`.claude/ITEM-2-RENDERER-SPEC.md` — independently converged from the framework Q1/Q2 memo
+(`project_content_publishing_derivation_and_content_model_resolved_2026_07_21`). ⚠ **Design fork to
+resolve first:** the spec defaults to an Astro **content collection + one `[slug].astro` template +
+remark/rehype** (eliminates per-page `.astro` entirely); this HANDOFF's Next names a
+**markdown→`.astro` transformer** (generates per-page `.astro`). Same goal, two shapes — the spec's
+opening section lays out the tradeoff. Once chosen: migrate all 7 live pages → collection, then P6–P10
+render through the pipeline (never hand-authored). *No code written — spec only.*
+
 ## 2026-07-08 — ERSA (standalone)
 **Built:** Big session, all **uncommitted + build-verified + NOT pushed** (every push = public deploy). (1) Leadership index → sticky right-rail search + tag filter, per-article pills removed (DEC-009). (2) **Token refactor COMPLETE** — ~155 hardcoded brand hex across 10 files → `--brand-*`/`--color-*`, value-exact/zero visual change (DEC-010); PlatformGraph got a JS `BRAND` palette. (3) contact/privacy/terms got the night `PageHeader` band (DEC-011, design-alignment). (4) **P2 article** thousand-fold-acceleration built (page + poster + 2 figures + articles.ts) as the template; Steward built P3/P4/P5 (self-correction/hallucination/tests-pass) during idle gaps. Corpus now 6 articles.
 

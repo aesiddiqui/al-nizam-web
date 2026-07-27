@@ -43,6 +43,7 @@ const PROFILES = [
 const PAGES = [
   '/',
   '/leadership/',
+  '/leadership/mention-vs-use/',
   '/leadership/thousand-fold-acceleration/',
   '/about/',
   '/founder/',
