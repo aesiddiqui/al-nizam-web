@@ -1,0 +1,386 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArticleHero from '../../components/ArticleHero.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+
+const heroMeta = `Introducing al-Nizam · Trust &amp; Correctness · Published 2026-07-27`;
+---
+
+<Layout
+  title="Your security scanner can't tell doing a dangerous thing from writing about one — al-Nizam"
+  article={{ title: "Your security scanner can't tell doing a dangerous thing from writing about one.", datePublished: "2026-07-27" }}
+  description="String-matching security guards conflate doing a dangerous thing with writing about one. The false alarms corrode your documentation discipline — a security asset. The fix isn't a smarter pattern; it's scanning the surface that will actually run."
+  theme="light"
+>
+  <ArticleHero
+    kicker="Mention versus use"
+    title="Your security scanner can't tell doing a dangerous thing from writing about one."
+    meta={heroMeta}
+    graph={{ nodes: [], links: [] }}
+    poster="/heroes/mention-vs-use-poster.svg"
+  />
+
+  <article>
+    <p class="lead">
+      You just handled a dangerous command safely — cleaned up a stray file, forced a
+      branch you own, scripted a delete with the right guardrails. Now you write the commit
+      message that documents what you did, because a good log is a security asset. You type
+      <code>git commit</code>, and your own safety tooling blocks you — not from
+      <em>running</em> anything, but from <em>writing down</em> that you ran it. The guard
+      meant to protect you is now standing between you and the record of being protected.
+    </p>
+
+    <hr />
+
+    <h2>The tool that blocked me from documenting the tool</h2>
+
+    <p>
+      Here is the incident that started this, stripped to its shape. A command guard — a hook
+      that inspects every shell command before it runs and blocks the genuinely destructive
+      ones — sat in front of a working framework. It worked: it caught the real
+      <code>rm -rf ~</code>, the real force-push to the main branch, the real
+      <code>curl | sh</code>. Then, over a single working session, it blocked three commits in
+      a row. Not one of them ran a dangerous command. Every one of them was a commit
+      <em>message</em> that happened to describe a dangerous command.
+    </p>
+
+    <figure class="fig-table">
+      <table>
+        <thead>
+          <tr><th>What I typed</th><th>Which rule fired</th><th>What it actually was</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>git commit -m "fix: stop blocking scoped deletes like rm -rf ~/tmp"</code></td><td>recursive-delete-home (HARD)</td><td>A message <em>quoting</em> the pattern the fix is about</td></tr>
+          <tr><td><code>git commit -m "docs: note the eval() sink we removed"</code></td><td>eval-exec (PENTEST)</td><td>The English word "eval," inside prose</td></tr>
+          <tr><td><code>git commit -m "DEC: git push -f main is blocked; here's why"</code></td><td>force-push-main (HARD)</td><td>A decision note <em>documenting</em> the block</td></tr>
+        </tbody>
+      </table>
+      <figcaption><strong>Table 1.</strong> Three false positives, one session, two severity tiers — every one a commit message, none an executed command. <em>(Representative — real incident shape, message text stand-in.)</em></figcaption>
+    </figure>
+
+    <p>
+      The guard was scanning the entire command string. And for
+      <code>git commit -m "…"</code>, that string <em>includes the message</em> — which is
+      prose. A commit message is data the version-control system stores and never executes.
+      Scanning it for dangerous commands is a category error: it treats a sentence
+      <em>about</em> an action as if it were the action.
+    </p>
+
+    <p>That's the bug in one line. The interesting part is what the bug costs.</p>
+
+    <h2>The cope that makes it worse</h2>
+
+    <p>
+      Everyone who has run a string-matching security control knows it throws false positives.
+      The WAF blocks the blog post that contains a SQL keyword. The secret-scanner flags the
+      example key in the documentation. The DLP filter quarantines the policy that
+      <em>explains</em> the policy. This is such a familiar tax that we have a reflex for
+      paying it: reword until the tool goes quiet. Rename the variable. Break up the keyword.
+      Soften the commit message until the scanner stops complaining.
+    </p>
+
+    <p>
+      Look closely at what that reflex actually does. To satisfy a control that was never at
+      risk — the commit was never going to run anything — you make your <em>documentation
+      worse</em>. You write <code>git push -f</code> as "force-push (redacted)" so the hook
+      stays calm. You stop quoting the exact dangerous pattern in the decision log, so the
+      next person who hits it can't grep for it. The scanner has trained you to degrade the
+      precise artifact it exists to defend: the clear, searchable, honest record of what your
+      system does and does not allow.
+    </p>
+
+    <p>
+      That is the second-order cost, and it is the one nobody names. "False positives are
+      annoying" is a truism. <em>False positives corrode your documentation discipline, and
+      documentation discipline is a security asset</em> is a defensible claim with teeth. A
+      guard that makes your security notes vaguer has a negative return past a certain
+      false-positive rate, no matter how many real threats it catches — because it is quietly
+      taxing the thing that lets humans reason about the system at all.
+    </p>
+
+    <p>
+      So the false-positive rate is not a comfort setting. It is a security property. Which
+      means the fix is not "learn to live with it." The fix is to make the control see the
+      right thing.
+    </p>
+
+    <h2>Mention versus use</h2>
+
+    <p>
+      The distinction the guard was missing is old, and it is not originally a security idea —
+      it's from logic and philosophy of language: the difference between <strong>using</strong>
+      a word and <strong>mentioning</strong> it. <em>Go delete the file</em> uses the
+      instruction. <em>He told me to delete the file</em> mentions it. The first is an act;
+      the second is a report of an act. A control that fires on both is not being careful — it
+      is being imprecise, in a direction that happens to feel like caution.
+    </p>
+
+    <p>
+      For a command guard, the equivalent distinction is: what will this command
+      <strong>run</strong>, versus what does it merely <strong>say</strong>? The fix is to
+      compute the <em>executable surface</em> of a command — the part that will actually be
+      handed to the interpreter — and scan that, not the raw text. For
+      <code>git commit -m "message"</code>, the message body is provably not executable: git
+      stores it and never runs it. Strip it from the scanned copy <em>before</em> the rules
+      run, and the guard fires on the delete, not on the sentence about the delete.
+    </p>
+
+    <figure class="fig">
+      <img src="/figures/mention-vs-use.svg" alt="A raw command carries a data region (a commit message that mentions rm -rf) and a code region (an actual rm -rf). A flat scan reads the whole string and fires on both. A normalize stage first strips the provably-inert message, leaving an executable surface of only the real command; the same rules then fire once, correctly, and the message is never scanned." />
+      <figcaption>
+        <strong>Figure 1.</strong> The raw command carries both code and data. A flat scan sees
+        one undifferentiated string and fires on either. Inserting a <em>normalize</em> stage
+        first — strip the provably-inert regions, keep every executable token — means the same
+        rules now scan only what will run. The message body is <em>mentioned</em>; the
+        <code>rm</code> is <em>used</em>.
+      </figcaption>
+    </figure>
+
+    <p>
+      Note what did <strong>not</strong> change: the rules. The same patterns that catch
+      <code>rm -rf ~</code> and <code>git push -f main</code> are untouched. All that changed
+      is the <em>surface</em> they read. This matters, because the rules are the part you dare
+      not weaken — and this fix never touches them.
+    </p>
+
+    <h2>The fork: two ways to be more precise, and only one is proper</h2>
+
+    <p>
+      There were two ways to cut those false positives, and the choice between them is the
+      actual lesson.
+    </p>
+
+    <p>
+      The obvious one is to make the <em>patterns</em> smarter — anchor each dangerous keyword
+      so it only matches at a command boundary, not inside a quoted string. Require
+      <code>rm</code> to sit where a command goes, not where a message goes. This looks
+      thorough. It is also a trap.
+    </p>
+
+    <figure class="fig-table">
+      <table>
+        <thead>
+          <tr><th></th><th>Approach A — anchor the patterns</th><th>Approach B — normalize the surface</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>What changes</td><td>Every dangerous regex, rewritten with position logic</td><td>One pre-processing stage; the rules untouched</td></tr>
+          <tr><td>Architectural layer</td><td>Still regex over a flat string — same layer, more of it</td><td>A new layer: separate data from code <em>before</em> matching</td></tr>
+          <tr><td>Complexity added</td><td>Spread across every HARD rule (~10 of them)</td><td>Isolated in one seam, behind one contract</td></tr>
+          <tr><td>Failure mode it risks</td><td><strong>False negative</strong> — a cleverer quoting fools the anchor and a real command slips through</td><td><strong>False positive</strong> — if the seam is unsure, it scans anyway</td></tr>
+          <tr><td>On a security control</td><td>A miss is a <strong>breach</strong></td><td>A miss is <strong>friction</strong></td></tr>
+          <tr><td>Verdict</td><td>Surface fix in an enterprise costume</td><td>The provably-safe increment</td></tr>
+        </tbody>
+      </table>
+      <figcaption><strong>Table 2.</strong> The two fixes are not equally good "options." On a control where a false negative is a breach and a false positive is only friction, the approach whose <em>failure mode</em> is a false positive is the correct one — and it happens to be the simpler one.</figcaption>
+    </figure>
+
+    <p>
+      This is the counter-intuitive core. We are trained to distrust the simple fix — it feels
+      like we cut a corner, and the elaborate one feels like diligence. But Approach A adds
+      complexity to the exact rules a miss would be catastrophic in, and buys a
+      <em>false-negative</em> risk with it. Approach B is simpler <em>and</em> safer, because
+      its worst case is that it occasionally over-scans a message and blocks a commit — the
+      friction we started with, never a breach. On a security control, <strong>complexity is a
+      false-negative liability.</strong> Simple-but-provably-correct beats
+      complex-but-probably-correct, and the reason is the asymmetry of the two ways to be
+      wrong.
+    </p>
+
+    <h2>The safety contract: how you prove you didn't open a hole</h2>
+
+    <p>
+      "Make the control less trigger-happy" is a dangerous sentence to say near a security
+      boundary, because the naive version of it is just <em>scan less</em> — and scanning less
+      is how you get a breach. The move is only legitimate if you can <strong>prove</strong>
+      that making it quieter did not make it blind. That proof is a contract, and it is short
+      enough to state in full:
+    </p>
+
+    <pre><code>normalize(command) -&gt; scan_surface
+
+  CONTRACT (load-bearing):
+    1. Every executable token in `command` MUST survive into `scan_surface`.
+       (You may remove data. You may never remove code.)
+    2. Only strip a region that is PROVABLY inert —
+       a git-commit message body with no command-substitution ( $( … ) or backticks ).
+    3. On ANY uncertainty — parse ambiguity, an unrecognized consumer,
+       a malformed input, the parser itself unavailable —
+       return `command` UNCHANGED. Fail toward scanning.</code></pre>
+
+    <p>
+      Rule 1 is the whole safety story: because every executable token survives, the
+      normalizer <em>cannot hide a real command from the rules</em>. The worst it can do is
+      fail to strip a message it could have stripped — which reproduces the original false
+      positive, not a new false negative. Rule 3 is the same instinct applied to the unknown:
+      when the seam isn't certain a region is inert, it does not guess in the direction of
+      silence. It scans. <strong>Fail toward scanning</strong> is the security-critical
+      default — the version of "fail closed" that belongs on a control whose job is to catch
+      things.
+    </p>
+
+    <p>
+      And the scope follows from the contract, not from laziness. The seam strips exactly one
+      consumer's data — the <code>git commit</code> message — because <code>git commit</code>
+      is the one case whose data-versus-code boundary is characterizable <em>without writing a
+      parser</em>. A heredoc fed to <code>bash</code> is code and is never stripped. A message
+      containing <code>$( … )</code> could execute and is never stripped. The guard learned to
+      ignore one specific, provably-inert kind of text, and nothing else.
+    </p>
+
+    <p>
+      You verify a claim like this the only way such claims can be verified: a table of
+      commands that <strong>must</strong> still block and commands that <strong>must</strong>
+      now pass, run through the real hook. Seventeen must-block — including the evasions that
+      matter: <code>&amp;&amp; rm -rf ~</code> appended <em>after</em> a clean commit, a
+      <code>$( … )</code> substitution inside a message, a heredoc piped to a shell. Twelve
+      must-pass — the three original false positives plus the benign variants. Two more for
+      the invisible-character case below. <strong>Thirty-one for thirty-one</strong>, with
+      zero of the original blocks weakened. A false-positive fix that quietly loosened a real
+      block would show up here as a must-block case gone green. None did.
+    </p>
+
+    <h2>The invisible-character question, and why it doesn't reopen the hole</h2>
+
+    <p>
+      There is a sharp objection to any "strip the inert part" scheme: could an attacker
+      <em>disguise</em> code as the inert part? Slip a zero-width space or a Unicode
+      look-alike into <code>$(</code> so the seam's "does this contain a substitution?" check
+      says no, and the payload rides through in a region you then strip?
+    </p>
+
+    <p>
+      The answer here is not "we filter those characters" — it is a measurement, and the
+      measurement is more reassuring than a filter would be. The check that decides whether a
+      region is inert and the interpreter that would run the payload are looking at the
+      <em>same bytes</em>. If a zero-width space splits <code>$(</code> well enough to fool the
+      inertness check, it <em>also</em> splits <code>$(</code> for the shell — which then
+      throws a syntax error and runs nothing. A zero-width space inside <code>rm</code> hides
+      it from a scanner and turns it into a command the shell reports as <em>not found</em>.
+    </p>
+
+    <pre><code>$ echo $(⟨ZWSP⟩whoami)      # zero-width char after $(
+bash: command substitution: line 1: syntax error near unexpected token ...
+
+$ r⟨ZWSP⟩m -rf /tmp/x        # zero-width char inside rm
+bash: rm: command not found</code></pre>
+    <p class="fig-note"><em>⟨ZWSP⟩ marks where an invisible zero-width character sits in the input — shown visibly here; on the page it would be unseen, which is the whole point.</em></p>
+
+    <p>
+      This is <strong>symmetric breakage</strong>: the same invisible character that defeats
+      the detection also defeats the execution. So the thing you stripped was inert after all
+      — not because you sanitized it, but because it could never have run. That reasoning is
+      worth more than a character filter, because it doesn't depend on your blocklist of
+      dangerous characters being complete. It is locked in as two of the thirty-one cases, so
+      a future change can't quietly break the assumption.
+    </p>
+
+    <p>
+      (The general defense against invisible-character smuggling still matters — but its home
+      is the <em>ingestion</em> boundary, where downloaded skills and fetched content enter
+      the system and a hidden instruction can steer the model <em>before</em> any command
+      exists. That's a different piece, and an honest one has to admit that defense is still
+      being built. Bolting it onto this fix would have scope-crept both.)
+    </p>
+
+    <h2>The principle</h2>
+
+    <p>
+      <strong>Fire on use, not on mention — and when you make a security control quieter,
+      prove you removed only what could never fire.</strong> The measure of a guard is not how
+      much it blocks. It is whether it blocks the right surface: the part of the input that
+      will actually act. A control that scans everything, including the parts that only
+      <em>describe</em> actions, is not more careful — it is less precise, and it pays for that
+      imprecision twice: once in false alarms, and once in the vaguer documentation those
+      alarms train you to write.
+    </p>
+
+    <p>
+      The method is portable to any string-matching control you own. A WAF that flags a blog
+      post about SQL injection, a secret-scanner that trips on the example key in the README, a
+      DLP rule that quarantines the policy explaining the policy — each is firing on a
+      <em>mention</em>. The fix is the same shape every time: find the surface that actually
+      acts (the query that hits the database, the credential that authenticates, the payload
+      that leaves the building), scan that, and hold yourself to the contract — remove only
+      what is provably inert, and when unsure, scan. You get fewer false alarms <em>and</em> a
+      proof you didn't trade them for a real miss.
+    </p>
+
+    <h2>What this does not claim</h2>
+
+    <p>
+      The fix that prompted this is <strong>scoped</strong>, and the scope is the honest bound.
+      It separates data from code for exactly one consumer — the <code>git commit</code>
+      message — because that is the one case whose boundary can be drawn without a parser. The
+      general problem — knowing, for <em>any</em> command, which regions are data and which are
+      code — is unsolved here, and solving it means writing a real parser for the shell. That
+      work is <strong>queued, not done</strong>, and deliberately so: a <em>partial</em> parser
+      dropped into a hard security path is not a step toward safety, it is a false-negative
+      generator wearing the costume of one. It would confidently declare regions "data" that a
+      fuller grammar would know are code. Better a small provably-correct seam that handles one
+      case than a broad probably-correct one that handles many and misses the one that matters.
+    </p>
+
+    <p>
+      So: this catches the mention-versus-use error for commit messages, provably. It does not
+      yet catch it for every command shape, and the piece would be dishonest to imply
+      otherwise. The seam is the architectural slot the fuller solution drops into later —
+      built debt-free, so the end-state is an extension, not a rewrite. That is the whole of
+      the claim, and the boundary is the part that makes the rest trustworthy.
+    </p>
+
+    <h2>The reframe</h2>
+
+    <p>
+      The question we ask of a security control is usually "how much does it catch?" — as if
+      blocking more were always safer. It isn't. A control that blocks the mention along with
+      the use catches more and protects less, because it spends your trust on false alarms and
+      your documentation on appeasing them. The better question is quieter: <em>is it scanning
+      the thing that will actually act?</em>
+    </p>
+
+    <p>
+      A guard that fires on every mention of danger feels vigilant, right up until you notice
+      it has taught you to stop writing danger down. Precision isn't the opposite of caution.
+      On a control that matters, precision is what caution looks like when it grows up.
+    </p>
+
+    <hr />
+
+    <p style="font-style: italic; color: var(--color-text-muted);">
+      Part of a series introducing al-Nizam, an operating framework for working with AI. It
+      sits in the trust-and-correctness cluster alongside the pieces on layered defense and
+      "tests pass ≠ works" — this one is about a single layer learning to see truly. Its
+      sibling, on invisible-payload attacks at the ingestion boundary, is where the
+      symmetric-breakage idea gets its darker workout.
+    </p>
+
+    <AuthorBio />
+  </article>
+</Layout>
+
+<style>
+  .fig { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig img { width: 100%; height: auto; display: block; border-radius: 10px; border: 1px solid rgba(20,23,28,0.10); }
+  .fig figcaption { margin-top: 0.7rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+  .fig-note { margin: 0.6rem auto 0; max-width: var(--max-width-prose, 48rem); font-size: 0.85rem; color: var(--color-text-muted); }
+</style>
+
+<style>
+  /* Figure-card treatment — matches Fig 1: paper surface, rounded border, brand amber. */
+  .fig-table { margin: 2.6rem auto; max-width: var(--max-width-prose, 48rem); }
+  .fig-table table {
+    width: 100%; border-collapse: collapse; font-size: 0.95rem;
+    background: var(--brand-paper-raised); border: 1px solid rgba(20,23,28,0.10);
+    border-radius: 10px; overflow: hidden;
+  }
+  .fig-table thead th {
+    text-align: left; font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--brand-gold-ink); background: var(--brand-paper-sunk);
+    border-bottom: 2px solid var(--brand-gold); padding: 0.75rem 1.1rem;
+  }
+  .fig-table tbody td { padding: 0.8rem 1.1rem; border-bottom: 1px solid rgba(20,23,28,0.08); vertical-align: top; line-height: 1.5; }
+  .fig-table tbody tr:last-child td { border-bottom: none; }
+  .fig-table tbody td:first-child { font-weight: 600; color: var(--color-text); }
+  .fig-table figcaption { margin-top: 0.8rem; font-size: 0.9rem; color: var(--color-text-muted); line-height: 1.55; }
+</style>
