@@ -22,6 +22,14 @@ export type Article = {
 // keep this array sorted newest-first when adding a piece.
 export const articles: Article[] = [
   {
+    slug: 'mention-vs-use',
+    title: "Your security scanner can't tell doing a dangerous thing from writing about one.",
+    description: "Every string-matching guard conflates doing a dangerous thing with writing about one — and the false alarms corrode the documentation discipline it exists to protect. The fix: scan the surface that will actually run.",
+    date: '2026-07-27',
+    series: 'Introducing al-Nizam — Trust & Correctness',
+    tags: ['Trust', 'Correctness', 'Security'],
+  },
+  {
     slug: 'tests-pass-not-works',
     title: 'All ten tests passed. The feature never ran.',
     description: "A test that builds its own fixtures can encode the exact wrong assumption as the code it checks. Green is not verified — it's self-consistent.",

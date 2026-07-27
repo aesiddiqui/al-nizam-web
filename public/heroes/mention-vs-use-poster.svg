@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 660" role="img" aria-label="A mixed stream of command tokens passing through a gold normalize seam — only the executable code survives on the far side. Atmosphere for the article on mention versus use.">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="42%" r="60%">
+      <stop offset="0" stop-color="#20262E"/>
+      <stop offset="1" stop-color="#14171C"/>
+    </radialGradient>
+  </defs>
+
+  <!-- night surface (always dark — heroes never invert) -->
+  <rect width="1060" height="660" fill="url(#glow)"/>
+
+  <!-- raw command stream (left of the seam): code tokens (gold) mixed with data tokens (grey) -->
+  <g transform="translate(0,232)">
+    <rect x="120" y="0"   width="120" height="26" rx="6" fill="#C49A3F" opacity="0.9"/>
+    <rect x="252" y="0"   width="176" height="26" rx="6" fill="#3A4150"/>
+    <rect x="120" y="42"  width="72"  height="26" rx="6" fill="#3A4150"/>
+    <rect x="204" y="42"  width="104" height="26" rx="6" fill="#C49A3F" opacity="0.9"/>
+    <rect x="320" y="42"  width="108" height="26" rx="6" fill="#3A4150"/>
+  </g>
+
+  <!-- the normalize seam: a vertical gold line with a soft glow (data separated from code here) -->
+  <rect x="520" y="150" width="20" height="360" fill="#C49A3F" opacity="0.06"/>
+  <line x1="530" y1="150" x2="530" y2="510" stroke="#C49A3F" stroke-width="2.2" opacity="0.85"/>
+  <circle cx="530" cy="330" r="7" fill="#C49A3F"/>
+  <circle cx="530" cy="330" r="15" fill="none" stroke="#E6C66E" stroke-width="1" opacity="0.6"/>
+
+  <!-- executable surface (right of the seam): only code (gold) survives; data is stripped, faded to trace -->
+  <g transform="translate(0,232)">
+    <rect x="620" y="0"   width="120" height="26" rx="6" fill="#C49A3F" opacity="0.95"/>
+    <rect x="620" y="42"  width="104" height="26" rx="6" fill="#C49A3F" opacity="0.95"/>
+    <rect x="752" y="0"   width="176" height="26" rx="6" fill="#3A4150" opacity="0.14"/>
+    <rect x="736" y="42"  width="108" height="26" rx="6" fill="#3A4150" opacity="0.14"/>
+  </g>
+
+  <!-- faint orbital beads on the horizon (celestial vein, brand motif) -->
+  <g fill="#E6C66E" opacity="0.65">
+    <circle cx="905" cy="330" r="4"/>
+    <circle cx="150" cy="330" r="4"/>
+  </g>
+</svg>

@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 610" font-family="ui-sans-serif,system-ui,Segoe UI,Roboto,sans-serif" role="img" aria-labelledby="ttl desc">
+  <title id="ttl">Scan the executable surface, not the raw text</title>
+  <desc id="desc">A raw command carries a data region (a commit message that mentions rm -rf) and a code region (an actual rm -rf). Left: a flat scan reads the whole string and fires on both — one false positive on the message, one correct block on the command. Right: a normalize stage first strips the provably-inert message, leaving an executable surface of only the real command; the same rules then fire once, correctly, and the message is never scanned.</desc>
+  <metadata>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#">
+      <cc:Work rdf:about=""><dc:title>al-Nizam - the Chronicle</dc:title>
+        <dc:creator><cc:Agent><dc:title>al-Nizam</dc:title></cc:Agent></dc:creator>
+        <dc:rights>(c) 2026 al-Nizam. Attribution required; reuse without permission not licensed. Source: al-nizam.ai</dc:rights>
+        <dc:source>https://al-nizam.ai</dc:source></cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <style>
+    :root{ --bg:#0E1220; --node:#171C2E; --node2:#1b2035; --stroke:#3A4155; --text:#F6F3EC;
+      --muted:#8A93A3; --muted2:#6B7280; --gold:#C49A3F; --goldtext:#E6C66E; --focal:#1E1B10;
+      --wall:#3A4150; --red:#B4544B; --code:#1b2035; }
+    @media (prefers-color-scheme:light){ :root{ --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1;
+      --stroke:#D9D2C4; --text:#14171C; --muted:#6B7280; --muted2:#9A9484; --gold:#A6791C;
+      --goldtext:#8A6414; --focal:#FBF3DE; --wall:#BEB6A4; --red:#A2453C; --code:#F1ECE0; } }
+    :root.light{ --bg:#F6F3EC; --node:#FFFFFF; --node2:#FBF8F1; --stroke:#D9D2C4; --text:#14171C;
+      --muted:#6B7280; --muted2:#9A9484; --gold:#A6791C; --goldtext:#8A6414; --focal:#FBF3DE;
+      --wall:#BEB6A4; --red:#A2453C; --code:#F1ECE0; }
+    .bg{fill:var(--bg)} .node{fill:var(--node);stroke:var(--stroke)} .code{fill:var(--code);stroke:var(--stroke)}
+    .focal{fill:var(--focal);stroke:var(--gold)}
+    .t{fill:var(--text)} .m{fill:var(--muted)} .m2{fill:var(--muted2)} .g{fill:var(--gold)} .gt{fill:var(--goldtext)} .rf{fill:var(--red)}
+    .redl{stroke:var(--red)} .line{stroke:var(--muted)} .gline{stroke:var(--gold)}
+    .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+    .el{paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+  </style>
+  <defs>
+    <marker id="r" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--red)"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--gold)"/></marker>
+    <marker id="mu" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+  </defs>
+  <rect class="bg" width="1120" height="610"/>
+  <g transform="translate(1032,34) scale(0.62)" opacity="0.95" aria-hidden="true">
+    <path class="t" d="m 66.225562,102.91471 a 33.489777,21.861039 35.771948 0 0 30.000862,26.2724 33.489777,21.861039 35.771948 0 0 28.199956,-16.23224 33.489777,21.861039 35.771948 0 0 -23.48847,-30.296333 39.626193,25.86669 35.771943 0 1 35.98779,39.271113 39.626193,25.86669 35.771943 0 1 -33.36723,19.20667 39.626193,25.86669 35.771943 0 1 -37.332908,-38.22161 z" transform="translate(-56,-66)"/>
+    <ellipse class="g" cx="24.5" cy="22.3" rx="6.39" ry="6.07"/>
+  </g>
+  <text x="48" y="52" font-family="Georgia,serif" font-size="27" font-weight="600" class="t" letter-spacing="-.01em">Scan what runs, not what a message mentions</text>
+  <text x="48" y="80" font-size="14.5" class="m">A command carries code and data. A normalize stage strips the provably-inert part before the rules read it.</text>
+  <text x="1008" y="100" text-anchor="end" font-size="12" class="m" letter-spacing=".02em">al-nizam.ai</text>
+
+  <line x1="560" y1="150" x2="560" y2="512" class="line" stroke-width="1" stroke-dasharray="3 6" opacity="0.5"/>
+
+  <!-- ============ LEFT: flat scan ============ -->
+  <text x="290" y="146" text-anchor="middle" font-size="15" font-weight="700" class="rf">Flat scan — fires on both</text>
+
+  <!-- raw command box -->
+  <rect class="node" x="70" y="166" width="440" height="66" rx="12" stroke-width="1.4"/>
+  <text x="86" y="188" font-size="11" class="m2" letter-spacing=".04em">THE RAW COMMAND</text>
+  <text x="86" y="209" font-size="12.5" class="mono m">git commit -m "…stop blocking <tspan class="rf">rm -rf ~</tspan>…"</text>
+  <text x="86" y="226" font-size="12.5" class="mono g">&amp;&amp; rm -rf ~/tmp/build</text>
+  <text x="474" y="209" text-anchor="end" font-size="10.5" class="m2">data</text>
+  <text x="474" y="226" text-anchor="end" font-size="10.5" class="g">code</text>
+
+  <path d="M290,232 L290,270" class="redl" stroke-width="2.2" marker-end="url(#r)"/>
+  <text x="304" y="256" font-size="11.5" class="m">whole string</text>
+
+  <!-- rules box -->
+  <rect class="node" x="205" y="272" width="170" height="42" rx="10" stroke-width="1.4"/>
+  <text x="290" y="298" text-anchor="middle" font-size="13" class="t">the block rules</text>
+
+  <path d="M290,314 L290,348" class="redl" stroke-width="2.2" marker-end="url(#r)"/>
+
+  <!-- results -->
+  <rect x="70" y="350" width="440" height="40" rx="9" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="90" y="375" font-size="12.5" class="rf">✕  the message — BLOCKED  <tspan class="m2">(false positive)</tspan></text>
+  <rect x="70" y="398" width="440" height="40" rx="9" class="node" stroke-width="1.2"/>
+  <text x="90" y="423" font-size="12.5" class="t">●  <tspan class="mono">rm -rf ~</tspan> — blocked  <tspan class="m2">(correct)</tspan></text>
+
+  <text x="290" y="470" text-anchor="middle" font-size="12" class="m2 el">one input, two matches — the guard can't tell them apart</text>
+
+  <!-- ============ RIGHT: normalize seam ============ -->
+  <text x="840" y="146" text-anchor="middle" font-size="15" font-weight="700" class="gt">Normalize → scan — fires on what runs</text>
+
+  <!-- raw command box -->
+  <rect class="node" x="620" y="166" width="440" height="66" rx="12" stroke-width="1.4"/>
+  <text x="636" y="188" font-size="11" class="m2" letter-spacing=".04em">THE RAW COMMAND</text>
+  <text x="636" y="209" font-size="12.5" class="mono m">git commit -m "…stop blocking <tspan class="rf">rm -rf ~</tspan>…"</text>
+  <text x="636" y="226" font-size="12.5" class="mono g">&amp;&amp; rm -rf ~/tmp/build</text>
+
+  <path d="M840,232 L840,258" class="gline" stroke-width="2.2" marker-end="url(#g)"/>
+
+  <!-- normalize box -->
+  <rect class="focal" x="668" y="260" width="344" height="46" rx="10" stroke-width="2"/>
+  <text x="840" y="279" text-anchor="middle" font-size="12.5" class="gt" font-weight="600">normalize: strip provably-inert data</text>
+  <text x="840" y="297" text-anchor="middle" font-size="11" class="m">keep every executable token · unsure → scan anyway</text>
+
+  <path d="M840,306 L840,332" class="gline" stroke-width="2.2" marker-end="url(#g)"/>
+
+  <!-- executable surface box -->
+  <rect class="code" x="640" y="334" width="400" height="54" rx="10" stroke-width="1.4"/>
+  <text x="656" y="355" font-size="11" class="m2" letter-spacing=".04em">EXECUTABLE SURFACE</text>
+  <text x="656" y="376" font-size="12.5" class="mono g">git commit … &amp;&amp; rm -rf ~/tmp/build</text>
+  <text x="1024" y="355" text-anchor="end" font-size="10.5" class="m2">message removed</text>
+  <line x1="742" y1="371" x2="838" y2="371" class="redl" stroke-width="1.1" opacity="0.7"/>
+
+  <path d="M840,388 L840,414" class="gline" stroke-width="2.2" marker-end="url(#g)"/>
+
+  <!-- rules box -->
+  <rect class="node" x="755" y="416" width="170" height="40" rx="10" stroke-width="1.4"/>
+  <text x="840" y="441" text-anchor="middle" font-size="13" class="t">the block rules</text>
+
+  <path d="M840,456 L840,480" class="gline" stroke-width="2.2" marker-end="url(#g)"/>
+
+  <!-- result -->
+  <rect x="620" y="482" width="440" height="38" rx="9" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+  <text x="640" y="506" font-size="12.5" class="t">●  <tspan class="mono g">rm -rf ~</tspan> — blocked  <tspan class="m2">· the message was never scanned</tspan></text>
+
+  <text x="48" y="566" font-size="13" class="m"><tspan font-weight="600" class="t">Figure 1. </tspan>The rules are identical on both sides — only the <tspan font-style="italic">surface</tspan> they read changes. Stripping the provably-inert message (which git stores and never runs) removes the false positive without touching a single block. The <tspan class="mono" font-size="12">rm</tspan> is <tspan font-style="italic">used</tspan>; the quoted one is only <tspan font-style="italic">mentioned</tspan>.</text>
+</svg>
