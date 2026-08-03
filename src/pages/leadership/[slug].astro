@@ -1,0 +1,56 @@
+---
+// One template renders every leadership article from the `leadership` collection.
+// Replaces the per-slug hand-authored .astro pages: render metadata comes from the
+// entry's frontmatter (the RENDER field-group), the body from its canonical markdown
+// (.md) or .mdx (pieces with bespoke figure components). getStaticPaths emits only the
+// slugs that exist in src/content/leadership, so migration can be incremental.
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ArticleHero from '../../components/ArticleHero.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+import { substrates } from '../../data/substrates';
+import { durationSince } from '../../lib/duration';
+import '../../styles/article-figures.css';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('leadership');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+// Meta description = the index/RSS blurb + the standard series suffix the hand-authored
+// pages appended (kept out of the stored field so the index blurb stays clean).
+const metaDesc = `${d.description} Part of the introducing-al-nizam series.`;
+
+// Hero byline: "Series · Cluster · Published <date>" — rich pieces append a live,
+// build-time substrate-duration + a "Details ↓" jump to the in-body <Lineage/>.
+// (Ampersand escaped — meta is rendered via set:html.)
+let heroMeta = `${d.series} · ${d.cluster} · Published ${d.date}`;
+if (d.heroSubstrate && substrates[d.heroSubstrate]) {
+  heroMeta += ` · Substrate operating ${durationSince(substrates[d.heroSubstrate].since)} · <a href="#lineage">Details ↓</a>`;
+}
+heroMeta = heroMeta.replace(/&/g, '&amp;');
+---
+
+<Layout
+  title={`${d.title} — al-Nizam`}
+  article={{ title: d.title, datePublished: d.date }}
+  description={metaDesc}
+  theme={d.theme}
+>
+  <ArticleHero
+    kicker={d.kicker}
+    title={d.title}
+    meta={heroMeta}
+    graph={{ nodes: [], links: [] }}
+    poster={d.poster}
+  />
+
+  <article>
+    <Content />
+    <AuthorBio />
+  </article>
+</Layout>

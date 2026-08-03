@@ -1,0 +1,33 @@
+---
+// Lineage — the article's "Lineage" appendix (the #lineage target the hero's
+// "Details ↓" link jumps to). Dedups the wrapper + the invariant framework-lineage
+// list + the verification line across articles. The article supplies the
+// "Substrates covered" <li> items via the default slot (they carry per-piece,
+// build-time-computed substrate durations). `.article-lineage` styles are global
+// in Layout.astro.
+const {
+  published,
+  verification = 'framework codification dates verifiable via al-Sijill (the Register) lineage records + memory entry frontmatter. Durations computed at site build time.',
+} = Astro.props;
+---
+<div id="lineage" class="article-lineage">
+  <h3>Lineage</h3>
+  <ul>
+    <li><strong>Article published:</strong> {published}</li>
+    <li>
+      <strong>Substrates covered:</strong>
+      <ul style="list-style: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
+        <slot />
+      </ul>
+    </li>
+    <li>
+      <strong>Framework lineage</strong> — streams becoming rivers becoming ocean:
+      <ul style="list-style: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
+        <li><strong>al-Nizam</strong> — the arrived canonical name; chosen deliberately after deep introspection into the naming convention; ratified June 2026 (Islamic Theme Migration Sitting A)</li>
+        <li><strong>Loci</strong> — immediate predecessor framework name; operating April through May 2026</li>
+        <li><strong>Pre-Loci</strong> — piecemeal development through multiple smaller threads that gradually coalesced; drawing on three decades of operator IT experience preceding the named-framework era</li>
+      </ul>
+    </li>
+    <li><strong>Verification:</strong> {verification}</li>
+  </ul>
+</div>

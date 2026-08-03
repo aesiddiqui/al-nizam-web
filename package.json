@@ -14,6 +14,7 @@
     "verify:figures": "node tools/visual-verify/verify.mjs --figures"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.14",
     "@astrojs/rss": "^4.0.0",
     "@astrojs/sitemap": "^3.0.0",
     "@fontsource-variable/hanken-grotesk": "^5.2.8",
