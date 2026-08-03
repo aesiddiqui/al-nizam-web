@@ -1,0 +1,36 @@
+---
+// FigFlow — binary decision-flow figure (paper surface): a test step → a gate →
+// two outcomes (pass / fail). Structural shell; styles live global in
+// src/styles/article-figures.css. Content comes in via named slots.
+//
+// Usage (MDX):
+//   <FigFlow tag="The test" passLabel="Yes ↘" failLabel="No ↘">
+//     <Fragment slot="step">…the test…</Fragment>
+//     <Fragment slot="gate">…the question…</Fragment>
+//     <Fragment slot="pass"><strong>Structural answer.</strong> …</Fragment>
+//     <Fragment slot="fail"><strong>Slogans.</strong> …</Fragment>
+//     <Fragment slot="caption"><strong>Figure 3.</strong> …</Fragment>
+//   </FigFlow>
+const { tag, passLabel, failLabel } = Astro.props;
+---
+<figure class="fig-flow">
+  <div class="flow">
+    <div class="flow-step">
+      <span class="flow-tag">{tag}</span>
+      <slot name="step" />
+    </div>
+    <div class="flow-arrow" aria-hidden="true">↓</div>
+    <div class="flow-gate"><slot name="gate" /></div>
+    <div class="flow-branches">
+      <div class="flow-out pass">
+        <span class="flow-label pass">{passLabel}</span>
+        <slot name="pass" />
+      </div>
+      <div class="flow-out fail">
+        <span class="flow-label fail">{failLabel}</span>
+        <slot name="fail" />
+      </div>
+    </div>
+  </div>
+  <figcaption><slot name="caption" /></figcaption>
+</figure>

@@ -1,6 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { articles, allTags, hrefFor } from '../../data/articles';
+import { getLeadershipArticles, tagsOf } from '../../lib/leadership';
+
+const articles = await getLeadershipArticles();
+const allTags = tagsOf(articles);
 ---
 
 <Layout
@@ -33,7 +36,7 @@ import { articles, allTags, hrefFor } from '../../data/articles';
               data-tags={a.tags.join('|')}
               data-search={`${a.title} ${a.description}`.toLowerCase()}
             >
-              <h3><a href={hrefFor(a)}>{a.title}</a></h3>
+              <h3><a href={a.href}>{a.title}</a></h3>
               <p class="meta">{a.series} · {a.date}</p>
               <p>{a.description}</p>
             </li>

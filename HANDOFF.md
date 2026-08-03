@@ -1,5 +1,28 @@
 # HANDOFF — al-nizam-web
 
+## 2026-08-03 — ERSA (standalone)
+**Built:** ITEM 2 (content-derivation renderer) **COMPLETE + verified, uncommitted.** All 7 leadership
+articles now render from a `leadership` **content collection** through **one** `src/pages/leadership/[slug].astro`
+— the 7 per-slug `.astro` and `src/data/articles.ts` are deleted. Fork resolved → collection + MDX (Steward's
+call). New: `@astrojs/mdx`; `src/content.config.ts` (RENDER schema); `src/lib/rehype-house-html.mjs` (lead/figure/
+table/endnote transforms on the HTML AST); `src/styles/article-figures.css` (all figure CSS, deduped from the
+per-`.astro` copies); `src/components/figures/{FigTerminal,FigFlow,Lineage}.astro`; `src/content/leadership/` (5
+`.md` + 2 `.mdx`); `src/lib/leadership.ts` (index + RSS accessor). Bodies = canonical Chronicle prose; bespoke
+figures sourced from the live `.astro`. **Sanitization gate built in** — mention's raw U+200C ZWSP demo swapped for
+visible `⟨ZWSP⟩` + fig-note; 0 invisible codepoints across collection + built HTML.
+
+**Verified:** build clean (15 pages); clean-article DOM parity vs live (only diffs = heading anchors + smart quotes
++ endnote-as-class, all benign); rich pages **visually** confirmed (terminal, flow, lineage w/ live durations, SVG
+figures, tables, fig-note, shiki code); index order + RSS (7) match the old `articles.ts` exactly.
+
+**Stopped:** Clean, at the fidelity gate — **awaiting Steward push decision** (every push = public deploy).
+Foreign WIP UNTOUCHED (`.claude/CLAUDE.md`, `public/platform-graph-data.js`, `public/vendor/`) — stage explicit
+files, NEVER `git add -A`. Migration scripts saved in scratchpad (reusable for 2b).
+
+**Next:** `/pre-publish` → Steward pushes the whole set as ONE deploy. Then **item 2b** — fold the two migration
+scripts into a `/pre-publish`-integrated `promote` step so P6–P10 ship as promotions (never hand-built). See
+`.claude/PROJECT_STATE.md` → Exact Next Action.
+
 ## 2026-07-27 — ERSA (standalone)
 **Built:** Shipped + LIVE (8 commits): SEO completeness (robots.txt, branded OG card, Organization/WebSite/BlogPosting JSON-LD); a modern UI/UX pass (hero legibility scrim + mobile clip fix, site-wide focus-visible + skip-link + nav underlines, capabilities BENTO, leadership + About/Confidant CARDS via a theme-aware `.card-list`, scroll-reveal + stat count-up); absorbed `ui-ux-polish` + `astro-seo` skills + native **Playwright visual-verify** (real iPhone-13 device emulation). Then ran the **first end-to-end publication pipeline** — published `mention-vs-use` (week-1 ship) live on al-nizam.ai. Also relocated the Marketing Channel (al-Tarwij) out of the framework engine → `~/ersa/al-tarwij` (own repo).
 

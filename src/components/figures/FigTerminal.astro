@@ -1,0 +1,23 @@
+---
+// FigTerminal — worked-artifact "tool output" figure (night surface). Structural
+// shell only; styles live global in src/styles/article-figures.css so slotted body
+// content (.t-k / .t-sec / .t-ok / …) resolves. Content is synthetic by construction
+// (a public page can't show a real scan/brief).
+//
+// Usage (MDX):
+//   <FigTerminal title="/resume · session brief">
+//     <div class="t-h">…</div><div><span class="t-k">Key</span> value</div>
+//     <Fragment slot="caption"><strong>Figure 1.</strong> …</Fragment>
+//   </FigTerminal>
+const { title } = Astro.props;
+---
+<figure class="fig-terminal">
+  <div class="term">
+    <div class="term-bar" aria-hidden="true">
+      <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+      <span class="term-title">{title}</span>
+    </div>
+    <div class="term-body"><slot /></div>
+  </div>
+  <figcaption><slot name="caption" /></figcaption>
+</figure>
