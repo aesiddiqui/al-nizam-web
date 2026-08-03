@@ -15,12 +15,16 @@ visible `⟨ZWSP⟩` + fig-note; 0 invisible codepoints across collection + buil
 + endnote-as-class, all benign); rich pages **visually** confirmed (terminal, flow, lineage w/ live durations, SVG
 figures, tables, fig-note, shiki code); index order + RSS (7) match the old `articles.ts` exactly.
 
-**Stopped:** Clean, at the fidelity gate — **awaiting Steward push decision** (every push = public deploy).
-Foreign WIP UNTOUCHED (`.claude/CLAUDE.md`, `public/platform-graph-data.js`, `public/vendor/`) — stage explicit
-files, NEVER `git add -A`. Migration scripts saved in scratchpad (reusable for 2b).
+Also shipped: **whole-card clickable** leadership cards (stretched title-link, verified 3/3), and a
+`/pre-publish` enhancement (Step 6.5 — build + serve locally on **127.0.0.1**, never `--host`, for a visual
+fidelity review before deploy).
 
-**Next:** `/pre-publish` → Steward pushes the whole set as ONE deploy. Then **item 2b** — fold the two migration
-scripts into a `/pre-publish`-integrated `promote` step so P6–P10 ship as promotions (never hand-built). See
+**Stopped:** SHIPPED + verified live on al-nizam.ai (commits `03ce938` migration + `4b2e31b` card fix; pushed →
+Cloudflare deployed; all routes 200; trust terminal/flow/lineage render live; mention 0 invisible codepoints live).
+`/pre-publish` clean. Foreign WIP UNTOUCHED (`.claude/CLAUDE.md`, `public/platform-graph-data.js`, `public/vendor/`).
+
+**Next:** **item 2b** — fold the two migration scripts (scratchpad `migrate-clean.mjs`/`migrate-rich.mjs`) into a
+`/pre-publish`-integrated `promote` step so P6–P10 ship as promotions (never hand-built). See
 `.claude/PROJECT_STATE.md` → Exact Next Action.
 
 ## 2026-07-27 — ERSA (standalone)
