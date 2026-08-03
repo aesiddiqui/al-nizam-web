@@ -192,6 +192,11 @@ const allTags = tagsOf(articles);
     gap: 1rem;
   }
   .article-list > li {
+    /* position:relative anchors the stretched title-link overlay below; the whole
+       card becomes the click target (larger hit area — Fitts's law / WCAG target size)
+       while the single <a> on the title stays the only semantic link. */
+    position: relative;
+    cursor: pointer;
     background: var(--brand-paper-raised);
     border: 1px solid var(--color-border);
     border-radius: 12px;
@@ -199,7 +204,10 @@ const allTags = tagsOf(articles);
     transition: transform 0.25s cubic-bezier(0.22, 0.7, 0.2, 1),
                 border-color 0.25s ease, box-shadow 0.25s ease;
   }
-  .article-list > li:hover {
+  /* :focus-within gives keyboard users the same lift affordance as hover when the
+     title link is focused. */
+  .article-list > li:hover,
+  .article-list > li:focus-within {
     transform: translateY(-3px);
     border-color: rgba(196, 154, 63, 0.5);
     box-shadow: 0 14px 30px -16px rgba(20, 23, 28, 0.35);
@@ -207,6 +215,15 @@ const allTags = tagsOf(articles);
   .article-list h3 { margin: 0 0 0.4rem; font-size: 1.15rem; line-height: 1.25; }
   .article-list h3 a { text-decoration: none; color: var(--color-text); }
   .article-list h3 a:hover { color: var(--color-accent); }
+  /* Stretched link — the title's hit area covers the whole card (Inclusive Components /
+     Adrian Roselli block-link pattern). No nested links inside the card, so no z-index
+     juggling is needed; the overlay sits above the static meta/description text. */
+  .article-list h3 a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
   .article-list .meta {
     margin: 0 0 0.6rem;
     font-size: 0.74rem;
