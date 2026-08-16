@@ -1,5 +1,43 @@
 # HANDOFF — al-nizam-web
 
+## 2026-08-16 — ERSALTP (the capability was already declared; nobody had built the instrument)
+**Built:** no code. Resumed the project, then answered a Steward question — *"a visitor counter, and
+where the user originated from… are we recreating the wheel?"* The answer was a **recall finding**:
+al-Tarwij's `B1-publication-and-promotion-plan.md` §5 already defines an *"al-nizam.ai referral
+sessions"* ledger field, already carries **B1-R5** (*"Search Console before week 4, so referral data
+isn't guessed"*), and `week-01-mention-vs-use/RUN-REPORT.md` already logged the miss verbatim:
+`N/A week 1 — Search Console not connected`. Declared 2026-07-26, unmet since 2026-07-27. The
+duplicated wheel was his own requirement, not a vendor product.
+
+Recommendation scoped in **three tiers separated by privacy cost** — (1) read the Cloudflare zone
+dashboard, zero code; (2) connect **Search Console**, no site code and **no privacy-page change**,
+and the only source of search *queries*; (3) only then the Cloudflare Web Analytics beacon, the one
+tier that makes `privacy.astro`'s published *"no tracking"* copy **false** and so ships its copy edit
+in the **same commit**. Rejected: building any counter (the real reinvention), and a visible on-page
+counter.
+
+Recorded in four channels: framework canon `project_the_measurement_slot_was_declared_and_left_empty_2026_08_16`
+(verified on the board at **p3**, declared `horizon: 30d` registered in the ledger) · a B1-R5 row in
+`.claude/ADVISORIES-FROM-AL-TARWIJ.md` · `.claude/PROJECT_STATE.md` → Open Questions · and
+`~/ersa/al-tarwij/advisory/ADVISORIES-FROM-WEB.md` (**new file, `WEB-001`**).
+
+**Stopped:** nothing built — **execution deferred by the Steward** (*"we'll visit this when I'm
+ready"*). No code touched, no deploy. Foreign WIP UNTOUCHED (`.claude/CLAUDE.md`,
+`public/platform-graph-data.js`, `public/vendor/`). Two things found and left open: the
+marketing↔web advisory edge was **asymmetric** (web had an inbox, al-Tarwij had none — counterpart
+created), and **item 2b's stated inputs no longer exist** — the `migrate-clean.mjs`/`migrate-rich.mjs`
+scripts lived in the 2026-08-03 scratchpad and are gone.
+
+**Next:** item 2b — the Chronicle→web `promote` step, **written fresh** from
+`.claude/ITEM-2-RENDERER-SPEC.md`, after reading
+`project_content_publishing_derivation_and_content_model_resolved_2026_07_21` (it already defines the
+AUTHORING-vs-RENDER field split — do not re-derive it). If measurement comes first instead, the
+cheapest real move is **Search Console alone**.
+
+> Transfer candidate → al-Tarwij (Marketing Channel): a **UTM convention** for campaign links is owed
+> before the cadence resumes — referrers give the domain, never the thread, and web can only consume
+> what the links carry.
+
 ## 2026-08-03 — ERSA (standalone)
 **Built:** ITEM 2 (content-derivation renderer) **COMPLETE + verified, uncommitted.** All 7 leadership
 articles now render from a `leadership` **content collection** through **one** `src/pages/leadership/[slug].astro`
@@ -55,11 +93,7 @@ render through the pipeline (never hand-authored). *No code written — spec onl
 
 <!-- previous session blocks below, newest-first -->
 
-## 2026-07-06 — ERSA (standalone)
-**Built:** Large content+design pass shipped and verified live on al-nizam.ai (many pushes, latest `5cc5992`): pages overhaul (night `PageHeader` on founder/about/confidant; founder portrait + links + dimensions + "Why it comes from me"), 3 visualizations (About operating-layer, Confidant orbital SVG, founder dimensions), tags foundation (single-source `articles.ts` + tag filtering + RSS categories), audience broadening (solo/early operators), homepage headline `scale`→`discipline of an institution`, brand-constant `--brand-*` token layer, last `#0E1220`→`#14171C` canonicalization. DEC-008 recorded (reader theme toggle model).
-
-**Stopped:** Clean close. Everything code-wise committed, pushed, live. Token refactor was checkpoint-banked but NOT started. Only `.claude/` state + HANDOFF committed at close.
-
-**Next:** Token refactor (~155 hardcoded brand hex → `var(--brand-*)` / `var(--color-*)`, per-instance judgment, file-by-file, build-verify, publish). Then reader theme toggle per DEC-008. See `.claude/PROJECT_STATE.md` → "Exact Next Action".
+## ⤵ Older blocks pruned to archive (2026-08-16)
+2026-07-06 and earlier → `HANDOFF-ARCHIVE.md` (read-on-demand, NOT loaded at /resume).
 
 <!-- previous session blocks (import 2026-07-01) metabolized into PROJECT_STATE; older flat handoff superseded -->
