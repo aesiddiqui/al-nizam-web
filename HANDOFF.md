@@ -1,5 +1,33 @@
 # HANDOFF — al-nizam-web
 
+## 2026-08-20 — ERSALTP (the question was framework-shaped; the finding was on this site's own pages)
+**Built:** no code here. Resumed, then answered a framework-altitude question about AI-spend
+accounting across vendors and users — which closed to **framework canon**, not to this project,
+per `praxis_a_session_closes_where_the_work_happened`.
+
+What this project actually got: two verifications and one defect. **Verified on disk** that the
+Chronicle→web promote step genuinely does not exist (`tools/` holds only `visual-verify`; no
+promote script in `package.json`) — so item 2b is real unbuilt work, not a card whose work
+quietly shipped. And **measured a live-copy defect**: the framework's open locale decision
+(`project_no_locale_is_declared_anywhere_and_the_canon_drifted_british_2026_08_18`) is not
+theoretical here — **three British spellings sit in published reader-visible text**, at
+`src/pages/confidant.astro:34` (`aria-label`), `:37` (visible `<text>`), and
+`src/content/leadership/trust-comes-from-structure.mdx:94` (figure alt text). **Two are
+accessibility surfaces**, so they are read aloud. Everything else matching in `src/` is a code
+comment and is not published.
+
+**Stopped:** the locale fix is **deliberately not applied** — the framework has not declared a
+locale yet, and correcting published copy ahead of that decision is guessing at it. No deploy, no
+code touched, foreign WIP untouched.
+
+**Next:** unchanged — item 2b, the Chronicle→web `promote` step, written fresh from
+`.claude/ITEM-2-RENDERER-SPEC.md` after reading
+`project_content_publishing_derivation_and_content_model_resolved_2026_07_21`. Fold the three
+locale fixes into whichever pass adopts the declared locale.
+
+> **Cadence flag:** last article published 2026-07-27 — **24 days**. Two consecutive sessions have
+> now closed here without shipping content. The next one should either ship item 2b or say why not.
+
 ## 2026-08-16 — ERSALTP (the capability was already declared; nobody had built the instrument)
 **Built:** no code. Resumed the project, then answered a Steward question — *"a visitor counter, and
 where the user originated from… are we recreating the wheel?"* The answer was a **recall finding**:
