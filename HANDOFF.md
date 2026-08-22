@@ -1,5 +1,33 @@
 # HANDOFF — al-nizam-web
 
+## 2026-08-22 — ERSALTP (a research session, partitioned; most of it was never web work)
+**Built:** no code. Researched how enterprise systems build admin/management UIs, then the Steward
+partitioned the result — *"keep whatever is useful for web and forward everything else to the
+framework."* **The split is lopsided: most went to the framework**, recorded as
+`reference_enterprise_admin_console_landscape_and_the_five_levels_of_hub_consistency_2026_08_22`.
+
+**Three web keeps only:** (1) **semantic** token count is the metric, not raw — bears on **DEC-012**,
+the identity/brand config split, when it finally happens; (2) never encode status in colour alone,
+and pair relative age with an absolute timestamp — applies if any status/badge UI lands here;
+(3) a new standing constraint in PROJECT_STATE — **the admin console is a different surface**, so no
+console component library lands in this repo and this site's design language does not decide the
+console's.
+
+**One live fact worth not re-deriving:** **Clarity — the design system behind the vSphere/VCF
+consoles — was archived 2026-02-17**, read-only, no successor named. I nearly asserted the opposite
+from memory.
+
+**Stopped:** the three British spellings are still live in published copy (framework locale decision
+still open). No deploy, no code, foreign WIP untouched. **Steward moved to the framework** to
+continue — the forwarded thread is the canon-contract ratification (D1–D5), plus a **D6 that does not
+exist yet**: the noun set for runtime state.
+
+**Next:** unchanged — **item 2b**, the Chronicle→web `promote` step, written fresh from
+`.claude/ITEM-2-RENDERER-SPEC.md`.
+
+> **Cadence flag: last article published 2026-07-27 — 26 days.** This is now the **third consecutive**
+> session to open this project and close its substance elsewhere. The next one should ship item 2b.
+
 ## 2026-08-20 — ERSALTP (the question was framework-shaped; the finding was on this site's own pages)
 **Built:** no code here. Resumed, then answered a framework-altitude question about AI-spend
 accounting across vendors and users — which closed to **framework canon**, not to this project,
@@ -93,35 +121,10 @@ Cloudflare deployed; all routes 200; trust terminal/flow/lineage render live; me
 `/pre-publish`-integrated `promote` step so P6–P10 ship as promotions (never hand-built). See
 `.claude/PROJECT_STATE.md` → Exact Next Action.
 
-## 2026-07-27 — ERSA (standalone)
-**Built:** Shipped + LIVE (8 commits): SEO completeness (robots.txt, branded OG card, Organization/WebSite/BlogPosting JSON-LD); a modern UI/UX pass (hero legibility scrim + mobile clip fix, site-wide focus-visible + skip-link + nav underlines, capabilities BENTO, leadership + About/Confidant CARDS via a theme-aware `.card-list`, scroll-reveal + stat count-up); absorbed `ui-ux-polish` + `astro-seo` skills + native **Playwright visual-verify** (real iPhone-13 device emulation). Then ran the **first end-to-end publication pipeline** — published `mention-vs-use` (week-1 ship) live on al-nizam.ai. Also relocated the Marketing Channel (al-Tarwij) out of the framework engine → `~/ersa/al-tarwij` (own repo).
-
-**Stopped:** Clean. Everything committed + pushed + verified live. Foreign WIP left UNTOUCHED (`.claude/CLAUDE.md`, `public/platform-graph-data.js`, `public/vendor/`) — do NOT `git add -A`. `tools/visual-verify/verify.mjs` route-add committed at close.
-
-**Next:** Build the **markdown→`.astro` transformer** (double-justified: kills the manual body-conversion typo-ships risk AND is the home for the sanitization gate `/pre-publish` doesn't provide). Then DEC-012 config split; changelog (awaits al-Tarwij framing). See `.claude/PROJECT_STATE.md` → Exact Next Action.
-
-Transfer candidate → al-Tarwij (Marketing Channel): the publication-pipeline observations (body-conversion = automation target; sanitization-gate is discipline-only) are already metabolized in its week-01 RUN-REPORT.
-
-**Spec added (leadership-channel session, 2026-07-27):** the Next-action above (markdown→`.astro`
-transformer / kill manual body-conversion) now has a full executable design at
-`.claude/ITEM-2-RENDERER-SPEC.md` — independently converged from the framework Q1/Q2 memo
-(`project_content_publishing_derivation_and_content_model_resolved_2026_07_21`). ⚠ **Design fork to
-resolve first:** the spec defaults to an Astro **content collection + one `[slug].astro` template +
-remark/rehype** (eliminates per-page `.astro` entirely); this HANDOFF's Next names a
-**markdown→`.astro` transformer** (generates per-page `.astro`). Same goal, two shapes — the spec's
-opening section lays out the tradeoff. Once chosen: migrate all 7 live pages → collection, then P6–P10
-render through the pipeline (never hand-authored). *No code written — spec only.*
-
-## 2026-07-08 — ERSA (standalone)
-**Built:** Big session, all **uncommitted + build-verified + NOT pushed** (every push = public deploy). (1) Leadership index → sticky right-rail search + tag filter, per-article pills removed (DEC-009). (2) **Token refactor COMPLETE** — ~155 hardcoded brand hex across 10 files → `--brand-*`/`--color-*`, value-exact/zero visual change (DEC-010); PlatformGraph got a JS `BRAND` palette. (3) contact/privacy/terms got the night `PageHeader` band (DEC-011, design-alignment). (4) **P2 article** thousand-fold-acceleration built (page + poster + 2 figures + articles.ts) as the template; Steward built P3/P4/P5 (self-correction/hallucination/tests-pass) during idle gaps. Corpus now 6 articles.
-
-**Stopped:** Mid-way into an identity/brand **config split** (DEC-012): standardize logo + company info, Chronicle = source of record, site = derived copy (Cloudflare can't read the Chronicle at build). Spec-write was interrupted; Steward chose "bank + fresh session." Nothing committed/pushed anywhere in al-nizam-web.
-
-**Next:** Fresh session — execute the config split (Chronicle `config/{identity,brand,mark}` → site `identity.ts` + `Mark.astro`; fix drifted `brand/` `#C9A24B`). Then batch P6+P7 articles + token-swap the 3 sibling articles. Then `/pre-publish` + push (one deploy). See `.claude/PROJECT_STATE.md` → Exact Next Action.
-
 <!-- previous session blocks below, newest-first -->
 
-## ⤵ Older blocks pruned to archive (2026-08-16)
-2026-07-06 and earlier → `HANDOFF-ARCHIVE.md` (read-on-demand, NOT loaded at /resume).
+## ⤵ Older blocks pruned to archive (2026-08-22)
+2026-07-27, 2026-07-08 and earlier → `HANDOFF-ARCHIVE.md` (read-on-demand, NOT loaded at /resume).
+Prior prune (2026-08-16) archived 2026-07-06 and earlier.
 
 <!-- previous session blocks (import 2026-07-01) metabolized into PROJECT_STATE; older flat handoff superseded -->
