@@ -1,5 +1,34 @@
 # HANDOFF — al-nizam-web
 
+## 2026-08-26 — ERSALTP (a second website asked to live here; it doesn't, and checking that cost more than answering it)
+**Built:** no code in this repo — fourth consecutive session. What landed: **DECISION-013** (ersatechsolutions.com
+becomes its own greenfield project `ersa/ersatechsolutions`; reuse the stack, never the palette), the Steward's
+**former-names ruling** for Signalwright registered in `al-sijill/tenants/personal.json` and framework canon, and
+two memory writes.
+
+**The correction worth carrying:** I told the Steward a retired-name state tree was "a fork, not a leftover" —
+inferred from **mtimes**. A concurrent session on this strand opened the files and disproved it: the mtimes are
+sync artifacts, the content is pre-rename text, and it is the **peer strand's** tree, stale because the rename
+commit sat local-only for 30 days. **The remedy was the push, not the delete.** A proxy signal did not overstate,
+it *inverted the action*. `feedback_verify_staleness_via_git_history_not_mtime_2026_07_02` already forbade exactly
+this and I violated it 55 days after it was written; folded in as a recurrence.
+
+**Measured and worth acting on:** the cadence is **not** blocked on writing. `~/the-chronicle/outward/leadership-drafts/`
+holds 15 drafts and 7 are published — **8 are authored and unpublished**. Item 2b converts directly into eight
+shipped articles. Also verified again on disk: no promote step exists, and the three `centre` spellings are still
+live at `confidant.astro:34`, `:37`, `trust-comes-from-structure.mdx:94`.
+
+**Stopped:** framework canon written and committed via this close; nothing in `src/` touched; foreign WIP untouched.
+
+**Next:** **Item 2b — the Chronicle→web promote step.** Read `project_content_publishing_derivation_and_content_model_resolved_2026_07_21`
+first (the AUTHORING-vs-RENDER split is already resolved; do not re-derive). Eight drafts are waiting behind it.
+
+> Transfer candidate → every strand: a fix verified by re-checking the finding it targeted cannot see the violation it
+> introduced — the oracle has to be the governing model, not the old symptom. Banked as
+> `praxis_a_fix_verified_against_the_violation_it_targeted_will_not_see_the_one_it_creates_2026_08_26`.
+> Second: **mtime carries no authorship and no ordering across a synced tier** — two dirs in a mirrored tree tell you
+> nothing about which was written later, or by whom.
+
 ## 2026-08-22 — ERSALTP (a research session, partitioned; most of it was never web work)
 **Built:** no code. Researched how enterprise systems build admin/management UIs, then the Steward
 partitioned the result — *"keep whatever is useful for web and forward everything else to the
@@ -94,37 +123,8 @@ cheapest real move is **Search Console alone**.
 > before the cadence resumes — referrers give the domain, never the thread, and web can only consume
 > what the links carry.
 
-## 2026-08-03 — ERSA (standalone)
-**Built:** ITEM 2 (content-derivation renderer) **COMPLETE + verified, uncommitted.** All 7 leadership
-articles now render from a `leadership` **content collection** through **one** `src/pages/leadership/[slug].astro`
-— the 7 per-slug `.astro` and `src/data/articles.ts` are deleted. Fork resolved → collection + MDX (Steward's
-call). New: `@astrojs/mdx`; `src/content.config.ts` (RENDER schema); `src/lib/rehype-house-html.mjs` (lead/figure/
-table/endnote transforms on the HTML AST); `src/styles/article-figures.css` (all figure CSS, deduped from the
-per-`.astro` copies); `src/components/figures/{FigTerminal,FigFlow,Lineage}.astro`; `src/content/leadership/` (5
-`.md` + 2 `.mdx`); `src/lib/leadership.ts` (index + RSS accessor). Bodies = canonical Chronicle prose; bespoke
-figures sourced from the live `.astro`. **Sanitization gate built in** — mention's raw U+200C ZWSP demo swapped for
-visible `⟨ZWSP⟩` + fig-note; 0 invisible codepoints across collection + built HTML.
-
-**Verified:** build clean (15 pages); clean-article DOM parity vs live (only diffs = heading anchors + smart quotes
-+ endnote-as-class, all benign); rich pages **visually** confirmed (terminal, flow, lineage w/ live durations, SVG
-figures, tables, fig-note, shiki code); index order + RSS (7) match the old `articles.ts` exactly.
-
-Also shipped: **whole-card clickable** leadership cards (stretched title-link, verified 3/3), and a
-`/pre-publish` enhancement (Step 6.5 — build + serve locally on **127.0.0.1**, never `--host`, for a visual
-fidelity review before deploy).
-
-**Stopped:** SHIPPED + verified live on al-nizam.ai (commits `03ce938` migration + `4b2e31b` card fix; pushed →
-Cloudflare deployed; all routes 200; trust terminal/flow/lineage render live; mention 0 invisible codepoints live).
-`/pre-publish` clean. Foreign WIP UNTOUCHED (`.claude/CLAUDE.md`, `public/platform-graph-data.js`, `public/vendor/`).
-
-**Next:** **item 2b** — fold the two migration scripts (scratchpad `migrate-clean.mjs`/`migrate-rich.mjs`) into a
-`/pre-publish`-integrated `promote` step so P6–P10 ship as promotions (never hand-built). See
-`.claude/PROJECT_STATE.md` → Exact Next Action.
-
-<!-- previous session blocks below, newest-first -->
-
-## ⤵ Older blocks pruned to archive (2026-08-22)
-2026-07-27, 2026-07-08 and earlier → `HANDOFF-ARCHIVE.md` (read-on-demand, NOT loaded at /resume).
+## ⤵ Older blocks pruned to archive (2026-08-26)
+2026-08-03, 2026-07-27, 2026-07-08 and earlier → `HANDOFF-ARCHIVE.md` (read-on-demand, NOT loaded at /resume).
 Prior prune (2026-08-16) archived 2026-07-06 and earlier.
 
 <!-- previous session blocks (import 2026-07-01) metabolized into PROJECT_STATE; older flat handoff superseded -->

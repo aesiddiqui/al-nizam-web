@@ -45,3 +45,32 @@ title in `HANDOFF.md`.
 **Stopped:** Clean close. Everything code-wise committed, pushed, live. Token refactor was checkpoint-banked but NOT started. Only `.claude/` state + HANDOFF committed at close.
 
 **Next:** Token refactor (~155 hardcoded brand hex → `var(--brand-*)` / `var(--color-*)`, per-instance judgment, file-by-file, build-verify, publish). Then reader theme toggle per DEC-008. See `.claude/PROJECT_STATE.md` → "Exact Next Action".
+
+## 2026-08-03 — ERSA (standalone)
+**Built:** ITEM 2 (content-derivation renderer) **COMPLETE + verified, uncommitted.** All 7 leadership
+articles now render from a `leadership` **content collection** through **one** `src/pages/leadership/[slug].astro`
+— the 7 per-slug `.astro` and `src/data/articles.ts` are deleted. Fork resolved → collection + MDX (Steward's
+call). New: `@astrojs/mdx`; `src/content.config.ts` (RENDER schema); `src/lib/rehype-house-html.mjs` (lead/figure/
+table/endnote transforms on the HTML AST); `src/styles/article-figures.css` (all figure CSS, deduped from the
+per-`.astro` copies); `src/components/figures/{FigTerminal,FigFlow,Lineage}.astro`; `src/content/leadership/` (5
+`.md` + 2 `.mdx`); `src/lib/leadership.ts` (index + RSS accessor). Bodies = canonical Chronicle prose; bespoke
+figures sourced from the live `.astro`. **Sanitization gate built in** — mention's raw U+200C ZWSP demo swapped for
+visible `⟨ZWSP⟩` + fig-note; 0 invisible codepoints across collection + built HTML.
+
+**Verified:** build clean (15 pages); clean-article DOM parity vs live (only diffs = heading anchors + smart quotes
++ endnote-as-class, all benign); rich pages **visually** confirmed (terminal, flow, lineage w/ live durations, SVG
+figures, tables, fig-note, shiki code); index order + RSS (7) match the old `articles.ts` exactly.
+
+Also shipped: **whole-card clickable** leadership cards (stretched title-link, verified 3/3), and a
+`/pre-publish` enhancement (Step 6.5 — build + serve locally on **127.0.0.1**, never `--host`, for a visual
+fidelity review before deploy).
+
+**Stopped:** SHIPPED + verified live on al-nizam.ai (commits `03ce938` migration + `4b2e31b` card fix; pushed →
+Cloudflare deployed; all routes 200; trust terminal/flow/lineage render live; mention 0 invisible codepoints live).
+`/pre-publish` clean. Foreign WIP UNTOUCHED (`.claude/CLAUDE.md`, `public/platform-graph-data.js`, `public/vendor/`).
+
+**Next:** **item 2b** — fold the two migration scripts (scratchpad `migrate-clean.mjs`/`migrate-rich.mjs`) into a
+`/pre-publish`-integrated `promote` step so P6–P10 ship as promotions (never hand-built). See
+`.claude/PROJECT_STATE.md` → Exact Next Action.
+
+<!-- previous session blocks below, newest-first -->
