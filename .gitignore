@@ -32,3 +32,11 @@ SESSION_JOURNAL.md
 # visual-verify (Playwright) — dev-only tool + its output, isolated from the site build
 .visual-verify/
 tools/visual-verify/node_modules/
+
+# al-Nizam per-project state — NEVER tracked in this repo.
+# Purged from this repo's entire history on 2026-09-01: three of these files carried a client
+# identifier, and this repo is public, where removal from HEAD does not un-publish. Nothing here
+# covered .claude/ before — line 29 mentions .claude/skills/ only inside a comment about
+# .agents/ — so the remediation was one routine `git add -A` away from being undone.
+# Canonical copies live in Tier 2 (al-nizam-private/per-project-state/) and in the working tree.
+.claude/
