@@ -56,7 +56,7 @@ export const founder = {
     {
       heading: 'Why al-Nizam exists',
       body: [
-        "al-Nizam — the order, the system, the discipline — is the answer I had to build because no one else was building it.",
+        "al-Nizam — the order, the system, the discipline — is the answer I designed to a gap no one else was closing.",
         "I had lived inside the gap that the AI industry was not closing. Continuity that did not survive the next session. Boundaries that depended on operator memory rather than structural enforcement. Reasoning that the tool was not asked to label. Costs that accumulated in the dark. Discipline that was supposed to come from the operator, every time, in every session, perfectly, forever.",
         "That model does not scale to the actual complexity of serious work. It does not survive the normal variance of human attention, energy, and time. It does not compound. After three decades of building infrastructure that does, I could not accept that AI tooling would not.",
         "So I built the substrate. Memory that lives in files outside the AI tool, not chat history inside it. Protocols that survive operator lapses. A partnership model — the operator and the Confidant role — that holds discipline structurally rather than through hope. al-Nizam is the arrived name — chosen deliberately after deep introspection into the naming convention itself. The work iterated through prior names, and the underlying lens draws on the full thirty-year career.",
@@ -65,7 +65,7 @@ export const founder = {
     {
       heading: 'Where the work happens now',
       body: [
-        "I am Founder and CEO of ERSA Technologies. The engagements continue to span government, healthcare, financial services, and commercial sectors. al-Nizam is the operating layer I built for myself, am building in the open, and intend to make available to other operators — both those who already hold serious work and cannot afford to lose continuity, boundary, or honest accounting, and those taking that work on for the first time, who would rather start with the guardrails than earn them through costly mistakes.",
+        "The work runs through ERSA Technologies, the company I founded and lead. The engagements continue to span government, healthcare, financial services, and commercial sectors. al-Nizam is the operating layer I built for myself, am building in the open, and intend to make available to other operators — both those who already hold serious work and cannot afford to lose continuity, boundary, or honest accounting, and those taking that work on for the first time, who would rather start with the guardrails than earn them through costly mistakes.",
       ],
     },
     {
