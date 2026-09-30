@@ -89,7 +89,7 @@ Compare that to the pre-framework version of the same day — the one many reade
 
 **Capability compounds when the discipline lives outside your head.** If you want your work with AI to get better over months — not just your tool — the move is not a better prompt and not the next model. It is to make each session deposit its lessons, decisions, and state into something durable the tool reads back at the start of the next one. Then you are buying capability, not renting it.
 
-That principle is portable even if you never adopt al-Nizam. A single decisions file and the habit of writing to it will out-compound a year of prompt-tuning. The framework is just what happens when you take the same move seriously across many disciplines, many machines, and several years.
+That principle is portable even if you never adopt al-Nizam. A single decisions file and the habit of writing to it will out-compound a year of prompt-tuning. The framework is what I built by taking the same move seriously across many disciplines, many machines, and several years.
 
 ## The calibration — what the number is and is not
 

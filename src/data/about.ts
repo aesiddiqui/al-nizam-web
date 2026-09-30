@@ -32,7 +32,7 @@ export const about = {
       heading: 'What al-Nizam is',
       body: [
         "The framework was built for a specific problem the AI industry has not solved: how a single operator wields AI as a coequal partner across years of serious work without losing the structural discipline that determines whether the work compounds or evaporates. The substrate is the answer. al-Nizam codifies it.",
-        "The work is not aspirational. al-Nizam is what I had to build, after three decades of IT, to operate AI without losing what I had built before.",
+        "The work is not aspirational. I designed al-Nizam deliberately, bringing three decades of IT, infrastructure, and company-building to the gap the industry left open: an operator working with AI across years of serious work without that work evaporating between sessions.",
       ],
     },
     {

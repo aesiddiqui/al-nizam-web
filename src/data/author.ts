@@ -20,5 +20,5 @@ export type Author = {
 
 export const founder: Author = {
   name: 'Ebadullah Siddiqui',
-  bio: 'is the architect behind al-Nizam. Three decades in IT spanning virtualization, cloud, governance, cybersecurity, scripting, automation, and enterprise infrastructure — with recent years deep in operator-AI partnership and LLM-driven workflow architecture — across government, healthcare, financial services, and commercial sectors. Founder and CEO of ERSA Technologies. al-Nizam is the operating framework he had to build when he kept losing continuity the industry had no excuse to keep dropping.',
+  bio: 'is the architect behind al-Nizam. Three decades in IT spanning virtualization, cloud, governance, cybersecurity, scripting, automation, and enterprise infrastructure — with recent years deep in operator-AI partnership and LLM-driven workflow architecture — across government, healthcare, financial services, and commercial sectors. He founded and leads ERSA Technologies. He designed al-Nizam to close the gap between what AI tooling can do and what serious, multi-year work needs: continuity, boundaries, and honest accounting held in structure rather than in memory.',
 };
